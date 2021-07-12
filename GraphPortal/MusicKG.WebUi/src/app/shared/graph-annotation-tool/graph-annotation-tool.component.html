@@ -1,0 +1,11 @@
+<div class="graph-container" *ngIf="src">
+  <div class="tag-content">
+    <span>所属标签：</span>
+    <nz-tag *ngFor="let tag of tags; let i = index" nzMode="closeable" [nzColor]="tag.color" (nzAfterClose)="handleClose(tag)">
+      {{ sliceTagName(tag.name) }}
+    </nz-tag>
+  </div>
+  <div class="graph-content">
+    <img src="{{src}}" alt="">
+  </div>
+</div>

@@ -1,0 +1,123 @@
+nz-header {
+    background: #ffffff;
+    padding: 0px 15px;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+    box-shadow: 0 1px 10px rgba(0, 21, 41, .12);
+    overflow: hidden;
+    height: 57px;
+    line-height: 50px;
+    border-top: #e9121c 3px solid;
+    display: flex;
+}
+
+.logo {
+    color: #000000;
+    font-size: 22px;
+    flex: 0 0 176px;
+    cursor: pointer;
+}
+
+.header-nav {
+    flex: 1;
+}
+
+.router-list {
+    margin-right: 20px;
+}
+
+.router-link {
+    margin-left: 10px;
+    height: 34px;
+    line-height: 34px;
+    color: #fff;
+    padding: 0 12px;
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    font-size: 14px;
+    vertical-align: middle;
+
+    img {
+        width: 18px;
+        height: 18px;
+        margin-right: 5px;
+        vertical-align: text-bottom;
+    }
+
+    &::after {
+        content: '';
+        transform: skew(-20deg);
+        background-color: #e9121c;
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    &.active::after,
+    &:hover::after {
+        background-color: #a3121d;
+    }
+}
+
+ul.header-menu {
+    float: right;
+    list-style: none;
+
+    li {
+        cursor: pointer;
+        float: left;
+        color: #000000;
+    }
+
+    .nav-router {
+        height: 52px;
+        display: inline-block;
+    }
+
+    .lange i,
+    .user span {
+        font-size: 12px;
+        padding: 0 12px;
+        display: inline-block;
+        max-width: 170px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        line-height: 52px;
+
+        .name {
+            height: 24px;
+            line-height: 24px;
+            padding-left: 3px;
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 14px;
+            color: #000000;
+        }
+
+        img {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+        }
+    }
+}
+
+:host /deep/ .user-item {
+    color: #000000 !important;
+}
+
+.router-item {        
+
+    &:hover {
+        background: none;
+        color: #e20721;
+    }
+
+    &.active {
+        color: #e20721;
+    }
+}

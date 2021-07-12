@@ -1,0 +1,10 @@
+<ng-container>
+  <div class="chart-box">
+    <nz-spin [nzSpinning]="isLoading">
+      <div class="title" >
+        {{chartType}}
+      </div>
+      <div echarts style="height: 228px;" (chartInit)="onChartInit($event)" [options]="chartOption"></div>
+    </nz-spin>
+  </div>
+</ng-container>

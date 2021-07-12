@@ -1,0 +1,27 @@
+<form nz-form>
+  <nz-form-item>
+    <nz-form-label nzRequired [nzSpan]="6">车款</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select [(ngModel)]="carType" name="carType" nzPlaceHolder="请选择车款"  nzMode="multiple" (ngModelChange)="carTypeChange()" [nzLoading]="carTypeLoading">
+        <nz-option *ngFor="let option of carTypeList" [nzValue]="option" [nzLabel]="option"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6">车型</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select [nzLoading]="carModelLoading" nzMode="multiple" nzAllowClear [(ngModel)]="carModel" name="carModel" 
+      nzPlaceHolder="全部" (ngModelChange)="carModelChange()">
+        <nz-option *ngFor="let option of carModelList" [nzValue]="option" [nzLabel]="option"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6">年款</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select nzMode="multiple"  nzPlaceHolder="全部" nzAllowClear [nzLoading]="yearModelsLoading" [(ngModel)]="yearModels" name="yearModels">
+        <nz-option *ngFor="let option of yearModelList" [nzValue]="option" [nzLabel]="option"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+</form>

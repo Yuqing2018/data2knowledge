@@ -1,0 +1,4 @@
+<nz-select [(ngModel)]="selectedValue" nzAllowClear nzShowSearch nzPlaceHolder="请选择" (ngModelChange)="valueChange()">
+  <nz-option *ngFor="let option of knowleadgeTemplateList" [nzValue]="option.templId" [nzLabel]="option.templNm">
+  </nz-option>
+</nz-select>

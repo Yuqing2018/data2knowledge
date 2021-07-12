@@ -1,0 +1,29 @@
+<div class="annotation-toolbar">
+  <div [class.disabled-action]="notHasPagePrevious" class="page previous" (click)="pagePrevious()">
+    <i nz-icon type="left" theme="outline"></i> 上一篇
+  </div>
+  <div class="content">
+    <div class="title-content" [class.none-item]="!hasItem">
+      <span class="title">{{ title }}</span>
+      <div *ngIf="hasItem" class="title-page">
+        <span [class.disabled-action]="notHasItemPrevious" class="title-action" (click)="itemPrevious()"><i nz-icon
+            type="left" theme="outline"></i> 上一项</span>
+        <span class="page-num"> <span>{{ itemIndex + 1 }}</span> / {{ itemTotal || 0 }} </span>
+        <span [class.disabled-action]="notHasItemNext" class="title-action" (click)="itemNext()">下一项 <i nz-icon
+            type="right" theme="outline"></i></span>
+      </div>
+    </div>
+    <div class="content-action">
+      <nz-dropdown-button class="save" [nzDisabled]="disabled" nzType="primary" (nzClick)="save.emit('Assigned')">
+        &nbsp;&nbsp;保存&nbsp;&nbsp;   
+        <ul nz-menu>
+          <li nz-menu-item (click)="save.emit('Annotated')">保存并提交</li>
+        </ul>
+      </nz-dropdown-button>
+    </div>
+  </div>
+  <div [class.disabled-action]="notHasPageNext" class="page next" (click)="pageNext()">
+    下一篇
+    <i nz-icon type="right" theme="outline"></i>
+  </div>
+</div>

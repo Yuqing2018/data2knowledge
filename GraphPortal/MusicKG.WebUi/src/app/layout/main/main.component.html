@@ -1,0 +1,20 @@
+<ng-progress [spinner]="false"></ng-progress>
+<nz-layout>
+  <km-header></km-header>
+  <nz-layout>
+    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="trigger">
+      <!-- <div class="back-workspace" routerLink="/workspace">
+        <i nz-icon type="arrow-left" theme="outline"></i>
+        <span class="text" *ngIf="!isCollapsed">返回标注空间</span>
+      </div> -->
+      <km-sidebar-nav [isCollapsed]="isCollapsed"></km-sidebar-nav>
+    </nz-sider>
+    <nz-content>
+      <router-outlet></router-outlet>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
+
+<ng-template #trigger>
+  <i nz-icon type="{{ isCollapsed ? 'double-right': 'double-left'}}" theme="outline"></i>
+</ng-template>

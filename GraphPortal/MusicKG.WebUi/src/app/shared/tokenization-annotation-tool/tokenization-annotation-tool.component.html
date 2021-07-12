@@ -1,0 +1,6 @@
+<span class="span-wrap" *ngFor="let span of spanList; last as isLast; index as i">
+  <km-span [class.has-split]="span.Text.length > 1" [data]="span" [style.backgroundColor]="showConflict ? span.Color : ''" (splitSpan)="splitSpan(span, $event)"></km-span>
+  <span *ngIf="!isLast" class="connect-span" (click)="connectSpan(i)">
+    <i class="connect-icon" nz-icon type="plus" theme="outline"></i>
+  </span>
+</span>

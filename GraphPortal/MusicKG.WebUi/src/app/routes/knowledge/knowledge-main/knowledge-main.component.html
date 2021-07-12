@@ -1,0 +1,27 @@
+<div class="page-header">
+  <div class="page-title">
+    <div>
+        知识图谱
+    </div>
+    <div >
+        <span class="btn">实体 36</span>
+        <span  class="btn">关系 92</span>
+        <span  class="btn">属性 360</span>
+    </div>
+  </div>
+</div>
+<div class="page-content" style="padding:10px;background: #fff;">
+  <nz-input-group [nzSuffix]="suffixIconSearch">
+    <input type="text" nz-input placeholder="请输入查询语句">
+  </nz-input-group>
+  <ng-template #suffixIconSearch>
+    <i nz-icon type="search"></i>
+  </ng-template>
+</div>
+<nz-card class="page-content" style="position:relative;">
+  <div style="height:100%" id="mynetwork"></div>
+</nz-card>
+<div class="title">
+  <p> 搜索结果：30个Entity </p>
+  <p> 展示：17个Entity </p>
+</div>

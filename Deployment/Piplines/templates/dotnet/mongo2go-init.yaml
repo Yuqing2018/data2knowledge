@@ -1,0 +1,12 @@
+steps:
+- task: Bash@3
+  displayName: 'Create mongo2go data directory in shm'
+  inputs:
+    targetType: 'inline'
+    script: |
+      if [ ! -d "/tmp/mongo2go" ]; then
+        mkdir /dev/shm/mongo2go
+        ln -s /dev/shm/mongo2go /tmp/
+      else
+        rm -rf /tmp/mongo2go/*
+      fi

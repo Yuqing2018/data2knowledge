@@ -1,0 +1,49 @@
+<!-- <div class="page-header">
+  <div class="page-title">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        <a [routerLink]="['../']">标注任务</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        任务详情
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <a class="back" [routerLink]="['../']">
+      <i nz-icon type="arrow-left" theme="outline"></i> 返回
+    </a>
+  </div>
+  <div class="page-detail">
+    <div class="detail-title">任务名称 : {{ taskName }}</div>
+  </div>
+  <nz-tabset>
+    <nz-tab nzTitle="文档列表">
+    </nz-tab>
+  </nz-tabset>
+</div>
+
+<nz-card class="page-content">
+    <nz-table #docTable nzHideOnSinglePage [nzData]="docList" [nzLoading]="isLoading">
+        <thead>
+          <tr>
+            <th>文档名称</th>
+            <th>最后更新时间</th>
+            <th>状态</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of docTable.data">
+            <td>
+              <a (click)="goTo(data)">{{ data.name }}</a>
+            </td>
+            <td>
+              {{ data.latestResultSavedAt | date: 'yyyy-MM-dd HH:mm:ss' }}
+            </td>
+            <td>
+              {{ data.status | taskDocumentStatus }}  
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+</nz-card> -->
+
+<nz-spin [nzSpinning]="isLoading"></nz-spin>

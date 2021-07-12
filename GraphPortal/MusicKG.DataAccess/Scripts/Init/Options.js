@@ -1,0 +1,4 @@
+﻿db.OntologyEntityPropertyTypes.update({ "_id": ObjectId("5c46e1124286ff314cba9453") }, { "_id": ObjectId("5c46e1124286ff314cba9453"), "Name": "Text" }, { upsert: true });
+db.OntologyEntityPropertyTypes.update({ "_id": ObjectId("5c46e1124286ff314cba9454") }, { "_id": ObjectId("5c46e1124286ff314cba9454"), "Name": "TextList" }, { upsert: true });
+db.OntologyEntityPropertyTypes.update({ "_id": ObjectId("5c46e1124286ff314cba9455") }, { "_id": ObjectId("5c46e1124286ff314cba9455"), "Name": "Float" }, { upsert: true });
+db.OntologyEntityPropertyTypes.update({ "_id": ObjectId("5c46e1124286ff314cba9456") }, { "_id": ObjectId("5c46e1124286ff314cba9456"), "Name": "FloatList" }, { upsert: true });

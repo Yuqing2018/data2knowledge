@@ -1,0 +1,132 @@
+.annotation {
+    display: flex;
+    margin: 8px;
+    height: 100%; 
+    .text-content {
+        flex: 1;
+        margin-right: 8px;
+        background: #fff;
+        .content-title {
+            margin-bottom: 0px;
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 1px solid #e8e8e8;
+            span {
+                line-height: 53px;
+                font-size: 18px;
+                font-weight: 500
+            }
+            .title-action {
+                float: right;
+                padding-right: 20px;
+                margin-top: 12px;
+            }
+        }
+    }
+    nz-tabset {
+        flex: 0 0 244px;
+        background: #fff;
+        padding-bottom: 15px;
+    }
+}
+
+.annotation-action {
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    .page {
+        flex: 0 0 100px;
+        padding: 13px;
+        text-align: center;
+        cursor: pointer;
+        &.next {
+            border-left: 1px solid #e8e8e8;
+        }
+        &.previous {
+            border-right: 1px solid #e8e8e8;
+        }
+    }
+    .action {
+        flex: auto;
+        line-height: 45px;
+        ul.menu {
+         li {
+             padding: 0 13px;
+             display: inline-block;
+             cursor: pointer;
+             border-right: 1px solid #e8e8e8;
+          }
+        }
+    }
+}
+
+ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.save {
+    margin-left: 8px;
+}
+
+.text-status {
+    display: inline-block;
+    width: 120px;
+}
+
+.item-list {
+    padding-left: 15px;
+    .item {
+        margin-bottom: 10px;
+        .item-title {
+            display: flex;
+            height: 30px;
+            padding-right: 15px;
+            .item-color {
+                width: 30px;
+                height: 30px;
+                display: inline-block;
+                flex: 0 0 30px;
+                margin-right: 2px;
+            }
+            .item-name {
+                display: inline-block;
+                flex: auto;
+                padding: 0 8px;
+                margin-right: 2px;
+                line-height: 30px;
+                cursor: pointer;
+                &:hover {
+                    background: #ccc;
+                }
+            }
+            .item-expand {
+                cursor: pointer;
+                flex: 0 0 30px;
+                text-align: center;
+            }
+        }
+    }
+    .item-relation {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        border: 2px solid #E0E0E0;
+        margin-right: 2px;
+        flex: 0 0 30px;
+    }
+    .item-property-list {
+        padding: 5px 0px;
+        .item-property {
+            height: 30px;
+            line-height: 30px;
+            padding-left: 50px;
+            cursor: pointer;
+            &:hover {
+                background: #ccc;
+            }
+        }
+    }
+}

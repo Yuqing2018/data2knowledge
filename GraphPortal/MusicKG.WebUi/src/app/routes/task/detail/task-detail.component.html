@@ -1,0 +1,112 @@
+<div class="page-header">
+  <div class="page-title">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        <a [routerLink]="['../']">标注任务</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        任务详情
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <a class="back" [routerLink]="['../']">
+      <i nz-icon type="arrow-left" theme="outline"></i> 返回
+    </a>
+  </div>
+  <div class="page-detail">
+    <div class="detail-title">任务名称 : {{ taskInfo?.name }}</div>
+    <div nz-row>
+      <div nz-col nzSpan="16">
+        <div nz-row nzGutter="16" class="detail-list">
+          <div nz-col nzSpan="10">
+            <div class="description-term">标注人 :</div>
+            <div class="description-detail">{{ getAnnotators(taskInfo?.annotators) }}</div>
+          </div>
+          <div nz-col nzSpan="8">
+            <div class="description-term">重叠率 :</div>
+            <div class="description-detail">{{ taskInfo?.overlap }} %</div>
+          </div>
+        </div>
+        <div nz-row nzGutter="16" class="detail-list">
+          <!-- <div nz-col nzSpan="8">
+            <div class="description-term">创建时间 :</div>
+            <div class="description-detail">{{ taskInfo?.actualDueAt | date: 'yyyy-MM-dd HH:mm:ss' }}</div>
+          </div> -->
+          <div nz-col nzSpan="14">
+            <div class="description-term">最后期限 :</div>
+            <div class="description-detail">{{ taskInfo?.expectedDueAt | date: 'yyyy-MM-dd' }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="extraContent" nz-col nzSpan="8">
+        <div class="text-secondary">状态</div>
+        <div class="heading">{{ taskInfo?.status | taskStatus }}</div>
+      </div>
+    </div>
+  </div>
+  <nz-tabset>
+    <nz-tab nzTitle="文档列表">
+    </nz-tab>
+  </nz-tabset>
+</div>
+
+<nz-card class="page-content">
+  <nz-spin nzTip="导出中..." [nzSpinning]="isLoading">
+    <div class="batch-export" *ngIf="isGraph">
+        <button nz-button nzType="primary" [disabled]="exportBtnDisabled" (click)="batchExport()">导出已选项</button>
+        <nz-alert nzType="info" nzMessage="共{{ total }}条 已选择{{ selectedItems }}条" nzShowIcon></nz-alert>
+    </div>
+    <nz-table #docTable nzHideOnSinglePage [nzData]="docList" [nzLoading]="!docList">
+      <thead>
+        <tr>
+          <th 
+            *ngIf="isGraph"
+            nzShowCheckbox 
+            [(nzChecked)]="allChecked"
+            [nzIndeterminate]="isIndeterminate"
+            (nzCheckedChange)="checkAll($event)"
+          ></th>
+          <th>文档名称</th>
+          <th>标注人</th>
+          <th>最后更新时间</th>
+          <th>状态</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of docTable.data">
+          <td 
+            nzShowCheckbox 
+            *ngIf="isGraph"
+            [(nzChecked)]="data.checked" (nzCheckedChange)="checkOne(data)"
+          ></td>
+          <td>
+            <a (click)="goTo(data)">{{ data.name }}</a>
+          </td>
+          <td>
+            {{ getAnnotators(data.annotators) }}
+          </td>
+          <td>
+            {{ data.latestResultSavedAt | date: 'yyyy-MM-dd HH:mm:ss' }}
+          </td>
+          <td>
+            {{ data.status | taskDocumentStatus }}
+          </td>
+          <td>
+            <button nz-button nzType="primary" (click)="download(data)"
+              *ngIf="workspaceInfo?.length === 0 ? true : false">导出Json</button>
+            <!-- <a (click)="download(data)">导出</a> -->
+            <nz-dropdown-button (nzClick)="download(data, 'csv')" nzType="primary"
+              *ngIf="workspaceInfo?.length === 0 ? false : true">
+              导出CSV
+              <ul nz-menu>
+                <li nz-menu-item>
+                  <a (click)="download(data, 'json')">导出Json</a>
+                </li>
+              </ul>
+            </nz-dropdown-button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
+</nz-card>

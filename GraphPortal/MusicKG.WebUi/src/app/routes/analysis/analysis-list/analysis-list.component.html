@@ -1,0 +1,67 @@
+<nz-card class="hd-page-header">
+  <div class="page-title">
+    <img src="./assets/img/search.png">
+    <span>数据查询</span>
+  </div>
+  <div class="page-search">
+    <km-analysis-filter (filterChange)="filterChange($event)"></km-analysis-filter>
+  </div>
+</nz-card>
+<nz-card class="page-content">
+  <div class="table-operate">
+    <div class="left sub">
+      不良症状数据列表
+    </div>
+    <div class="right">
+      <!-- <button nz-button nzType="default" routerLink="/annotator/analysis/info"><i nz-icon nzType="line-chart" nzTheme="outline"></i>统计分析</button> -->
+      <button [nzLoading]="exportLoading" nz-button nzType="default" (click)="onExport()"><i nz-icon nzType="export" nzTheme="outline"></i>导出</button>
+    </div>
+  </div>
+  <nz-table #basicTable [nzShowTotal]="rangeTemplate" [nzData]="dataSet" class="table"
+    (nzPageIndexChange)="pageIndexChange($event)" [nzShowQuickJumper]="true" [(nzPageIndex)]="pageIndex" [nzLoading]="searchLoading" [nzTotal]="total"
+    [nzFrontPagination]="false"> 
+    <thead>
+      <tr>
+        <th width="100px">序号</th>
+        <th>渠道</th>
+        <th>车款</th>
+        <th>车型</th>
+        <th>年款</th>
+        <th>零件名</th>
+        <th>不良症状</th>
+        <th>故障日期</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data; index as i">
+        <td>{{ (basicTable.nzPageIndex - 1) * 10 + i + 1 }}</td>
+        <td>{{dataSourceType(data.dataSource)}}</td>
+        <td>{{data.carModel}}</td>
+        <td>{{data.carType}}</td>
+        <td>{{data.yearModel}}</td>
+        <td>{{data.partName}}</td>
+        <td>{{data.syndromeName}}</td>
+        <td>{{data.faultDate | date: 'yyyy-MM-dd' }}</td>
+        <td>
+          <a style="margin-right: 10px;" (click)="onEdit(data)">修改</a>
+          <a (click)="onInfo(data)">详情</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <ng-template #rangeTemplate let-range="range" let-total>
+    {{ range[0] }}-{{ range[1] }} 共 {{ total >= 500 ? "500+":toal}} 项
+  </ng-template>
+</nz-card>
+
+<nz-drawer nzWidth="600px" [nzClosable]="true" [nzVisible]="infoVisible" nzPlacement="right" nzTitle="详情"
+  (nzOnClose)="close()">
+  <nz-spin [nzSpinning]="infoLoading">
+    <ul class="info">
+      <li *ngFor="let item of activeInfo | keyvalue">
+        {{ item.key }}: {{ item.value }}
+      </li>
+    </ul>
+  </nz-spin>
+</nz-drawer>

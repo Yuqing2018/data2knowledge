@@ -1,0 +1,14 @@
+__pycache__/
+.idea/
+*/.idea/
+*/__pycache__/
+*.pyc
+*.log
+*.zip
+*.tar.gz
+*.rar
+*.txt
+# zipfiles/
+# articles/
+# logs/
+venv/

@@ -1,0 +1,884 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MusicKG.HondaPlugins.VehicleFault.Rest</name>
+    </assembly>
+    <members>
+        <member name="T:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.DataReannotationTaskController">
+            <summary>
+            Warning Task Controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.DataReannotationTaskController.#ctor(Microsoft.Extensions.Logging.ILogger{MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.DataReannotationTaskController},MusicKG.HondaPlugins.Services.Repositories.IDataReannotationTaskService)">
+            <summary>
+            Data reannotation task controller construct function.
+            </summary>
+            <param name="logger"></param>
+            <param name="dataReannotationTaskService"></param>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.DataReannotationTaskController.Get(System.String)">
+            <summary>
+            Get data reannotation task.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.DataReannotationTaskController.GetList(System.String,System.Nullable{MusicKG.Scheduler.DataAccess.Enums.TaskExecutionResult},System.Boolean,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Get page list.
+            </summary>
+            <param name="keyword"></param>
+            <param name="status"></param>
+            <param name="showAll"></param>
+            <param name="from">from.</param>
+            <param name="size">page size.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.DataReannotationTaskController.Update(System.String,MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.DataReannotationTaskBindingModel)">
+            <summary>
+            update a reannotation task.
+            </summary>
+            <param name="id"></param>
+            <param name="binding">update binding model.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.DataReannotationTaskController.Create(MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.DataReannotationTaskBindingModel)">
+            <summary>
+            Create a reannnotation task.
+            </summary>
+            <param name="binding">Warning Task Binding Model.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.DataReannotationTaskController.Delete(System.String)">
+            <summary>
+            Delete a reannotation task.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.IgnoredVehicleController">
+            <summary>
+            Vehiclefault Controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.IgnoredVehicleController.#ctor(Microsoft.Extensions.Logging.ILogger{MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.IgnoredVehicleController},MusicKG.HondaPlugins.Services.Repositories.IIgnoredVehicleService)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="logger"></param>
+            <param name="ignoredVehicleService"></param>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.IgnoredVehicleController.ListAsync(System.String)">
+            <summary>
+            List ignored vehicles.
+            </summary>
+            <param name="keyword"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.IgnoredVehicleController.AddAsync(MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.IgnoredVehicleBindingModel)">
+            <summary>
+            Add ignored vehicles.
+            </summary>
+            <param name="bindingModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.IgnoredVehicleController.UpdateAsync(MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.IgnoredVehicleBindingModel)">
+            <summary>
+            Update ignored vehicles.
+            </summary>
+            <param name="bindingModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.IgnoredVehicleController.DeleteAsync(System.String)">
+            <summary>
+            Delete ignored vehicles.
+            </summary>
+            <param name="carModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.OverallController.#ctor(Microsoft.Extensions.Logging.ILogger{MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.OverallController},MusicKG.HondaPlugins.Services.Repositories.IOverallMetricsService)">
+            <summary>
+            over all struct.
+            </summary>
+            <param name="logger"></param>
+            <param name="overallMetricsService"></param>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.OverallController.LastWeekFaultAsync(MusicKG.HondaPlugins.DataAccess.Enums.DataSource,System.DateTime,System.DateTime,MusicKG.HondaPlugins.Services.Enums.StatisticalFrequency)">
+            <summary>
+             各渠道近一周的不良件数统计
+            </summary>
+            <param name="datasource">渠道</param>
+            <param name="start">开始时间</param>
+            <param name="end">结束时间</param>
+            <param name="frequency">统计时间类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.OverallController.TopMetricsAsync(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            各渠道的Top10 统计
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.OverallController.FocusedMetricsAsync">
+            <summary>
+            重点关注项目列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.OverallController.LastWeekWarningMetrics(System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            获取近一周预警统计
+            </summary>
+            <param name="start">可选</param>
+            <param name="end">可选</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.OverallController.LastWeekWarningMetricsByWarningType(MusicKG.HondaPlugins.DataAccess.Enums.WarningType,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            根据具体的预警类型获取近一周统计数
+            </summary>
+            <param name="warningType">预警类型</param>
+            <param name="start"></param>
+            <param name="end"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.SyndromeController">
+            <summary>
+            Syndrome controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.SyndromeController.#ctor(Microsoft.Extensions.Logging.ILogger{MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.SyndromeController},MusicKG.HondaPlugins.Services.Repositories.ISyndromeService)">
+            <summary>
+            Syndrome controller constructor.
+            </summary>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.SyndromeController.UpdateAsync(System.String,MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.SyndromeBindingModel)">
+            <summary>
+            更新 不良症状
+            </summary>
+            <param name="id">不良症状id.</param>
+            <param name="binding">syndrome bingding model.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.SyndromeController.SaveAsync(MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.SyndromeBindingModel)">
+            <summary>
+            新增不良症状
+            </summary>
+            <param name="binding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.SyndromeController.ListAsync(System.String,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            获取不良症状列表
+            </summary>
+            <param name="keyword">关键词</param>
+            <param name="from"></param>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultDataController">
+            <summary>
+            Vehiclefault Controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultDataController.#ctor(Microsoft.Extensions.Logging.ILogger{MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultDataController},MusicKG.HondaPlugins.Services.Repositories.IVehicleFaultDataService)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="logger"></param>
+            <param name="vehicleFaultDataService"></param>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultDataController.Export(System.Collections.Generic.List{System.String},System.Collections.Generic.List{MusicKG.HondaPlugins.DataAccess.Enums.DataSource},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Int32)">
+            <summary>
+            源数据导出
+            </summary>
+            <param name="carModel"></param>
+            <param name="dataSource"></param>
+            <param name="carType"></param>
+            <param name="yearModels"></param>
+            <param name="partName"></param>
+            <param name="syndrome"></param>
+            <param name="faultDateStart"></param>
+            <param name="faultDateEnd"></param>
+            <param name="maxCount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultDataController.ListQisInfoAsync(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{MusicKG.HondaPlugins.DataAccess.Enums.DataSource},System.Collections.Generic.List{System.String},System.String,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            获取零件的QIS信息列表
+            </summary>
+            <param name="carModel"></param>
+            <param name="carType"></param>
+            <param name="modelYears"></param>
+            <param name="dataSource"></param>
+            <param name="partName"></param>
+            <param name="frameNo"></param>
+            <param name="from"></param>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultDataController.UpdateQISAsync(System.String,MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.VehicleFaultQISUpdateBindingModel)">
+            <summary>
+            人工添加/修改
+            </summary>
+            <param name="rawId"></param>
+            <param name="binding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultDataController.AutoLinkQIS(System.String,MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.VehicleFaultQISUpdateBindingModel)">
+            <summary>
+            qis自动关联
+            </summary>
+            <param name="rawId"></param>
+            <param name="binding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultDataController.UpdateCntrTime(System.String,MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.VehicleFaultQISUpdateBindingModel)">
+            <summary>
+            更新对策时间
+            </summary>
+            <param name="rawId"></param>
+            <param name="binding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultDataController.Delete(System.String)">
+            <summary>
+            删除qis信息
+            </summary>
+            <param name="rawId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultDataController.UpdateRelatedPartAsync(System.String,MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.RelatedPartNameUpdateBindingModel)">
+            <summary>
+            修改零件关联信息
+            </summary>
+            <param name="rawId"></param>
+            <param name="binding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultDataController.UpdateDataFromAsync(System.String,MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.RelatedPartNameUpdateBindingModel)">
+            <summary>
+            修改数据来源
+            </summary>
+            <param name="rawId"></param>
+            <param name="binding"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultStatisticsController">
+            <summary>
+            Vehicle Fault Statistics Controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultStatisticsController.#ctor(Microsoft.Extensions.Logging.ILogger{MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultStatisticsController},MusicKG.HondaPlugins.Services.Repositories.IVehicleFaultStatisticsService)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="statisticsService"></param>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultStatisticsController.StatisticSyndromes(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String,System.Collections.Generic.List{MusicKG.HondaPlugins.DataAccess.Enums.DataSource})">
+            <summary>
+            某一零件下不良症状统计
+            </summary>
+            <param name="carModel">车款.</param>
+            <param name="carType">车型.</param>
+            <param name="yearModels">年款</param>
+            <param name="partName">零件名</param>
+            <param name="datasource">渠道</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultStatisticsController.StatisticPartNames(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String,System.Collections.Generic.List{MusicKG.HondaPlugins.DataAccess.Enums.DataSource})">
+            <summary>
+            不良症状下零件统计
+            </summary>
+            <param name="carModel">车款.</param>
+            <param name="carType">车型.</param>
+            <param name="yearModels">年款，可多选</param>
+            <param name="syndrome">不良症状</param>
+            <param name="datasource"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultStatisticsController.GetStatistics(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String,System.String,System.Collections.Generic.List{MusicKG.HondaPlugins.DataAccess.Enums.DataSource})">
+            <summary>
+            除扇形图外的其他统计图表（按月统计）
+            </summary>
+            <param name="carModel">车款.</param>
+            <param name="carType">车型.</param>
+            <param name="yearModels">年款，可多选</param>
+            <param name="partName">零件名</param>
+            <param name="syndrome">不良症状</param>
+            <param name="datasource"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultStatisticsController.GetDayMetrics(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String,System.String,System.String,MusicKG.HondaPlugins.Services.Enums.ChartType,System.Collections.Generic.List{MusicKG.HondaPlugins.DataAccess.Enums.DataSource})">
+            <summary>
+            按日统计(生产,故障,经过,渠道)
+            </summary>
+            <param name="carModel">车款.</param>
+            <param name="carType">车型.</param>
+            <param name="yearModels">年款，可多选</param>
+            <param name="partName">零件名</param>
+            <param name="syndrome">不良症状</param>
+            <param name="month">chartType 为经过，格式 eg."8个月",其他图表类型，格式"yyyy-MM"</param>
+            <param name="chartType">图表类型</param>
+            <param name="datasource">渠道</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultStatisticsController.GetDayRateMetrics(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String,System.String,System.String,System.Collections.Generic.List{MusicKG.HondaPlugins.DataAccess.Enums.DataSource})">
+            <summary>
+            按经过时间不良率，按日统计
+            </summary>
+            <param name="carModel">车款.</param>
+            <param name="carType">车型.</param>
+            <param name="yearModels">年款，可多选</param>
+            <param name="partName">零件名</param>
+            <param name="syndrome">不良症状</param>
+            <param name="month">具体某一月表示</param>
+            <param name="datasource">渠道</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultStatisticsController.GetDayCntrRateMetrics(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String,System.String,System.String,System.Collections.Generic.List{MusicKG.HondaPlugins.DataAccess.Enums.DataSource})">
+            <summary>
+            按对策时间的不良率，按日统计
+            </summary>
+            <param name="carModel">车款.</param>
+            <param name="carType">车型.</param>
+            <param name="yearModels">年款，可多选</param>
+            <param name="partName">零件名</param>
+            <param name="syndrome">不良症状</param>
+            <param name="month">具体某一月表示</param>
+            <param name="datasource"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultStatisticsController.Export(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String})">
+            <summary>
+            单台Top数据导出
+            </summary>
+            <param name="carModel">车款</param>
+            <param name="carType">车型</param>
+            <param name="yearModels">年款</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultStatisticsController.GetMergeCellsOfTableHeader(System.Collections.Generic.List{System.Collections.Generic.List{System.String}})">
+            <summary>
+            获取表头合并单元格
+            </summary>
+            <param name="header"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.VehicleFaultStatisticsController.ExportChart(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String,System.String,System.Collections.Generic.List{MusicKG.HondaPlugins.DataAccess.Enums.DataSource})">
+            <summary>
+            图表数据导出
+            </summary>
+            <param name="carModel">车款</param>
+            <param name="carType">车型</param>
+            <param name="yearModels">年款</param>
+            <param name="partName">零件名</param>
+            <param name="syndrome">不良症状</param>
+            <param name="datasource"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningIndexController">
+            <summary>
+            Warning Task Controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningIndexController.#ctor(Microsoft.Extensions.Logging.ILogger{MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningIndexController},MusicKG.HondaPlugins.Services.Repositories.IWarningIndexService)">
+            <summary>
+            Warning task controller construct function.
+            </summary>
+            <param name="logger"></param>
+            <param name="warningIndexService"></param>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningIndexController.ListAsync(MusicKG.HondaPlugins.DataAccess.Enums.WarningType)">
+            <summary>
+            get warning index by warning type.
+            </summary>
+            <param name="warningType">warning type</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningIndexController.PostWarningIndex">
+            <summary>
+            save many warning index.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningRecordController">
+            <summary>
+            Warning Record Controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningRecordController.#ctor(Microsoft.Extensions.Logging.ILogger{MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningRecordController},MusicKG.HondaPlugins.Services.Repositories.IWarningRecordService)">
+            <summary>
+            Warning record controller construct function.
+            </summary>
+            <param name="logger"></param>
+            <param name="warningRecordService"></param>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningRecordController.GetWarningRecords(System.Nullable{MusicKG.HondaPlugins.DataAccess.Enums.ProcessStatus},System.String,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            预警详情列表
+            </summary>
+            <param name="status"></param>
+            <param name="detailId"></param>
+            <param name="from"></param>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningRecordController.ConfirmRecord(System.String,MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.TaskConfirmRecordBindingModel)">
+            <summary>
+            确认预警记录
+            </summary>
+            <param name="recordId"></param>
+            <param name="binding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningRecordController.UpdateAIRiskLevel(System.String,MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.TaskRecordAIRiskLevelBindingModel)">
+            <summary>
+            更新AI风险等级
+            </summary>
+            <param name="recordId"></param>
+            <param name="binding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningRecordController.GetRiskLevel(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String,System.String,MusicKG.HondaPlugins.DataAccess.Enums.WarningUnit)">
+            <summary>
+            获取风险等级
+            </summary>
+            <param name="carModel"></param>
+            <param name="carType"></param>
+            <param name="yearModels"></param>
+            <param name="partName"></param>
+            <param name="syndrome"></param>
+            <param name="warningUnit">预警单元</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningRecordController.GetConfirmRecordList(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String,System.String)">
+            <summary>
+            获取确认记录列表
+            </summary>
+            <param name="carModel"></param>
+            <param name="carType"></param>
+            <param name="yearModels"></param>
+            <param name="partName"></param>
+            <param name="syndrome"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningRecordController.Export(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String,System.String)">
+            <summary>
+            导出确认记录
+            </summary>
+            <param name="carModel"></param>
+            <param name="carType"></param>
+            <param name="yearModels"></param>
+            <param name="partName"></param>
+            <param name="syndrome"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningRecordController.GetEmailMessages">
+            <summary>
+            获取 warning task email messages.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningTaskController">
+            <summary>
+            Warning Task Controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningTaskController.#ctor(Microsoft.Extensions.Logging.ILogger{MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningTaskController},MusicKG.HondaPlugins.Services.Repositories.IWarningTaskService,MusicKG.Scheduler.Service.IJobService,MusicKG.Scheduler.Service.IJobTaskService,MusicKG.Scheduler.Engine.IJobTaskExecutor)">
+            <summary>
+            Warning task controller construct function.
+            </summary>
+            <param name="logger"></param>
+            <param name="warningTaskService"></param>
+            <param name="jobService"></param>
+            <param name="taskService"></param>
+            <param name="taskExecutor"></param>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningTaskController.Get(System.String)">
+            <summary>
+            Get warning task.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningTaskController.GetTaskIdAndNames">
+            <summary>
+            获取所有预警任务Id,名称
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningTaskController.GetList(System.Nullable{MusicKG.HondaPlugins.DataAccess.Enums.WarningUnit},System.Nullable{MusicKG.HondaPlugins.DataAccess.Enums.WarningTaskStatus},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Get page list.
+            </summary>
+            <param name="warningUnit">warning unit.</param>
+            <param name="warningStatus">warning status.</param>
+            <param name="carModels"></param>
+            <param name="carTypes"></param>
+            <param name="modelYears"></param>
+            <param name="createdBy">user who create the task.</param>
+            <param name="from">from.</param>
+            <param name="size">page size.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningTaskController.Update(System.String,MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.WarningTaskBindingModel)">
+            <summary>
+            update a warning task.
+            </summary>
+            <param name="id"></param>
+            <param name="binding">update binding model.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningTaskController.Stop(System.String)">
+            <summary>
+            stop warning task.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningTaskController.Create(MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.WarningTaskBindingModel)">
+            <summary>
+            Create a warning task.
+            </summary>
+            <param name="binding">Warning Task Binding Model.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningTaskController.Delete(System.String)">
+            <summary>
+            Delete a warning task.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningTaskController.Execute(System.String)">
+            <summary>
+            Execute a warning task manully.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningTaskDetailController">
+            <summary>
+            Warning Track Controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningTaskDetailController.#ctor(Microsoft.Extensions.Logging.ILogger{MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningTaskDetailController},MusicKG.HondaPlugins.Services.Repositories.IWarningTaskDetailService)">
+            <summary>
+            Warning TaskDetail controller construct function.
+            </summary>
+            <param name="logger"></param>
+            <param name="warningTaskDetailService"></param>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningTaskDetailController.GetWarningTaskDetails(System.Collections.Generic.List{System.String},System.Nullable{MusicKG.HondaPlugins.DataAccess.Enums.WarningUnit},System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Nullable{MusicKG.HondaPlugins.Services.Enums.FocusType},System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            分页查询
+            </summary>
+            <param name="taskIds"></param>
+            <param name="warningUnit"></param>
+            <param name="createdBy"></param>
+            <param name="carModels"></param>
+            <param name="carTypes"></param>
+            <param name="yearModels"></param>
+            <param name="partNames"></param>
+            <param name="syndromes"></param>
+            <param name="focusType"></param>
+            <param name="from"></param>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningTaskDetailController.UpdateFrequency(System.String,MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.TaskDetailUpdateBindingModel)">
+            <summary>
+            更新报警频率，是否重点关注
+            </summary>
+            <param name="id"></param>
+            <param name="binding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningTaskDetailController.UpdateSettings(System.String,MusicKG.HondaPlugins.DataAccess.DataModels.Warnings.WarningTaskDetailSettingDataModel)">
+            <summary>
+            保存或更新跳转设置
+            </summary>
+            <param name="id"></param>
+            <param name="binding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningTaskDetailController.GetAsync(System.String)">
+             <summary>
+            获取单个预警跟踪信息
+             </summary>
+             <param name="id"></param>
+             <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningTaskDetailController.Export(System.Collections.Generic.List{System.String},System.Nullable{MusicKG.HondaPlugins.DataAccess.Enums.WarningUnit},System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.Nullable{MusicKG.HondaPlugins.Services.Enums.FocusType})">
+            <summary>
+            warning detail list export.
+            </summary>
+            <param name="taskIds"></param>
+            <param name="warningUnit"></param>
+            <param name="createdBy"></param>
+            <param name="carModels"></param>
+            <param name="carTypes"></param>
+            <param name="yearModels"></param>
+            <param name="partNames"></param>
+            <param name="syndromes"></param>
+            <param name="focusType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Controllers.WarningTaskDetailController.WarningCountAsync">
+            <summary>
+            获取当前用户的待处理报警记录数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MusicKG.HondaPlugins.VehicleFault.Rest.Filters.HttpGlobalExceptionFilter">
+            <summary>
+            HttpGlobalExceptionFilter
+            </summary>
+        </member>
+        <member name="M:MusicKG.HondaPlugins.VehicleFault.Rest.Filters.HttpGlobalExceptionFilter.#ctor(Microsoft.Extensions.Logging.ILogger{MusicKG.HondaPlugins.VehicleFault.Rest.Filters.HttpGlobalExceptionFilter})">
+            <summary>
+            construct
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="T:MusicKG.HondaPlugins.VehicleFault.Rest.Helpers.ExcelSheet">
+            <summary>
+            Excel sheet 设置
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Helpers.ExcelSheet.SheetName">
+            <summary>
+            sheet 名称。
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Helpers.ExcelSheet.Table">
+            <summary>
+            sheet 所有内容
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Helpers.ExcelSheet.MergeCells">
+            <summary>
+            合并单元格列表
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.RelatedPartNameUpdateBindingModel.PartNo">
+            <summary>
+            零件号
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.RelatedPartNameUpdateBindingModel.CarType">
+            <summary>
+            车型
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.RelatedPartNameUpdateBindingModel.DataFromDesc">
+            <summary>
+            数据来源描述
+            </summary>
+        </member>
+        <member name="T:MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.SyndromeBindingModel">
+            <summary>
+            Syndrome bingding model.
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.SyndromeBindingModel.Name">
+            <summary>
+            Syndrome name.
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.SyndromeBindingModel.BadGrade">
+             <summary>
+            Syndrome bad grade. 
+             </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.VehicleFaultQISUpdateBindingModel.QICNo">
+            <summary>
+            QIC 号
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.VehicleFaultQISUpdateBindingModel.QISNo">
+            <summary>
+            QIS 号
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.VehicleFaultQISUpdateBindingModel.CntrMesrType">
+            <summary>
+            原因区分
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.VehicleFaultQISUpdateBindingModel.CntrMesrReasonDesc">
+            <summary>
+            原因
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.VehicleFaultQISUpdateBindingModel.PermanentCntr">
+            <summary>
+            对策
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.VehicleFaultQISUpdateBindingModel.PermanentCntrTime">
+            <summary>
+            对策日期
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.WarningTaskBindingModel.WarningUnit">
+            <summary>
+            预警单元
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.WarningTaskBindingModel.CarModel">
+            <summary>
+            车款
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.WarningTaskBindingModel.CarTypes">
+            <summary>
+            车型，根据车款多选
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.WarningTaskBindingModel.YearModels">
+            <summary>
+            年款：根据车款车型多选
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.BindingModes.WarningTaskBindingModel.WarningIndex">
+            <summary>
+            预警指标名称，预警值
+            </summary>
+        </member>
+        <member name="T:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.ErrorViewModel">
+            <summary>
+            Error view model.
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.ErrorViewModel.RequestId">
+            <summary>
+            Request ID.
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.ErrorViewModel.Message">
+            <summary>
+            Message.
+            </summary>
+        </member>
+        <member name="T:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.PaginationViewModel`1">
+            <summary>
+            Pagination view model.
+            </summary>
+        </member>
+        <member name="F:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.PaginationViewModel`1.TotalCount">
+            <summary>
+            Total item count.
+            </summary>
+        </member>
+        <member name="F:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.PaginationViewModel`1.From">
+            <summary>
+            Start item index.
+            </summary>
+        </member>
+        <member name="F:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.PaginationViewModel`1.Count">
+            <summary>
+            Item count.
+            </summary>
+        </member>
+        <member name="F:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.PaginationViewModel`1.Items">
+            <summary>
+            Items.
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.VehicleFaultListViewModel.DataSource">
+            <summary>
+            数据源
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.VehicleFaultListViewModel.CarType">
+            <summary>
+            车款
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.VehicleFaultListViewModel.CarModel">
+            <summary>
+            车型
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.VehicleFaultListViewModel.YearModel">
+            <summary>
+            年款
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.VehicleFaultListViewModel.PartNo">
+            <summary>
+            零件号
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.VehicleFaultListViewModel.PartName">
+            <summary>
+            零件名
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.VehicleFaultListViewModel.Syndrome">
+            <summary>
+            不良症状
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.VehicleFaultListViewModel.FaultDate">
+            <summary>
+            故障日期
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.WarningIndexViewModel.Id">
+            <summary>
+            预警指标Id
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.WarningIndexViewModel.IndexName">
+            <summary>
+            预警指标名称
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.WarningIndexViewModel.Value">
+            <summary>
+            预警指标设置值
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.WarningTaskListViewModel.CreateBy">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.WarningTaskViewModel.CarModels">
+            <summary>
+            车款
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.WarningTaskViewModel.CarTypes">
+            <summary>
+            车型，根据车款多选
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.WarningTaskViewModel.YearModels">
+            <summary>
+            年款：根据车款车型多选
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.WarningTaskViewModel.WarningIndexSetting">
+            <summary>
+            预警指标名称，预警值
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.WarningTaskViewModel.CreateBy">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:MusicKG.HondaPlugins.VehicleFault.Rest.Models.ViewModels.WarningTaskViewModel.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+    </members>
+</doc>

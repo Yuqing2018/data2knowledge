@@ -1,0 +1,41 @@
+<nz-skeleton [nzActive]="true" *ngIf="!currentData" class="content"></nz-skeleton>
+<div class="content" *ngIf="currentData">
+  <div nz-row class="spo">
+    <div nz-col [nzXs]="{ span: 5, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }" (click)="addContent('Subject')">
+      <span>主语：</span> {{ currentData.Subject }}
+    </div>
+    <div nz-col [nzXs]="{ span: 11, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }" (click)="addContent('Predicate')">
+      <span>谓语：</span> {{ currentData.Predicate }}
+    </div>
+    <div nz-col [nzXs]="{ span: 5, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }" (click)="addContent('Object')">
+      <span>宾语：</span> {{ currentData.Object }}
+    </div>
+  </div>
+  <div class="example">
+    <p class="title">示例问题</p>
+    <p>{{ currentData.ExampleQuestions }}</p>
+  </div>
+  <div>
+    <p class="title">相似问题</p>
+    <div class="checkVaule">
+      <input [class.error-input]="newInputValue" nz-input [(ngModel)]="dataSet" type="text" placeholder="请输入相似问题"
+        class="question-input" (keydown)="keyEventListener($event)" (click)="getEvent($event)">
+      <i nz-icon type="plus-circle" class="dynamic-delete-button" (click)="newAddResult($event)"></i>
+      <div class="error-info" *ngIf="newInputValue">
+        相似问题中需完整保留主语且不做修改
+      </div>
+    </div>
+
+    <form nz-form [formGroup]="validateForm" autocomplete="off">
+      <nz-form-item *ngFor="let control of controlArray;let i = index">
+        <nz-form-control>
+          <input nz-input style="width: 96%; margin-right:8px;" placeholder="请输入相似问题" [attr.id]="control.id"
+            [formControlName]="control.controlInstance">
+          <i nz-icon type="minus-circle-o" class="dynamic-delete-button" (click)="removeField(control,$event)"></i>
+          <nz-form-explain *ngIf="hasError(control.controlInstance, 'pattern' )">相似问题中需完整保留主语且不做修改</nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    <p class="guideline">标准说明：{{ currentData.guideline }}</p>
+  </div>
+</div>

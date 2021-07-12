@@ -1,0 +1,11 @@
+parameters:
+- name: helmVersion
+  type: string
+  default: '3.5.1'
+
+steps:
+- task: HelmInstaller@0
+  displayName: Install helm ${{ parameters.helmVersion }}
+  inputs:
+    helmVersion: ${{ parameters.helmVersion }}
+    installKubectl: true

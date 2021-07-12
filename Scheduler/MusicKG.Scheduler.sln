@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.Scheduler.DataAccess", "MusicKG.Scheduler.DataAccess\MusicKG.Scheduler.DataAccess.csproj", "{1A16AAAB-DB4B-4DF3-A080-E0B749F185CD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.Scheduler.Engine", "MusicKG.Scheduler.Engine\MusicKG.Scheduler.Engine.csproj", "{1F1BFE80-D441-47BE-9CAF-E0C5CA8BC876}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.Scheduler.Job", "MusicKG.Scheduler.Job\MusicKG.Scheduler.Job.csproj", "{E3884522-DDCB-48C3-A8DB-F34FCA78458A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.Scheduler.Service", "MusicKG.Scheduler.Service\MusicKG.Scheduler.Service.csproj", "{63795CD3-7413-4411-A151-70D6B2B704D9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.Scheduler.Extensions", "MusicKG.Scheduler.Extensions\MusicKG.Scheduler.Extensions.csproj", "{4D0FA21F-67C3-4365-98A2-FA7713A8BE91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.Scheduler.Executor", "MusicKG.Scheduler.App\MusicKG.Scheduler.Executor.csproj", "{8C5B21AE-E150-42CA-8985-66A79218C52A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A16AAAB-DB4B-4DF3-A080-E0B749F185CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A16AAAB-DB4B-4DF3-A080-E0B749F185CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A16AAAB-DB4B-4DF3-A080-E0B749F185CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A16AAAB-DB4B-4DF3-A080-E0B749F185CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F1BFE80-D441-47BE-9CAF-E0C5CA8BC876}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F1BFE80-D441-47BE-9CAF-E0C5CA8BC876}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F1BFE80-D441-47BE-9CAF-E0C5CA8BC876}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F1BFE80-D441-47BE-9CAF-E0C5CA8BC876}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3884522-DDCB-48C3-A8DB-F34FCA78458A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3884522-DDCB-48C3-A8DB-F34FCA78458A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3884522-DDCB-48C3-A8DB-F34FCA78458A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3884522-DDCB-48C3-A8DB-F34FCA78458A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63795CD3-7413-4411-A151-70D6B2B704D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63795CD3-7413-4411-A151-70D6B2B704D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63795CD3-7413-4411-A151-70D6B2B704D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63795CD3-7413-4411-A151-70D6B2B704D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D0FA21F-67C3-4365-98A2-FA7713A8BE91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D0FA21F-67C3-4365-98A2-FA7713A8BE91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D0FA21F-67C3-4365-98A2-FA7713A8BE91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D0FA21F-67C3-4365-98A2-FA7713A8BE91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C5B21AE-E150-42CA-8985-66A79218C52A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C5B21AE-E150-42CA-8985-66A79218C52A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C5B21AE-E150-42CA-8985-66A79218C52A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C5B21AE-E150-42CA-8985-66A79218C52A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4595D14D-AD9E-4987-B647-988D350B5941}
+	EndGlobalSection
+EndGlobal

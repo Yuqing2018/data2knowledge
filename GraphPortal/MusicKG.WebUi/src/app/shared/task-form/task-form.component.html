@@ -1,0 +1,70 @@
+<form nz-form [formGroup]="taskForm">
+  <nz-form-item>
+    <nz-form-label nzRequired [nzSm]="5">任务名称</nz-form-label>
+    <nz-form-control [nzSm]="18">
+      <input nz-input trim formControlName="name">
+      <nz-form-explain *ngIf="hasError('name', 'required')">任务名称不能为空</nz-form-explain>
+      <nz-form-explain *ngIf="hasError('name', 'maxlength')">任务名称不能超过20个字符</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label nzRequired [nzSm]="5">标注人</nz-form-label>
+    <nz-form-control [nzSm]="18">
+      <nz-select nzShowSearch nzAllowClear nzMode="multiple" formControlName="annotatorIds">
+        <nz-option *ngFor="let option of userList" [nzLabel]="option.name" [nzValue]="option.id"></nz-option>
+      </nz-select>
+      <nz-form-explain *ngIf="hasError('annotatorIds', 'required')">标注人不能为空</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item *ngIf="isDialog">
+    <nz-form-label nzRequired [nzSm]="5">任务类型</nz-form-label>
+    <nz-form-control [nzSm]="18">
+      <nz-select nzShowSearch nzAllowClear formControlName="taskType">
+        <nz-option *ngFor="let option of taskTypeList" [nzLabel]="option.displayName" [nzValue]="option.value"></nz-option>
+      </nz-select>
+      <nz-form-explain *ngIf="hasError('taskType', 'required')">任务类型不能为空</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <div nz-row>
+    <div nz-col [nzSpan]="12" [nzPush]="1">
+      <nz-form-item class="date">
+        <nz-form-label nzRequired [nzSm]="8">最后期限</nz-form-label>
+        <nz-form-control [nzSm]="12">
+          <nz-date-picker formControlName="expectedDueAt"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="12">
+      <nz-form-item class="rename">
+        <nz-form-label nzRequired [nzSm]="8">重叠率</nz-form-label>
+        <nz-form-control [nzSm]="16">
+          <nz-input-number [nzMin]="0" [nzStep]="1" formControlName="overlap"></nz-input-number>%
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <nz-form-item *ngIf="showDictionary">
+    <nz-form-label [nzSm]="5">字典</nz-form-label>
+    <nz-form-control [nzSm]="18">
+      <km-dictionary-select [workspaceId]="workspaceId" formControlName="dictionaryIds"></km-dictionary-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item *ngIf="!isDialog">
+    <nz-form-label class="label-info" nzRequired [nzSm]="5">标注文件<span class="doc-length">( 共{{ docList?.length }}条
+        )</span></nz-form-label>
+    <nz-form-control [nzSm]="18">
+      <ul class="doc-ul">
+        <li *ngFor="let doc of docList">{{ doc.name }}</li>
+        <li *ngIf="!docList || docList.length == 0">暂无数据</li>
+      </ul>
+      <!-- <km-doc-check-list formControlName="documentIds" [workspaceId]="workspaceId"></km-doc-check-list>
+      <nz-form-explain *ngIf="hasError('documentIds')">标注文件不能为空</nz-form-explain> -->
+    </nz-form-control>
+  </nz-form-item>
+  <!-- <nz-form-item>
+    <nz-form-label [nzSm]="8">自动计算IAA</nz-form-label>
+    <nz-form-control [nzSm]="18">
+      <nz-switch></nz-switch>
+    </nz-form-control>
+  </nz-form-item> -->
+</form>

@@ -1,0 +1,58 @@
+<ng-container>
+  <div class="chart-box">
+    <div class="table-content2" >
+        <nz-table #basicTable [nzData]="items" [nzShowPagination]="false" [nzPageSize]="100"
+        [nzScroll]="{ y: '1228px' }" [nzLoading]="searchLoading">
+          <thead (nzSortChange)="sort($event)" nzSingleSort>
+            <tr>
+              <th width="92px"nzShowSort nzSortKey="focusedDate">关注日期</th>
+              <th width="50px" nzShowSort nzSortKey="carModels">车款</th>
+              <th width="60px" nzShowSort nzSortKey="yearModels">年款</th>
+              <th width="64px">零件名</th>
+              <th width="70px">不良症状</th>
+              <th width="70px" nzShowSort nzSortKey="riskLevel">计算风险</th>
+              <th width="60px" nzShowSort nzSortKey="aiRiskLevel">AI风险</th>
+              <th width="74px" nzShowSort nzSortKey="cntrStatus">对策状态</th>
+              <th width="43px">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of basicTable.data">
+              <!-- <td [title]="data.focusedDate | date: 'yyy-MM-dd'">
+                {{(data.focusedDate.length <= 6 ? (data.focusedDate | date: 'yyy-MM-dd') : data.focusedDate.substring(0,6) + '...')}}
+              </td> -->
+              <td>{{data.focusedDate | date: 'yyy-MM-dd'}}</td>
+              <td>{{data.carModels}}</td>
+              <td [title]="data.yearModels">
+                {{data.yearModels.length <= 1 ? data.yearModels : data.yearModels.toString().substring(0, 5) + '...'}}
+              </td>
+              <td [title]="data.partName">
+                {{data.partName.length <= 3 ? data.partName : data.partName.substring(0, 3) + '...'}}
+              </td>
+              <td [title]="data.syndromeName">
+                {{data.syndromeName.length <= 3 ? data.syndromeName : data.syndromeName.substring(0, 3) + '...'}}
+              </td>
+              <td [title]="data.riskLevel">
+                <div *ngIf="data.riskLevel != null">
+                  {{data.riskLevel.length <= 3 ? data.riskLevel : data.riskLevel.substring(0, 3) + '...'}}
+                </div>
+              </td>
+              <td>{{data.aiRiskLevel}}</td>
+              <td>{{data.cntrStatus}}</td>
+              <td>
+                <a [routerLink]="['/annotator/analysis/info']" [queryParams]="{
+                  carType: data.carModels,
+                  yearModels: data.yearModels,
+                  partName: data.partName,
+                  syndrome: data.syndrome,
+                  selectType: data.partName == '' ? 'syndrome' : 'partName',
+                  warningUnit: data.partName == '' ? '不良症状': warningUnit
+                }" style="color: #fff;border-bottom: 1px solid #fff;" nzSize="small" target="_blank">详情</a>
+              </td>
+            </tr>
+          </tbody>
+        </nz-table>
+    </div>
+    
+  </div>
+</ng-container>

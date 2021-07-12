@@ -1,0 +1,107 @@
+.page-title {
+    position: relative;
+
+    button {
+        position: absolute;
+        right: 0px;
+        top: 12px;
+    }
+}
+
+.page-search {
+    display: flex;
+    padding: 0px 0px 0px 30px;
+
+    .search-info {
+        flex: 1;
+    }
+
+    .text-item {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .label {
+        color: #000;
+    }
+
+    .search-action {
+        flex: 0 0 440px;
+        text-align: right;
+    }
+
+    .search-content {
+        margin-top: 10px;
+    }
+
+}
+
+.m-r-10 {
+    margin-right: 10px;
+}
+
+.m-l-20 {
+    margin-left: 20px;
+}
+
+:host /deep/ .ant-btn-sm {
+    height: 28px;
+    padding: 2px 10px;
+    line-height: 18px;
+}
+
+.action a {
+    margin-right: 8px;
+}
+
+.edit {
+    padding: 0 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.status {
+    cursor: pointer;
+    .handled {
+        width: 18px;
+        height: 18px;
+        display: inline-block;
+        margin-right: 3px;
+        vertical-align: text-bottom;
+    }
+}
+
+.badge {
+    height: 24px;
+    padding: 0 12px;
+    background: rgba(24, 196, 146, 0.2);
+    border-radius: 14px;
+    color: #2e5046;
+    display: inline-block;
+    text-align: center;
+    word-break: keep-all;
+
+    &.warning {
+        color: #eb2a33;
+        background: rgba(233, 18, 28, 0.2)
+    }
+
+    &.min-width {
+        min-width: 67px;
+    }
+}
+
+:host /deep/ .error .ant-badge-status-text{
+    color: red;
+}
+
+/deep/ .list-item {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+
+
+/deep/ .warning {
+    color: red;
+}

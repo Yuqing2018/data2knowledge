@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GOV" xml:space="preserve">
+    <value>总局转发投诉</value>
+  </data>
+  <data name="HOTLINE" xml:space="preserve">
+    <value>800</value>
+  </data>
+  <data name="HOTLINE_ALL_TOPIC" xml:space="preserve">
+    <value>全部主题</value>
+  </data>
+  <data name="HOTLINE_CITY" xml:space="preserve">
+    <value>城市</value>
+  </data>
+  <data name="HOTLINE_CLASSIFY_NAME" xml:space="preserve">
+    <value>分类</value>
+  </data>
+  <data name="HOTLINE_COMM_RECORD" xml:space="preserve">
+    <value>跟进记录</value>
+  </data>
+  <data name="HOTLINE_CUSTOMER_DESC" xml:space="preserve">
+    <value>客户意见</value>
+  </data>
+  <data name="HOTLINE_DEALER_CD" xml:space="preserve">
+    <value>特约店</value>
+  </data>
+  <data name="HOTLINE_EMISSION_STANDARD" xml:space="preserve">
+    <value>排放标准</value>
+  </data>
+  <data name="HOTLINE_FRAME_NO" xml:space="preserve">
+    <value>车架号</value>
+  </data>
+  <data name="HOTLINE_MILEAGE" xml:space="preserve">
+    <value>行驶里程</value>
+  </data>
+  <data name="HOTLINE_MODEL_CD" xml:space="preserve">
+    <value>车型</value>
+  </data>
+  <data name="HOTLINE_OPEN_TIME" xml:space="preserve">
+    <value>创建时间</value>
+  </data>
+  <data name="HOTLINE_PROVINCE" xml:space="preserve">
+    <value>省份</value>
+  </data>
+  <data name="HOTLINE_REGION" xml:space="preserve">
+    <value>片区</value>
+  </data>
+  <data name="HOTLINE_SHORTNAME" xml:space="preserve">
+    <value>特约店简称</value>
+  </data>
+  <data name="HOTLINE_SR_NUM" xml:space="preserve">
+    <value>工单编号</value>
+  </data>
+  <data name="HOTLINE_SR_SEVERITY" xml:space="preserve">
+    <value>级别</value>
+  </data>
+  <data name="HOTLINE_Timestamp" xml:space="preserve">
+    <value>同步时间</value>
+  </data>
+  <data name="HOTLINE_TPTYPE_NAME" xml:space="preserve">
+    <value>车种名称</value>
+  </data>
+  <data name="HOTLINE_YEAR_TYPE" xml:space="preserve">
+    <value>年款</value>
+  </data>
+  <data name="MEDIA_MAIN" xml:space="preserve">
+    <value>媒体（总表）</value>
+  </data>
+  <data name="MEDIA_SUB" xml:space="preserve">
+    <value>媒体（附表）</value>
+  </data>
+  <data name="MQI" xml:space="preserve">
+    <value>MQI</value>
+  </data>
+  <data name="MQI_CAR_MODEL" xml:space="preserve">
+    <value>车款</value>
+  </data>
+  <data name="MQI_CAR_TYPE" xml:space="preserve">
+    <value>车型</value>
+  </data>
+  <data name="MQI_CITY" xml:space="preserve">
+    <value>所属城市</value>
+  </data>
+  <data name="MQI_COST_REPAIR" xml:space="preserve">
+    <value>总修理费用</value>
+  </data>
+  <data name="MQI_DEALER_CD" xml:space="preserve">
+    <value>特约店名称</value>
+  </data>
+  <data name="MQI_FAULT_DATE" xml:space="preserve">
+    <value>故障日期</value>
+  </data>
+  <data name="MQI_FRAME_NO" xml:space="preserve">
+    <value>车架号码</value>
+  </data>
+  <data name="MQI_INITIAL_REGIST_DATE" xml:space="preserve">
+    <value>购买日期</value>
+  </data>
+  <data name="MQI_MAINTENANCE_PROCESS" xml:space="preserve">
+    <value>诊断结果</value>
+  </data>
+  <data name="MQI_MILE_AGE" xml:space="preserve">
+    <value>里程数</value>
+  </data>
+  <data name="MQI_MODEL_YEAR" xml:space="preserve">
+    <value>年款</value>
+  </data>
+  <data name="MQI_MQI_NO" xml:space="preserve">
+    <value>MQI编号</value>
+  </data>
+  <data name="MQI_NUMBER_DAYS" xml:space="preserve">
+    <value>使用天数</value>
+  </data>
+  <data name="MQI_PART_NAME" xml:space="preserve">
+    <value>主零件中文名</value>
+  </data>
+  <data name="MQI_PART_NO" xml:space="preserve">
+    <value>主零件号</value>
+  </data>
+  <data name="MQI_PRODUCTION_DATE" xml:space="preserve">
+    <value>生产日期</value>
+  </data>
+  <data name="MQI_PROVINCE" xml:space="preserve">
+    <value>所属省份</value>
+  </data>
+  <data name="MQI_REASON_CD" xml:space="preserve">
+    <value>故障原因代码</value>
+  </data>
+  <data name="MQI_REASON_DESC" xml:space="preserve">
+    <value>故障原因</value>
+  </data>
+  <data name="MQI_REGION" xml:space="preserve">
+    <value>所属片区</value>
+  </data>
+  <data name="MQI_SUBJECT" xml:space="preserve">
+    <value>主题</value>
+  </data>
+  <data name="MQI_SYMPTOM_DESC" xml:space="preserve">
+    <value>问诊内容</value>
+  </data>
+  <data name="MQI_Timestamp" xml:space="preserve">
+    <value>同步时间</value>
+  </data>
+  <data name="TECH_CONSULTING" xml:space="preserve">
+    <value>技术咨询</value>
+  </data>
+  <data name="TECH_CONSULTING_AUDIT_OPINION" xml:space="preserve">
+    <value>厂家回答</value>
+  </data>
+  <data name="TECH_CONSULTING_CAR_TYPE" xml:space="preserve">
+    <value>车型</value>
+  </data>
+  <data name="TECH_CONSULTING_CAR_TYPE_NAME" xml:space="preserve">
+    <value>车型名</value>
+  </data>
+  <data name="TECH_CONSULTING_CONSULTATION_DATE" xml:space="preserve">
+    <value>咨询时间</value>
+  </data>
+  <data name="TECH_CONSULTING_DEALER_CD" xml:space="preserve">
+    <value>特约店</value>
+  </data>
+  <data name="TECH_CONSULTING_FAULT_DATE" xml:space="preserve">
+    <value>故障日期</value>
+  </data>
+  <data name="TECH_CONSULTING_FRAME_NO" xml:space="preserve">
+    <value>车身号</value>
+  </data>
+  <data name="TECH_CONSULTING_MAINTENANCE_PROCESS" xml:space="preserve">
+    <value>维修过程</value>
+  </data>
+  <data name="TECH_CONSULTING_MAINTENANCE_PROGRAM" xml:space="preserve">
+    <value>维修方案</value>
+  </data>
+  <data name="TECH_CONSULTING_MILE_AGE" xml:space="preserve">
+    <value>里程</value>
+  </data>
+  <data name="TECH_CONSULTING_PRODUCTION_DATE" xml:space="preserve">
+    <value>生产日期</value>
+  </data>
+  <data name="TECH_CONSULTING_RANK" xml:space="preserve">
+    <value>级别</value>
+  </data>
+  <data name="TECH_CONSULTING_SHIPPING_DATE" xml:space="preserve">
+    <value>购买日期</value>
+  </data>
+  <data name="TECH_CONSULTING_SPECIFIC_PHENOMENON" xml:space="preserve">
+    <value>具体现象</value>
+  </data>
+  <data name="TECH_CONSULTING_SUBJECT" xml:space="preserve">
+    <value>主题</value>
+  </data>
+  <data name="TECH_CONSULTING_SYMPTOM_DESC" xml:space="preserve">
+    <value>顾客描述</value>
+  </data>
+  <data name="TECH_CONSULTING_Timestamp" xml:space="preserve">
+    <value>同步时间</value>
+  </data>
+  <data name="TECH_CONSULTING_WR_NO" xml:space="preserve">
+    <value>控制号</value>
+  </data>
+</root>

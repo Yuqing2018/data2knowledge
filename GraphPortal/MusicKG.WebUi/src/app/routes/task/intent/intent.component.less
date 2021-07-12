@@ -1,0 +1,129 @@
+.annotation-toolbar {
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+
+    .page {
+        flex: 0 0 100px;
+        padding: 15px 16px;
+        text-align: center;
+        cursor: pointer;
+
+        &.next {
+            border-left: 1px solid #e8e8e8;
+        }
+
+        &.previous {
+            border-right: 1px solid #e8e8e8;
+        }
+
+        &:hover {
+            color: #40a9ff;
+        }
+    }
+
+    .content {
+        flex: auto;
+        text-align: center;
+        position: relative;
+
+        .title-content {
+            line-height: 51px;
+
+            &.none-item {
+                line-height: 50px;
+            }
+        }
+
+        .title {
+            font-size: 18px;
+        }
+
+        .title-page {
+            padding-top: 8px;
+        }
+
+        .title-action {
+            cursor: pointer;
+
+            &:hover {
+                color: #40a9ff;
+            }
+        }
+
+        .content-action {
+            position: absolute;
+            right: 30px;
+            top: 10px;
+        }
+
+        .text-status {
+            display: inline-block;
+            width: 120px;
+            margin-right: 8px;
+        }
+
+        .page-num {
+            padding: 0px 30px;
+        }
+    }
+}
+
+.disabled-action {
+    color: rgba(0, 0, 0, 0.45) !important;
+    cursor: not-allowed !important;
+}
+
+.page-nav {
+    display: inline-block;
+
+    km-quick-jumper {
+        margin-right: 8px;
+        margin-left: 30px;
+    }
+}
+
+.annotation {
+    display: flex;
+    margin: 8px;
+
+    .annotation-user {
+        margin-bottom: 10px;
+    }
+
+    .text-content {
+        flex: 1;
+        margin-right: 8px;
+        background: #fff;
+        position: relative;
+    }
+
+    nz-tabset {
+        flex: 0 0 244px;
+        background: #fff;
+    }
+}
+
+
+:host ::ng-deep .page-content .ant-card-body {
+    padding: 0px;
+}
+
+:host ::ng-deep .ant-tabs-nav .ant-tabs-tab {
+    padding: 16px;
+}
+
+:host ::ng-deep .ant-tabs-bar {
+    margin: 0px;
+}
+
+:host ::ng-deep .ant-tabs-content {
+    height: ~ "calc(100vh - 185px)";
+    padding-top: 15px;
+    overflow: auto;
+}
+
+:host ::ng-deep .trainning-phrase {
+    height: ~ "calc(100vh - 220px)!important";
+}

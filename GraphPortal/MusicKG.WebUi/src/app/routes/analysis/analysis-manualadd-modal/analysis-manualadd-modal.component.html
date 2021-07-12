@@ -1,0 +1,24 @@
+<nz-form-item>
+  <nz-form-label [nzSpan]="6" nzRequired>原因区分</nz-form-label>
+  <nz-form-control [nzSpan]="16">
+    <nz-input-number style="width: 314px;" [(ngModel)]="cntrMesrType" [nzMin]="1" (ngModelChange)="myFunction()"></nz-input-number>
+  </nz-form-control>
+</nz-form-item>
+<nz-form-item>
+  <nz-form-label [nzSpan]="6" nzRequired>原因</nz-form-label>
+  <nz-form-control [nzSpan]="16">
+    <input nz-input [(ngModel)]="cntrMesrReasonDesc"/>
+  </nz-form-control>
+</nz-form-item>
+<nz-form-item>
+  <nz-form-label [nzSpan]="6" nzRequired>对策</nz-form-label>
+  <nz-form-control [nzSpan]="16">
+    <input nz-input [(ngModel)]="permanentCntr"/>
+  </nz-form-control>
+</nz-form-item>
+<nz-form-item>
+  <nz-form-label [nzSpan]="6">对策日期</nz-form-label>
+  <nz-form-control [nzSpan]="16">
+    <nz-date-picker [(ngModel)]="permanentCntrTime"></nz-date-picker>
+  </nz-form-control>
+</nz-form-item>

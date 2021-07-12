@@ -1,0 +1,306 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.WebApi", "MusicKG.WebApi\MusicKG.WebApi.csproj", "{E467E7AF-79B2-4801-AB08-CE92032F1A63}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.WebApi.Test", "MusicKG.WebApi.Test\MusicKG.WebApi.Test.csproj", "{ADD1CF5A-AB3E-42A2-B741-011C756FFD61}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.Service", "MusicKG.Service\MusicKG.Service.csproj", "{116798F5-CE48-4389-A5F2-B75F7225FEFD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.DataAccess", "MusicKG.DataAccess\MusicKG.DataAccess.csproj", "{73CC9111-76BC-482B-B888-49A6858D2497}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.Service.Test", "MusicKG.Service.Test\MusicKG.Service.Test.csproj", "{D14F55EB-24A5-4AB4-81F0-584864B4746D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.Workflow", "MusicKG.Workflow\MusicKG.Workflow.csproj", "{6AD9C2EC-5F1A-47A7-8482-C11BC8539101}"
+	ProjectSection(ProjectDependencies) = postProject
+		{116798F5-CE48-4389-A5F2-B75F7225FEFD} = {116798F5-CE48-4389-A5F2-B75F7225FEFD}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.Workflow.Test", "MusicKG.Workflow.Test\MusicKG.Workflow.Test.csproj", "{9D728612-7046-4A52-AF69-F5F5F94A7267}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scheduler", "Scheduler", "{CF21FAD3-6D12-45B3-B0AD-3D67624BF92B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.Scheduler.DataAccess", "..\Scheduler\MusicKG.Scheduler.DataAccess\MusicKG.Scheduler.DataAccess.csproj", "{8150C65D-A9C1-4922-977A-FB769A8CBE7A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.Scheduler.Service", "..\Scheduler\MusicKG.Scheduler.Service\MusicKG.Scheduler.Service.csproj", "{E7BA0922-E5F9-45AC-BAAC-ECBCAC283772}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.Scheduler.Engine", "..\Scheduler\MusicKG.Scheduler.Engine\MusicKG.Scheduler.Engine.csproj", "{45E93699-9D51-4992-A8B7-D07EC685618C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.Scheduler.Job", "..\Scheduler\MusicKG.Scheduler.Job\MusicKG.Scheduler.Job.csproj", "{F0CEDA91-5098-4928-B446-5FA18A287A7E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.Scheduler.Extensions", "..\Scheduler\MusicKG.Scheduler.Extensions\MusicKG.Scheduler.Extensions.csproj", "{9D09A746-BE74-40E2-90AC-1896546F2CC1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HondaPlugins", "HondaPlugins", "{1C9204D3-4031-4B85-A9BC-B0463D0B6022}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{DA72FA5F-176E-4785-B434-55EC630F25AD}"
+	ProjectSection(SolutionItems) = preProject
+		HondaPlugins\Scripts\AIRiskWarningLevelMapping.js = HondaPlugins\Scripts\AIRiskWarningLevelMapping.js
+		HondaPlugins\Scripts\AutoTaskCreationRulesHonda.js = HondaPlugins\Scripts\AutoTaskCreationRulesHonda.js
+		HondaPlugins\Scripts\CategoriesHonda.js = HondaPlugins\Scripts\CategoriesHonda.js
+		HondaPlugins\Scripts\DictionariesHonda.js = HondaPlugins\Scripts\DictionariesHonda.js
+		HondaPlugins\Scripts\IgnoredVehicle.js = HondaPlugins\Scripts\IgnoredVehicle.js
+		HondaPlugins\Scripts\PartsHonda.js = HondaPlugins\Scripts\PartsHonda.js
+		HondaPlugins\Scripts\SyndromesHonda.js = HondaPlugins\Scripts\SyndromesHonda.js
+		HondaPlugins\Scripts\UsersHonda.js = HondaPlugins\Scripts\UsersHonda.js
+		HondaPlugins\Scripts\WorkflowsHonda.js = HondaPlugins\Scripts\WorkflowsHonda.js
+		HondaPlugins\Scripts\WorkspaceHonda.js = HondaPlugins\Scripts\WorkspaceHonda.js
+		HondaPlugins\Scripts\WorkspaceTypesHonda.js = HondaPlugins\Scripts\WorkspaceTypesHonda.js
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.Scheduler.Rest", "..\Scheduler\MusicKG.Scheduler.Rest\MusicKG.Scheduler.Rest.csproj", "{82512003-E3F7-4AA9-8DD5-D0058A52E959}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.WebApi.Contract", "MusicKG.WebApi.Contract\MusicKG.WebApi.Contract.csproj", "{0E6C93B3-897E-4B51-88BB-10810F8D6DB1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientWrapper", "ClientWrapper", "{3C089E95-BF98-434B-AFD8-5D404B610C6A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.WebApi.ClientWrapper", "MusicKG.WebApi.ClientWrapper\MusicKG.WebApi.ClientWrapper.csproj", "{876E23F3-954A-46D6-8B01-0A714B150542}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.Utility", "MusicKG.Utility\MusicKG.Utility.csproj", "{9C7936F4-E0D8-423D-A419-34D872ECBE66}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.HondaPlugins.DataAccess", "HondaPlugins\MusicKG.HondaPlugins.DataAccess\MusicKG.HondaPlugins.DataAccess.csproj", "{33760CA0-B2DD-459C-B396-BDB0482E0975}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.HondaPlugins.Services", "HondaPlugins\MusicKG.HondaPlugins.Services\MusicKG.HondaPlugins.Services.csproj", "{585DD5A5-7B38-4E72-9FC2-85D0E2D69F4B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.HondaPlugins.VehicleFault.Rest", "HondaPlugins\MusicKG.HondaPlugins.VehicleFault.Rest\MusicKG.HondaPlugins.VehicleFault.Rest.csproj", "{40748266-382B-43A2-A445-A93E9FBD35CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataManager", "DataManager", "{D1CD826A-A952-45DD-B642-057638C38B1D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.DataManager.Translator", "DataManager\MusicKG.DataManager.Translator\MusicKG.DataManager.Translator.csproj", "{97CF2A54-3E56-4CDC-B48B-C87CC313C745}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Translator", "Translator", "{9E99D4D6-B58E-45CD-B020-2B55D39BF403}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataManager", "DataManager", "{AB607D99-C320-40EC-B523-DC0C714A00D1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.Tensorflow.Wrapper", "MusicKG.Tensorflow.Wrapper\MusicKG.Tensorflow.Wrapper.csproj", "{8A46D69A-1F0E-4749-809E-7DDDF7BD7DA2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Handler", "Handler", "{52854687-0E0D-450A-A6AE-AB083971B60F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.DataManager.Handler", "DataManager\MusicKG.DataManager.Handler\MusicKG.DataManager.Handler.csproj", "{453A35CB-92D7-4AE7-A7C6-1E16A1FB931D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.DataManager.Models", "DataManager\MusicKG.DataManager.Models\MusicKG.DataManager.Models.csproj", "{37FD54F8-5122-4A53-A936-9E9F87315B72}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.Scheduler.Executor", "..\Scheduler\MusicKG.Scheduler.Executor\MusicKG.Scheduler.Executor.csproj", "{CE9FA820-F59F-4907-9AA2-B221C4DBE319}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.HondaPlugins.PredictWrapper", "HondaPlugins\DataManager\MusicKG.HondaPlugins.PredictWrapper\MusicKG.HondaPlugins.PredictWrapper.csproj", "{E40D2816-999A-4BAA-854F-C1B3500D73BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScheduledJobs", "ScheduledJobs", "{3084391C-BF5B-40BB-9F84-235D477038CC}"
+	ProjectSection(SolutionItems) = preProject
+		HondaPlugins\Scripts\ScheduledJobs\Master-Reannotation.js = HondaPlugins\Scripts\ScheduledJobs\Master-Reannotation.js
+		HondaPlugins\Scripts\ScheduledJobs\Model-Trainer.js = HondaPlugins\Scripts\ScheduledJobs\Model-Trainer.js
+		HondaPlugins\Scripts\ScheduledJobs\RawMariaToLabeling-Daily.js = HondaPlugins\Scripts\ScheduledJobs\RawMariaToLabeling-Daily.js
+		HondaPlugins\Scripts\ScheduledJobs\RawMariaToMaster-Bootstrap.js = HondaPlugins\Scripts\ScheduledJobs\RawMariaToMaster-Bootstrap.js
+		HondaPlugins\Scripts\ScheduledJobs\RawMongoToLabeling-Realtime.js = HondaPlugins\Scripts\ScheduledJobs\RawMongoToLabeling-Realtime.js
+		HondaPlugins\Scripts\ScheduledJobs\Result-Handler.js = HondaPlugins\Scripts\ScheduledJobs\Result-Handler.js
+		HondaPlugins\Scripts\ScheduledJobs\Risk-Model-Trainer.js = HondaPlugins\Scripts\ScheduledJobs\Risk-Model-Trainer.js
+		HondaPlugins\Scripts\ScheduledJobs\Warning-Calculator.js = HondaPlugins\Scripts\ScheduledJobs\Warning-Calculator.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JobTasks", "JobTasks", "{BB4F41F5-F5C4-43A1-AEB5-B56886AC51C6}"
+	ProjectSection(SolutionItems) = preProject
+		HondaPlugins\Scripts\JobTasks\800-Bootstrap.js = HondaPlugins\Scripts\JobTasks\800-Bootstrap.js
+		HondaPlugins\Scripts\JobTasks\GOV-Realtime.js = HondaPlugins\Scripts\JobTasks\GOV-Realtime.js
+		HondaPlugins\Scripts\JobTasks\HotlineToLabeling.js = HondaPlugins\Scripts\JobTasks\HotlineToLabeling.js
+		HondaPlugins\Scripts\JobTasks\MasterReannotation-Sample.js = HondaPlugins\Scripts\JobTasks\MasterReannotation-Sample.js
+		HondaPlugins\Scripts\JobTasks\MediaMain-Realtime.js = HondaPlugins\Scripts\JobTasks\MediaMain-Realtime.js
+		HondaPlugins\Scripts\JobTasks\MediaSub-Realtime.js = HondaPlugins\Scripts\JobTasks\MediaSub-Realtime.js
+		HondaPlugins\Scripts\JobTasks\Model-Trainer.js = HondaPlugins\Scripts\JobTasks\Model-Trainer.js
+		HondaPlugins\Scripts\JobTasks\MQI-Bootstrap.js = HondaPlugins\Scripts\JobTasks\MQI-Bootstrap.js
+		HondaPlugins\Scripts\JobTasks\MQIToLabeling.js = HondaPlugins\Scripts\JobTasks\MQIToLabeling.js
+		HondaPlugins\Scripts\JobTasks\MQIToMaster-Sample.js = HondaPlugins\Scripts\JobTasks\MQIToMaster-Sample.js
+		HondaPlugins\Scripts\JobTasks\ResultHandler.js = HondaPlugins\Scripts\JobTasks\ResultHandler.js
+		HondaPlugins\Scripts\JobTasks\Risk-Model-Trainer.js = HondaPlugins\Scripts\JobTasks\Risk-Model-Trainer.js
+		HondaPlugins\Scripts\JobTasks\TechSupport-Bootstrap.js = HondaPlugins\Scripts\JobTasks\TechSupport-Bootstrap.js
+		HondaPlugins\Scripts\JobTasks\TechSupportToLabeling.js = HondaPlugins\Scripts\JobTasks\TechSupportToLabeling.js
+		HondaPlugins\Scripts\JobTasks\WarningTaskCalculation-Sample.js = HondaPlugins\Scripts\JobTasks\WarningTaskCalculation-Sample.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WarningCalculator", "WarningCalculator", "{070F3224-664B-42F3-8619-FBCA6E39B153}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.HondaPlugins.WarningCalculator", "HondaPlugins\WarningCalculator\MusicKG.HondaPlugins.WarningCalcuator\MusicKG.HondaPlugins.WarningCalculator.csproj", "{7692B0E3-DD65-48D4-B286-B64C9249D59D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.Scheduler.Example", "..\Scheduler\MusicKG.Scheduler.Example\MusicKG.Scheduler.Example.csproj", "{0DCCF7C1-329D-4DF6-B43C-0A3F3D44083F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.HondaPlugins.DataManager", "HondaPlugins\DataManager\MusicKG.HondaPlugins.DataManager\MusicKG.HondaPlugins.DataManager.csproj", "{FEF1227F-AD77-4FCD-B241-BD650E7FD781}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.HondaPlugins.OfflineWorker", "HondaPlugins\MusicKG.HondaPlugins.OfflineWorker\MusicKG.HondaPlugins.OfflineWorker.csproj", "{CB546BC8-6B4E-42C1-83B4-764FC133DBDD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ModelTrainer", "ModelTrainer", "{E8F5D5E9-0ABA-4873-AB41-932533940996}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.DataManager.ModelTrainer", "DataManager\MusicKG.DataManager.ModelTrainer\MusicKG.DataManager.ModelTrainer.csproj", "{64BCDE43-CCB2-4C92-9C3D-9F774A591B72}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ModelTrainer", "ModelTrainer", "{C29BA196-122F-4A89-85A7-09B9A39EA3E3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.HondaPlugins.OperationTool", "HondaPlugins\Tools\MusicKG.HondaPlugins.OperationTool\MusicKG.HondaPlugins.OperationTool.csproj", "{A7026E18-79AB-4B1A-AB1A-7E7507248587}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E467E7AF-79B2-4801-AB08-CE92032F1A63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E467E7AF-79B2-4801-AB08-CE92032F1A63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E467E7AF-79B2-4801-AB08-CE92032F1A63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E467E7AF-79B2-4801-AB08-CE92032F1A63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADD1CF5A-AB3E-42A2-B741-011C756FFD61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADD1CF5A-AB3E-42A2-B741-011C756FFD61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADD1CF5A-AB3E-42A2-B741-011C756FFD61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADD1CF5A-AB3E-42A2-B741-011C756FFD61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{116798F5-CE48-4389-A5F2-B75F7225FEFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{116798F5-CE48-4389-A5F2-B75F7225FEFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{116798F5-CE48-4389-A5F2-B75F7225FEFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{116798F5-CE48-4389-A5F2-B75F7225FEFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73CC9111-76BC-482B-B888-49A6858D2497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73CC9111-76BC-482B-B888-49A6858D2497}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73CC9111-76BC-482B-B888-49A6858D2497}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73CC9111-76BC-482B-B888-49A6858D2497}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D14F55EB-24A5-4AB4-81F0-584864B4746D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D14F55EB-24A5-4AB4-81F0-584864B4746D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D14F55EB-24A5-4AB4-81F0-584864B4746D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D14F55EB-24A5-4AB4-81F0-584864B4746D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AD9C2EC-5F1A-47A7-8482-C11BC8539101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AD9C2EC-5F1A-47A7-8482-C11BC8539101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AD9C2EC-5F1A-47A7-8482-C11BC8539101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AD9C2EC-5F1A-47A7-8482-C11BC8539101}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D728612-7046-4A52-AF69-F5F5F94A7267}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D728612-7046-4A52-AF69-F5F5F94A7267}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D728612-7046-4A52-AF69-F5F5F94A7267}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D728612-7046-4A52-AF69-F5F5F94A7267}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8150C65D-A9C1-4922-977A-FB769A8CBE7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8150C65D-A9C1-4922-977A-FB769A8CBE7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8150C65D-A9C1-4922-977A-FB769A8CBE7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8150C65D-A9C1-4922-977A-FB769A8CBE7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7BA0922-E5F9-45AC-BAAC-ECBCAC283772}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7BA0922-E5F9-45AC-BAAC-ECBCAC283772}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7BA0922-E5F9-45AC-BAAC-ECBCAC283772}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7BA0922-E5F9-45AC-BAAC-ECBCAC283772}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45E93699-9D51-4992-A8B7-D07EC685618C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45E93699-9D51-4992-A8B7-D07EC685618C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45E93699-9D51-4992-A8B7-D07EC685618C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45E93699-9D51-4992-A8B7-D07EC685618C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0CEDA91-5098-4928-B446-5FA18A287A7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0CEDA91-5098-4928-B446-5FA18A287A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0CEDA91-5098-4928-B446-5FA18A287A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0CEDA91-5098-4928-B446-5FA18A287A7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D09A746-BE74-40E2-90AC-1896546F2CC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D09A746-BE74-40E2-90AC-1896546F2CC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D09A746-BE74-40E2-90AC-1896546F2CC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D09A746-BE74-40E2-90AC-1896546F2CC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82512003-E3F7-4AA9-8DD5-D0058A52E959}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82512003-E3F7-4AA9-8DD5-D0058A52E959}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82512003-E3F7-4AA9-8DD5-D0058A52E959}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82512003-E3F7-4AA9-8DD5-D0058A52E959}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E6C93B3-897E-4B51-88BB-10810F8D6DB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E6C93B3-897E-4B51-88BB-10810F8D6DB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E6C93B3-897E-4B51-88BB-10810F8D6DB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E6C93B3-897E-4B51-88BB-10810F8D6DB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{876E23F3-954A-46D6-8B01-0A714B150542}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{876E23F3-954A-46D6-8B01-0A714B150542}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{876E23F3-954A-46D6-8B01-0A714B150542}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{876E23F3-954A-46D6-8B01-0A714B150542}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C7936F4-E0D8-423D-A419-34D872ECBE66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C7936F4-E0D8-423D-A419-34D872ECBE66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C7936F4-E0D8-423D-A419-34D872ECBE66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C7936F4-E0D8-423D-A419-34D872ECBE66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33760CA0-B2DD-459C-B396-BDB0482E0975}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33760CA0-B2DD-459C-B396-BDB0482E0975}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33760CA0-B2DD-459C-B396-BDB0482E0975}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33760CA0-B2DD-459C-B396-BDB0482E0975}.Release|Any CPU.Build.0 = Release|Any CPU
+		{585DD5A5-7B38-4E72-9FC2-85D0E2D69F4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{585DD5A5-7B38-4E72-9FC2-85D0E2D69F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{585DD5A5-7B38-4E72-9FC2-85D0E2D69F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{585DD5A5-7B38-4E72-9FC2-85D0E2D69F4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40748266-382B-43A2-A445-A93E9FBD35CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40748266-382B-43A2-A445-A93E9FBD35CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40748266-382B-43A2-A445-A93E9FBD35CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40748266-382B-43A2-A445-A93E9FBD35CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97CF2A54-3E56-4CDC-B48B-C87CC313C745}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97CF2A54-3E56-4CDC-B48B-C87CC313C745}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97CF2A54-3E56-4CDC-B48B-C87CC313C745}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97CF2A54-3E56-4CDC-B48B-C87CC313C745}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A46D69A-1F0E-4749-809E-7DDDF7BD7DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A46D69A-1F0E-4749-809E-7DDDF7BD7DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A46D69A-1F0E-4749-809E-7DDDF7BD7DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A46D69A-1F0E-4749-809E-7DDDF7BD7DA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{453A35CB-92D7-4AE7-A7C6-1E16A1FB931D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{453A35CB-92D7-4AE7-A7C6-1E16A1FB931D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{453A35CB-92D7-4AE7-A7C6-1E16A1FB931D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{453A35CB-92D7-4AE7-A7C6-1E16A1FB931D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37FD54F8-5122-4A53-A936-9E9F87315B72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37FD54F8-5122-4A53-A936-9E9F87315B72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37FD54F8-5122-4A53-A936-9E9F87315B72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37FD54F8-5122-4A53-A936-9E9F87315B72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE9FA820-F59F-4907-9AA2-B221C4DBE319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE9FA820-F59F-4907-9AA2-B221C4DBE319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE9FA820-F59F-4907-9AA2-B221C4DBE319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE9FA820-F59F-4907-9AA2-B221C4DBE319}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E40D2816-999A-4BAA-854F-C1B3500D73BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E40D2816-999A-4BAA-854F-C1B3500D73BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E40D2816-999A-4BAA-854F-C1B3500D73BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E40D2816-999A-4BAA-854F-C1B3500D73BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7692B0E3-DD65-48D4-B286-B64C9249D59D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7692B0E3-DD65-48D4-B286-B64C9249D59D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7692B0E3-DD65-48D4-B286-B64C9249D59D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7692B0E3-DD65-48D4-B286-B64C9249D59D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DCCF7C1-329D-4DF6-B43C-0A3F3D44083F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DCCF7C1-329D-4DF6-B43C-0A3F3D44083F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DCCF7C1-329D-4DF6-B43C-0A3F3D44083F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DCCF7C1-329D-4DF6-B43C-0A3F3D44083F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEF1227F-AD77-4FCD-B241-BD650E7FD781}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEF1227F-AD77-4FCD-B241-BD650E7FD781}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEF1227F-AD77-4FCD-B241-BD650E7FD781}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEF1227F-AD77-4FCD-B241-BD650E7FD781}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB546BC8-6B4E-42C1-83B4-764FC133DBDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB546BC8-6B4E-42C1-83B4-764FC133DBDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB546BC8-6B4E-42C1-83B4-764FC133DBDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB546BC8-6B4E-42C1-83B4-764FC133DBDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64BCDE43-CCB2-4C92-9C3D-9F774A591B72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64BCDE43-CCB2-4C92-9C3D-9F774A591B72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64BCDE43-CCB2-4C92-9C3D-9F774A591B72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64BCDE43-CCB2-4C92-9C3D-9F774A591B72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7026E18-79AB-4B1A-AB1A-7E7507248587}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7026E18-79AB-4B1A-AB1A-7E7507248587}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7026E18-79AB-4B1A-AB1A-7E7507248587}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7026E18-79AB-4B1A-AB1A-7E7507248587}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8150C65D-A9C1-4922-977A-FB769A8CBE7A} = {CF21FAD3-6D12-45B3-B0AD-3D67624BF92B}
+		{E7BA0922-E5F9-45AC-BAAC-ECBCAC283772} = {CF21FAD3-6D12-45B3-B0AD-3D67624BF92B}
+		{45E93699-9D51-4992-A8B7-D07EC685618C} = {CF21FAD3-6D12-45B3-B0AD-3D67624BF92B}
+		{F0CEDA91-5098-4928-B446-5FA18A287A7E} = {CF21FAD3-6D12-45B3-B0AD-3D67624BF92B}
+		{9D09A746-BE74-40E2-90AC-1896546F2CC1} = {CF21FAD3-6D12-45B3-B0AD-3D67624BF92B}
+		{DA72FA5F-176E-4785-B434-55EC630F25AD} = {1C9204D3-4031-4B85-A9BC-B0463D0B6022}
+		{82512003-E3F7-4AA9-8DD5-D0058A52E959} = {CF21FAD3-6D12-45B3-B0AD-3D67624BF92B}
+		{876E23F3-954A-46D6-8B01-0A714B150542} = {3C089E95-BF98-434B-AFD8-5D404B610C6A}
+		{33760CA0-B2DD-459C-B396-BDB0482E0975} = {1C9204D3-4031-4B85-A9BC-B0463D0B6022}
+		{585DD5A5-7B38-4E72-9FC2-85D0E2D69F4B} = {1C9204D3-4031-4B85-A9BC-B0463D0B6022}
+		{40748266-382B-43A2-A445-A93E9FBD35CC} = {1C9204D3-4031-4B85-A9BC-B0463D0B6022}
+		{97CF2A54-3E56-4CDC-B48B-C87CC313C745} = {9E99D4D6-B58E-45CD-B020-2B55D39BF403}
+		{9E99D4D6-B58E-45CD-B020-2B55D39BF403} = {D1CD826A-A952-45DD-B642-057638C38B1D}
+		{AB607D99-C320-40EC-B523-DC0C714A00D1} = {1C9204D3-4031-4B85-A9BC-B0463D0B6022}
+		{52854687-0E0D-450A-A6AE-AB083971B60F} = {D1CD826A-A952-45DD-B642-057638C38B1D}
+		{453A35CB-92D7-4AE7-A7C6-1E16A1FB931D} = {52854687-0E0D-450A-A6AE-AB083971B60F}
+		{37FD54F8-5122-4A53-A936-9E9F87315B72} = {D1CD826A-A952-45DD-B642-057638C38B1D}
+		{CE9FA820-F59F-4907-9AA2-B221C4DBE319} = {CF21FAD3-6D12-45B3-B0AD-3D67624BF92B}
+		{E40D2816-999A-4BAA-854F-C1B3500D73BB} = {AB607D99-C320-40EC-B523-DC0C714A00D1}
+		{3084391C-BF5B-40BB-9F84-235D477038CC} = {DA72FA5F-176E-4785-B434-55EC630F25AD}
+		{BB4F41F5-F5C4-43A1-AEB5-B56886AC51C6} = {DA72FA5F-176E-4785-B434-55EC630F25AD}
+		{070F3224-664B-42F3-8619-FBCA6E39B153} = {1C9204D3-4031-4B85-A9BC-B0463D0B6022}
+		{7692B0E3-DD65-48D4-B286-B64C9249D59D} = {070F3224-664B-42F3-8619-FBCA6E39B153}
+		{0DCCF7C1-329D-4DF6-B43C-0A3F3D44083F} = {CF21FAD3-6D12-45B3-B0AD-3D67624BF92B}
+		{FEF1227F-AD77-4FCD-B241-BD650E7FD781} = {AB607D99-C320-40EC-B523-DC0C714A00D1}
+		{CB546BC8-6B4E-42C1-83B4-764FC133DBDD} = {1C9204D3-4031-4B85-A9BC-B0463D0B6022}
+		{E8F5D5E9-0ABA-4873-AB41-932533940996} = {D1CD826A-A952-45DD-B642-057638C38B1D}
+		{64BCDE43-CCB2-4C92-9C3D-9F774A591B72} = {E8F5D5E9-0ABA-4873-AB41-932533940996}
+		{C29BA196-122F-4A89-85A7-09B9A39EA3E3} = {1C9204D3-4031-4B85-A9BC-B0463D0B6022}
+		{A7026E18-79AB-4B1A-AB1A-7E7507248587} = {C29BA196-122F-4A89-85A7-09B9A39EA3E3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4595D14D-AD9E-4987-B647-988D350B5941}
+	EndGlobalSection
+EndGlobal

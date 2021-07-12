@@ -1,0 +1,9 @@
+<nz-select nzShowSearch [(ngModel)]="selectedValue" nzAllowClear nzPlaceHolder="未知" (nzOnSearch)="onSearch($event)"
+  [nzServerSearch]="true" (nzScrollToBottom)="onScrollToBottom()" (ngModelChange)="valueChange()" [nzDropdownStyle]="{ maxWidth: '200px' }" [nzDropdownMatchSelectWidth]="false">
+  <nz-option *ngFor="let option of dictionaryBuffer" nzCustomContent [nzLabel]="option.name" [nzValue]="option.id">
+    <span nz-tooltip [nzTitle]="option.name"> {{option.name}} </span>
+  </nz-option>
+  <nz-option *ngIf="loading" nzDisabled nzCustomContent>
+    <i nz-icon type="loading" class="loading-icon"></i> 加载中...
+  </nz-option>
+</nz-select>

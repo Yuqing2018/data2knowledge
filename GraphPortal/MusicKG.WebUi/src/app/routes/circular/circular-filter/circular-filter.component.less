@@ -1,0 +1,55 @@
+:host {
+    width: 100%;
+    display: flex;
+
+    .select-list {
+        flex: 1;
+    }
+
+    .search-bts {
+        flex: 0 0 160px;
+
+        button {
+            margin-right: 10px;
+        }
+    }
+}
+
+.select-item {
+    display: inline-block;
+    margin: 0px 20px 10px 0px;
+
+    span {
+        line-height: 32px;
+        display: inline-block;
+        margin-right: 8px;
+    }
+
+    nz-select {
+        min-width: 100px;
+    }
+
+    .long-select {
+        min-width: 120px !important;
+    }
+
+    nz-range-picker {
+        display: inline-block;
+        width: 232px;
+    }
+
+    km-years-range {
+        display: inline-block;
+    }
+
+}
+
+:host /deep/ nz-year-picker {
+    flex: 0 0 90px !important;
+    width: 90px;
+}
+
+:host /deep/ km-years-range .split {
+    width: 25px;
+    display: inline-block;
+}

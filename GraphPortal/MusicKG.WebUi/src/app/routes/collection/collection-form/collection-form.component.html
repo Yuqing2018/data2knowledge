@@ -1,0 +1,72 @@
+<form nz-form  >
+  <div nz-row [nzGutter]="24">
+    <div nz-col [nzSpan]="12">
+      <nz-form-item nzFlex>
+        <nz-form-label nzRequired >任务名称</nz-form-label>
+        <nz-form-control>
+          <input nz-input name="sched_name" [(ngModel)]="formData.sched_name" placeholder="请输入任务名称">
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="12">
+      <nz-form-item nzFlex>
+        <nz-form-label nzRequired>指定配置</nz-form-label>
+        <nz-form-control style="width: 80%;">
+          <nz-select name="conf" style="width: 80%;" [(ngModel)]="formData.conf"  nzPlaceHolder="请选择配置信息">
+            <nz-option *ngFor="let option of configData" [nzLabel]="option.conf_name" [nzValue]="option._id"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row [nzGutter]="24">
+    <div nz-col [nzSpan]="12">
+      <nz-form-item nzFlex>
+        <nz-form-label nzRequired >启动日期</nz-form-label>
+        <nz-form-control>
+            <nz-date-picker  name="startTime" [nzDisabledDate]="disabledDate"
+            [(ngModel)]="formData.startDate" ></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="12">
+      <nz-form-item nzFlex>
+        <nz-form-label nzRequired >结束日期</nz-form-label>
+        <nz-form-control>
+            <nz-date-picker  name="endTime" [nzDisabled]="formData.isforever" [nzDisabledDate]="disabledEndDate"
+            [(ngModel)]="formData.endDate" ></nz-date-picker>
+          <label style="margin-left:10px;" name="checkbox" nz-checkbox [(ngModel)]="formData.isforever">永远</label>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row [nzGutter]="24">
+    <nz-form-item nzFlex>
+      <nz-form-label><span style="visibility: hidden;">***</span>重复周期</nz-form-label>
+      <nz-form-control style="width:50%">
+        <input nz-input name="repeatCycle" [(ngModel)]="formData.repeatCycle">
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+  <nz-checkbox-group style="margin-left: 8%;" name="week" [(ngModel)]="week" (ngModelChange)="log(week)"></nz-checkbox-group>
+
+  <!-- <nz-checkbox-wrapper style="width: 100%;" name="day_of_week" [(ngModel)]="formData.day_of_week" (nzOnChange)="log($event)">
+      <div nz-row>
+        <div nz-col nzSpan="2"></div>
+        <div nz-col nzSpan="3" *ngFor="let option of week"><label nz-checkbox  [nzValue]="option.value">{{option.label}}</label></div>
+      </div>
+  </nz-checkbox-wrapper> -->
+  <div nz-row style="margin:10px auto;">
+      <div nz-col nzSpan="2"></div>
+      <div nz-col nzSpan="10">
+        <div nz-row style="margin:10px auto;" *ngIf="timeArray.length==0">
+            <button class="btn" nz-button nzType="primary" (click)="addTimeArray()">新建时间</button>
+        </div>
+        <div nz-row style="margin:10px auto;" *ngFor="let item of timeArray let i=index">
+            <nz-time-picker name="'time'+{{i}}" [(ngModel)]="item.value" nzFormat="HH:mm" nzPlaceHolder="请选择 时 分"></nz-time-picker>
+            <i style="margin: auto 10px; cursor: pointer;" nz-icon type="plus" theme="outline" (click)="addTimeArray()"></i>
+            <i style="cursor: pointer;" nz-icon type="close" theme="outline" (click)="delTimeArray(item,i)"></i>
+        </div>
+      </div>
+    </div>
+</form>

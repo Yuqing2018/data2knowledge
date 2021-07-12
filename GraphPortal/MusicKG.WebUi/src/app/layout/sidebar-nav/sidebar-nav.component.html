@@ -1,0 +1,9 @@
+<ul nz-menu [nzSelectable]="false" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+  <li nz-menu-item *ngFor="let menu of menuData" nz-tooltip nzPlacement="right" [nzTitle]="isCollapsed ? menu.title : ''"
+  [routerLink]="[menu.link]" routerLinkActive="ant-menu-item-selected">
+    <span title>
+      <i nz-icon [type]="menu.icon" theme="outline"></i>
+      <span>{{ menu.title }}</span>
+    </span>
+  </li>
+</ul>

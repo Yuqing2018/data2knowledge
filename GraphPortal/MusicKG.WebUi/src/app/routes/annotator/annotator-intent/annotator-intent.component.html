@@ -1,0 +1,59 @@
+<div class="page-header">
+  <div class="page-title">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        <a>标注任务</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        <a (click)="goTo()">任务详情</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        标注
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <a class="back" (click)="goTo()">
+      <i nz-icon type="arrow-left" theme="outline"></i> 返回
+    </a>
+  </div>
+</div>
+
+<nz-spin [nzSpinning]="!intent">
+  <div class="annotation">
+    <div class="text-content">
+      <div class="annotation-toolbar">
+        <div [class.disabled-action]="notHasPagePrevious" class="page previous" (click)="pagePrevious()">
+          <i nz-icon type="left" theme="outline"></i> 上一项
+        </div>
+        <div class="content">
+          <div class="title-content">
+            <span class="title">{{ currentIntentItem?.Name }}</span>
+            <div class="page-nav">
+              <km-quick-jumper (indexChange)="jumperItem($event)"></km-quick-jumper>
+              <span>{{index + 1}}/{{intent?.length}}</span>
+            </div>
+          </div>
+          <div class="content-action" *ngIf="taskDocumentStatus !== 'Annotated'">
+            <nz-dropdown-button class="save" [nzDisabled]="disabled" nzType="primary" (nzClick)="onSave('Assigned')">
+              &nbsp;&nbsp;保存&nbsp;&nbsp;
+              <ul nz-menu>
+                <li nz-menu-item (click)="onSave('Annotated')">保存并提交</li>
+              </ul>
+            </nz-dropdown-button>
+          </div>
+        </div>
+        <div [class.disabled-action]="notHasPageNext" class="page next" (click)="pageNext()">
+          下一项
+          <i nz-icon type="right" theme="outline"></i>
+        </div>
+      </div>
+      <div>
+        <km-intent-annotation-tool #intentComponent [(ngModel)]="currentIntentItem" (ngModelChange)="isChange = true"></km-intent-annotation-tool>
+      </div>
+    </div>
+    <nz-tabset>
+      <nz-tab nzTitle="实体类型">
+        <km-ontology-tree [ontology]="ontology" (selectEntity)="selectEntityChange($event)"></km-ontology-tree>
+      </nz-tab>
+    </nz-tabset>
+  </div>
+</nz-spin>

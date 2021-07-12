@@ -1,0 +1,11 @@
+<km-entity-word *ngFor="let word of wordList" [word]="word" [entityList]="entityList" [highlightEntity]="highlightEntity" [selection]="selection" [mode]="mode"
+    (wordEvent)="wordEvent($event,word)">
+</km-entity-word>
+<ng-container *ngIf="mode == 'detail'">
+    <km-entity-label *ngFor="let label of labelList" [highlightEntity]="highlightEntity" (mousedown)="labelModusedown(label,$event)" [label]="label"
+        [active]="activeLabel"></km-entity-label>
+    <span class="label-user" *ngFor="let user of labelUserList" [style.top.px]="user.top" [style.left.px]="user.left" [style.width.px]="user.width" [style.opacity]="user.opacity">{{ user.user }}</span>
+    <span class="label-line" *ngFor="let line of lineList" [style.height.px]="line?.height" [style.top.px]="line?.top"
+        [style.left.px]="line?.left" [style.opacity]="line.opacity"></span>
+    <div *ngIf="activeLabel" class="label-close" (mousedown)="removeEntity(activeLabel)" [ngStyle]="removeLabelStyle">X</div>
+</ng-container>

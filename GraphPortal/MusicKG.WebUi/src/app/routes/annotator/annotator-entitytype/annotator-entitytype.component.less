@@ -1,0 +1,39 @@
+.annotation-toolbar {
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    margin-bottom: 20px;
+
+    .content {
+        flex: auto;
+        text-align: center;
+        position: relative;
+        height: 44px;
+
+        .title-content {
+            padding-top: 10px;
+            line-height: 0.5;
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .content-action {
+            position: absolute;
+            right: 0;
+            bottom: 10px;
+        }
+    }
+}
+
+.disabled-action {
+    color: rgba(0, 0, 0, 0.45) !important;
+    cursor: not-allowed !important;
+}
+
+.ant-card {
+    margin: 8px;
+}

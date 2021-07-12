@@ -1,0 +1,16 @@
+<form *ngIf="taskForm" nz-form [formGroup]="taskForm">
+  <nz-form-item>
+    <nz-form-label nzRequired [nzSm]="5">任务名称</nz-form-label>
+    <nz-form-control [nzSm]="18">
+      <input nz-input trim formControlName="name">
+      <nz-form-explain *ngIf="hasError('name', 'required')">任务名称不能为空</nz-form-explain>
+      <nz-form-explain *ngIf="hasError('name', 'maxlength')">任务名称不能超过20个字符</nz-form-explain> 
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label nzRequired [nzSm]="5">最后期限</nz-form-label>
+    <nz-form-control [nzSm]="18">
+      <nz-date-picker formControlName="expectedDueAt"></nz-date-picker>
+    </nz-form-control>
+  </nz-form-item>
+</form>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MusicKG.Scheduler.Rest</name>
+    </assembly>
+    <members>
+        <member name="P:MusicKG.Scheduler.Rest.Models.ViewModels.SchedulerErrorViewModel.RequestId">
+            <summary>
+            Request ID.
+            </summary>
+        </member>
+        <member name="P:MusicKG.Scheduler.Rest.Models.ViewModels.SchedulerErrorViewModel.Message">
+            <summary>
+            Message.
+            </summary>
+        </member>
+    </members>
+</doc>

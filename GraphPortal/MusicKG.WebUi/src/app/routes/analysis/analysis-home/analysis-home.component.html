@@ -1,0 +1,57 @@
+<nz-card class="chart-card">
+    <nz-spin [nzSpinning]="isLoading">
+      <div class="chart-list" nz-row [nzGutter]="{ xs: 8, sm: 8, md: 16, lg: 16, xl: 16, xxl: 16 }">
+        <div class="chart-col" nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="6" nzXl="6">
+          <div class="chart-box">
+            <div class="title">
+                <span>预警</span>
+            </div>
+            <div echarts style="height: 228px;" [options]="chartOption" (chartInit)="onChartInit($event)"></div>
+          </div>
+        </div>
+        <div class="chart-col" nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="6" nzXl="6">
+          <km-analysis-warning-chart  [type]="'多发预警'">
+          </km-analysis-warning-chart>
+        </div>
+        <div class="chart-col" nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="6" nzXl="6">
+          <km-analysis-warning-chart  [type]="'风险预警'">
+          </km-analysis-warning-chart>
+        </div>
+        <div class="chart-col" nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="6" nzXl="6">
+          <km-analysis-warning-chart  [type]="'再发预警'">
+          </km-analysis-warning-chart>
+        </div>
+        <div class="chart-col" nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="12" nzXl="12">
+          <div class="chart-box2">
+            <div class="title">
+                <span>渠道信息</span>
+                <span>当月TOP表</span>
+            </div>
+            <div>
+              <km-analysis-channel-chart  [type]="'总局'"></km-analysis-channel-chart>
+            </div>
+            <div>
+              <km-analysis-channel-chart  [type]="'MQI'"></km-analysis-channel-chart>
+            </div>
+            <div>
+              <km-analysis-channel-chart  [type]="'技术咨询'"></km-analysis-channel-chart>
+            </div>
+            <div>
+              <km-analysis-channel-chart  [type]="'800'"></km-analysis-channel-chart>
+            </div>
+            <div>
+              <km-analysis-channel-chart  [type]="'网络媒体'"></km-analysis-channel-chart>
+            </div>
+          </div>
+        </div>
+        <div class="chart-col" nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="12" nzXl="12">
+          <div class="chart-box3">
+            <div class="title">
+              <span>重点风险项目</span>
+            </div>
+             <km-analysis-keyrisk-table></km-analysis-keyrisk-table>
+          </div>
+        </div>  
+      </div>
+    </nz-spin>
+  </nz-card>

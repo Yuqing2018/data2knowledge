@@ -1,0 +1,78 @@
+<nz-card class="hd-page-header">
+  <div class="page-title">
+    <img src="./assets/img/track-active.png">
+    <span>预警跟踪</span>
+  </div>
+  <div class="page-search">
+    <km-circular-filter [filter]="searchCache" (filterChange)="filterChange($event)"></km-circular-filter>
+  </div>
+</nz-card>
+<nz-card class="page-content">
+  <div class="table-operate">
+    <div class="left sub">
+      预警列表
+    </div>
+    <div class="right">
+      <nz-dropdown>
+        <button nz-button nz-dropdown><i nz-icon nzType="export" nzTheme="outline"></i>导出<i nz-icon type="down"></i></button>
+        <ul nz-menu>
+          <li nz-menu-item>
+            <button [nzLoading]="exportRiskReportLoading" nz-button nzType="default" (click)="onExportRiskReport()"><i nz-icon nzType="export" nzTheme="outline"></i>导出风险台账</button>
+          </li>
+          <li nz-menu-item>
+            <button [nzLoading]="exportLoading" nz-button nzType="default" (click)="onExport()"><i nz-icon nzType="export" nzTheme="outline"></i>导出预警记录</button>
+          </li>
+        </ul>
+      </nz-dropdown>
+      <!-- <button [nzLoading]="exportLoading" nz-button nzType="default" (click)="onExport()"><i nz-icon nzType="export" nzTheme="outline"></i>导出预警记录</button> -->
+    </div>
+  </div>
+  <nz-table #basicTable [nzShowTotal]="rangeTemplate" [nzData]="dataSet" class="table"
+    (nzPageIndexChange)="pageIndexChange($event)" [nzShowQuickJumper]="true" [(nzPageIndex)]="pageIndex" [nzLoading]="searchLoading" [nzTotal]="total"
+    [nzFrontPagination]="false">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>预警单位</th>
+        <th>零件号</th>
+        <th>零件名</th>
+        <th>不良症状</th>
+        <th>车款</th>
+        <th>车型</th>
+        <th>年款</th>
+        <th>待处理</th>
+        <th>总条数</th>
+        <th>所属任务</th>
+        <th>重点关注</th>
+        <th>创建人</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of basicTable.data; index as i">
+        <td>{{ (basicTable.nzPageIndex - 1) * 10 + i + 1 }}</td>
+        <td>{{item?.warningTask?.warningUnit}}</td>
+        <td [title]="item.partNo">{{item.partNo.length <= 5 ? item.partNo: item.partNo.substring(0, 5) + '...'}}</td>
+        <td>{{item.partName}}</td>
+        <td>{{item.syndromeModel.name}}</td>
+        <td>{{item?.warningTask?.carModels?.join(',') || '全部'}}</td>
+        <td>{{item?.warningTask?.carTypes?.join(',') || '全部'}}</td>
+        <td>{{item?.warningTask?.yearModels | years}}</td>
+        <td width="80px"> 
+          <span class="badge warning" *ngIf="item?.pendingCount > 0">{{item?.pendingCount}}</span>
+          <span class="badge" *ngIf="item.pendingCount == 0">0</span>
+        </td>
+        <td>{{item?.totalCount}}</td>
+        <td>{{item?.warningTask?.name}}</td>
+        <td>{{item?.focusType}}</td>
+        <td>{{item?.warningTask?.createBy}}</td>
+        <td class="action">
+          <a (click)="gotoInfo(item)">详情</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <ng-template #rangeTemplate let-range="range" let-total>
+    {{ range[0] }}-{{ range[1] }} 共 {{ total }} 项
+  </ng-template>
+</nz-card>

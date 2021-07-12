@@ -1,0 +1,51 @@
+.ontology-node {
+    white-space: pre-wrap;
+    word-break: break-all;
+    overflow-y: auto;
+}
+
+.tree-node {
+    padding-left: 20px;
+
+    &.root {
+        padding-left: 15px;
+    }
+}
+
+.tree-node-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    height: 30px;
+    padding-right: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.tree-node-color {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    flex: 0 0 30px;
+    margin-right: 2px;
+}
+
+.tree-node-name {
+    display: inline-block;
+    flex: auto;
+    padding: 0 8px;
+    margin-right: 2px;
+    line-height: 30px;
+    border: none;
+    background: none;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    
+    &:hover {
+        background: #ccc;
+    }
+}

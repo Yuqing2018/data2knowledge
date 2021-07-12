@@ -1,0 +1,11 @@
+parameters:
+- name: projects
+  type: string
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: Dotnet build
+  inputs:
+    command: build
+    projects: ${{ parameters.projects }}
+    arguments: '--configuration $(BuildConfiguration)'

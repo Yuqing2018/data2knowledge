@@ -1,0 +1,96 @@
+<div class="title">
+  <h2>正式问答知识库</h2>
+</div>
+
+<nz-card class="page-content">
+  <form class="table-search-form" nz-form>
+    <div nz-row [nzGutter]="{ xs: 8, sm: 8, md: 8, lg: 24, xl: 48, xxl: 48 }">
+      <div nz-col nzMd="12" nzSm="24">
+        <nz-form-item nzFlex>
+          <nz-form-label [nzFor]="'template'">知识模板</nz-form-label>
+          <nz-form-control>
+            <shared-knowledge-template-select name="tmplId" [(ngModel)]="searchQuery.tmplId" [attr.id]="'template'">
+            </shared-knowledge-template-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzMd="12" nzSm="24">
+        <nz-form-item nzFlex>
+          <nz-form-label [nzFor]="'faqTemplate'">问答模板</nz-form-label>
+          <nz-form-control>
+            <nz-input-group nzCompact>
+              <nz-select name="searchType" [(ngModel)]="searchQuery.searchType">
+                <nz-option [nzLabel]="'标准问题'" [nzValue]="1"></nz-option>
+                <nz-option [nzLabel]="'标准回答'" [nzValue]="2"></nz-option>
+                <nz-option [nzLabel]="'问答模板'" [nzValue]="3"></nz-option>
+              </nz-select>
+              <input type="text" nz-input name="searchKeyword" [(ngModel)]="searchQuery.searchKeyword"
+                style="width:50%;" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="{ xs: 8, sm: 8, md: 8, lg: 24, xl: 48, xxl: 48 }">
+      <div nz-col nzMd="12" nzSm="24">
+        <nz-form-item nzFlex>
+          <nz-form-label [nzFor]="'updateRange'">更新日期</nz-form-label>
+          <nz-form-control>
+            <nz-range-picker [attr.id]="'updateRange'" name="updateRange" [(ngModel)]="dateRange"
+              [nzFormat]="'yyyy/MM/dd'">
+            </nz-range-picker>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzMd="12" nzSm="24">
+        <nz-form-item nzFlex>
+          <nz-form-label [nzFor]="'faqTemplate'">状态</nz-form-label>
+          <nz-form-control>
+            <nz-select name="status" [(ngModel)]="searchQuery.status">
+              <nz-option [nzLabel]="'上线'" [nzValue]="0"></nz-option>
+              <nz-option [nzLabel]="'下线'" [nzValue]="2"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  </form>
+  <div class="table-search-action">
+    <button nz-button nzType="primary" (click)="onSearch()">查询</button>
+    <button nz-button nzType="default" (click)="onResetSearch()">重置</button>
+  </div>
+  <!-- <div class="table-title">
+    <span class="title">问答列表</span>
+    <span class="num">共 {{ total }} 条记录</span>
+  </div> -->
+  <nz-table class="search-table" #basicTable [nzLoading]="loading" [nzTotal]="total"
+    [(nzPageIndex)]="searchQuery.pageIndex" [nzData]="faqList" [nzFrontPagination]="false"
+    (nzPageIndexChange)="getList()">
+    <thead>
+      <tr>
+        <!-- <th>知识模板</th>
+        <th>问答模板</th> -->
+        <th>标准问题</th>
+        <th>标准回答</th>
+        <th>关联策略</th>
+        <th>状态</th>
+        <th>版本号</th>
+        <th>更新日期</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <!-- <td>{{ data.knowledgeTmpName }}</td>
+        <td>{{ data.faqTmplName }}</td> -->
+        <td><a [routerLink]="['/faq',data.id]">{{ data.question }}</a></td>
+        <td>
+          <div class="long-text" [innerHtml]="data.answer  | safe: 'html'"></div>
+        </td>
+        <td>{{ data.channelName }}</td>
+        <td>{{ data.status }}</td>
+        <td>{{ data.version }}</td>
+        <td>{{ data.startTime }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-card>

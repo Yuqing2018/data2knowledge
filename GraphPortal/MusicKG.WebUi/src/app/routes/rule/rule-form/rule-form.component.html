@@ -1,0 +1,53 @@
+<div class="operate-button">
+  <button nz-button nzType="primary"><i nz-icon type="plus-circle" theme="outline"></i>{{ isDict ? '新建词典' : '新增条目' }}</button>
+  <button nz-button nzType="primary" *ngIf="isDict"><i nz-icon type="upload" theme="outline"></i>上传字典</button>
+  <button nz-button nzType="primary" *ngIf="isDict"><i nz-icon type="download" theme="outline"></i>下载字典</button>
+</div>
+
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzRequired nzFor="name">{{ isDict ? '字典名称' : '正则表达式名称' }}</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <input id="name" type="text" nz-input formControlName="name">
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzFor="calss_name">类名称</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select id="calss_name" formControlName="calss_name">
+        <nz-option *ngFor="let option of className" [nzLabel]="option" [nzValue]="option"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item *ngIf="isDict">
+    <nz-form-label [nzSpan]="8" nzFor="entity_name">Entity名称</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select id="entity_name" formControlName="entity_name">
+        <nz-option *ngFor="let option of entityName" [nzLabel]="option" [nzValue]="option"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+
+<nz-table #basicTable [nzData]="dataSet" nzShowPagination="false">
+  <thead>
+    <tr>
+      <th>{{ isDict ? '词元' : '正则表达式' }}</th>
+      <th>{{ isDict ? '表现形式' : '最小字符数' }}</th>
+      <th>{{ isDict ? '词性' : '最大字符数' }}</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{data.word}}</td>
+      <td>{{data.Shorthand}}</td>
+      <td>{{data.speech}}</td>
+      <td class="form-action">
+        <i nz-icon type="edit" theme="outline"></i>
+        <i nz-icon type="delete" theme="outline"></i>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+ 

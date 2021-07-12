@@ -1,0 +1,20 @@
+parameters:
+- name: nodejsVersion
+  type: string
+  default: 14.x
+
+steps:
+- task: NodeTool@0
+  displayName: Install Node.js ${{ parameters.nodejsVersion }}
+  inputs:
+    versionSpec: ${{ parameters.nodejsVersion }}
+- task: Bash@3
+  displayName: Install chrome
+  inputs:
+    targetType: inline
+    script: |
+      sudo apt-get update
+      sudo apt-get install -y software-properties-common
+      sudo add-apt-repository -y ppa:canonical-chromium-builds/stage
+      sudo apt-get update
+      sudo apt-get install -y chromium-browser

@@ -1,0 +1,53 @@
+parameters:
+- name: versioningScheme
+  type: string
+  default: byPrereleaseNumber
+- name: projects
+  type: string
+- name: majorVersion
+  type: string
+  default: '1'
+- name: minorVersion
+  type: string
+  default: '0'
+- name: patchVersion
+  type: string
+  default: '0'
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: Dotnet pack
+  condition: and(succeeded(), eq('${{ parameters.versioningScheme }}', 'byPrereleaseNumber'))
+  inputs:
+    command: 'pack'
+    packagesToPack: ${{ parameters.projects }}
+    packDirectory: $(Build.ArtifactStagingDirectory)
+    versioningScheme: ${{ parameters.versioningScheme }}
+    majorVersion: ${{ parameters.majorVersion }}
+    minorVersion: ${{ parameters.minorVersion }}
+    patchVersion: ${{ parameters.patchVersion }}
+- task: DotNetCoreCLI@2
+  displayName: Dotnet pack
+  condition: and(succeeded(), eq('${{ parameters.versioningScheme }}', 'byEnvVar'))
+  inputs:
+    command: 'pack'
+    packagesToPack: ${{ parameters.projects }}
+    packDirectory: $(Build.ArtifactStagingDirectory)
+    versioningScheme: ${{ parameters.versioningScheme }}
+    versionEnvVar: BUILD_BUILDNUMBER
+- task: DotNetCoreCLI@2
+  displayName: Dotnet pack
+  condition: and(succeeded(), eq('${{ parameters.versioningScheme }}', 'off'))
+  inputs:
+    command: 'pack'
+    packagesToPack: ${{ parameters.projects }}
+    packDirectory: $(Build.ArtifactStagingDirectory)
+    versioningScheme: ${{ parameters.versioningScheme }}
+- task: DotNetCoreCLI@2
+  displayName: Dotnet pack
+  condition: and(succeeded(), eq('${{ parameters.versioningScheme }}', 'byBuildNumber'))
+  inputs:
+    command: 'pack'
+    packagesToPack: ${{ parameters.projects }}
+    packDirectory: $(Build.ArtifactStagingDirectory)
+    versioningScheme: ${{ parameters.versioningScheme }}

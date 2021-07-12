@@ -1,0 +1,128 @@
+<form nz-form [formGroup]="validateForm">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="4" nzRequired>配置名称</nz-form-label>
+      <nz-form-control [nzSpan]="17" nzHasFeedback>
+        <input  nz-input formControlName="configName" placeholder="请输入配置名称">
+        <nz-form-explain *ngIf="validateForm.get('configName').dirty && validateForm.get('configName').errors || validateForm.get('configName').pending ">
+          <ng-container *ngIf="validateForm.get('configName').hasError('required')">
+            Please input your configName!
+          </ng-container>
+          <ng-container *ngIf="validateForm.get('configName').hasError('duplicated')">
+            The configName is redundant!
+          </ng-container>
+          <ng-container *ngIf="validateForm.get('configName').pending">
+            Validating...
+          </ng-container>
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="4" >描<span style="visibility: hidden;">描述</span>述</nz-form-label>
+      <nz-form-control [nzSpan]="17" >
+        <textarea  nz-input formControlName="desc" placeholder="描述" ></textarea>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="4" nzRequired>设置采集区域</nz-form-label>
+      <div>
+        <nz-form-control [nzSpan]="17" >
+            <i style="cursor:pointer;margin:0 10px;" (click)="addArea()" nz-icon type="plus-circle" theme="outline"></i>
+        </nz-form-control>
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control [nzSpan]="17" [nzOffset]="4">
+            <nz-card [formGroup]="areaForm[i]" class="area" *ngFor="let item of areaArray let i=index">
+              <div class="close"><i (click)="delArea(i)" nz-icon type="close" theme="outline"></i></div>
+              <nz-form-item>
+                <nz-form-label [nzSpan]="5" nzRequired>区域名称</nz-form-label>
+                <nz-form-control [nzSpan]="12" nzHasFeedback>
+                  <input   nz-input formControlName="area_name" placeholder="请输入区域名称">
+                  <nz-form-explain *ngIf="areaForm[i].get('area_name').dirty && areaForm[i].get('area_name').errors || areaForm[i].get('area_name').pending ">
+                    <ng-container *ngIf="areaForm[i].get('area_name').hasError('required')">
+                      Please input your areaName!
+                    </ng-container>
+                    <ng-container *ngIf="areaForm[i].get('area_name').hasError('duplicated')">
+                      The areaName is redundant!
+                    </ng-container>
+                    <ng-container *ngIf="areaForm[i].get('area_name').pending">
+                      Validating...
+                    </ng-container>
+                  </nz-form-explain>
+                </nz-form-control>
+                <nz-form-control [nzSpan]="6" [nzOffset]="1">
+                    <label nz-checkbox formControlName="is_stroll">滚动加载</label>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label [nzSpan]="5" nzRequired>U R L</nz-form-label>
+                <nz-form-control [nzSpan]="19" nzHasFeedback>
+                  <input  nz-input formControlName="page_url" placeholder="请输入URL">
+                  <nz-form-explain *ngIf="areaForm[i].get('page_url').dirty && areaForm[i].get('page_url').errors || areaForm[i].get('page_url').pending ">
+                    <ng-container *ngIf="areaForm[i].get('page_url').hasError('required')">
+                      Please input your U R L!
+                    </ng-container>
+                    <ng-container *ngIf="areaForm[i].get('page_url').hasError('duplicated')">
+                      The U R L is redundant!
+                    </ng-container>
+                    <ng-container *ngIf="areaForm[i].get('page_url').pending">
+                      Validating...
+                    </ng-container>
+                  </nz-form-explain>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label [nzSpan]="5" nzRequired>区域XPath</nz-form-label>
+                <nz-form-control [nzSpan]="19" nzHasFeedback>
+                  <input  nz-input formControlName="target_xpath" placeholder="请输入区域XPath">
+                  <nz-form-explain *ngIf="areaForm[i].get('target_xpath').dirty && areaForm[i].get('target_xpath').errors || areaForm[i].get('target_xpath').pending ">
+                    <ng-container *ngIf="areaForm[i].get('target_xpath').hasError('required')">
+                      Please input your areaXPath!
+                    </ng-container>
+                    <ng-container *ngIf="areaForm[i].get('target_xpath').hasError('duplicated')">
+                      The areaXPath is redundant!
+                    </ng-container>
+                    <ng-container *ngIf="areaForm[i].get('target_xpath').pending">
+                      Validating...
+                    </ng-container>
+                  </nz-form-explain>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label [nzSpan]="5" nzRequired>标题XPath</nz-form-label>
+                <nz-form-control [nzSpan]="19" nzHasFeedback>
+                  <input  nz-input formControlName="article_title_xpath" placeholder="请输入标题XPath">
+                  <nz-form-explain *ngIf="areaForm[i].get('article_title_xpath').dirty && areaForm[i].get('article_title_xpath').errors || areaForm[i].get('article_title_xpath').pending ">
+                    <ng-container *ngIf="areaForm[i].get('article_title_xpath').hasError('required')">
+                      Please input your titleXPath!
+                    </ng-container>
+                    <ng-container *ngIf="areaForm[i].get('article_title_xpath').hasError('duplicated')">
+                      The titleXPath is redundant!
+                    </ng-container>
+                    <ng-container *ngIf="areaForm[i].get('article_title_xpath').pending">
+                      Validating...
+                    </ng-container>
+                  </nz-form-explain>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label [nzSpan]="5" nzRequired>正文XPath</nz-form-label>
+                <nz-form-control [nzSpan]="19" nzHasFeedback>
+                  <input  nz-input formControlName="article_content_xpath" placeholder="请输入正文XPath">
+                  <nz-form-explain *ngIf="areaForm[i].get('article_content_xpath').dirty && areaForm[i].get('article_content_xpath').errors || areaForm[i].get('article_content_xpath').pending ">
+                    <ng-container *ngIf="areaForm[i].get('article_content_xpath').hasError('required')">
+                      Please input your mainbodyXPath!
+                    </ng-container>
+                    <ng-container *ngIf="areaForm[i].get('article_content_xpath').hasError('duplicated')">
+                      The mainbodyXPath is redundant!
+                    </ng-container>
+                    <ng-container *ngIf="areaForm[i].get('article_content_xpath').pending">
+                      Validating...
+                    </ng-container>
+                  </nz-form-explain>
+                </nz-form-control>
+              </nz-form-item>
+            </nz-card>
+        </nz-form-control>
+      </nz-form-item>
+  </form>

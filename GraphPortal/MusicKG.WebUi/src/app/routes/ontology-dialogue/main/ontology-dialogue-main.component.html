@@ -1,0 +1,63 @@
+<div class="page-header">
+  <div class="page-title">
+    Ontology管理
+  </div>
+  <nz-tabset [nzTabBarExtraContent]="extraTemplate" (nzSelectChange)="tabSelect($event)">
+    <nz-tab nzTitle="实体">
+    </nz-tab>
+    <nz-tab nzTitle="意图">
+    </nz-tab>
+  </nz-tabset>
+</div>
+
+<nz-card class="page-content">
+  <div *ngIf="tabIndex == 0" class="ontology-tree" [class.none-data]="!ontology">
+    <ng-container *ngIf="ontology">
+      <div class="tree-node-children">
+        <ng-template *ngFor="let node of ontology" [ngTemplateOutlet]="treeNodeTemplate"
+          [ngTemplateOutletContext]="{ $implicit: node }">
+        </ng-template>
+      </div>
+    </ng-container>
+    <div class="empty" *ngIf="!ontology">
+      暂无数据
+    </div>
+  </div>
+  <div *ngIf="tabIndex == 1" class="ontology-tree" [class.none-data]="!intentList">
+    <ng-container *ngIf="intentList && intentList.length > 0">
+      <div class="tree-node intent" *ngFor="let intent of intentList">
+        <div class="tree-node-title">
+          <span class="tree-node-name">{{ intent?.Name}}</span>
+        </div>
+      </div>
+    </ng-container>
+    <div class="empty" *ngIf="!intentList || intentList.length == 0">
+      暂无数据
+    </div>
+  </div>
+</nz-card>
+
+<ng-template #treeNodeTemplate let-node let-parent="parent">
+  <div class="tree-node">
+    <div class="tree-node-title">
+      <span class="tree-node-expand" (click)="node.isExpand = !node.isExpand"
+        *ngIf="node.Children && node.Children.length > 0">
+        <i nz-icon [type]="node.isExpand ? 'caret-down' : 'caret-right'"></i>
+      </span>
+      <span class="tree-node-name" [attr.title]="node.EntityType">{{ node.EntityType }}</span>
+    </div>
+    <div class="tree-node-children" *ngIf="node.isExpand">
+      <ng-container *ngFor="let children of node?.Children">
+        <ng-template [ngTemplateOutlet]="treeNodeTemplate"
+          [ngTemplateOutletContext]="{ $implicit: children, parent: node }">
+        </ng-template>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #extraTemplate>
+  <nz-upload [nzCustomRequest]="customReq" [nzShowUploadList]="false" (nzChange)="handleChange($event)">
+    <button [nzLoading]="loading" nz-button nzType="primary"><i nz-icon type="upload" theme="outline"></i>上传文件</button>
+  </nz-upload>
+</ng-template>

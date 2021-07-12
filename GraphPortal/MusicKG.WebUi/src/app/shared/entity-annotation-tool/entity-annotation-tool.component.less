@@ -1,0 +1,88 @@
+km-entity-word {
+    margin: 2px 0px;
+    display: inline-block;
+    position: relative;
+    z-index: 100;
+    font-size: 18px;
+    -webkit-transition: margin-top .5s ease;
+    -moz-transition: margin-top .5s ease;
+    transition: margin-top .5s ease;
+    .word-text {
+        position: relative;
+        z-index: 90;
+    }
+    .box-selection {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 95;
+    }
+    .word-box {
+        position: absolute;
+    }
+}
+
+km-entity-label {
+    position: absolute;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    user-select: none;
+    box-sizing: content-box;
+    cursor: pointer;
+    z-index: 110;
+    border-bottom: 2px solid transparent;
+    border-top: 2px solid transparent;
+    &.active {
+        border-top: 2px solid #00B2EF;
+        border-bottom: 2px solid #00B2EF;
+        border-color: #00B2EF!important;  
+    }
+    &.isBegin {
+        border-left: 2px solid transparent;
+    }
+    &.isEnd {
+        border-right: 2px solid transparent;
+    }  
+}
+
+.label-close {
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    z-index: 300;
+    cursor: pointer;
+    width: 27px;
+    height: 27px;
+    line-height: 23px;  
+    border-top: 2px solid #00B2EF;
+    border-bottom: 2px solid #00B2EF;
+    border-right: 2px solid #00B2EF;
+}
+
+.label-line {
+    position: absolute;
+    z-index: 20;
+    width: 2px;
+    border: 1px dashed #ccc;
+}
+
+.label-user {
+    position: absolute;
+    font-size: 12px; 
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+km-entity-annotation-tool {
+    display: block;
+    position: relative;
+    margin: 30px;
+    user-select: none;
+    cursor: default;
+    letter-spacing: 3px;
+    height: 100%;
+}

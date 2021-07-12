@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AuthHeaderMissingMessage" xml:space="preserve">
+    <value>Authorization header is missing.</value>
+  </data>
+  <data name="AuthHeaderWrongMessage" xml:space="preserve">
+    <value>Invalid authorization header.</value>
+  </data>
+  <data name="AuthUserFailedMessage" xml:space="preserve">
+    <value>Failed to authorize user.</value>
+  </data>
+  <data name="BearerErrorMessage" xml:space="preserve">
+    <value>Bearer error="{0}"</value>
+  </data>
+  <data name="CarTypeCannotBeNullOrWhiteSpace" xml:space="preserve">
+    <value>The carType cannot be null or white space.</value>
+  </data>
+  <data name="ConfirmRecordCannotBeNull" xml:space="preserve">
+    <value>Confirm record cannot be null.</value>
+  </data>
+  <data name="DataSourceMustTranlsatedFromMariaDB" xml:space="preserve">
+    <value>Only data source 'GOV'. 'Media' can be imported from excel file.</value>
+  </data>
+  <data name="ExceedOverallMaxDays" xml:space="preserve">
+    <value>Exceed overall max query days.</value>
+  </data>
+  <data name="ExceedOverallMaxMonth" xml:space="preserve">
+    <value>Exceed overall max query month.</value>
+  </data>
+  <data name="ExceedOverallMaxWeek" xml:space="preserve">
+    <value>Exceed overall max query week.</value>
+  </data>
+  <data name="FaultDateMustInThreeMonth" xml:space="preserve">
+    <value>Fault date must in 90 days.</value>
+  </data>
+  <data name="FeatureNotFoundMessage" xml:space="preserve">
+    <value>File for '{0}' must have valid feature '{1}', line: {2}.</value>
+  </data>
+  <data name="HondaSyndromeCreateFailedMessage" xml:space="preserve">
+    <value>Failed to create the honda syndrome.</value>
+  </data>
+  <data name="HondaSyndromeNameEmtpyMessage" xml:space="preserve">
+    <value>Honda syndrome name can not be empty.</value>
+  </data>
+  <data name="HondaSyndromeNotExistMessage" xml:space="preserve">
+    <value>Honda syndrome does not exisst.</value>
+  </data>
+  <data name="HondaSyndromeUpdateFailedMessage" xml:space="preserve">
+    <value>Failed to update the honda syndrome.</value>
+  </data>
+  <data name="IgnoredVehicleAlreadyExists" xml:space="preserve">
+    <value>Ignored vehicle data already exists.</value>
+  </data>
+  <data name="IgnoredVehicleNotExists" xml:space="preserve">
+    <value>Ignored vehicle data does not exist.</value>
+  </data>
+  <data name="KeyFeatureNotFoundMessage" xml:space="preserve">
+    <value>File for '{0}' must have at least one non-empty feature '{1}'.</value>
+  </data>
+  <data name="MonthFormatIsWrong" xml:space="preserve">
+    <value>The param month format is wrong.</value>
+  </data>
+  <data name="NoRelatedQisInfo" xml:space="preserve">
+    <value>No related qis info.</value>
+  </data>
+  <data name="ParamsCannotBeNullOrEmpty" xml:space="preserve">
+    <value>params can not be null or totally empty.</value>
+  </data>
+  <data name="ParseTokenFailedMessage" xml:space="preserve">
+    <value>Failed to parse token.</value>
+  </data>
+  <data name="PartNameCannotBeEmpty" xml:space="preserve">
+    <value>Part name cannot be empty.</value>
+  </data>
+  <data name="QICNoIsInvalid" xml:space="preserve">
+    <value>QICNo is invalid.</value>
+  </data>
+  <data name="QISInfoCannotBeFound" xml:space="preserve">
+    <value>QIS info cannot be found.</value>
+  </data>
+  <data name="RawIdCannotBeEmpty" xml:space="preserve">
+    <value>RawId cannot be empty.</value>
+  </data>
+  <data name="RawIdNotExists" xml:space="preserve">
+    <value>Raw id does not exist.</value>
+  </data>
+  <data name="ReannotationTaskDoesNotExist" xml:space="preserve">
+    <value>Data reannotation task does not exist.</value>
+  </data>
+  <data name="ReannotationTaskFaultTimeSpanOverlap" xml:space="preserve">
+    <value>Reannotation task fault time span is overlap.</value>
+  </data>
+  <data name="SchemaWrongMessage" xml:space="preserve">
+    <value>Invalid scheme.</value>
+  </data>
+  <data name="StartTimeMustBeLessThanEndTime" xml:space="preserve">
+    <value>Start time must be less than end time.</value>
+  </data>
+  <data name="SyndromeCannotBeEmpty" xml:space="preserve">
+    <value>Syndrome cannot be empty.</value>
+  </data>
+  <data name="SyndromeNotExists" xml:space="preserve">
+    <value>Syndrome does not exist.</value>
+  </data>
+  <data name="TokenizationProcessFailed" xml:space="preserve">
+    <value>Tokenization process failed, details: {0}.</value>
+  </data>
+  <data name="TokenWrongMessage" xml:space="preserve">
+    <value>Invalid token.</value>
+  </data>
+  <data name="UnauthorizedMessage" xml:space="preserve">
+    <value>Unauthorized operation.</value>
+  </data>
+  <data name="UpdateVehicleFaultFailed" xml:space="preserve">
+    <value>Update vehicle fault data failed.</value>
+  </data>
+  <data name="UserUnauthorizedMessage" xml:space="preserve">
+    <value>Invalid token or unauthorized access.</value>
+  </data>
+  <data name="VehicleFaultQISInfoToUpdateCannotBeNull" xml:space="preserve">
+    <value>Vehicle fault  QIS info to update can not be null or totally empty</value>
+  </data>
+  <data name="WarningRecordCannotBeFound" xml:space="preserve">
+    <value>Warning record cannot be found.</value>
+  </data>
+  <data name="WarningRecordConfirmUpdateFailed" xml:space="preserve">
+    <value>Failed to update the warning record confirm message</value>
+  </data>
+  <data name="WarningRecordCreateFailed" xml:space="preserve">
+    <value>Failed to save a warning record.</value>
+  </data>
+  <data name="WarningRecordMatchFrequencyUpdateFailed" xml:space="preserve">
+    <value>Faild to update MatchedFrequency flag.</value>
+  </data>
+  <data name="WarningTaskCreateFailed" xml:space="preserve">
+    <value>Failed to create warning task.</value>
+  </data>
+  <data name="WarningTaskDeleteFailed" xml:space="preserve">
+    <value>Failed to delete the warning task.</value>
+  </data>
+  <data name="WarningTaskDetailCreateFailed" xml:space="preserve">
+    <value>Failed to create warning task detail.</value>
+  </data>
+  <data name="WarningTaskDetailUpdateFailed" xml:space="preserve">
+    <value>Failed to update the warning task detail.</value>
+  </data>
+  <data name="WarningTaskDoesNotExist" xml:space="preserve">
+    <value>The warning task does not exist.</value>
+  </data>
+  <data name="WarningTaskNameAlreadyExists" xml:space="preserve">
+    <value>Warning task name already exists.</value>
+  </data>
+  <data name="WarningTaskUpdateFailed" xml:space="preserve">
+    <value>Failed to update the warning task.</value>
+  </data>
+</root>

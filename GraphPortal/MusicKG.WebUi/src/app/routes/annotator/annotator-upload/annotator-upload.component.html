@@ -1,0 +1,21 @@
+<form nz-form>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="email">数据类型</nz-form-label>
+    <nz-form-control [nzSpan]="18">
+      <nz-radio-group name="type" [(ngModel)]="type" [nzButtonStyle]="'solid'">
+        <label nz-radio-button nzValue="GOV">总局信息</label>
+        <label nz-radio-button nzValue="MEDIA_MAIN">媒体(总表)</label>
+        <label nz-radio-button nzValue="MEDIA_SUB">媒体(附表)</label>
+      </nz-radio-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="email">上传文件</nz-form-label>
+    <nz-form-control [nzSpan]="18">
+      <a (click)="selectedFile()"><i nz-icon nzType="upload" nzTheme="outline"></i> 点击上传 </a>
+      <span class="name" *ngIf="fileName">{{ fileName }}</span>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+
+<input type="file" style="display: none;" #fileEl (change)="fileUpload()" />

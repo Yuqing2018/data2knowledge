@@ -1,0 +1,6 @@
+<div class="tag-node">
+  <div class="tag-child-node" *ngFor="let children of tagList" (click)="selectTag(children.id)">
+    <span class="tag-color" [style.backgroundColor]="children.color"></span>
+    <div class="tag-name">{{ children.name }}</div>
+  </div>
+</div>

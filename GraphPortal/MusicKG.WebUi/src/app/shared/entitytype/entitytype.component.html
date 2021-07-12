@@ -1,0 +1,32 @@
+<div nz-row *ngIf="entries">
+  <div nz-col nzSpan="12" class="entries-container">
+    <div class="entries-item">
+      <div class="entries-content">
+        <div class="entitytype-container" *ngIf="!entries.Value.inputable">
+          <div class="entitytype-content" (click)="editEntity(entries.Value.isInput, $event)">
+            <span>{{ entries.Value.value }}</span>
+          </div>
+          <i nz-icon type="close-circle" theme="fill" (click)="delete('entity')"></i>
+        </div>
+        <input class="addInput" *ngIf="entries.Value.inputable" type="text"
+          (keyup.enter)="editEntity(entries.Value.inputable)" [(ngModel)]="entries.Value.value">
+      </div>
+    </div>
+  </div>
+  <div nz-col nzSpan="12">
+    <div class="synonyms-item">
+      <input class="main-input" type="text" placeholder="实体词近义词（请按Enter确认）" (keyup.enter)="addAlias()"
+        [(ngModel)]="value">
+      <div class="synonyms-content" *ngFor="let item of entries.Synonyms index as idx">
+        <div class="entitytype-container" *ngIf="!item.inputable">
+          <div class="entitytype-content" (click)="editAlias(idx, item.inputable, $event)">
+            <span>{{ item.value }}</span>
+          </div>
+          <i nz-icon type="close-circle" theme="fill" (click)="delete('alias', idx)"></i>
+        </div>
+        <input class="addInput" *ngIf="item.inputable" type="text" (keyup.enter)="editAlias(idx, item.inputable)"
+          [(ngModel)]="item.value">
+      </div>
+    </div>
+  </div>
+</div>

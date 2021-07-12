@@ -1,0 +1,84 @@
+.table-operator{
+    .btn{
+        margin: 10px 10px 10px 0;
+    }
+    form{
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+.file-list{
+    li{
+        // width: 100%;
+        position: relative;
+        margin: 5px auto;
+        &:hover{
+            background: #e6f7ff;
+            .close{
+                display: block;
+            }
+        }
+        i{
+            display: inline-block;
+            font-style: normal;
+            vertical-align: -0.125em;
+            text-align: center;
+            text-transform: none;
+            line-height: 0;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.45);
+            position: absolute;
+            top: 5px;
+            &.close{
+                right:5px;
+                font-size: 11px;
+                display: none;
+            }
+        }
+        span{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding-left: 22px;
+            padding-right: 22px;
+            width: 100%;
+            display: inline-block;
+        }
+        
+    }
+}
+nz-alert {
+    display: block;
+    margin-top: 10px;
+}
+.ant-form-inline,.ant-form-item{
+    width: 100%;
+}
+
+.error-info {
+    color: #f5222d;
+    line-height: 18px;
+    margin-top: 3px;
+}
+
+.error-input {
+    border-color: #f5222d;
+    &:focus {
+        box-shadow: 0 0 0 2px rgba(245,34,45,.2);
+    }
+}
+
+nz-upload {
+    display: block;
+    margin-top: 15px;
+}
+
+
+.graphContent {
+    text-align: center;
+    img {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,3 @@
+﻿db.WorkspaceTypes.update({ "_id": ObjectId("5c414c0a5a01cf00010f9661") }, { "_id": ObjectId("5c414c0a5a01cf00010f9661"), "Name": "NER", "WorkflowId": ObjectId("5c4a759820b5d45946662d48"), "Status": 0 }, { upsert: true });
+db.WorkspaceTypes.update({ "_id": ObjectId("5d831ababab4cf767dcaabbf") }, { "_id": ObjectId("5d831ababab4cf767dcaabbf"), "Name": "Graph", "WorkflowId": ObjectId("5c4a759820b5d45946662d48"), "Status": 0 }, { upsert: true });
+db.WorkspaceTypes.update({ "_id": ObjectId("5d89b63b8d13162a3ca2af1b") }, { "_id": ObjectId("5d89b63b8d13162a3ca2af1b"), "Name": "TextClassification", "WorkflowId": ObjectId("5d898bcd1415dc2e40ebb601"), "Status": 0 }, { upsert: true });

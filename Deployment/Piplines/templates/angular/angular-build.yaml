@@ -1,0 +1,11 @@
+parameters:
+- name: workingDir
+  type: string
+
+steps:
+- task: Npm@1
+  displayName: Npm build
+  inputs:
+    command: custom
+    workingDir: ${{ parameters.workingDir }}
+    customCommand: run build -- --prod

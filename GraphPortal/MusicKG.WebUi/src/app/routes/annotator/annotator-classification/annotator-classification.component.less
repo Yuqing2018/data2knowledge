@@ -1,0 +1,80 @@
+nz-spin {
+    display: block;
+    height: 300px;
+}
+
+.page-content {
+    height: ~ "calc(100vh - 122px)";
+    overflow-y: auto;
+    margin: 0px;
+    background: #f0f2f5;
+}
+
+.table-content {
+    background: #ffffff;
+    padding: 12px;
+}
+
+.page-header {
+    background: #f6f6f6;
+}
+
+:host /deep/ .ant-card-body {
+    padding-top: 20px;
+}
+
+:host /deep/ .ant-table-header-column {
+    word-break: keep-all;
+}
+
+:host /deep/ .ant-table-tbody>tr>td {
+    white-space: pre-line;
+    vertical-align: top;
+    word-break: break-all;
+    max-width: 240px;
+}
+
+:host /deep/ .modal-label {
+    line-height: 39px;
+}
+
+.table-action {
+
+    button {
+        margin-right: 15px;
+    }
+
+    a {
+        padding-left: 20px;
+    }
+}
+
+ul.info {
+    list-style: none;
+    padding-left: 20px;
+}
+
+:host /deep/ km-dictionary-item-select nz-select {
+    display: inline-block;
+    width: 120px;
+}
+
+km-dictionary-id-select,
+km-dictionary-input-select {
+    display: block;
+    width: 120px;
+}
+
+nz-tag {
+    display: inline-block;
+    margin-top: 8px;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.select-tips {
+    font-size: 14px;
+    padding-right: 18px;
+}

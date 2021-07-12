@@ -1,0 +1,75 @@
+@header-height: 60px;
+@titleFontSize: 28px;
+
+.logo {
+  height: @header-height;
+  font-size: @titleFontSize;
+  line-height: @header-height;
+  padding-left: 24px;
+  color: #fafafa;
+  display: inline-block;
+  font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+nz-header {
+  background: #002538;
+  padding: 0px;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+  box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+  overflow: hidden;
+  color: #fff;
+  height: @header-height;
+  line-height: @header-height;
+}
+
+ul.header-menu {
+  float: right;
+  list-style: none;
+  padding-right: 10px;
+
+  li {
+    cursor: pointer;
+    float: left;
+
+    &:hover {
+      background: #001529;
+    }
+  }
+
+  .lange i,
+  .user span {
+    font-size: 14px;
+    padding: 0 12px;
+    display: inline-block;
+    // max-width: 100px;
+    max-width: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: @header-height;
+  }
+}
+
+.header-nav {
+  float: right;
+}
+
+.admin-nav {
+  float: right;
+
+  ul {
+    overflow: hidden;
+    list-style: none;
+
+    li {
+      cursor: pointer;
+      padding: 0 20px;
+      float: left;
+    }
+  }
+}
+
+.selected {
+  background: #ff3a50;
+}

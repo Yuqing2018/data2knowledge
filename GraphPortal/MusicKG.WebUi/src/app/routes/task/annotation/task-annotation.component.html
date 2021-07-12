@@ -1,0 +1,92 @@
+<div class="page-header">
+  <div class="page-title">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        <a [routerLink]="['../../../']">标注任务</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        <a [routerLink]="['../../']">任务详情</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        标注
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <a class="back" [routerLink]="['../../']">
+      <i nz-icon type="arrow-left" theme="outline"></i> 返回
+    </a>
+  </div>
+</div>
+
+<div class="annotation-action">
+  <div class="page previous">
+    <i nz-icon type="left" theme="outline"></i> 上一篇
+  </div>
+  <div class="action">
+    <ul class="menu">
+      <li *ngIf="annotationService.mode =='detail'">
+        <span (click)="viewChange('entity')">
+          <i nz-icon type="rollback" theme="outline"></i> 返回
+        </span>
+      </li>
+      <li *ngIf="annotationService.mode =='entity'">
+        <span (click)="viewChange('detail')">
+          <i nz-icon type="zoom-in" theme="outline"></i> 查看详情
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div class="page next">
+    下一篇
+    <i nz-icon type="right" theme="outline"></i>
+  </div>
+</div>
+
+<div class="annotation">
+  <div class="text-content">
+    <div class="content-title">
+      <span>{{ annotation?.fileName }}</span>
+      <div class="title-action">
+        <nz-select [(ngModel)]="status" class="text-status">
+          <nz-option nzValue="1" nzLabel="标注中"></nz-option>
+          <nz-option nzValue="2" nzLabel="已提交"></nz-option>
+        </nz-select>
+        <button nz-button class="save" nzType="primary"><i nz-icon type="save" theme="outline"></i>保存</button>
+      </div>
+    </div>
+    <km-text-annotation [annotation]="annotation" (valueChange)="valueChange($event)"></km-text-annotation>
+  </div>
+  <nz-tabset (nzSelectChange)="tabChange($event)">
+    <nz-tab nzTitle="实体类型">
+      <ul class="item-list">
+        <li class="item" *ngFor="let entity of entityList">
+          <div class="item-title">
+            <span class="item-color" [style.background]="entity.color"></span>
+            <span class="item-name" (click)="addEntity(entity)">{{ entity.name }} </span>
+            <span class="item-expand" (click)="entity.isExpand = !entity.isExpand">
+              <i *ngIf="entity.isExpand" nz-icon type="caret-up" theme="outline"></i>
+              <i *ngIf="!entity.isExpand" nz-icon type="caret-down" theme="outline"></i>
+            </span>
+          </div>
+          <ul class="item-property-list" [@expandState]="entity.isExpand ?'active':'inactive'">
+            <li class="item-property" *ngFor="let property of entity.propertyList" (click)="addEntity(property)">
+              {{ property.name }}
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nz-tab>
+    <nz-tab nzTitle="关系">
+      <ul class="item-list">
+        <li class="item" *ngFor="let relation of relationList">
+          <div class="item-title">
+            <span class="item-relation"> - </span>
+            <span class="item-name">{{ relation.name }} </span>
+          </div>
+        </li>
+      </ul>
+    </nz-tab>
+    <nz-tab nzTitle="指代">
+
+    </nz-tab>
+  </nz-tabset>
+</div>

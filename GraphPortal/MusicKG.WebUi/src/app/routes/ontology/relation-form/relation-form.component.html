@@ -1,0 +1,48 @@
+<form nz-form [formGroup]="ontologyForm">
+    <nz-form-item>
+      <nz-form-label nzRequired [nzSm]="5">关系名称</nz-form-label>
+      <nz-form-control [nzSm]="18" nzHasFeedback>
+        <input nz-input formControlName="name">
+        <nz-form-explain *ngIf="ontologyForm.get('name').dirty && ontologyForm.get('name').errors">
+          <ng-container *ngIf="ontologyForm.get('name').hasError('required')">
+            请输入关系名称
+          </ng-container>
+          <ng-container *ngIf="ontologyForm.get('name').hasError('checkName')">
+            关系名称只能包含数字、字母、下划线
+          </ng-container>
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired [nzSm]="5">第一个Entity</nz-form-label>
+      <nz-form-control [nzSm]="18">
+          <nz-select [nzDisabled] = "disabled" formControlName="firstEntityId" nzShowSearch nzAllowClear nzPlaceHolder="请选择实体类型">
+              <nz-option *ngFor="let option of entityData" [nzLabel]="option.name" [nzValue]="option.id"></nz-option>
+            </nz-select>
+          <nz-form-explain *ngIf="hasError('firstEntityId')">第一个Entity不能为空</nz-form-explain>
+          <!-- <input nz-input formControlName="name"> -->
+        <!-- <nz-select nzShowSearch nzAllowClear nzMode="multiple" formControlName="attr">
+            <nz-option *ngFor="let option of attrList" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+        </nz-select> -->
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired [nzSm]="5">第二个Entity</nz-form-label>
+      <nz-form-control [nzSm]="18">
+          <nz-select  formControlName="secondEntityId" nzShowSearch nzAllowClear nzPlaceHolder="请选择实体类型">
+            <nz-option *ngFor="let option of entityData" [nzLabel]="option.name" [nzValue]="option.id"></nz-option>
+          </nz-select>
+          <nz-form-explain *ngIf="hasError('secondEntityId')">第二个Entity不能为空</nz-form-explain>
+          <!-- <input nz-input formControlName="name"> -->
+          <!-- <nz-select nzShowSearch nzAllowClear  formControlName="attrType">
+              <nz-option *ngFor="let option of attrTypeList" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+          </nz-select> -->
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="5">描述</nz-form-label>
+      <nz-form-control [nzSm]="18">
+          <textarea rows="4" nz-input formControlName="description"></textarea>
+      </nz-form-control>
+    </nz-form-item>
+  </form>

@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Actions\ConstructDataAction.cs" />
+    <Compile Remove="Actions\PreserveDataAction.cs" />
+    <Compile Remove="Data\DataConstructionActionData.cs" />
+    <Compile Remove="Data\DataPreservationActionData.cs" />
+    <Compile Remove="Executors\Abstractions\DataConstructor.cs" />
+    <Compile Remove="Executors\DefaultDataConstructor.cs" />
+    <Compile Remove="Executors\DefaultDataPreserver.cs" />
+    <Compile Remove="Options\DataConstructionOptions.cs" />
+    <Compile Remove="Options\DataPreservationOptions.cs" />
+    <Compile Remove="Tasks\DataPreserverSetttings.cs" />
+    <Compile Remove="Tasks\DataSourceSettings.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Scheduler\MusicKG.Scheduler.Engine\MusicKG.Scheduler.Engine.csproj" />
+    <ProjectReference Include="..\..\MusicKG.WebApi.ClientWrapper\MusicKG.WebApi.ClientWrapper.csproj" />
+    <ProjectReference Include="..\MusicKG.DataManager.Models\MusicKG.DataManager.Models.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,39 @@
+<div class="page-header">
+  <div class="page-title">
+    标注任务
+  </div>
+</div>
+
+<nz-card class="page-content">
+  <div *ngIf="isDialog" class="table-operator">
+    <button nz-button nzType="primary" (click)="addTask()"><i nz-icon type="plus" theme="outline"></i>新建任务</button>
+  </div>
+  <ng-template #totalTempl>共 {{total}} 条 </ng-template>
+  <nz-table #taskTable [nzShowTotal]="totalTempl" [nzLoading]="loadding" [nzTotal]="total" [nzPageIndex]="pageIndex"
+    [nzFrontPagination]="false" [nzData]="taskDataSet" (nzPageIndexChange)="searchData($event)">     
+    <thead>
+      <tr>
+        <th>任务名称</th>
+        <th>经理</th>
+        <th>标注人</th>
+        <th>最后期限</th>
+        <th nzShowFilter [nzFilters]="filterStatus" (nzFilterChange)="filterStatusChange($event)">状态</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of taskTable.data">
+        <td><a [routerLink]="[data.id]">{{data.name}}</a></td>
+        <td>{{ getUserNameByRole(data.annotators, 'Manager') }}</td>
+        <td>{{ getUserNameByRole(data.annotators) }}</td>
+        <td>{{data.expectedDueAt | date: 'yyyy-MM-dd' }}</td>
+        <td>{{data.status | taskStatus}}</td>
+        <td>
+          <a [class.disabeld]="data.status == 'ConflictResolved'" (click)="updateTask(data)">修改</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a nz-popconfirm nzTitle="确认删除该条记录吗？" (nzOnConfirm)="deleteTask(data.id)">删除</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-card>

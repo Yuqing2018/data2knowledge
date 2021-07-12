@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Tensorflow\**" />
+    <EmbeddedResource Remove="Tensorflow\**" />
+    <None Remove="Tensorflow\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\MusicKG.Tensorflow.Wrapper\MusicKG.Tensorflow.Wrapper.csproj" />
+    <ProjectReference Include="..\..\MusicKG.HondaPlugins.DataAccess\MusicKG.HondaPlugins.DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Files\chinese_L-12_H-768_A-12-vocab.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

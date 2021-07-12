@@ -1,0 +1,68 @@
+<nz-card class="page-content">
+    <div class="table-operate">
+        <div class="left">
+            <img src="./assets/img/config.png">
+            <span>任务设置</span>
+        </div>
+        <div class="right">
+            <button nz-button nzType="primary" (click)="add()"><i nz-icon nzType="plus"
+                    nzTheme="outline"></i>新增</button>
+        </div>
+    </div>
+    <nz-table #dataTable [nzData]="configList" [nzLoading]="isLoading">
+        <thead>
+            <tr>
+                <th>名称</th>
+                <th>车型</th>
+                <th>标注员</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of dataTable.data">
+                <td>
+                    {{ data.name }}
+                </td>
+                <td>
+                    {{ data.documentTags.join(',') }}
+                </td>
+                <td>
+                    {{ displayUser(data.annotators) }}
+                </td>
+                <td>
+                    <a class="action" (click)="edit(data)">修改</a>
+                    <a *ngIf="data.name !== 'Default'" nz-popconfirm nzTitle="确认删除该条记录吗?" (nzOnConfirm)="remove(data)" class="action">删除</a>
+                </td>
+            </tr>
+        </tbody>
+    </nz-table>
+</nz-card>
+
+<nz-modal [(nzVisible)]="isVisible" [nzOkLoading]="isLoading" nzTitle="{{ isEdit ? '修改': '新增' }}" (nzOnOk)="handleOk()"
+    (nzOnCancel)="handleCancel()">
+    <form *ngIf="taskForm" nz-form [formGroup]="taskForm">
+        <nz-form-item>
+            <nz-form-label nzRequired [nzSpan]="6">名称</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+                <input nz-input formControlName="name">
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzRequired]="isEdit?.name !== 'Default'" [nzSpan]="6">车型</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+                <nz-select nzMode="tags" [nzTokenSeparators]="[',']" formControlName="documentTags"
+                    nzPlaceHolder="输入车型，回车分割">
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label nzRequired [nzSpan]="6">标注员</nz-form-label>
+            <nz-form-control [nzSpan]="14">
+                <nz-select nzPlaceHolder="请选择" nzShowSearch formControlName="annotators">
+                    <nz-option *ngFor="let option of userList" [nzLabel]="option.name" [nzValue]="option.id">
+                    </nz-option>
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</nz-modal>

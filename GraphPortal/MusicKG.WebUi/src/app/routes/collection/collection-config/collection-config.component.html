@@ -1,0 +1,37 @@
+<div class="page-header">
+  <div class="page-title">
+    <div>
+      <i routerLink="../" style="margin-right:15px;cursor:pointer" nz-icon type="left" theme="outline"></i>采集任务管理 > 设置采集配置
+    </div>
+  </div>
+</div>
+
+<nz-card class="page-content">
+  <div class="table-operator">
+    <button (click)="addConfig()" class="btn" nz-button nzType="primary"><i nz-icon type="plus-circle" theme="outline"></i>新建配置</button>
+  </div>
+  <nz-table #basicTable  [nzData]="tableData">
+      <thead>
+        <tr>
+          <th>配置名称</th>
+          <th>创建时间</th>
+          <th>描述</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td >{{data.conf_name}}</td>
+          <td>{{data.create_time | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+          <td>{{data.desc}}</td>
+          <td>
+            <a (click)="addConfig(data)" *ngIf="data.usages.length==0">修改</a>
+            <a disabled *ngIf="data.usages.length>0">修改</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a nz-popconfirm nzTitle="确认删除该记录吗？" (nzOnConfirm)="onDelete(data._id)" *ngIf="data.usages.length==0">删除</a>
+            <a nz-popconfirm nzTitle="确认删除该记录吗？" disabled *ngIf="data.usages.length>0">删除</a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-card>

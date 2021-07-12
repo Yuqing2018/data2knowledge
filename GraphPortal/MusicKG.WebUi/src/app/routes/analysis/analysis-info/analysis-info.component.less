@@ -1,0 +1,120 @@
+:host {
+    display: block;
+    background-color: #000000;
+    padding-top: 10px;
+}
+
+:host /deep/ .hd-page-header .ant-card-body {
+    padding: 0 !important;
+    background-color: #111A3B;
+}
+
+:host /deep/ .chart-card .ant-card-body {
+    padding: 0px !important;
+}
+
+.page-title {
+    position: relative;
+
+    span {
+        color: white;
+    }
+}
+
+.page-title-action {
+    position: absolute;
+    right: 0px;
+    top: 12px;
+    color: #ffffff;
+    background-color: rgb(21, 87, 255);
+    border: none;
+
+    &:hover {
+        border: none;
+        color: #ffffff;
+    }
+}
+
+.chart-card,
+.table-card {
+    margin: 8px 8px 0px;
+    background: #000000;
+    border: none;
+}
+
+
+
+.chart-list {
+
+    .chart-col {
+        margin: 8px 0;
+        color: #ffffff;
+    }
+
+    .chart-box {
+        border: 1px solid #000000;
+        padding: 10px 15px;
+        background: url(../../../../assets/img/1.png);
+        background-size: 100% 314px;
+        background-repeat: no-repeat;
+        position: relative;
+
+        .chart-tips {
+            position: absolute;
+            left: 26px;
+            padding-right: 40px;
+            width: 100%;
+
+            span {
+                font-size: 12px;
+                color: rgba(255, 255, 255, 0.45)
+            }
+
+            nz-tag {
+                border-radius: 32px;
+                background: #18C492;
+                color: #ffffff;
+                border: none;
+                padding: 3px 10px;
+                float: right;
+                cursor: pointer;
+
+                &.high {
+                    background: #E9121C;
+                }
+            }
+
+        }
+
+        .title {
+            color: #ffffff;
+            line-height: 32px;
+            font-size: 16px;
+            padding-left: 14px;
+
+            button {
+                border: none;
+                float: right;
+                padding: 1px 5px;
+                background: #1557FF;
+                color: #fff;
+                margin-top: 3px;
+                height: 24px;
+                margin-right: 10px;
+            }
+
+        }
+
+        [echarts] {}
+    }
+
+}
+
+.hd-page-header {
+    border: none !important;
+    margin: 0px 8px 8px !important;
+}
+
+.page-title {
+    padding: 0px 10px;
+}

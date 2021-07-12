@@ -1,0 +1,1024 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MusicKG.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:MusicKG.WebApi.Controllers.CategoryController">
+            <summary>
+            Category  controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.CategoryController.#ctor(MusicKG.Service.ICategoryService)">
+            <summary>
+            Category controller constructor.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.CategoryController.Get(System.String,System.String)">
+            <summary>
+            Get a category by id.
+            </summary>
+            <param name="workspaceId"></param>
+            <param name="categoryId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.CategoryController.GetCategories(System.String,System.String,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Get category list.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="keyword"></param>
+            <param name="from">Pagination start index.</param>
+            <param name="size">Pagination size.</param>
+            <returns>category object list.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.CategoryController.GetAllCategories(System.String)">
+            <summary>
+            Get All Categories.
+            </summary>
+            <param name="workspaceId">Workspace Id.</param>
+            <returns>CategoryListItemViewModel List.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.CategoryController.CreateCategories(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Create multiple categories.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="names">category names to create.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.CategoryController.UpdateCategory(System.String,System.String,System.String)">
+            <summary>
+            Update Category.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="categoryId">Category ID.</param>
+            <param name="name"> Category update name.</param>
+            <returns>Category object.</returns>
+        </member>
+        <member name="T:MusicKG.WebApi.Controllers.DialogOntologyController">
+            <summary>
+            Dialog ontology controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.DialogOntologyController.#ctor(MusicKG.Service.IDialogOntologyService,MusicKG.Service.IDocumentService)">
+            <summary>
+            Dialog ontology controller constructor.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.DialogOntologyController.GetDialogOntology(System.String)">
+            <summary>
+            Get dialog ontology object.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <returns>Dialog ontology object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.DialogOntologyController.UploadOntology(System.String,Microsoft.AspNetCore.Http.IFormFile,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Upload dialog intent.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="intentFile">Intent file.</param>
+            <param name="entityFile">Entity file.</param>
+            <returns>Nothing.</returns>
+        </member>
+        <member name="T:MusicKG.WebApi.Controllers.DictionaryController">
+            <summary>
+            Dictionary controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.DictionaryController.#ctor(MusicKG.Service.IDictionaryService)">
+            <summary>
+            Dictionary controller constructor.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.DictionaryController.GetDictionaries(System.String,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Get dictionary list.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="from">Pagination start index.</param>
+            <param name="size">Pagination size.</param>
+            <returns>Dictionary object list.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.DictionaryController.GetDictionary(System.String,System.String,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Get dictionary.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="dictionaryId">Dictionary ID.</param>
+            <param name="from">Pagination start index of dictionary entries.</param>
+            <param name="size">Pagination size of dictionary entries.</param>
+            <returns>Dictionary object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.DictionaryController.CreateDictionary(System.String,MusicKG.WebApi.Contract.BindingModels.DictionaryCreateBindingModel)">
+            <summary>
+            Create dictionary.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="bindingModel">Dictionary create binding object.</param>
+            <returns>Dictionary object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.DictionaryController.UpdateDictionary(System.String,System.String,MusicKG.WebApi.Contract.BindingModels.DictionaryUpdateBindingModel)">
+            <summary>
+            Update dictionary.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="dictionaryId">Dictionary ID.</param>
+            <param name="bindingModel">Dictionary update binding object.</param>
+            <returns>Dictionary object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.DictionaryController.UpdateDictionaryVocabs(System.String,System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Update dictionary.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="dictionaryId">Dictionary ID.</param>
+            <param name="vocabularies">Dictionary entries to add.</param>
+            <returns>Dictionary object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.DictionaryController.DeleteDictionary(System.String,System.String)">
+            <summary>
+            Delete dictionary.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="dictionaryId">Dictionary ID.</param>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.DictionaryController.UploadDictionary(System.String,System.String,System.String,System.Collections.Generic.List{Microsoft.AspNetCore.Http.IFormFile})">
+            <summary>
+            Upload dictionary.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="name">Dictionary name.</param>
+            <param name="entityId">Entity ID.</param>
+            <param name="files">Dictionary files.</param>
+            <returns>Dictionary file.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.DictionaryController.DownloadDictionary(System.String,System.String)">
+            <summary>
+            Download dictionary.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="dictionaryId">Dictionary ID.</param>
+            <returns>Dictionary file.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.DictionaryController.GetDictionaryEntries(System.String,System.String,System.String,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            get dictionary entries.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="dictionaryId">Dictionary Id.</param>
+            <param name="filterString">Filter string.</param>
+            <param name="from">Pagination start index.</param>
+            <param name="size">Pagination size.</param>
+            <returns>Dictionary object list.</returns>
+        </member>
+        <member name="T:MusicKG.WebApi.Controllers.DocumentController">
+            <summary>
+            Document controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.DocumentController.#ctor(MusicKG.Service.IDocumentService)">
+            <summary>
+            Document controller constructor.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.DocumentController.GetDocuments(System.String,System.Int32,System.Nullable{System.Int32},System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Collections.Generic.List{MusicKG.DataAccess.Enums.DocumentStatusEnum})">
+            <summary>
+            Get document list.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="from">Pagination start index.</param>
+            <param name="size">Pagination size.</param>
+            <param name="keyword">Keyword for searching.</param>
+            <param name="tag">Tag for searching.</param>
+            <param name="fromUploadedAt">Start upload time.</param>
+            <param name="toUploadedAt">End upload time.</param>
+            <param name="statuses">Document status list.</param>
+            <returns>Document object list.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.DocumentController.GetDocument(System.String,System.String)">
+            <summary>
+            Get document.
+            </summary>
+            <param name="workspaceId">Workspace Id.</param>
+            <param name="documentId">Document Id.</param>
+            <returns>Document view model.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.DocumentController.UpdateDocument(System.String,System.String,MusicKG.WebApi.Contract.BindingModels.DocumentUpdateBindingModel)">
+            <summary>
+            Update document.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="documentId">Document ID.</param>
+            <param name="bindingModel">Document update binding object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.DocumentController.DeleteDocument(System.String,System.String)">
+            <summary>
+            Delete document.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="documentId">Document ID.</param>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.DocumentController.UploadDocument(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Int64},System.Collections.Generic.List{Microsoft.AspNetCore.Http.IFormFile},System.String)">
+            <summary>
+            Upload document.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="tags">Document tag list.</param>
+            <param name="documentItems">Items for each document.</param>
+            <param name="files">Document file list.</param>
+            <param name="parentDocumentId">Parent document ID.</param>
+            <returns>Document object list.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.DocumentController.DownloadDocument(System.String,System.String)">
+            <summary>
+            Download document.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="documentId">Document ID.</param>
+            <returns>Document file.</returns>
+        </member>
+        <member name="T:MusicKG.WebApi.Controllers.EntityController">
+            <summary>
+            Entity controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.EntityController.#ctor">
+            <summary>
+            Entity controller constructor.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.EntityController.Search(System.String,MusicKG.WebApi.Contract.BindingModels.EntitySearchBindingModel,System.Int32,System.Nullable{System.Int32},MusicKG.WebApi.Enums.EntityOutputFormatEnum)">
+            <summary>
+            Search entities.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="bindingModel">Entity search binding object.</param>
+            <param name="format">Entity output format.</param>
+            <param name="from">Pagination start index.</param>
+            <param name="size">Pagination size.</param>
+            <returns>Entity object list.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.EntityController.GetEntity(System.String,System.String,MusicKG.WebApi.Enums.EntityOutputFormatEnum)">
+            <summary>
+            Get entity.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="entityId">Entity ID.</param>
+            <param name="format">Result format [spo|object].</param>
+            <returns>Entity object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.EntityController.Match(System.String,MusicKG.WebApi.Contract.BindingModels.EntityMatchBindingModel,MusicKG.WebApi.Enums.EntityOutputFormatEnum)">
+            <summary>
+            Match entities.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="bindingModel">Entity match binding object.</param>
+            <param name="format">Entity output format.</param>
+            <returns>Entity object list.</returns>
+        </member>
+        <member name="T:MusicKG.WebApi.Controllers.ModelController">
+            <summary>
+            Model controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.ModelController.#ctor">
+            <summary>
+            Model controller constructor.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.ModelController.GetModelStatistics(System.String,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Get model statistic list.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="from">Pagination start index.</param>
+            <param name="size">Pagination size.</param>
+            <returns>Model statistic object list.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.ModelController.CreateModelStatistic(System.String,MusicKG.WebApi.Contract.BindingModels.ModelStatisticCreateBindingModel)">
+            <summary>
+            Update document.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="bindingModel">Model update binding object.</param>
+            <returns>Model object.</returns>
+        </member>
+        <member name="T:MusicKG.WebApi.Controllers.OntologyEntityController">
+            <summary>
+            Ontology controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.OntologyEntityController.#ctor(MusicKG.Service.IOntologyService)">
+            <summary>
+            Ontology controller constructor.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.OntologyEntityController.GetEntities(System.String,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Get ontology entity list.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="from">Pagination start index.</param>
+            <param name="size">Pagination size.</param>
+            <returns>Ontology enity object list.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.OntologyEntityController.GetEntity(System.String,System.String)">
+            <summary>
+            Get ontology entity.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="entityId">Ontology entity ID.</param>
+            <returns>Ontology entity object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.OntologyEntityController.CreateEntity(System.String,MusicKG.WebApi.Contract.BindingModels.OntologyEntityCreateBindingModel)">
+            <summary>
+            Create ontology entity.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="bindingModel">Ontology entity create binding object.</param>
+            <returns>Ontology object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.OntologyEntityController.UpdateEntity(System.String,System.String,MusicKG.WebApi.Contract.BindingModels.OntologyEntityUpdateBindingModel)">
+            <summary>
+            Update ontology entity.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="entityId">Ontology entity ID.</param>
+            <param name="bindingModel">Ontology entity update binding object.</param>
+            <returns>Ontology object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.OntologyEntityController.DeleteEntity(System.String,System.String)">
+            <summary>
+            Delete ontology entity.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="entityId">Ontology entity ID.</param>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.OntologyEntityController.UploadOntology(System.String,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Upload ontology.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="file">Ontology file.</param>
+            <returns>Ontology entity object list.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.OntologyEntityController.DownloadOntology(System.String,MusicKG.Service.Enums.OntologyDownloadFileTypeEnum)">
+            <summary>
+            Download ontology.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="type">Ontology download file type.</param>
+            <returns>Ontology file.</returns>
+        </member>
+        <member name="T:MusicKG.WebApi.Controllers.OntologyRelationController">
+            <summary>
+            Ontology controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.OntologyRelationController.#ctor(MusicKG.Service.IOntologyService)">
+            <summary>
+            Ontology controller constructor.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.OntologyRelationController.GetRelations(System.String,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Get ontology relation list.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="from">Pagination start index.</param>
+            <param name="size">Pagination size.</param>
+            <returns>Ontology enity object list.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.OntologyRelationController.GetRelation(System.String,System.String)">
+            <summary>
+            Get ontology relation.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="relationId">Ontology relation ID.</param>
+            <returns>Ontology entity object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.OntologyRelationController.CreateRelation(System.String,MusicKG.WebApi.Contract.BindingModels.OntologyRelationCreateBindingModel)">
+            <summary>
+            Create ontology relation.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="bindingModel">Ontology relation create binding object.</param>
+            <returns>Ontology object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.OntologyRelationController.UpdateRelation(System.String,System.String,MusicKG.WebApi.Contract.BindingModels.OntologyRelationUpdateBindingModel)">
+            <summary>
+            Update ontology relation.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="relationId">Ontology relation ID.</param>
+            <param name="bindingModel">Ontology relation update binding object.</param>
+            <returns>Ontology object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.OntologyRelationController.DeleteRelation(System.String,System.String)">
+            <summary>
+            Delete ontology relation.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="relationId">Ontology relation Id.</param>
+        </member>
+        <member name="T:MusicKG.WebApi.Controllers.OptionController">
+            <summary>
+            Option controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.OptionController.#ctor(MusicKG.Service.IOptionService,Microsoft.Extensions.Localization.IStringLocalizer{MusicKG.WebApi.Controllers.OptionController})">
+            <summary>
+            Option controller constructor.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.OptionController.GetOptions(System.Nullable{MusicKG.DataAccess.Enums.OptionTypeEnum})">
+            <summary>
+            Get option list.
+            </summary>
+            <param name="type">Option type.</param>
+            <returns>Option object list.</returns>
+        </member>
+        <member name="T:MusicKG.WebApi.Controllers.RuleController">
+            <summary>
+            Rule controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.RuleController.#ctor(MusicKG.Service.IRuleService)">
+            <summary>
+            Rule controller constructor.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.RuleController.GetRules(System.String,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Get rule list.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="from">Pagination start index.</param>
+            <param name="size">Pagination size.</param>
+            <returns>Rule object list.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.RuleController.GetRule(System.String,System.String)">
+            <summary>
+            Get rule.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="ruleId">Rule ID.</param>
+            <returns>Rule object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.RuleController.CreateRule(System.String,MusicKG.WebApi.Contract.BindingModels.RuleCreateBindingModel)">
+            <summary>
+            Create rule.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="bindingModel">Rule create binding object.</param>
+            <returns>Rule Id.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.RuleController.UpdateRule(System.String,System.String,MusicKG.WebApi.Contract.BindingModels.RuleUpdateBindingModel)">
+            <summary>
+            Update rule.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="ruleId">Rule ID.</param>
+            <param name="bindingModel">Rule update binding object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.RuleController.DeleteRule(System.String,System.String)">
+            <summary>
+            Delete rule.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="ruleId">Rule ID.</param>
+        </member>
+        <member name="T:MusicKG.WebApi.Controllers.StatisticController">
+            <summary>
+            Statistic controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.StatisticController.#ctor(MusicKG.Service.IStatisticService)">
+            <summary>
+            Statistic controller constructor.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.StatisticController.GetStatisiticsOverview(System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Get overview statisitics list.
+            </summary>
+            <param name = "fromDate" > From date.</param>
+            <param name = "toDate" > To date.</param>
+            <param name = "workspaceTypeId" > Workspace type id.</param>
+            <returns>Statisitics overview list.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.StatisticController.GetStatisiticsDetails(System.String,System.DateTime,System.DateTime,System.String)">
+            <summary>
+            Get details statisitics list.
+            </summary>
+            <param name = "userId" >User Id.</param>
+            <param name = "fromDate" > From date.</param>
+            <param name = "toDate" > To date.</param>
+            <param name = "workspaceTypeId" > Workspace type id.</param>
+            <returns>Statisitics overview list.</returns>
+        </member>
+        <member name="T:MusicKG.WebApi.Controllers.StorageController">
+            <summary>
+            Category  controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.StorageController.#ctor(MusicKG.Service.IStorageService)">
+            <summary>
+            Category controller constructor.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.StorageController.Get(System.String)">
+            <summary>
+            Download file from storage service by content md5.
+            </summary>
+            <param name="contentMD5"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.StorageController.Upload(System.Collections.Generic.List{Microsoft.AspNetCore.Http.IFormFile})">
+            <summary>
+            Upload files to storage serivce.
+            </summary>
+            <param name="files">Files to be uploaded.</param>
+            <returns></returns>
+        </member>
+        <member name="T:MusicKG.WebApi.Controllers.TagController">
+            <summary>
+            Dictionary controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TagController.#ctor(MusicKG.Service.ITagService)">
+            <summary>
+            Dictionary controller constructor.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TagController.GetTagValuesAsync(System.String,MusicKG.DataAccess.Enums.TagTypeEnum,System.String,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Get tag values by tag type.
+            </summary>
+            <param name="workspaceId">Workspace Id.</param>
+            <param name="type">Tag type.</param>
+            <param name="filter">Tag value filter.</param>
+            <param name="from">Pagination start index.</param>
+            <param name="size">Pagination size.</param>
+            <returns>Tag value list.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TagController.UploadTagValuesAsync(System.String,MusicKG.DataAccess.Enums.TagTypeEnum,System.Boolean,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Upload tag values.
+            </summary>
+            <param name="workspaceId">Workspace Id.</param>
+            <param name="type">Tag type.</param>
+            <param name="override">Remove current values or not.</param>
+            <param name="file">Tag values file.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TagController.DownloadTagValuesAsync(System.String,MusicKG.DataAccess.Enums.TagTypeEnum)">
+            <summary>
+            Download tag values.
+            </summary>
+            <param name="workspaceId">Workspace Id.</param>
+            <param name="type">Tag type.</param>
+            <returns>Tag values file.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TagController.AppendTagValuesAsync(System.String,MusicKG.DataAccess.Enums.TagTypeEnum,System.Collections.Generic.List{MusicKG.WebApi.Contract.BindingModels.TagValueAppendBindingModel})">
+            <summary>
+            Append values to tag.
+            </summary>
+            <param name="workspaceId">Workspace Id.</param>
+            <param name="type">Tag type.</param>
+            <param name="bindingModels">Tag values model to be appended.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TagController.UpdateTagValueAsync(System.String,MusicKG.DataAccess.Enums.TagTypeEnum,System.String,MusicKG.WebApi.Contract.BindingModels.TagValueUpdateBindingModel)">
+            <summary>
+            Update tag value.
+            </summary>
+            <param name="workspaceId">Workspace Id.</param>
+            <param name="type">Tag type.</param>
+            <param name="valueId">Value Id.</param>
+            <param name="bindingModel">Binding model.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TagController.DeleteTagValuesAsync(System.String,MusicKG.DataAccess.Enums.TagTypeEnum,System.Collections.Generic.List{System.String})">
+            <summary>
+            Delete tag values.
+            </summary>
+            <param name="workspaceId">Workspace Id.</param>
+            <param name="type">Tag type.</param>
+            <param name="valueIds">Value Ids (null indicate delete all).</param>
+            <returns></returns>
+        </member>
+        <member name="T:MusicKG.WebApi.Controllers.TaskController">
+            <summary>
+            Task controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskController.#ctor(MusicKG.Service.ITaskService,MusicKG.Service.IDocumentService,Microsoft.Extensions.Localization.IStringLocalizer{MusicKG.WebApi.Controllers.OptionController})">
+            <summary>
+            Task controller constructor.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskController.GetTasks(System.String,System.Collections.Generic.List{MusicKG.DataAccess.Enums.TaskStatusEnum},System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Get task list.
+            </summary>
+            <param name="keyword"></param>
+            <param name="statuses">Task statuses.</param>
+            <param name="from">Pagination start index.</param>
+            <param name="size">Pagination size.</param>
+            <returns>Task object list.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskController.GetTasks(System.String,System.String,System.String,System.Collections.Generic.List{MusicKG.DataAccess.Enums.TaskStatusEnum},System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Get task list by workspace.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="taskTypeId">Task type ID.</param>
+            <param name="statuses">Task statuses.</param>
+            <param name="keyword"></param>
+            <param name="from">Pagination start index.</param>
+            <param name="size">Pagination size.</param>
+            <returns>Task object list.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskController.GetTask(System.String,System.String)">
+            <summary>
+            Get task.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="taskId">Task ID.</param>
+            <returns>Task object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskController.CreateTask(System.String,MusicKG.WebApi.Contract.BindingModels.TaskCreateBindingModel)">
+            <summary>
+            Create task.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="bindingModel">Task create binding object.</param>
+            <returns>Task ID.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskController.UpdateTask(System.String,System.String,MusicKG.WebApi.Contract.BindingModels.TaskUpdateBindingModel)">
+            <summary>
+            Update task.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="taskId">Task ID.</param>
+            <param name="bindingModel">Task update binding object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskController.DeleteTask(System.String,System.String)">
+            <summary>
+            Delete task.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="taskId">Task ID.</param>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskController.ApproveTask(System.String,System.String)">
+            <summary>
+            Approve task.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="taskId">Task ID.</param>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskController.RejectTask(System.String,System.String,System.String)">
+            <summary>
+            Reject task.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="taskId">Task ID.</param>
+            <param name="annotatorId">Annotator ID.</param>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskController.ApproveAll(System.String,System.String)">
+            <summary>
+            ApproveAll for task.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="taskId">Task ID.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskController.GetDocuments(System.String,System.String,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Get task documents.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="taskId">Task ID.</param>
+            <param name="from">Pagination start index.</param>
+            <param name="size">Pagination size.</param>
+            <returns>Task document object list.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskController.GetIAAScore(System.String,System.String,MusicKG.WebApi.Contract.Enums.IAAScoreObjectTypeEnum,MusicKG.WebApi.Contract.Enums.IAAScoreViewTypeEnum)">
+            <summary>
+            Get task IAA score.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="taskId">Task entity ID.</param>
+            <param name="objectType">IAA score object type.</param>
+            <param name="viewType">IAA score view type.</param>
+            <returns>Task IAA score object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskController.GetResults(System.String,System.String,System.String,System.Nullable{MusicKG.DataAccess.Enums.TaskDocumentResultTypeEnum})">
+            <summary>
+            Get task document result.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="taskId">Task ID.</param>
+            <param name="documentId">Document ID.</param>
+            <param name="resultType">Task document result type.</param>
+            <returns>Task result object list.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskController.SaveResult(System.String,System.String,System.String,MusicKG.WebApi.Contract.BindingModels.TaskResultCreateBindingModel)">
+            <summary>
+            Create task document result.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="taskId">Task ID.</param>
+            <param name="documentId">Document ID.</param>
+            <param name="bindingModel">Task create binding object.</param>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskController.SubmitTasks(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            submit many task document result.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="taskIdList">Task ID List.</param>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskController.GetSPOs(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Get task document result.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="taskId">Task ID.</param>
+            <param name="documentId">Document ID.</param>
+            <param name="keyword">Keyword.</param>
+            <param name="fromCreatedAt">Start creation time.</param>
+            <param name="toCreatedAt">End creation time.</param>
+            <param name="from">Pagination start index.</param>
+            <param name="size">Pagination size.</param>
+            <returns>SPO object list.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskController.CreateSPO(System.String,System.String,MusicKG.WebApi.Contract.BindingModels.SPOCreateBindingModel)">
+            <summary>
+            Create task document result.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="taskId">Task ID.</param>
+            <param name="bindingModel">SPO create binding object.</param>
+            <returns>SPO object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskController.UpdateSPO(System.String,System.String,System.String,MusicKG.WebApi.Contract.BindingModels.SPOUpdateBindingModel)">
+            <summary>
+            Create task document result.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="taskId">Task ID.</param>
+            <param name="spoId">SPO ID.</param>
+            <param name="bindingModel">SPO update binding object.</param>
+            <returns>SPO object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskController.DeleteSPO(System.String,System.String,System.String)">
+            <summary>
+            Create task document result.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="taskId">Task ID.</param>
+            <param name="spoId">SPO ID.</param>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskController.MergeSPOs(System.String,System.String,System.Collections.Generic.List{MusicKG.WebApi.Contract.BindingModels.SPOMergeBindingModel})">
+            <summary>
+            Create task document result.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="taskId">Task ID.</param>
+            <param name="bindingModels">SPO merge binding object list.</param>
+        </member>
+        <member name="T:MusicKG.WebApi.Controllers.TaskCreationRuleController">
+            <summary>
+            Task creation rules controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskCreationRuleController.GetAutoTaskCreationRuleAsync(System.String)">
+            <summary>
+            Get TaskCreationRule.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <returns>TaskCreationRule object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.TaskCreationRuleController.UpdateAutoTaskCreationRuleAsync(System.String,MusicKG.WebApi.Contract.BindingModels.TaskCreationRuleUpdateBindingModel)">
+            <summary>
+            Update TaskCreationRule.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="bindingModel">Binding model.</param>
+        </member>
+        <member name="T:MusicKG.WebApi.Controllers.UserController">
+            <summary>
+            User controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.UserController.#ctor(MusicKG.Service.IUserService)">
+            <summary>
+            User controller constructor.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.UserController.GetUsers(System.Nullable{MusicKG.DataAccess.Enums.UserRoleEnum},System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Get user list.
+            </summary>
+            <param name="role">User role.</param>
+            <param name="from">Pagination start index.</param>
+            <param name="size">Pagination size.</param>
+            <returns>User object list.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.UserController.GetUser(System.String)">
+            <summary>
+            Get user by user ID.
+            </summary>
+            <param name="userId">User ID.</param>
+            <returns>User object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.UserController.CreateUser(MusicKG.WebApi.Contract.BindingModels.UserCreateBindingModel)">
+            <summary>
+            Create user.
+            </summary>
+            <param name="bindingModel">User create binding object.</param>
+            <returns>User object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.UserController.UpdateUser(System.String,MusicKG.WebApi.Contract.BindingModels.UserUpdateBindingModel)">
+            <summary>
+            Update user.
+            </summary>
+            <param name="userId">User ID.</param>
+            <param name="bindingModel">User update binding object.</param>
+            <returns>User object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.UserController.DeleteUser(System.String)">
+            <summary>
+            Delete user.
+            </summary>
+            <param name="userId">User ID.</param>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.UserController.Login(MusicKG.WebApi.Contract.BindingModels.UserLoginBindingModel)">
+            <summary>
+            Login user.
+            </summary>
+            <param name="bindingModel">User login binding object.</param>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.UserController.Logout">
+            <summary>
+            Logout user.
+            </summary>
+        </member>
+        <member name="T:MusicKG.WebApi.Controllers.WorkspaceController">
+            <summary>
+            Workspace controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.WorkspaceController.#ctor(MusicKG.Service.IWorkspaceService)">
+            <summary>
+            Workspace controller constructor.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.WorkspaceController.GetWorkspaces(System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Get workspace list.
+            </summary>
+            <param name="from">Pagination start index.</param>
+            <param name="size">Pagination size.</param>
+            <returns>Workspace object list.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.WorkspaceController.GetWorkspace(System.String)">
+            <summary>
+            Get workspace.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <returns>Workspace object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.WorkspaceController.CreateWorkspace(MusicKG.WebApi.Contract.BindingModels.WorkspaceCreateBindingModel)">
+            <summary>
+            Create workspace.
+            </summary>
+            <param name="bindingModel">Workspace create binding object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.WorkspaceController.UpdateWorkspace(System.String,MusicKG.WebApi.Contract.BindingModels.WorkspaceUpdateBindingModel)">
+            <summary>
+            Update workspace.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+            <param name="bindingModel">Workspace update binding object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.WorkspaceController.DeleteWorkspace(System.String)">
+            <summary>
+            Delete workspace.
+            </summary>
+            <param name="workspaceId">Workspace ID.</param>
+        </member>
+        <member name="T:MusicKG.WebApi.Controllers.WorkspaceTypeController">
+            <summary>
+            Workspace type controller.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.WorkspaceTypeController.#ctor(MusicKG.Service.IWorkspaceTypeService)">
+            <summary>
+            Workspace type controller constructor.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.WorkspaceTypeController.GetWorkspaceTypes(System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Get workspace type list.
+            </summary>
+            <param name="from">Pagination start index.</param>
+            <param name="size">Pagination size.</param>
+            <returns>Workspace type object list.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.WorkspaceTypeController.GetWorkspaceType(System.String)">
+            <summary>
+            Get workspace type.
+            </summary>
+            <param name="workspaceTypeId">Workspace type ID.</param>
+            <returns>Workspace type object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.WorkspaceTypeController.CreateWorkspaceType(MusicKG.WebApi.Contract.BindingModels.WorkspaceTypeCreateBindingModel)">
+            <summary>
+            Create workspace type.
+            </summary>
+            <param name="bindingModel">Workspace type create binding object.</param>
+            <returns>Workspace type object.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Controllers.WorkspaceTypeController.UpdateWorkspaceType(System.String,MusicKG.WebApi.Contract.BindingModels.WorkspaceTypeUpdateBindingModel)">
+            <summary>
+            Update workspace type.
+            </summary>
+            <param name="workspaceTypeId">Workspace type ID.</param>
+            <param name="bindingModel">Workspace type update binding object.</param>
+            <returns>Workspace type object.</returns>
+        </member>
+        <member name="T:MusicKG.WebApi.Enums.DocumentContentOutputTypeEnum">
+            <summary>
+            Document content output type enum.
+            </summary>
+        </member>
+        <member name="F:MusicKG.WebApi.Enums.DocumentContentOutputTypeEnum.Text">
+            <summary>
+            Text.
+            </summary>
+        </member>
+        <member name="F:MusicKG.WebApi.Enums.DocumentContentOutputTypeEnum.Raw">
+            <summary>
+            Raw.
+            </summary>
+        </member>
+        <member name="T:MusicKG.WebApi.Enums.EntityOutputFormatEnum">
+            <summary>
+            Entity output format enum.
+            </summary>
+        </member>
+        <member name="F:MusicKG.WebApi.Enums.EntityOutputFormatEnum.Object">
+            <summary>
+            Object.
+            </summary>
+        </member>
+        <member name="F:MusicKG.WebApi.Enums.EntityOutputFormatEnum.SPO">
+            <summary>
+            SPO.
+            </summary>
+        </member>
+        <member name="T:MusicKG.WebApi.Extensions.LoggerBuilderExtensions">
+            <summary>
+            Logger builder extensions.
+            </summary>
+        </member>
+        <member name="M:MusicKG.WebApi.Extensions.LoggerBuilderExtensions.AddCustomerLogger(Microsoft.Extensions.Logging.ILoggingBuilder,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Add customer logger.
+            </summary>
+            <param name="loggingBuilder">Logging builder</param>
+            <param name="configuration">Configuration Settings.</param>
+            <returns>Logging builder.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Extensions.ServiceCollectionExtensions.RegisterSettingsAndServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Register application settings and services.
+            </summary>
+            <param name="services">Service collection.</param>
+            <param name="configuration">Configuration.</param>
+            <returns>Service collections.</returns>
+        </member>
+        <member name="M:MusicKG.WebApi.Helpers.HttpContextHelper.GetCurrentUser(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Get current login user from http context.
+            </summary>
+            <param name="httpContext">The current http context.</param>
+            <returns>Current user Id and user name.</returns>
+        </member>
+        <member name="P:MusicKG.WebApi.Settings.LoggingTypeSettings.Serilog">
+            <summary>
+            True to enable Serilog.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,26 @@
+<div class="page-header">
+  <div class="page-title">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        <a [routerLink]="['../../../../']">标注任务</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        <a (click)="goTo()">任务详情</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        标注
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <a class="back" (click)="goTo()">
+      <i nz-icon type="arrow-left" theme="outline"></i> 返回
+    </a>
+  </div>
+</div>
+
+<nz-card class="page-content">
+  <km-annotation-toolbar [pageIndex]="pageIndex" [itemTotal]="itemTotal" [itemIndex]="itemIndex" [pageTotal]="pageTotal"
+    [title]="docName" (pageIndexChange)="onPageIndexChange($event)" (itemIndexChange)="onItemIndexChange($event)"
+    [disabled]="SaveBtn" (save)="save($event)"></km-annotation-toolbar>
+  <km-textparaphrase-annotation-tool #tool [(ngModel)]="currentItemContent" (formData)="newFormData($event)">
+  </km-textparaphrase-annotation-tool>
+</nz-card>

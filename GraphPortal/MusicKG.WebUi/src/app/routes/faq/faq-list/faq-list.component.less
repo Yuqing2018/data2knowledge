@@ -1,0 +1,193 @@
+.title {
+    padding: 15px 35px;
+    background: #fff;
+
+    h2 {
+        display: inline-block;
+        margin-bottom: 0px;
+        font-weight: 300;
+        margin-right: 40px;
+        vertical-align: text-bottom;
+        font-size: 24px;
+    }
+
+    button {
+        vertical-align: super;
+    }
+}
+
+:host ::ng-deep .ant-card-body {
+    padding: 0px;
+}
+
+:host ::ng-deep nz-input-group {
+    display: flex !important;
+    top: 4px !important;
+}
+
+:host ::ng-deep nz-input-group nz-select {
+    flex: 0 0 150px;
+}
+
+:host ::ng-deep nz-input-group input {
+    flex: 1;
+}
+
+.table-search-form {
+    padding: 15px 50px 0px;
+    border-bottom: 1px solid #e9e9e9;
+
+    nz-form-control {
+        flex: 1;
+    }
+
+    nz-form-label {
+        min-width: 70px;
+    }
+
+    nz-form-item {
+        margin-bottom: 15px !important;
+    }
+}
+
+.table-search-action {
+    padding: 15px 50px;
+    border-bottom: 1px solid #e9e9e9;
+    text-align: right;
+
+    button {
+        padding: 0 50px;
+
+        &:first-child {
+            margin-right: 20px;
+        }
+    }
+}
+
+.table-action {
+    padding: 0 15px 15px;
+
+    button {
+        margin-right: 15px;
+        padding: 0 25px;
+    }
+}
+
+.table-title {
+    padding: 15px;
+
+    .title {
+        font-size: 18px;
+        color: rgba(0, 0, 0, 0.85);
+        padding-right: 15px;
+    }
+
+    .num {
+        color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+.search-table {
+    margin: 0px 15px 15px 15px;
+}
+
+.page-title {
+    padding: 10px 15px;
+    border-bottom: 1px solid #e9e9e9;
+
+    .title {
+        position: relative;
+        border-left: 3px solid #489FFE;
+        padding: 0 10px;
+        line-height: 27px;
+    }
+}
+
+.page-content {
+    padding: 10px;
+}
+
+.form-section {
+    nz-form-control {
+        flex: 1;
+    }
+
+    nz-form-label {
+        min-width: 100px;
+    }
+
+    .form-action {
+        margin-top: 20px;
+        padding: 15px 0px 15px 15px;
+        text-align: right;
+
+        button {
+            margin-right: 20px;
+        }
+    }
+}
+
+nz-table {
+
+    tr:hover td {
+        background: inherit !important;
+    }
+
+    td {
+        max-width: 240px;
+        word-break: break-all;
+        vertical-align: top;
+
+        &.small {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100px;
+        }
+
+        &.more {
+            max-width: 350px;
+        }
+    }
+
+}
+
+:host ::ng-deep .ant-calendar-picker {
+    display: block;
+}
+
+
+.long-text {
+    max-height: 200px;
+    overflow: auto;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    width: 5px;
+    background-color: #CCCCCC;
+    -webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-track-piece {
+    -webkit-border-radius: 0;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    height: 50px;
+    background-color: #999;
+    -webkit-border-radius: 4px;
+    outline: 2px solid #fff;
+    outline-offset: -2px;
+    border: 2px solid #fff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    height: 50px;
+    background-color: #9f9f9f;
+    -webkit-border-radius: 4px;
+}

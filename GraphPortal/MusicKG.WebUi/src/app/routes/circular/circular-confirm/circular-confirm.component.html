@@ -1,0 +1,42 @@
+<form nz-form [formGroup]="confirmForm">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzRequired>确认记录</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <textarea nz-input placeholder="" formControlName="confirmedMessage"
+        [nzAutosize]="{ minRows: 3, maxRows: 6 }"></textarea>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label nzRequired [nzSpan]="6">推进分类</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <nz-select formControlName="pushStatus" nzPlaceHolder="">
+        <nz-option nzValue="未立项" nzLabel="未立项"></nz-option>
+        <nz-option nzValue="需再立项" nzLabel="需再立项"></nz-option>
+        <nz-option nzValue="推进中" nzLabel="推进中"></nz-option>
+        <nz-option nzValue="监视" nzLabel="监视"></nz-option>
+        <nz-option nzValue="完了" nzLabel="完了"></nz-option>
+        <nz-option nzValue="其他" nzLabel="其他"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6">对策状态</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <nz-select formControlName="permanentCntrStatus" nzPlaceHolder="" nzAllowClear>
+        <nz-option nzValue="未明确" nzLabel="未明确"></nz-option>
+        <nz-option nzValue="已明确" nzLabel="已明确"></nz-option>
+        <nz-option nzValue="无需对策" nzLabel="无需对策"></nz-option>
+        <nz-option nzValue="已对策" nzLabel="已对策"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6">超标影响</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <nz-select formControlName="isExcessive" nzPlaceHolder="" nzAllowClear>
+        <nz-option [nzValue]="true" nzLabel="是"></nz-option>
+        <nz-option [nzValue]="false" nzLabel="否"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+</form>

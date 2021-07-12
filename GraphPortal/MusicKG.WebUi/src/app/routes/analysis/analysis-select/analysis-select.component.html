@@ -1,0 +1,179 @@
+<div class="filter-title">
+  <nz-radio-group [(ngModel)]="searchParams.selectType" (ngModelChange)="selectTypeChange()" [nzButtonStyle]="'solid'">
+    <label nz-radio-button nzValue="partName">零件分析</label>
+    <label nz-radio-button nzValue="syndrome">不良症状分析</label>
+  </nz-radio-group>
+  <div class="filter-item">
+    <span>渠道: </span>
+    <nz-select [nzDropdownMatchSelectWidth]="false" nzAllowClear [(ngModel)]="searchParams.dataSource" nzPlaceHolder="全部" (ngModelChange)="dataSourceChange()">
+      <nz-option nzValue="MQI" nzLabel="MQI"></nz-option>
+      <nz-option nzValue="TECH_CONSULTING" nzLabel="技术咨询"></nz-option>
+      <nz-option nzValue="HOTLINE" nzLabel="800"></nz-option>
+      <nz-option nzValue="GOV" nzLabel="总局"></nz-option>
+      <nz-option nzValue="MEDIA_SUB" nzLabel="网络媒体"></nz-option>
+    </nz-select>
+  </div>
+  <div class="filter-item">
+    <span>车款:</span>
+    <nz-select class='nzselect' nzPlaceHolder="全部" nzShowSearch name="carType" nzMode="multiple" [(ngModel)]="searchParams.carType" (ngModelChange)="carModelChange()">
+      <nz-option *ngFor="let option of carTypeList$ | async" [nzValue]="option" [nzLabel]="option"></nz-option>
+    </nz-select>
+  </div>
+  <div class="filter-item">
+    <span>车型:</span>
+    <nz-select nzShowSearch name="carModel" nzMode="multiple" nzPlaceHolder="全部" [(ngModel)]="searchParams.carModel" (ngModelChange)="yearModelChange()">
+      <nz-option *ngFor="let option of carModelList$ | async" [nzValue]="option" [nzLabel]="option"></nz-option>
+    </nz-select>
+  </div>
+  <div class="filter-item">
+    <span>年款:</span>
+    <nz-select [nzDropdownMatchSelectWidth]="false" nzShowSearch name="yearModel" nzPlaceHolder="全部" nzMode="multiple" [nzMaxTagCount]="1" [(ngModel)]="searchParams.yearModels"
+      (ngModelChange)="partNameAndSyndromeChange()">
+      <nz-option *ngFor="let option of yearModelList$ | async" [nzValue]="option" [nzLabel]="option"></nz-option>
+    </nz-select>
+  </div>
+  <div class="filter-item" *ngIf="searchParams.selectType == 'partName'">
+    <span class="long">零件名:</span>
+    <nz-select [nzDropdownMatchSelectWidth]="false" class="long-select" nzShowSearch name="partName" [(ngModel)]="searchParams.partName">
+      <nz-option *ngFor="let option of partNameList$ | async" [nzValue]="option" [nzLabel]="option"></nz-option>
+    </nz-select>
+  </div>
+  <div class="filter-item" *ngIf="searchParams.selectType == 'syndrome'">
+    <span class="long">不良症状:</span>
+    <nz-select [nzDropdownMatchSelectWidth]="false" class="long-select" nzShowSearch name="syndrome" [(ngModel)]="searchParams.syndrome">
+      <nz-option *ngFor="let option of syndromeList$ | async" [nzValue]="option.id" [nzLabel]="option.name"></nz-option>
+    </nz-select>
+  </div>
+  <div class="filter-item">
+    <button nz-button (click)="onSearch()" nzType="primary">分析</button>
+    <button [nzLoading]="exportLoading" style="margin-left: 20px;" nz-button (click)="onExport()" nzType="primary"><i nz-icon nzType="download" nzTheme="outline"></i> 导出</button>
+    <button *ngIf="searchParams.selectType == 'partName'" style="margin-left: 20px;" nz-button (click)="onmaintain()" nzType="primary">QIS信息维护</button>
+  </div>
+</div>
+<nz-modal
+      [(nzVisible)]="isVisible"
+      nzTitle="QIS信息维护"
+      (nzOnCancel)="handleCancel()"
+      nzCancelText = '关闭'
+      [(nzOkText)]="okText"
+      [nzOkLoading]="isOkLoading"
+      nzWidth='98%'
+      class="nzmodal"
+    >
+<div style="display: flex;justify-content:space-between">
+  <div class="table-operate" style="margin: 5px 0px 5px 5px;font-size: 13px;">
+     <span><b>车款:</b>{{searchParams.carType}}</span>
+     <span><b>车型:</b>{{searchParams.carModel}}</span>
+     <span><b>年款:</b>{{searchParams.yearModels}}</span>
+     <span><b>零件号:</b>{{partNo}}</span>
+     <span><b>零件名:</b>{{searchParams.partName}}</span>
+  </div>
+  <div style="display: flex;justify-content: space-between;">
+    <input nz-input [(ngModel)]="frameNo" placeholder="请输入车架号" nzSize="small" />
+    <div style="display: inline-block;width: 168px;">
+      <button nz-button nzType="primary" (click)="searchSure()" [nzSize]="size" style="margin-left: 10px;">查询</button>
+      <button nz-button nzType="default" (click)="onReset()" class="reset" [nzSize]="size" style="margin-left: 10px;">重置</button>
+    </div>
+  </div>
+  
+</div>
+<nz-table #basicTable [nzShowTotal]="rangeTemplate" [nzData]="items" class="table"
+    (nzPageIndexChange)="pageIndexChange($event)" [nzLoading]="searchLoading" [nzTotal]="total"
+    [nzFrontPagination]="false" [(nzPageIndex)]="pageIndex">
+    <thead style="font-weight: 900;" class="thead">
+      <tr>
+        <th width="70px">序号</th>
+        <th class="table-header" width="60px">渠道</th>
+        <th>不良症状</th>
+        <th>故障日期</th>
+        <th>不良等级</th>
+        <th>车架号</th>
+        <th>QIC号</th>
+        <th>QIS号</th>
+        <th>原因区分</th>
+        <th width="100px">原因</th>
+        <th width="100px">对策</th>
+        <th>对策日期</th>
+        <th width="60px">关联零件</th>
+        <th width="100px">数据来源</th>
+        <th>更新日期</th>
+        <th width="100px">操作</th>
+      </tr>
+    </thead>
+    <tbody class="bodybc">
+      <tr *ngFor="let data of basicTable.data; index as i">
+        <td>{{ (basicTable.nzPageIndex - 1) * 10 + i + 1 }}</td>
+        <td class="table-lis">{{data.dataSource}}</td>
+        <td [title]="data.syndromeModel.name">{{data.syndromeModel.name.length <= 4 ? data.syndromeModel.name : data.syndromeModel.name.substring(0, 4) + '...'}}</td>
+        <td>{{data.faultDate | date: 'yyy-MM-dd'}}</td>
+        <td>{{data.syndromeModel.badGrade}}</td>
+        <td>{{data.frameNo}}</td>
+        <td>{{data.qicNo}}</td>
+        <td>{{data.qisNo}}</td>
+        <td>{{data.cntrMesrType}}</td>
+        <td [title]="data.cntrMesrReasonDesc">
+          <div *ngIf="data.cntrMesrReasonDesc != null">
+            {{data.cntrMesrReasonDesc.length <= 5 ? data.cntrMesrReasonDesc : data.cntrMesrReasonDesc.substring(0, 5) + '...'}}
+            <a *ngIf="data.cntrMesrReasonDesc != ''" (click)="copyReasonCode(data)"><i nz-icon nzType="copy" nzTheme="outline"></i></a>
+          </div>
+        </td>
+        <td [title]="data.permanentCntr">
+          <div *ngIf="data.permanentCntr != null">
+            {{data.permanentCntr.length <= 5 ? data.permanentCntr : data.permanentCntr.substring(0, 5) + '...'}}
+            <a *ngIf="data.permanentCntr != ''" (click)="copyPermanentCntrCode(data)"><i nz-icon nzType="copy" nzTheme="outline"></i></a>
+          </div>
+        </td>
+        <td>{{data.permanentCntrTime | date: 'yyy-MM-dd'}}
+          <a *ngIf="data.permanentCntrTime != null" (click)="onEditCntrTime(data)"><i nz-icon nzType="edit" nzTheme="outline"></i></a>
+        </td>
+        <td *ngIf="data.relatedPartName != null" [title]="data.relatedPartName.carType+' / '+data.relatedPartName.no">
+            <div *ngIf="data.relatedPartName.carType != null && data.relatedPartName.no != null">
+              {{data.relatedPartName.carType.length <= 4 ? data.relatedPartName.carType : data.relatedPartName.carType.substring(0, 4) + '...'}} / 
+              {{data.relatedPartName.no.length <= 4 ? data.relatedPartName.no : data.relatedPartName.no.substring(0, 4) + '...'}}
+            </div>
+          <a (click)="onEditParts(data)"><i nz-icon nzType="edit" nzTheme="outline"></i></a>
+        </td>
+        <td *ngIf="data.relatedPartName == null || (data.relatedPartName.carType == null && data.relatedPartName.no == null)">
+          <a (click)="onEditParts(data)"><i nz-icon nzType="edit" nzTheme="outline"></i></a>
+        </td>
+        <td *ngIf="data.dataFromDesc != null" [title]="data.dataFromDesc">
+          <div>
+            {{data.dataFromDesc.length <= 4 ? data.dataFromDesc : data.dataFromDesc.substring(0, 4) + '...'}}
+            <a *ngIf="data.dataFrom != '系统匹配'" (click)="onEditDataFrom(data)"><i nz-icon nzType="edit" nzTheme="outline"></i></a>
+          </div>
+        </td>
+        <td *ngIf="data.dataFromDesc == null">
+          <a (click)="onEditDataFrom(data)"><i nz-icon nzType="edit" nzTheme="outline"></i></a>
+        </td>
+        <td>{{data.lastModifiedAt | date: 'yyy-MM-dd'}}</td>
+        <td>
+          <div *ngIf="data.dataFrom != '系统匹配' && (data.qicNo != null && data.qisNo != null) ||
+          (data.cntrMesrType != null && data.cntrMesrReasonDesc !=null && data.permanentCntr != null)">
+            <a (click)="onManualAdd(data)" nzSize="small" style="margin-right: 5px;">修改</a>
+            <a nz-popconfirm nzTitle="确认删除吗" (nzOnConfirm)="onDelete(data)">删除</a>
+          </div>
+          <div *ngIf="data.dataFrom != '系统匹配' && (data.qicNo == null && data.qisNo == null) &&
+          (data.cntrMesrType == null && data.cntrMesrReasonDesc ==null && data.permanentCntr == null &&
+          data.permanentCntrTime == null)">
+            <nz-dropdown>
+              <a nz-dropdown>添加<i nz-icon type="down"></i></a>
+              <ul nz-menu>
+                <li nz-menu-item>
+                  <a (click)="onRelation(data)" nzSize="small">自动关联</a>
+                </li>
+                <li nz-menu-item>
+                  <a (click)="onManualAdd(data)" nzSize="small">手动添加</a>
+                </li>
+              </ul>
+            </nz-dropdown>
+            <!-- <a (click)="onRelation(data)" nzSize="small">关联</a> -->
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <ng-template #rangeTemplate let-range="range" let-total>
+    {{ range[0] }}-{{ range[1] }} 共 {{ total }} 项
+  </ng-template>
+
+</nz-modal>

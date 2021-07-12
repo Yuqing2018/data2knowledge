@@ -1,0 +1,23 @@
+<form nz-form [formGroup]="levelForm">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6">风险等级</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <nz-select formControlName="aiRiskLevel" nzPlaceHolder="">
+        <nz-option nzValue="重点关注" nzLabel="重点关注"></nz-option>
+        <nz-option nzValue="高风险" nzLabel="高风险"></nz-option>
+        <nz-option nzValue="潜在高风险" nzLabel="潜在高风险"></nz-option>
+        <nz-option nzValue="中风险" nzLabel="中风险"></nz-option>
+        <nz-option nzValue="其他关注" nzLabel="其他关注"></nz-option>
+        <nz-option nzValue="低风险" nzLabel="低风险"></nz-option>
+        <nz-option nzValue="一般" nzLabel="一般"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6">作为训练数据</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <nz-switch formControlName="usedForModel">
+      </nz-switch>
+    </nz-form-control>
+  </nz-form-item>
+</form>

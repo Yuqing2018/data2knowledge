@@ -1,0 +1,156 @@
+<nz-spin [nzSpinning]="actionLoading">
+  <div class="page-header">
+    <div class="page-title">
+      <nz-breadcrumb>
+        <nz-breadcrumb-item>
+          <a (click)="goTo()">标注任务</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>
+          {{ taskName }}
+        </nz-breadcrumb-item>
+      </nz-breadcrumb>
+      <div class="table-action">
+        <ng-container *ngIf="!isLoading">
+          <ng-container *ngIf="taskDocumentStatus !== 'Annotated'">
+            <span class="select-tips" *ngIf="setOfCheckedId && setOfCheckedId.size > 0">共选择 {{ setOfCheckedId.size }} 项 </span>
+            <button nz-button (click)="openSetting()" nzType="primary">设置置信度</button>
+            <button nz-button (click)="batchUpdate()" nzType="primary">批量标注</button>
+            <nz-dropdown-button class="save" nzType="primary" (nzClick)="onSave()">
+              <i nz-icon type="save"></i>&nbsp;&nbsp;保存&nbsp;
+              <ul nz-menu>
+                <li nz-menu-item (click)="onSave('Annotated')">保存并提交</li>
+              </ul>
+            </nz-dropdown-button>
+          </ng-container>
+          <button nz-button nzType="primary" *ngIf="taskDocumentStatus == 'Annotated'" (click)="onExport()"><i nz-icon
+              type="download"></i>导出</button>
+        </ng-container>
+        <a class="back" (click)="goTo()">
+          <i nz-icon type="arrow-left" theme="outline"></i> 返回
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <nz-spin *ngIf="isLoading" [nzSpinning]="isLoading"></nz-spin>
+
+  <nz-card *ngIf="!isLoading" class="page-content">
+    <div class="table-content">
+      <nz-table #columnTable [nzData]="itemList" [nzShowTotal]="rangeTemplate" [nzShowQuickJumper]="true"
+        [nzShowSizeChanger]="true" (nzCurrentPageDataChange)="refreshCheckedStatus()" [nzPageSizeOptions]="[5,10,20]" [(nzPageSize)]="pageSize" [(nzPageIndex)]="pageIndex"
+        [nzScroll]="{ x: '800px' }">
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
+          <tr>
+            <th nzShowCheckbox [(nzChecked)]="checked" [nzIndeterminate]="indeterminate"
+            (nzCheckedChange)="onAllChecked($event)"></th>
+            <th>序号</th>
+            <th *ngFor="let item of thList">
+              {{ item.name }}
+            </th>
+            <th width="100px" nzShowSort nzSortKey="partName">零件名称</th>
+            <th width="100px" nzShowSort nzSortKey="syndrome">不良症状</th>
+            <th width="100px">作为训练数据</th>
+            <th width="100px">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of columnTable.data; index as i">
+            <td nzShowCheckbox [nzChecked]="setOfCheckedId.has(data.id)" (nzCheckedChange)="onItemChecked(data.id, $event)"></td>
+            <td>{{ (columnTable.nzPageIndex - 1) * pageSize + i + 1 }}</td>
+            <td *ngFor="let item of data.values">
+              {{ item.value }}
+            </td>
+            <td>
+              <ng-container *ngIf="dataSource == 'MQI'">
+                {{ data.originalResult.partName?.Value }}
+              </ng-container>
+              <ng-container *ngIf="dataSource !== 'MQI'">
+                <km-dictionary-input-select (ngModelChange)="labelChange(data, $event)" [disabled]="taskDocumentStatus == 'Annotated'"
+                  [(ngModel)]="data.result.partName.Value" [initData]="data.result.partName.Value">
+                </km-dictionary-input-select>
+                <!-- <km-dictionary-item-select [(ngModel)]="data.result.partName.Value" [data]="partNameList">
+                </km-dictionary-item-select> -->
+                <nz-tag nzColor="#2db7f5" nz-tooltip [nzTitle]="data.originalResult.partName?.Value">原始内容: {{
+                  data.originalResult.partName?.Value }}</nz-tag>
+                <div>
+                  <nz-tag [nzColor]="'#f50'" nz-tooltip [nzTitle]="data.modelResult.partName?.Value">
+                    预标注: {{ data.modelResult.partName?.Value }}
+                    <ng-container *ngIf="data.modelResult.partName?.Probability !== null">
+                      ({{ data.modelResult.partName?.Probability | number: '1.0-2'}})
+                    </ng-container>
+                  </nz-tag>
+                </div>
+              </ng-container>
+            </td>
+            <td>
+              <!-- <km-syndrome-item-select [(ngModel)]="data.result.syndrome.Id" [data]="reasonList">
+              </km-syndrome-item-select> -->
+              <km-dictionary-id-select (ngModelChange)="labelSyndromeChange(data, $event)" [disabled]="taskDocumentStatus == 'Annotated'"
+                [(ngModel)]="data.result.syndrome.Value" [initData]="data.result.syndrome.Value">
+              </km-dictionary-id-select>
+              <nz-tag nzColor="#2db7f5" nz-tooltip [nzTitle]="data.originalResult.syndrome?.Value">原始内容: {{
+                data.originalResult.syndrome?.Value }}</nz-tag>
+              <div>
+                <nz-tag [nzColor]="'#f50'" nz-tooltip [nzTitle]="data.modelResult.syndrome.Value | syndrome | async ">
+                  预标注: {{ data.modelResult.syndrome.Value | syndrome | async }}
+                  <ng-container *ngIf="data.modelResult.syndrome?.Probability !== null">
+                    ({{ data.modelResult.syndrome?.Probability | number: '1.0-2'}})
+                  </ng-container>
+                </nz-tag>
+              </div>
+            </td>
+            <td>
+              <nz-switch [disabled]="taskDocumentStatus == 'Annotated'" [(ngModel)]="data.result.isAddForTraining">
+              </nz-switch>
+            </td>
+            <td>
+              <a (click)="openInfo(data)">详情</a>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+    <ng-template #rangeTemplate let-range="range" let-total>
+      {{ range[0] }}-{{ range[1] }} 共 {{ total }} 项
+    </ng-template>
+  </nz-card>
+
+</nz-spin>
+
+<nz-drawer nzWidth="600px" [nzClosable]="true" [nzVisible]="docInfoVisible" nzPlacement="right" nzTitle="详情"
+  (nzOnClose)="close()">
+  <ul class="info">
+    <li *ngFor="let item of activeDocInfo | keyvalue">
+      {{ item.key }}: {{ item.value.Value }}
+    </li>
+  </ul>
+</nz-drawer>
+
+<nz-modal [(nzVisible)]="showSetting" nzTitle="设置置信度" (nzOnCancel)="close()" (nzOnOk)="settingValue()">
+  <nz-row>
+    <nz-col nzOffset="2" nzSpan="4">
+      <span style="line-height: 39px;">零件名称:</span>
+    </nz-col>
+    <nz-col nzSpan="12">
+      <nz-slider [nzMin]="0" [nzMax]="1" [nzStep]="0.01" [(ngModel)]="confidenceValue"></nz-slider>
+    </nz-col>
+    <nz-col nzSpan="4">
+      <nz-input-number [nzMin]="0" [nzMax]="1" [ngStyle]="{ marginLeft: '16px', width: '80px' }" [nzStep]="0.01"
+        [(ngModel)]="confidenceValue">
+      </nz-input-number>
+    </nz-col>
+  </nz-row>
+  <nz-row>
+    <nz-col nzOffset="2" nzSpan="4">
+      <span style="line-height: 39px;">不良症状:</span>
+    </nz-col>
+    <nz-col nzSpan="12">
+      <nz-slider [nzMin]="0" [nzMax]="1" [nzStep]="0.01" [(ngModel)]="confidenceSyndromeValue"></nz-slider>
+    </nz-col>
+    <nz-col nzSpan="4">
+      <nz-input-number [nzMin]="0" [nzMax]="1" [ngStyle]="{ marginLeft: '16px', width: '80px' }" [nzStep]="0.01"
+        [(ngModel)]="confidenceSyndromeValue">
+      </nz-input-number>
+    </nz-col>
+  </nz-row>
+</nz-modal>

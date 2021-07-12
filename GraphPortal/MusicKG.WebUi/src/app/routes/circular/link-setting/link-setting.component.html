@@ -1,0 +1,46 @@
+<form nz-form>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4">车款</nz-form-label>
+    <nz-form-control [nzSpan]="18">
+      <nz-select [nzLoading]="carModelLoading" nzShowSearch name="carModel" nzMode="multiple" [(ngModel)]="searchParams.carModels" (ngModelChange)="carModelChange()">
+        <nz-option *ngFor="let option of carModelList$ | async" [nzValue]="option" [nzLabel]="option"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4">车型</nz-form-label>
+    <nz-form-control [nzSpan]="18">
+      <nz-select [nzLoading]="carTypeLoading" nzShowSearch name="carType" nzMode="multiple" nzPlaceHolder="全部" [(ngModel)]="searchParams.carTypes" (ngModelChange)="yearModelChange()">
+        <nz-option *ngFor="let option of carTypeList$ | async" [nzValue]="option" [nzLabel]="option"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4">年款</nz-form-label>
+    <nz-form-control [nzSpan]="18">
+      <nz-select [nzLoading]="yearModelLoading" [nzDropdownMatchSelectWidth]="false" nzShowSearch name="yearModel" nzPlaceHolder="全部" nzMode="multiple"
+        [nzMaxTagCount]="1" [(ngModel)]="searchParams.yearModels" (ngModelChange)="partNameChange()">
+        <nz-option *ngFor="let option of yearModelList$ | async" [nzValue]="option" [nzLabel]="option"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4">零件名</nz-form-label>
+    <nz-form-control [nzSpan]="18">
+      <nz-select [nzLoading]="partNameLoading" [nzDropdownMatchSelectWidth]="false" class="long-select" nzShowSearch name="partName"
+        [(ngModel)]="searchParams.partName" (ngModelChange)="syndromeChange()">
+        <nz-option *ngFor="let option of partNameList$ | async" [nzValue]="option" [nzLabel]="option"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="4">不良症状</nz-form-label>
+    <nz-form-control [nzSpan]="18">
+      <nz-select [nzLoading]="syndromLoading" [nzDropdownMatchSelectWidth]="false" class="long-select" nzShowSearch name="syndrome"
+        [(ngModel)]="searchParams.syndroms">
+        <nz-option *ngFor="let option of syndromeList$ | async" [nzValue]="option.id" [nzLabel]="option.name">
+        </nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+</form>

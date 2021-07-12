@@ -1,0 +1,25 @@
+<div class="ontology-node">
+  <div class="ontology-node-children">
+    <ng-container *ngFor="let children of ontologyTree">
+      <ng-template [ngTemplateOutlet]="ontologyTreeNodeTemplate"
+        [ngTemplateOutletContext]="{ $implicit: children, parent: node }">
+      </ng-template>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #ontologyTreeNodeTemplate let-node let-parent="parent">
+  <div class="tree-node" [class.marked]="node.marked">
+    <div class="tree-node-title">
+      <span class="tree-node-color" [style.backgroundColor]="node.Color"></span>
+      <button class="tree-node-name" draggable="true" (dragstart)="onDragstart($event,node)" (mouseup)="onClickEntity($event, node)" [attr.title]="node.EntityType">{{ node.EntityType }}</button>
+    </div>
+    <div class="tree-node-children">
+      <ng-container *ngFor="let children of node?.Children">
+        <ng-template [ngTemplateOutlet]="ontologyTreeNodeTemplate"
+          [ngTemplateOutletContext]="{ $implicit: children, parent: node }">
+        </ng-template>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>

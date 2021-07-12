@@ -1,0 +1,43 @@
+<div class="page-header">
+  <div class="page-title">
+    采集任务管理
+  </div>
+</div>
+<nz-card class="page-content">
+  <div class="table-operator">
+      <button class="btn" nz-button nzType="primary" (click)="addTask()"><i nz-icon type="plus-circle" theme="outline"></i>新建任务</button>
+      <button routerLink="../config" class="btn" nz-button nzType="primary" style="margin-left:5%;"><i nz-icon type="gateway" theme="outline"></i>设置采集配置</button>
+  </div>
+  <nz-table #basicTable nzHideOnSinglePage [nzData]="tableData">
+      <thead>
+        <tr>
+          <th>任务名称</th>
+          <th>指定配置</th>
+          <th>创建时间</th>
+          <th>启动日期</th>
+          <th>结束日期</th>
+          <th>重复周期</th>
+          <!-- <th>任务状态</th> -->
+          <th nzWidth="120px">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{data.sched_name}}</td>
+          <td>{{data.conf_name}}</td>
+          <td>{{data.create_time | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+          <td >{{data.start_date | date: 'yyyy-MM-dd '}}</td>
+          <td >{{data.end_date | date: 'yyyy-MM-dd '}}</td>
+          <td >{{data.week}}<div> <span style="margin-left:10px;" *ngFor="let item of data.hm">{{item}}</span> </div></td>
+          <!-- <td>{{data.status}}</td> -->
+          <td >
+            <a (click)="addTask(data)" *ngIf="data.status !== 'running'">修改</a>
+            <a disabled *ngIf="data.status === 'running'">修改</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a nz-popconfirm nzTitle="确认删除该记录吗？" (nzOnConfirm)="onDelete(data._id)" *ngIf="data.status !== 'running'">删除</a>
+            <a nz-popconfirm nzTitle="确认删除该记录吗？" disabled *ngIf="data.status === 'running'">删除</a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+</nz-card>

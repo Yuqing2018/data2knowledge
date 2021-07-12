@@ -1,0 +1,154 @@
+.filter-title{
+    background-color: rgb(17,26,59);
+    padding: 10px 10px 0px;
+}
+
+.ant-radio-button-wrapper{
+    background: none;
+    color: white;
+    border: 1px solid white;
+}
+
+.ant-radio-button-wrapper-checked{
+    background-color: #1557FF !important;
+    border: none;
+    padding-top: 2px;
+}
+.ant-radio-button-wrapper-checked::before {
+    background: white !important;
+    opacity: 1;
+}
+.ant-select-arrow .ant-select-arrow-icon svg{
+    color: white;
+}
+// 
+.filter-item {
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 10px;
+
+    button{
+        background-color: #1557FF;
+        border: none;
+    }
+
+    span {
+        line-height: 32px;
+        display: inline-block;
+        width: 40px;
+        color: #ffffff;
+        &.long {
+            width: 65px;
+        }
+    }
+
+    nz-select {
+        min-width: 100px;
+        // color: #ffffff;
+        // .ant-select-selection{
+        //     background: none;
+        // }
+    }
+
+    .long-select {
+        min-width: 120px !important;
+    }
+
+}
+
+nz-radio-group {
+    display: inline-block;
+    margin-right: 20px;
+}
+:host ::ng-deep{
+    .ant-select-selection{
+        background: #111A3B;
+        color: #ffffff;
+        &:hover{
+            border-color: #ffffff;
+        }
+    }
+    .ant-select-selection__choice{
+        background: #111A3B;
+        color: #ffffff;
+        border: none;
+    }
+    .ant-select-selection__choice__remove{
+        color: #ffffff;
+        &:hover{
+            color: #ffffff;
+        }
+    }
+    .ant-select-arrow{
+        color: #ffffff;
+    }
+
+    .ant-select-selection__clear {
+        background: #111a3b;
+        color: #ffffff;
+    }
+} 
+nz-modal{
+    .table-operate{
+        span{
+            display: inline-block;
+            margin-right: 10px;
+        }
+    }
+}
+
+::ng-deep .nzmodal{      
+    .ant-modal{
+        top:22px;
+    }  
+    .ant-modal-body{
+        padding: 6px;
+    }
+    .ant-modal-footer,.ant-modal-header{
+        text-align: center;
+    }
+    .ant-modal-footer{
+        padding: 4px 16px;
+    }
+    .ant-modal-header{
+        color: #ffffff;
+        background: rgb(2,167,240); 
+    }
+    .ant-modal-title{
+        color: #ffffff;
+        line-height: 0;
+    }
+    .ant-btn{
+        background-color: rgb(2,167,240);
+        color: #ffffff;
+        &:hover{
+            color: #ffffff;
+            border-color: #ffffff;
+            background-color: rgb(2,167,240);
+        }
+    }
+    .ant-table-thead > tr > th, .ant-table-tbody > tr > td{
+        padding: 4px 4px;
+        text-align: center;
+        font-size: 12px;
+    }
+    .ant-table-pagination.ant-pagination{
+        margin: 12px 0 0 0;
+    }
+    .ant-modal-close-x{
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+    }
+    .ant-pagination{
+        font-size: 12px;
+    }
+    .ant-btn-primary{
+        border: none;
+    }
+}
+
+.example-input .ant-input {
+        width: 200px;
+        margin: 0 8px 8px 0;
+      }

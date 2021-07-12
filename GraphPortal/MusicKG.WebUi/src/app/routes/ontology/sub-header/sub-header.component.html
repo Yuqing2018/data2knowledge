@@ -1,0 +1,37 @@
+<div class="page-header">
+    <div class="page-title" style="display:inline-block">
+      {{ labelType === '标签' ? '标签' : 'Ontology ' }}管理
+    </div>
+      <button *ngIf="type!=='5c414c0a5a01cf00010f9661'" (click)="createTplModal(tplTitle, tplContent, tplFooter)"  nz-button nzType="primary"><i nz-icon type="upload" theme="outline"></i>导入</button>
+      <button *ngIf="type!=='5c414c0a5a01cf00010f9661'" (click)="downloadOntology()" nz-button nzType="primary" ><i nz-icon type="download" theme="outline"></i>导出</button>
+    <nz-tabset [nzSelectedIndex]="tabIndex">
+        <nz-tab *ngFor="let menu of menuData let i =index"  nzTitle="{{menu.title}}" (nzClick)="skip(menu.link,i)">
+        </nz-tab>
+    </nz-tabset>
+  </div>
+
+  
+
+  <!-- 弹出框 -->
+<ng-template #tplTitle>
+  <span>{{ labelType === '标签' ? '标签' : 'Ontology' }} 导入</span>
+</ng-template>
+<ng-template #tplContent>
+  <nz-upload #upload nzType="drag" [nzBeforeUpload]="beforeUpload" (nzChange)="uploadChange($event)">
+    <p class="ant-upload-drag-icon">
+      <i nz-icon type="inbox"></i>
+    </p>
+    <p class="ant-upload-text">点击或拖拽文件到此区域上传</p>
+  </nz-upload>
+  <div *ngIf= "fileList.length !== 0" class="file-list" >
+    <li *ngFor="let file of fileList;let i = index">
+        <i nz-icon type="paper-clip" theme="outline" style="left:3px;"></i>
+        <span title="{{file.name}}">{{file.name}}</span>
+        <i nz-icon class="close" type="close" theme="outline" title="删除文件" style="font-size:11px;top:7px;z-index: 100;" (click)="removeFile(i)"></i>
+    </li>
+  </div>
+</ng-template>
+<ng-template #tplFooter>
+  <button nz-button nzType="primary" [disabled]="fileList.length === 0" [nzLoading]="uploading" (click)="handleUpload()">上传</button>
+  <button nz-button nzType="primary" (click)="handleCancel()">取消</button>
+</ng-template>

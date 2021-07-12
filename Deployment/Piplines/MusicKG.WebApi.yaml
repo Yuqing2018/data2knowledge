@@ -1,0 +1,48 @@
+variables:
+  solution: 'API/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+trigger:
+  branches:
+    include:
+    - master
+    - honda_dev
+    - refs/tags/honda_v*
+  paths:
+    include:
+    - GraphPortal/*
+    - Deployment/Pipeline/MusicKG.WebApi.yaml
+    - Deployment/Pipeline/templates/*.yaml
+    - Deployment/Pipeline/templates/dotnet/*
+    exclude:
+    - GraphPortal/HondaPlugins/*
+    - GraphPortal/DataManager/*
+    - Scheduler/*
+    - GraphPortal/MusicKG.WebUi/*
+    - GraphPortal/*.Test
+    - GraphPortal/MusicKG.Workflow.*
+    - Deployment/Pipeline/templates/dotnet/dotnet-pack.yaml
+    - Deployment/Pipeline/templates/dotnet/dotnet-push.yaml
+
+stages:
+- stage: Build
+  jobs:
+  - job: Build
+    pool:
+      name: labeltool
+    steps:
+    - template: templates/dotnet/dotnet-init.yaml
+      parameters:
+        dotnetVersion: 5.0.x
+    - template: templates/dotnet/dotnet-restore.yaml
+      parameters:
+        projects: GraphPortal/MusicKG.WebApi/*.csproj
+    - template: templates/dotnet/dotnet-publish.yaml
+      parameters:
+        projects: GraphPortal/MusicKG.WebApi/*.csproj
+    - template: templates/docker-build.yaml
+      parameters:
+        dockerfile: GraphPortal/MusicKG.WebApi/Dockerfile
+        registry: labeltool.eastasia.cloudapp.azure.com:5443
+        repository: musickg.webapi

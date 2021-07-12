@@ -1,0 +1,21 @@
+trigger: none
+
+variables:
+  solution: 'API/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+pool:
+  name: labeltool
+
+steps:
+- template: templates/dotnet/mongo2go-init.yaml
+- template: templates/dotnet/dotnet-init.yaml
+  parameters:
+    dotnetVersion: 5.0.x
+- template: templates/dotnet/dotnet-restore.yaml
+  parameters:
+    projects: GraphPortal/MusicKG.WebApi.Test/*.csproj
+- template: templates/dotnet/dotnet-test.yaml
+  parameters:
+    projects: GraphPortal/MusicKG.WebApi.Test/MusicKG.WebApi.Test.csproj

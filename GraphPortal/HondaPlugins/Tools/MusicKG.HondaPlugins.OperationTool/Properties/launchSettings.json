@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "MusicKG.HondaPlugins.OperationTool": {
+      "commandName": "Project",
+      "commandLineArgs": "model --list",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

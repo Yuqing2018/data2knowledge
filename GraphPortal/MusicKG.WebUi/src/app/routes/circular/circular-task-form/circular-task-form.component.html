@@ -1,0 +1,94 @@
+<form nz-form>
+  <div class="form-title">
+    任务信息
+  </div>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>任务名称</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <input nz-input [(ngModel)]="name" name="name" maxlength="50" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>预警单位</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select name="warningUnit" [(ngModel)]="warningUnit">
+        <nz-option nzValue="零件_不良症状" nzLabel="零件_不良症状"></nz-option>
+        <nz-option nzValue="未知零件_不良症状" nzLabel="未知零件_不良症状"></nz-option>
+        <nz-option nzValue="不良症状" nzLabel="不良症状"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>车款</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select name="carType" [(ngModel)]="carType" nzMode="multiple" (ngModelChange)="carTypeChange()"
+        [nzLoading]="carTypeLoading">
+        <nz-option [nzValue]="'全部'" [nzLabel]="'全部'"
+          [nzDisabled]="carType && carType.length > 0 && carType.toString() !== '全部'"></nz-option>
+        <nz-option *ngFor="let option of carTypeList" [nzValue]="option" [nzDisabled]="carType == '全部'"
+          [nzLabel]="option"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>车型</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select nzMode="multiple" [nzLoading]="carModelLoading" [(ngModel)]="carModel" name="carModel">
+        <nz-option [nzValue]="'全部'" [nzLabel]="'全部'"
+          [nzDisabled]="carModel && carModel.length > 0 && carModel.toString() !== '全部'"></nz-option>
+        <nz-option *ngFor="let option of carModelList" [nzValue]="option" [nzDisabled]="carModel == '全部'"
+          [nzLabel]="option"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>年款</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <km-years-range name="yearModels" [(ngModel)]="yearModels"></km-years-range>
+    </nz-form-control>
+  </nz-form-item>
+  <div class="form-title">
+    预警指标设置
+    <nz-radio-group class="warning-select" name="warningSelected" [(ngModel)]="warningSelected">
+      <label nz-radio-button nzValue="多发预警">多发预警 <i nz-icon (click)="setEmpty('warnValue')" *ngIf="warnValue" nzType="check" nzTheme="outline"></i></label>
+      <label nz-radio-button nzValue="风险预警">风险预警 <i nz-icon (click)="setEmpty('checkList')" *ngIf="hasSelected" nzType="check" nzTheme="outline"></i></label>
+      <label nz-radio-button nzValue="再发预警">再发预警 <i nz-icon (click)="setEmpty('reWarnValue')" *ngIf="reWarnValue" nzType="check" nzTheme="outline"></i></label>
+    </nz-radio-group>
+  </div>
+  <nz-form-item>
+    <nz-form-control *ngIf="warningSelected == '多发预警'" nzOffset="3" [nzSpan]="24">
+      <nz-radio-group [(ngModel)]="warnValue" name="warnValue">
+        <label *ngFor="let r of warningIndexList" nz-radio [nzValue]="r.id">
+          <div class="flex-input">
+            <span class="name">{{r.indexName }}
+              <ng-container *ngIf="r.unit">({{r.unit}})</ng-container>
+            </span>
+            <span class="mark">≥</span>
+            <input (click)="stopBubble($event)" [disabled]="r.value === '对策前不良率'" [ngModelOptions]="{standalone: true}"
+              class="small-input" nz-input [(ngModel)]="r.value" />
+          </div>
+        </label>
+      </nz-radio-group>
+    </nz-form-control>
+    <nz-form-control *ngIf="warningSelected == '再发预警'" nzOffset="3" [nzSpan]="24">
+      <nz-radio-group [(ngModel)]="reWarnValue" name="reWarnValue">
+        <label *ngFor="let r of reWarningIndexList" nz-radio [nzValue]="r.id">
+          <div class="flex-input">
+            <span class="name">{{r.indexName }}
+              <ng-container *ngIf="r.unit">({{r.unit}})</ng-container>
+            </span>
+            <span class="mark">≥</span>
+            <input (click)="stopBubble($event)" [disabled]="r.value === '对策前不良率'" [ngModelOptions]="{standalone: true}"
+              class="small-input" nz-input [(ngModel)]="r.value" />
+          </div>
+        </label>
+      </nz-radio-group>
+    </nz-form-control>
+    <nz-form-control *ngIf="warningSelected == '风险预警'">
+      <nz-form-label [nzSpan]="6">风险等级</nz-form-label>
+      <nz-form-control [nzSpan]="12">
+        <nz-checkbox-group [ngModelOptions]="{standalone: true}" [(ngModel)]="checkList"></nz-checkbox-group>
+      </nz-form-control>
+    </nz-form-control>
+  </nz-form-item>
+</form>

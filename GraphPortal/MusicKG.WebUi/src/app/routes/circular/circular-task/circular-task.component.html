@@ -1,0 +1,103 @@
+<nz-card class="hd-page-header">
+  <div class="page-title">
+    <img src="./assets/img/task-active.png">
+    <span>预警任务</span>
+  </div>
+  <div class="page-search">
+    <div class="filter-item">
+      <span>创建人: </span>
+      <nz-select nzShowSearch [(ngModel)]="createdBy">
+        <nz-option nzValue="" nzLabel="全部"></nz-option>
+        <nz-option *ngFor="let user of userList" [nzValue]="user" [nzLabel]="user"></nz-option>
+      </nz-select>
+    </div>
+    <div class="filter-item">
+      <span>预警状态: </span>
+      <nz-select [(ngModel)]="status">
+        <nz-option nzValue="" nzLabel="全部"></nz-option>
+        <nz-option nzValue="预警中" nzLabel="预警中"></nz-option>
+        <nz-option nzValue="已终止" nzLabel="已终止"></nz-option>
+      </nz-select>
+    </div>
+    <!-- <div class="filter-item">
+      <span>预警类型: </span>
+      <nz-select [(ngModel)]="type">
+        <nz-option nzValue="" nzLabel="全部"></nz-option>
+        <nz-option nzValue="多发预警" nzLabel="多发预警"></nz-option>
+        <nz-option nzValue="风险预警" nzLabel="风险预警"></nz-option>
+        <nz-option nzValue="再发预警" nzLabel="再发预警"></nz-option>
+      </nz-select>
+    </div> -->
+    <div class="filter-item">
+      <span>预警单位: </span>
+      <nz-select name="warningUnit" [(ngModel)]="warningUnit">
+        <nz-option nzValue="" nzLabel="全部"></nz-option>
+        <nz-option nzValue="零件_不良症状" nzLabel="零件_不良症状"></nz-option>
+        <nz-option nzValue="未知零件_不良症状" nzLabel="未知零件_不良症状"></nz-option>
+        <nz-option nzValue="不良症状" nzLabel="不良症状"></nz-option>
+      </nz-select>
+    </div>
+    <div class="select-item">
+      <span>车款: </span>
+      <nz-select [nzDropdownMatchSelectWidth]="false" nzAllowClear nzMode="multiple" [nzLoading]="carModelLoading" nzPlaceHolder="全部" [(ngModel)]="carModels">
+        <nz-option *ngFor="let option of carModelList" [nzValue]="option" [nzLabel]="option"></nz-option>
+      </nz-select>
+    </div>
+    <div class="filter-btn">
+      <button nz-button nzType="primary" (click)="onSearch()">查询</button>
+      <button nz-button nzType="default" (click)="onReset()" class="reset">重置</button>
+    </div>
+  </div>
+</nz-card>
+<nz-card class="page-content">
+  <div class="table-operate">
+    <div class="left sub">
+      任务列表
+    </div>
+    <div class="right">
+      <button nz-button nzType="primary" (click)="add()"><i nz-icon nzType="plus" nzTheme="outline"></i>新增预警任务</button>
+    </div>
+  </div>
+  <nz-table #basicTable [nzShowTotal]="rangeTemplate" [nzData]="dataSet" class="table"
+    (nzPageIndexChange)="pageIndexChange($event)" [(nzPageIndex)]="pageIndex" [nzLoading]="searchLoading" [nzTotal]="total"
+    [nzFrontPagination]="false">
+    <thead>
+      <tr>
+        <th width="100px">序号</th>
+        <th>任务名称</th>
+        <th>预警状态</th>
+        <th>预警单位</th>
+        <th>预警类别</th>
+        <th>车款</th>
+        <th>车型</th>
+        <th>年款</th>
+        <th>创建人</th>
+        <th>创建时间</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data; index as i">
+        <td>{{ (basicTable.nzPageIndex - 1) * 10 + i + 1 }}</td>
+        <td>{{data.name}}</td>
+        <td>{{data.warningStatus}}</td>
+        <td>{{data.warningUnit}}</td>
+        <td>{{data.warningType}}</td>
+        <td>{{data.carModels?.join(',') || '全部'}}</td>
+        <td>{{data.carTypes?.join(',') || '全部'}}</td>
+        <td>{{data.yearModels.length == 1 ? data.yearModels : (data.yearModels | years)}}</td>
+        <td>{{data.createBy}}</td>
+        <td>{{data.createTime | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+        <td class="action">
+          <a *ngIf="data.warningStatus == '预警中'"  (click)="onUpdate(data)">修改</a>
+          <a *ngIf="data.warningStatus == '已终止'"  (click)="onView(data)">查看</a>
+          <a *ngIf="data.warningStatus !== '已终止'" nz-popconfirm nzTitle="确认终止该任务吗?" (nzOnConfirm)="onStop(data)">终止</a>
+          <!-- <a nz-popconfirm nzTitle="确认删除该条记录吗?" (nzOnConfirm)="onDelete(data)">删除</a> -->
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <ng-template #rangeTemplate let-range="range" let-total>
+    {{ range[0] }}-{{ range[1] }} 共 {{ total }} 项
+  </ng-template>
+</nz-card>

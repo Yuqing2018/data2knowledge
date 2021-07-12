@@ -1,0 +1,220 @@
+<div class="page-header">
+  <div class="page-title">
+    文档管理
+  </div>
+</div>
+
+<nz-card class="page-content">
+  <div class="table-operator">
+    <div nz-row>
+      <button class="btn" nz-button nzType="primary" (click)="createTplModal(tplTitle, tplContent, tplFooter)"><i nz-icon type="upload"
+        theme="outline"></i>上传文档</button>
+      <button class="btn" [disabled]="addTaskDisabled" nz-button nzType="primary" (click)="addTask()"><i nz-icon type="plus"
+        theme="outline"></i>新建任务</button>  
+    </div>
+      <form nz-form [nzLayout]="'inline'">
+        <div nz-row>
+          <div nz-col nzXs="24" nzSm="24" nzMd="8">
+              <nz-form-item nz-row>
+                <nz-form-label [nzSpan]="5" nzFor="name">文档名</nz-form-label>
+                <nz-form-control [nzSpan]="18">
+                  <input nz-input maxlength="120" id="name" name="name" [(ngModel)]="documentName" placeholder="文档名">
+                </nz-form-control>
+              </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="8">
+              <nz-form-item nz-row >
+              <nz-form-label [nzSpan]="5">上传时间</nz-form-label>
+              <nz-form-control [nzSpan]="18">
+                  <nz-date-picker style="margin-right:5%; width: 46%;" name="startTime" [(ngModel)]="startTime" ></nz-date-picker>
+                  <nz-date-picker style="width: 46%;" name="endTime" [(ngModel)]="endTime" ></nz-date-picker>
+                  <!-- <nz-range-picker [(ngModel)]="datePicker" [nzAllowClear]="false" (ngModelChange)="onChange($event)" name="datePicker"></nz-range-picker> -->
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="8" *ngIf="isDown">
+              <nz-form-item nz-row >
+                <nz-form-label [nzSpan]="5">状态</nz-form-label>
+                <nz-form-control [nzSpan]="18">
+                    <nz-select   name="status" nzPlaceHolder="全部" [(ngModel)]="statuses">
+                      <nz-option *ngFor="let option of listOfOption" [nzLabel]="option.displayName" [nzValue]="option.value"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="8" *ngIf="isDown">
+              <nz-form-item >
+                  <nz-form-label [nzSpan]="5" nzFor="name">标签</nz-form-label>
+                  <nz-form-control [nzSpan]="18">
+                    <input nz-input id="tag" maxlength="20" name="tag" [(ngModel)]="tag" placeholder="标签">
+                  </nz-form-control>
+                </nz-form-item>
+
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="8">
+              <nz-form-item >
+                  <nz-form-control [nzSpan]="18" [nzOffset]="5" style="vertical-align: middle;">
+                    <button nz-button nzType="primary" (click)="searchData(true)"><i nz-icon type="search" theme="outline"></i>查询</button>
+                    <button style="margin-left:5px;" nz-button nzType="default" (click)="resetData()">重置</button>
+                    <a *ngIf="!isDown" (click)="isDown=!isDown" style="margin-left:8px">展开
+                        <i nz-icon type="down" theme="outline"></i>
+                    </a>
+                    <a *ngIf="isDown" (click)="isDown=!isDown" style="margin-left:8px">收起
+                        <i nz-icon type="up" theme="outline"></i>
+                    </a>
+                  </nz-form-control>
+                </nz-form-item>
+          </div>
+
+        </div>
+        <!-- <nz-form-item  nzXs="24" nzSm="12" nzMd="6">
+          <nz-form-label [nzSpan]="6" nzFor="name">文档名</nz-form-label>
+          <nz-form-control [nzSpan]="18">
+            <input nz-input id="name" name="name" [(ngModel)]="documentName" placeholder="文档名">
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nzXs="24" nzSm="12" nzMd="6">
+          <nz-form-label [nzSpan]="6">上传时间</nz-form-label>
+          <nz-form-control [nzSpan]="18">
+              <nz-date-picker style="margin-right:5%; width: 45%;"  name="startTime"  [(ngModel)]="startTime" ></nz-date-picker>
+              <nz-date-picker style="width: 45%;"  name="endTime"   [(ngModel)]="endTime" ></nz-date-picker>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nzXs="24" nzSm="12" nzMd="6">
+          <nz-form-label [nzSpan]="6">状态</nz-form-label>
+          <nz-form-control [nzSpan]="18">
+              <nz-select style="width: 100px"  name="status" nzPlaceHolder="全部" [(ngModel)]="statuses">
+                <nz-option *ngFor="let option of listOfOption" [nzLabel]="option.displayName" [nzValue]="option.value"></nz-option>
+              </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nzXs="24" nzSm="12" nzMd="6">
+            <nz-form-label [nzSpan]="6" nzFor="name">标签</nz-form-label>
+            <nz-form-control [nzSpan]="18">
+              <input nz-input id="tag" name="tag" [(ngModel)]="tag" placeholder="标签">
+            </nz-form-control>
+          </nz-form-item>
+        <nz-form-item nzXs="24" nzSm="12" nzMd="6">
+          <nz-form-control style="vertical-align: middle;">
+            <button nz-button nzType="primary" (click)="searchData(true)"><i nz-icon type="search" theme="outline"></i>查询</button>
+            <button style="margin-left:5px;" nz-button nzType="primary" (click)="resetData()">重置</button>
+          </nz-form-control>
+        </nz-form-item> -->
+      </form>
+      <nz-alert nzType="info" nzMessage="共{{ total }}条 已选择{{ taskDocCheckedList.length }}条" nzShowIcon></nz-alert>
+  </div>
+  <ng-template #totalTempl>共 {{total}} 条 </ng-template>
+  <nz-table #taskTable [nzShowTotal]="totalTempl" [nzData]="DocumentData" [nzTotal]="total"  [(nzPageIndex)]="pageIndex"  [nzFrontPagination]="false"
+    [(nzPageSize)]="pageSize" nzShowSizeChanger [nzLoading]="loading" (nzPageIndexChange)="searchData()" (nzPageSizeChange)="searchData(true)">
+    <thead>
+      <tr>
+        <th nzShowCheckbox [(nzChecked)]="allChecked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="checkAll($event)"></th>
+        <th>文档名</th>
+        <th>上传时间</th>
+        <th>状态</th>
+        <th>标签</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of taskTable.data">
+        <td nzShowCheckbox [(nzChecked)]="data.checked" (nzCheckedChange)="checkOne(data)"></td>
+        <td *ngIf="!isGraph"><a (click)="downloadDocument(data.workspaceId,data.id,jsonContent)">{{data.name}}</a></td>
+        <td *ngIf="isGraph"><a (click)="downloadDocument(data.workspaceId,data.id,graphContent)">{{data.name}}</a></td>
+        <td>{{data.uploadedAt | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+        <td>{{data.status | documentStatus}}</td>
+        <td><span style="margin-right:10px" *ngFor="let tag of data.tags">{{tag}} </span></td>
+        <td>
+          <a *ngIf="data.status !== 'Removed'"  (click)="editTplModal(editTitle, editContent, editFooter,data)">修改</a>
+          <a disabled *ngIf="data.status === 'Removed'" >修改</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a nz-popconfirm *ngIf="data.status !== 'Removed'" nzTitle="确认删除该记录吗？" (nzOnConfirm)="onDelete(data.id)">删除</a>
+          <a nz-popconfirm disabled *ngIf="data.status === 'Removed'">删除</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-card>
+
+<!-- 弹出框 -->
+<ng-template #tplTitle>
+  <span> 文档上传</span>
+</ng-template>
+<ng-template #tplContent>
+  <div class="tags">
+    <div *ngFor="let tag of tagsArray;let i = index">
+      <input [class.error-input]="tag.value && tag.value.length > 20" nz-input name="'tag'+{{i}}" [(ngModel)]="tag.value" type="text" placeholder="输入标签名">
+      <div class="error-info" *ngIf="tag.value && tag.value.length > 20">
+          标签名长度不能超过20个字符
+      </div>
+      <!-- <i *ngIf = "tagsArray.length > 1" style="margin-left:10px;" nz-icon type="minus-circle-o"  (click)="removeTag(tag,$event,i)"></i>
+      <i *ngIf = "i === tagsArray.length-1" style="margin-left:10px;" nz-icon type="plus-circle" (click)="addTag($event)" theme="outline"></i> -->
+    </div>
+  </div>
+  <nz-upload #upload nzType="drag" [nzBeforeUpload]="beforeUpload" >
+    <p class="ant-upload-drag-icon">
+      <i nz-icon type="inbox"></i>
+    </p>
+    <p class="ant-upload-text">点击或拖拽文件到此区域上传</p>
+  </nz-upload>
+  <div *ngIf= "fileList.length !== 0" class="file-list" >
+    <li *ngFor="let file of fileList;let i = index">
+        <i nz-icon type="paper-clip" theme="outline" style="left:3px;"></i>
+        <span title="{{file.name}}">{{file.name}}</span>
+        <i nz-icon class="close" type="close" theme="outline" title="删除文件" style="font-size:11px;top:7px;z-index: 100;" (click)="removeFile(i)"></i>
+    </li> 
+  </div>
+</ng-template>
+<ng-template #tplFooter>
+  <button nz-button nzType="primary" [nzLoading]="uploading" (click)="handleUpload()" [disabled]="fileList.length === 0 || tagValidate">上传</button>
+  <button nz-button nzType="primary" (click)="handleCancel()">取消</button>
+</ng-template>
+
+<!-- 编辑文档 -->
+<ng-template #editTitle>
+  <span> 编辑文档</span>
+</ng-template>
+<ng-template #editContent>
+  <form nz-form >
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24"  nzFor="name">文档名</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+        <input disabled nz-input  maxlength="120" id="name" name="name" [(ngModel)]="edit_document_data.name">
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="website" >标签名</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24">
+          <div *ngFor="let tag of tagsArray;let i = index">
+            <input [class.error-input]="tag.value && tag.value.length > 20" nz-input name="'tag'+{{i}}" [(ngModel)]="tag.value" type="text" placeholder="输入标签名">
+            <div class="error-info" *ngIf="tag.value && tag.value.length > 20">
+              标签名长度不能超过20个字符
+            </div>
+            <!-- <i style="margin-left:10px;" nz-icon type="minus-circle-o"  (click)="removeTag(tag,$event,i)"></i> 
+            <i *ngIf = "i === tagsArray.length-1" style="margin-left:10px;" nz-icon type="plus-circle" (click)="addTag($event)" theme="outline"></i> -->
+          </div>
+          <i *ngIf = "tagsArray.length == 0" style="margin-left:10px;" nz-icon type="plus-circle" (click)="addTag($event)" theme="outline"></i>
+        <!-- <input nz-input id="website"  placeholder="website"> -->
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</ng-template>
+<ng-template #editFooter>
+  <button nz-button nzType="primary" [nzLoading]="uploading" (click)="updateDocument()" [disabled]="tagValidate">确定</button>
+  <button nz-button nzType="primary" (click)="handleCancel()">取消</button>
+</ng-template>
+
+
+<ng-template #jsonContent>
+  <div style="white-space:pre;overflow-x: auto;">
+    {{jsonContentHtml}}
+  </div>
+  </ng-template>
+
+
+<ng-template #graphContent>
+  <div class="graphContent">
+      <img src="{{graphSrc}}" alt="">
+  </div>
+</ng-template>
+

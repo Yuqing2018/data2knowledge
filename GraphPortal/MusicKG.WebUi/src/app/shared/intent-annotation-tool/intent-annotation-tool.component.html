@@ -1,0 +1,95 @@
+<div class="trainning-phrase">
+  <ng-content></ng-content>
+  <div class="search-container">
+    <div class="guideline">训练例句（请按Enter确认）</div>
+    <div class="search">
+      <input type="text" nz-input placeholder="请输入您要搜索的训练例句" [(ngModel)]="searchValue" (keyup)="onSearch()">
+    </div>
+  </div>
+  <div class="add-input" *ngIf="!searchValue">
+    <div class="status-container">
+      <span class="status" (click)="onChangeType()">{{ trainingPhraseType ? "”" : "@" }}</span>
+    </div>
+    <div class="input-container">
+      <input type="text" #templateInput [attr.placeholder]="trainingPhraseType ? '添加 Example' : '添加 Template'"
+        (keyup.enter)="onAddValue()" (dragover)="onDragover($event,templateInput)"
+        (drop)="onDrop($event, templateInput)" (dragleave)="onDragleave($event,templateInput)" [(ngModel)]="addValue">
+    </div>
+  </div>
+  <div *ngFor="let item of trainingSearchPhraseList; index as phraseIndex">
+    <table [ngStyle]="{'border-left': activePhrase === item?'3px solid #359AB3':'3px solid #dfe0e2'}">
+      <tr>
+        <ng-container *ngIf="item.TrainingPhraseType == 'Example'">
+          <td colspan="3" class="part-container" (click)="this.activePhrase = item">
+            <div style="display: flex;">
+              <span class="status line-head-status" style="margin-left: 20px;">”</span>
+              <div *ngFor="let element of item.Parts; let i = index"
+                [ngStyle]="{'flex-grow':item.Parts.length-1 == i?1:0}" style="overflow: visible;">
+                <span class="space" *ngIf="!element.EntityType"
+                  [ngStyle]="{'width':item.Parts.length-1 == i?'100%':'auto','display':item.Parts.length-1 == i?'inline-block':'inline'}"
+                  contenteditable="true" #templateInput [textContent]="element.Text"
+                  (dragover)="onDragover($event,templateInput,item)" (blur)="element.Text=$event.target.textContent"
+                  (mouseup)="highlight($event,item,element)"></span>
+                <div *ngIf="element.EntityType" class="entity-type"><span
+                    [style.background]="element.Color">{{element.Text}}</span>
+                </div>
+              </div>
+            </div>
+            <span class="delTP" (click)="onRemovePhrase(phraseIndex)">删除</span>
+          </td>
+        </ng-container>
+        <ng-container *ngIf="item.TrainingPhraseType != 'Example'">
+          <td colspan="3" class="part-container" style="text-align: left;" (click)="this.activePhrase = item">
+            <div style="display: flex;">
+              <span class="status line-head-status" style="margin-left:10px;">@</span>
+              <km-template-input [(ngModel)]="item.Parts"></km-template-input>
+              <span class="delTP" (click)="onRemovePhrase(phraseIndex)">删除</span>
+            </div>
+          </td>
+        </ng-container>
+      </tr>
+    </table>
+    <table
+      *ngIf="activePhrase === item && (item.Parts.length > 1 || (item.Parts.length == 1 && item.Parts[0].EntityType))"
+      style="transition: opacity .2s;margin-top: 0; margin-right: 1px">
+      <tr>
+        <th width="33%" style="border-top: 0;">PARAMETER NAME</th>
+        <th width="33%" style="border-top: 0;">ENTITY</th>
+        <th style="border-top: 0;">RESOLVED VALUE</th>
+      </tr>
+      <ng-container *ngIf="item.TrainingPhraseType=='Example'">
+        <ng-container *ngFor="let element of item.Parts; let i=index">
+          <tr *ngIf="element.EntityType">
+            <td>
+              <div contenteditable="true" [textContent]="element.Alias" (input)="onUpdateAlias($event,element)"></div>
+            </td>
+            <td><span class="entity-btn" [class.active]="selectedPart == element" [style.background]="element.Color"
+                (mouseup)="onSelectedEntity($event,element)">@{{element.EntityType==null?"null":element.EntityType}}</span>
+            </td>
+            <td style="position:relative">{{element.Text}}<span class="del"
+                (click)="onRemovePart(element,item)">删除</span>
+            </td>
+          </tr>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngIf="item.TrainingPhraseType != 'Example'">
+        <ng-container *ngFor="let element of item.Parts; let i=index">
+          <tr *ngIf="element.EntityType">
+            <td>
+              <div contenteditable="true" [textContent]="element.Alias" (input)="onUpdateAlias($event,element)"></div>
+            </td>
+            <td><span class="entity-btn" [class.active]="selectedPart == element" [style.background]="element.Color"
+                (mouseup)="onSelectedEntity($event,element)">@{{element.EntityType==null?"null":element.EntityType}}</span>
+            </td>
+            <td style="position:relative">{{element.Text}}<span class="del"
+                (click)="onRemovePart(element, item)">删除</span>
+            </td>
+          </tr>
+        </ng-container>
+      </ng-container>
+    </table>
+  </div>
+  <div class="empty" *ngIf="trainingSearchPhraseList && trainingSearchPhraseList.length == 0">
+    暂无数据
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<form>
+  <nz-form-item *ngIf="dataSource !== 'MQI'">
+    <nz-form-label [nzSm]="8">零件名称</nz-form-label>
+    <nz-form-control [nzSm]="12">
+      <km-dictionary-input-select [autoFocus]="false" name="partName" [(ngModel)]="partName"></km-dictionary-input-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="8">不良症状</nz-form-label>
+    <nz-form-control [nzSm]="12">
+      <km-dictionary-id-select [autoFocus]="false" name="syndrome" [(ngModel)]="syndrome"></km-dictionary-id-select>
+    </nz-form-control>
+  </nz-form-item>
+</form>

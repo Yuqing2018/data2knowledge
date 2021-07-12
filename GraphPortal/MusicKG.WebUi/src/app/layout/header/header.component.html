@@ -1,0 +1,49 @@
+<nz-header>
+  <div class="logo" (click)="goToMainPage()">
+    知识标注工具
+  </div>
+  <div class="header-nav">
+    <span *ngIf="visiable">标注空间：</span>
+    <nz-select (ngModelChange)="toggle($event)" *ngIf="visiable" style="width: 200px;" nzPlaceHolder="请选择标注空间"
+      [(ngModel)]="selectedValue">
+      <nz-option *ngFor="let option of workSpaceList" nzLabel="{{ option.name }}" nzValue="{{ option.id }}"></nz-option>
+      <nz-option nzLabel="标注空间管理" nzValue="" nzCustomContent>
+        <i nz-icon type="setting" theme="outline"></i>
+        <span style="display: inline-block; margin-left: 8px;">标注空间管理</span>
+      </nz-option>
+    </nz-select>
+    <ul class="header-menu">
+      <li class="user">
+        <nz-dropdown [nzPlacement]="'bottomRight'">
+          <span nz-dropdown class="user-name">
+            <i nz-icon type="user" theme="outline"
+              style="font-size: 18px;margin-right: 2px; vertical-align: text-top"></i>
+            {{ userName }}
+          </span>
+          <ul nz-menu style="min-width: 150px">
+            <li nz-menu-item (click)="resetPassword()">
+              <i nz-icon type="setting" theme="outline"></i> 修改密码
+            </li>
+            <li nz-menu-item (click)="logout()">
+              <i nz-icon type="logout" theme="outline"></i> 退出
+            </li>
+          </ul>
+        </nz-dropdown>
+      </li>
+    </ul>
+    <div class="admin-nav" *ngIf="adminNav">
+      <ul>
+        <li routerLinkActive="selected" [routerLink]="['/user']">用户管理</li>
+        <li routerLinkActive="selected" [routerLink]="['/statistic']">标注统计</li>
+        <li routerLinkActive="selected" routerLink="/faq">正式问答知识库</li>
+      </ul>
+    </div>
+    <div class="admin-nav" *ngIf="annotatorNav">
+      <ul>
+        <li routerLinkActive="selected" [routerLink]="['/annotator/task']">标注任务</li>
+        <li routerLinkActive="selected" [routerLink]="['/annotator/reason']">不良症状</li>
+        <li routerLinkActive="selected" [routerLink]="['/annotator/config']">任务设置</li>
+      </ul>
+    </div>
+  </div>
+</nz-header>

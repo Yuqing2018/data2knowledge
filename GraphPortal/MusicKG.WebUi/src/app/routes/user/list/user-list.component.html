@@ -1,0 +1,63 @@
+<div class="title">
+  <h2>用户管理</h2>
+  <button (click)="userDispatch('new')" nz-button nzType="primary" nzGhost>
+    <i nz-icon type="plus-circle" theme="outline"></i>
+    新建用户
+  </button>
+</div>
+
+<nz-card class="page-content">
+  <ng-template #totalTempl>共 {{dataSet.length}} 条 </ng-template>
+  <nz-table #basicTable [nzShowTotal]="totalTempl" [(nzData)]="dataSet" [nzLoading]="loading">
+    <thead>
+      <tr>
+        <th nzWidth="250px">用户名称</th>
+        <th>用户角色</th>
+        <th>创建时间</th>
+        <th>用户状态</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.name }}</td>
+        <td>{{ data.roles[0] | userRole }}</td>
+        <td>{{ data.createdAt | date : 'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>{{ data.status === 'Enabled' ? '正常' : '禁用中'   }}</td>
+        <td>
+          <div class="user-action">
+            <i nz-icon type="edit" nz-tooltip nzTitle="修改用户" theme="outline"
+              (click)="userDispatch('edit', data.id)"></i>
+            <i nz-icon nz-tooltip nzTitle="禁用用户" style="color: rgba(0, 0, 0, .65)"
+              *ngIf="data.status === 'Enabled' ? true : false" nz-popconfirm nzTitle="确定禁用该用户吗？"
+              (nzOnConfirm)="modifyStatus(data.id)">
+              <svg aria-hidden="true" data-prefix="fas" data-icon="user-times"
+                class="svg-inline--fa fa-user-times fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 512">
+                <path fill="currentColor"
+                  d="M589.6 240l45.6-45.6c6.3-6.3 6.3-16.5 0-22.8l-22.8-22.8c-6.3-6.3-16.5-6.3-22.8 0L544 194.4l-45.6-45.6c-6.3-6.3-16.5-6.3-22.8 0l-22.8 22.8c-6.3 6.3-6.3 16.5 0 22.8l45.6 45.6-45.6 45.6c-6.3 6.3-6.3 16.5 0 22.8l22.8 22.8c6.3 6.3 16.5 6.3 22.8 0l45.6-45.6 45.6 45.6c6.3 6.3 16.5 6.3 22.8 0l22.8-22.8c6.3-6.3 6.3-16.5 0-22.8L589.6 240zM224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z">
+                </path>
+              </svg>
+            </i>
+            <i nz-icon nz-tooltip nzTitle="启用用户" style="color: rgba(0, 0, 0, .65)"
+              *ngIf="data.status === 'Enabled' ? false : true" (click)="modifyStatus(data.id)">
+              <svg aria-hidden="true" data-prefix="fas" data-icon="user-check"
+                class="svg-inline--fa fa-user-check fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 512">
+                <path fill="currentColor"
+                  d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4zm323-128.4l-27.8-28.1c-4.6-4.7-12.1-4.7-16.8-.1l-104.8 104-45.5-45.8c-4.6-4.7-12.1-4.7-16.8-.1l-28.1 27.9c-4.7 4.6-4.7 12.1-.1 16.8l81.7 82.3c4.6 4.7 12.1 4.7 16.8.1l141.3-140.2c4.6-4.7 4.7-12.2.1-16.8z">
+                </path>
+              </svg>
+            </i>
+            <i nz-icon nz-tooltip nzTitle="重置密码" type="key" theme="outline"
+              (click)="userDispatch('reset', data.id)"></i>
+            <a nz-popconfirm nzTitle="确定删除该用户吗？" (nzOnConfirm)="userDelete(true, data.id)"
+              (nzOnCancel)="userDelete(false)">
+              <i nz-icon nz-tooltip nzTitle="删除用户" type="delete" theme="outline"></i>
+            </a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-card>

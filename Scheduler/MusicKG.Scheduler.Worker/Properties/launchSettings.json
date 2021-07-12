@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MusicKG.Scheduler.Example": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

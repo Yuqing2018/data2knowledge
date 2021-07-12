@@ -1,0 +1,22 @@
+<nz-layout class="hd">
+  <!-- <km-header></km-header> -->
+  <km-annotator-header></km-annotator-header>
+  <nz-content>
+    <router-outlet></router-outlet>
+  </nz-content>
+</nz-layout>
+
+<ng-template let-warning="data">
+  <div class="noti">
+    <img src="./assets/img/warning-noti.png">
+    <div class="info">
+      <div class="count">
+        您有 {{ warning?.count || 0 }} 条预警信息需要确认处理！
+      </div>
+      <div class="actions">
+        <button nz-button (click)="goto()" class="m-r-15" nzType="primary">处理</button>
+        <button nz-button (click)="close()" nzType="default">忽略</button>
+      </div>
+    </div>
+  </div>
+</ng-template>

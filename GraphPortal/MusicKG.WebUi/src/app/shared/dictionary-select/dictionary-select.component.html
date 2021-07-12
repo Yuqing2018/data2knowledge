@@ -1,0 +1,3 @@
+<nz-select [(ngModel)]="selectedValue" nzShowSearch nzPlaceHolder="" (ngModelChange)="valueChange()">
+  <nz-option *ngFor="let option of dictionaryList" [nzValue]="option.id" [nzLabel]="option.name"></nz-option>
+</nz-select>

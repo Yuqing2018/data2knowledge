@@ -1,0 +1,65 @@
+<div class="page-header">
+  <div class="page-title">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        <a [routerLink]="['../../']">标注统计</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        统计详情
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <a class="back" [routerLink]="['../../']">
+      <i nz-icon type="arrow-left" theme="outline"></i> 返回
+    </a>
+  </div>
+</div>
+
+<nz-card class="page-content">
+  <div class="loading" *ngIf="!dataSet">
+    <nz-spin nzSimple></nz-spin>
+  </div>
+  <div class="content" *ngIf="dataSet">
+    <div class="info">
+      <p>用户名：{{ dataSet.user.name }}&nbsp;&nbsp;&nbsp;&nbsp;<span>(查询时段：{{ time.start }} - {{ time.end }})</span></p>
+      <p *ngIf="isManager">
+        标注任务：<span class="info-detail">已审核 {{ count.task }} 项</span>&nbsp;&nbsp;&nbsp;&nbsp;标注文档：<span  class="info-detail">已审核 {{ count.doc }} 篇</span>&nbsp;&nbsp;&nbsp;&nbsp;标注项：<span class="info-detail">已审核 {{ count.item }} 项</span>
+      </p>
+      <p *ngIf="!isManager">
+        标注任务：已完成 {{ count.task }} 项&nbsp;&nbsp;&nbsp;&nbsp;标注文档：已完成 {{ count.doc }} 篇&nbsp;&nbsp;&nbsp;&nbsp;标注项：已完成 {{ count.item }} 项
+      </p>
+    </div>
+    <div class="detail">
+      <nz-table #basicTable [nzData]="dataSet.statisiticsDetails" nzBordered [nzTotal]="dataSet.statisiticsDetails.length"
+      [nzShowTotal]="totalTemplate">
+        <thead>
+          <tr>
+            <th nzWidth="15%">任务名称</th>
+            <th *ngIf="isManager">标注空间</th>
+            <th>标注类型</th>
+            <th>创建时间</th>
+            <th>最后期限</th>
+            <th>文档数</th>
+            <th>标注项数</th>
+            <th *ngIf="isManager" nzWidth="25%">标注员</th>
+            <th *ngIf="!isManager" nzWidth="25%">经理</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <td>{{ data.taskName }}</td>
+            <td *ngIf="isManager">{{ data.workspace.name }}</td>
+            <td>{{ data.workspace.type.id | workspaceType }}</td>
+            <td>{{ data.createdAt | date: 'yyyy-MM-dd' }}</td>
+            <td>{{ data.expectedDueAt | date: 'yyyy-MM-dd' }}</td>
+            <td>{{ data.finishedDocumentCount }}</td>
+            <td>{{ data.finishedItemCount }}</td>
+            <td *ngIf="isManager">{{ data.annotators | statisticIsmanager : false }}</td>
+            <td *ngIf="!isManager">{{ data.annotators | statisticIsmanager : true }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+</nz-card>
+
+<ng-template #totalTemplate let-total> 共 {{ dataSet.statisiticsDetails.length }} 条 </ng-template>

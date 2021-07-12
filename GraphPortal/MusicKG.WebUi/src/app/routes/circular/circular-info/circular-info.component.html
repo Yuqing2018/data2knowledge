@@ -1,0 +1,178 @@
+<nz-card class="hd-page-header">
+  <div class="page-title">
+    <img src="./assets/img/track-active.png">
+    <span>预警管理-预警跟踪-详情</span>
+    <button nz-button nzSize="small" (click)="back()" nzType="default">返回</button>
+  </div>
+  <div class="page-search">
+    <div class="search-info">
+      <div class="text-list">
+        <div class="text-item">
+          <span class="label">零件号: </span>
+          <span>{{info?.partNo}}</span>
+        </div>
+        <div class="text-item">
+          <span class="label">零件名: </span>
+          <span>{{info?.partName}}</span>
+        </div>
+        <div class="text-item">
+          <span class="label">不良症状: </span>
+          <span>{{info?.syndromeModel?.name}}</span>
+        </div>
+        <div class="text-item">
+          <span class="label">车款: </span>
+          <span>{{info?.warningTask?.carModels?.join(',') || '全部'}}</span>
+        </div>
+        <div class="text-item">
+          <span class="label">车型: </span>
+          <span>{{info?.warningTask?.carTypes?.join(',') || '全部'}}</span>
+        </div>
+        <div class="text-item">
+          <span class="label">年款: </span>
+          <span>{{info?.warningTask?.yearModels | years}}</span>
+        </div>
+        <div class="text-item">
+          <span class="label">所属任务: </span>
+          <span>{{info?.warningTask?.name}}</span>
+        </div>
+      </div>
+      <div class="search-content">
+        <span class="label">状态: </span>
+        <nz-select style="width: 120px;" [(ngModel)]="status" nzPlaceHolder="全部">
+          <nz-option nzValue="待处理" nzLabel="待处理"></nz-option>
+          <nz-option nzValue="已处理" nzLabel="已处理"></nz-option>
+        </nz-select>
+        <button nz-button class="m-r-10 m-l-20" (click)="onSearch()" nzType="primary">确定</button>
+        <button nz-button nzType="default" (click)="onRest()">重置</button>
+      </div>
+    </div>
+    <div class="search-action">
+      <div class="text-item">
+        <span class="label">报警频率: </span>
+        <span>{{info?.frequency}}</span>
+      </div>
+      <div class="text-item">
+        <span class="label">重点关注: </span>
+        <span>{{info?.focusType =='已关注' ? '是' : '否'}}</span>
+        <i class="edit" (click)="editFreqencyAndFocused()" nz-icon nzType="edit" nzTheme="outline"></i>
+      </div>
+      <button nz-button nzSize="small" (click)="goto()" class="m-r-10" nzType="primary">统计分析</button>
+      <button nz-button nzSize="small" nzType="primary" (click)="goto('setting')">跳转设置</button>
+    </div>
+  </div>
+</nz-card>
+<nz-card class="page-content">
+  <nz-table #basicTable [nzShowTotal]="rangeTemplate" [nzData]="dataSet" class="table"
+    (nzPageIndexChange)="pageIndexChange($event)" [nzLoading]="searchLoading" [nzTotal]="total"
+    [nzFrontPagination]="false">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th width="100px">处理状态</th>
+        <th>预警时间</th>
+        <th>近三个月发生件数</th>
+        <th>年款不良率</th>
+        <th>近三个月相对上升率(%)</th>
+        <th>风险等级(计算)</th>
+        <th>风险等级(AI)</th>
+        <th>对策后再发件数</th>
+        <th>对策后再发不良率(%)</th>
+        <th>确认时间</th>
+        <th>确认记录</th>
+        <th>推进分类</th>
+        <th>对策状态</th>
+        <th>超标影响</th>
+        <th width="120px">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of basicTable.data; index as i">
+        <td>{{ (basicTable.nzPageIndex - 1) * 10 + i + 1 }}</td>
+        <td>
+          <span class="status">
+            <img class="handled" *ngIf="item.isHandled == '待处理'" src="./assets/img/warning.png">
+            <img class="handled" *ngIf="item.isHandled == '已处理'" src="./assets/img/success.png">
+            {{item.isHandled}}
+          </span>
+        </td>
+        <td>{{item.warningTime | date: 'yyyy-MM-dd HH:mm'}}</td>
+        <td>
+          <nz-badge nz-popover [nzContent]="contentTemplate" nzPlacement="right" *ngIf="item.displayThreeNum == '异常'" class="error" nzStatus="error" nzText="异常"></nz-badge>
+          <nz-badge nz-popover [nzContent]="contentTemplate" nzPlacement="right" *ngIf="item.displayThreeNum == '正常'" nzStatus="success" nzText="正常"></nz-badge>
+          <span *ngIf="item.displayThreeNum == '-'">-</span>
+          <ng-template #contentTemplate>
+            <ul class="list-item">
+              <li [class.warning]="item.isWarning" *ngFor="let i of item.multipleMetrics | keyvalue">
+                {{dataSourceType(i.key)}}: {{getCount(i.value.lastThreeMonthCount)}}
+              </li>
+            </ul>
+          </ng-template>
+        </td>
+        <td>
+          <nz-badge nz-popover [nzContent]="contentTemplateYear" nzPlacement="right" *ngIf="item.displayThreeYearRate == '异常'" class="error" nzStatus="error" nzText="异常"></nz-badge>
+          <nz-badge nz-popover [nzContent]="contentTemplateYear" nzPlacement="right" *ngIf="item.displayThreeYearRate == '正常'" nzStatus="success" nzText="正常"></nz-badge>
+          <span *ngIf="item.displayThreeYearRate == '-'">-</span>
+          <ng-template #contentTemplateYear>
+            <ul class="list-item">
+              <li [class.warning]="item.isWarning" *ngFor="let i of item.multipleMetrics | keyvalue">
+                {{dataSourceType(i.key)}}: {{getCount(i.value.defectRateByYearModel)}}
+              </li>
+            </ul>
+          </ng-template>
+        </td>
+        <td>
+          <nz-badge nz-popover [nzContent]="contentTemplateThree" nzPlacement="right" *ngIf="item.displayThreeRate == '异常'" class="error" nzStatus="error" nzText="异常"></nz-badge>
+          <nz-badge nz-popover [nzContent]="contentTemplateThree" nzPlacement="right"  *ngIf="item.displayThreeRate == '正常'" nzStatus="success" nzText="正常"></nz-badge>
+          <span *ngIf="item.displayThreeRate == '-'">-</span>
+          <ng-template #contentTemplateThree>
+            <ul class="list-item">
+              <li [class.warning]="item.isWarning" *ngFor="let i of item.multipleMetrics | keyvalue">
+                {{dataSourceType(i.key)}}: {{i.value.lastThreeMonthAscentRate | percent: '1.2'}}
+              </li>
+            </ul>
+          </ng-template>
+        </td>
+        <td>
+          <ng-container *ngIf="item?.riskMetrics?.riskLevel">
+            <span class="badge min-width" *ngIf="!item.isRiskWarning; else elseBlock">{{item?.riskMetrics?.riskLevel}}</span>
+            <ng-template #elseBlock>
+              <span class="badge warning min-width">{{item?.riskMetrics?.riskLevel}}</span>
+            </ng-template>
+          </ng-container>
+        </td>
+        <td>
+          <ng-container *ngIf="item?.riskMetrics?.aiRiskLevel">
+            {{item?.riskMetrics?.aiRiskLevel}}
+            <i class="edit" (click)="editRiskLevel(item)" nz-icon nzType="edit" nzTheme="outline"></i>
+          </ng-container>
+        </td>
+        <td>{{ item.hasAgain ? item.againMetrics.countAfterCntr : '-'}}</td>
+        <td>
+          <ng-container *ngIf="item.hasAgain && item.againMetrics.countAfterCntr == '-'">
+            <span class="badge"
+              *ngIf="!item.isAgainWarning; else elseBlockRate">{{item?.againMetrics?.defectRateAfterCntr |
+                percent: '1.2'}}</span>
+            <ng-template #elseBlockRate>
+              <span class="badge warning">{{item?.againMetrics?.defectRateAfterCntr | percent: '1.2'}}</span>
+            </ng-template>
+          </ng-container>
+          <ng-container *ngIf="!item.hasAgain || item.againMetrics.countAfterCntr !== '-'">
+            -
+          </ng-container>
+        </td>
+        <td>{{item.confirmRecord?.lastConfirmdTime | date: 'yyyy-MM-dd HH:mm'}}</td>
+        <td>{{item.confirmRecord?.confirmedMessage}}</td>
+        <td>{{item.confirmRecord?.pushStatus}}</td>
+        <td>{{item.confirmRecord?.permanentCntrStatus}}</td>
+        <td>
+          {{ item.confirmRecord == null ? '' : (item.confirmRecord.isExcessive == null ? '': (item.confirmRecord.isExcessive ? '是' : '否')) }}
+        </td>
+        <td class="action">
+          <a *ngIf="item.confirmRecord" (click)="onEdit(item)">修改</a>
+          <a *ngIf="!item.confirmRecord" (click)="onConfirm(item)">确认</a>
+          <a (click)="gotoInfo(item)">详情</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-card>

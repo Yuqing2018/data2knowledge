@@ -1,0 +1,77 @@
+.page-header .page-title {
+    margin-bottom: 5px;
+}
+
+.ontology-tree {
+    position: relative;
+    border: 1px solid #cccccc57;
+    border-bottom: none;
+
+    &.none-data {
+        border: none;
+    }
+}
+
+.empty {
+    min-height: 80px;
+    text-align: center;
+    line-height: 80px;
+}
+
+.tree-node {
+    padding-left: 15px;
+
+    &.intent {
+        padding-left: 15px;
+    }
+
+    &.root {
+        padding-left: 15px;
+    }
+}
+
+.tree-node-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:hover:before {
+        background: #f2f4f5;
+    }
+
+    .tree-node-expand {
+        padding: 0 5px;
+        position: absolute;
+        left: 20px;
+        top: 9px;
+        cursor: pointer;
+    }
+}
+
+.tree-node-title>* {
+    z-index: 1;
+    position: relative;
+}
+
+.tree-node-color {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-right: 3px;
+    vertical-align: text-bottom;
+}
+
+.tree-node-title:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #cccccc57;
+}
+
+.tree-node-name {
+    line-height: 40px;
+    font-size: 14px;
+    padding: 0 5px;
+}

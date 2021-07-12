@@ -1,0 +1,11 @@
+<div *ngFor="let part of parts; let i = index; let isLast = last">
+  <ng-container *ngIf="!part.EntityType">
+    <input class="space" #partInput [(ngModel)]="part.Text"
+      (drop)="onDrop($event, partInput,part)" (dragleave)="onDragleave($event,partInput,item)"
+      (dragover)="onDragover($event,partInput)" />
+    <span #mirror class="space-mirror"></span>
+  </ng-container>
+  <div *ngIf="part.EntityType" class="entity-type">
+    <span [style.background]="part.Color">{{part.Text}}</span>
+  </div>
+</div>

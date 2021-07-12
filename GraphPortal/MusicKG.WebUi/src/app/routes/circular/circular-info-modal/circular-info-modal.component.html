@@ -1,0 +1,156 @@
+<div class="text-list">
+  <div class="text-item">
+    <span class="label">零件号: </span>
+    <span>{{info?.partNo}}</span>
+  </div>
+  <div class="text-item">
+    <span class="label">零件名: </span>
+    <span>{{info?.partName}}</span>
+  </div>
+  <div class="text-item">
+    <span class="label">不良症状: </span>
+    <span>{{info?.syndromeModel?.name}}</span>
+  </div>
+  <div class="text-item">
+    <span class="label">车款: </span>
+    <span>{{info?.warningTask?.carModels?.join(',') || '全部'}}</span>
+  </div>
+  <div class="text-item">
+    <span class="label">车型: </span>
+    <span>{{info?.warningTask?.carTypes?.join(',') || '全部'}}</span>
+  </div>
+  <div class="text-item">
+    <span class="label">年款: </span>
+    <span>{{info?.warningTask?.yearModels | years}}</span>
+  </div>
+</div>
+<nz-table *ngIf="show('多发')" nzBordered #basicTable [nzFrontPagination]="false" [nzShowPagination]="false" [nzData]="multipleMetrics">
+  <thead>
+    <tr>
+      <th rowspan="2">预警类别</th>
+      <th rowspan="2">渠道</th>
+      <th rowspan="2">TOP排序</th>
+      <th colspan="4">近3个月发生件数</th>
+      <th rowspan="2">累计件数</th>
+      <th rowspan="2">不良率</th>
+      <th rowspan="2">近3个月相对上升率</th>
+    </tr>
+    <tr>
+      <th>合计</th>
+      <th>第1月</th>
+      <th>第2月</th>
+      <th>第3月</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>多发</td>
+      <td>{{data.name}}</td>
+      <td>{{data.topOrder}}</td>
+      <td>{{data.total}}</td>
+      <td>{{data.lastThreeMonthCount['第1月']}}</td>
+      <td>{{data.lastThreeMonthCount['第2月']}}</td>
+      <td>{{data.lastThreeMonthCount['第3月']}}</td>
+      <td>{{data.totalCount}}</td>
+      <td>{{data.defectRate | percent:'1.2'}}</td>
+      <td>{{data.lastThreeMonthAscentRate | percent:'1.2'}}</td>
+    </tr>
+  </tbody>
+</nz-table>
+
+<nz-table *ngIf="show('风险')" nzBordered [nzFrontPagination]="false" [nzShowPagination]="false" #basicRTable [nzData]="riskMetrics">
+  <thead>
+    <tr>
+      <th rowspan="2">预警类别</th>
+      <th rowspan="2">不良症状</th>
+      <th rowspan="2">不良等级</th>
+      <th *ngFor="let item of riskMetricsTH" colspan="3">{{item}}</th>
+      <th colspan="4">推进情况</th>
+      <th colspan="3">风险特征</th>
+      <th rowspan="2">风险得分</th>
+      <th rowspan="2">风险等级(计算)</th>
+      <th rowspan="2">风险等级(AI)</th>
+      <th rowspan="2">是否为训练数据</th>
+    </tr>
+    <tr>
+      <ng-container *ngFor="let item of riskMetricsTH">
+        <th>件数</th>
+        <th>不良率</th>
+        <th>近3个月上升率</th>
+      </ng-container>
+      <th>推进分类</th>
+      <th>不良原因</th>
+      <th>对策内容</th>
+      <th>对策时间</th>
+      <th>保修金额</th>
+      <th>超标影响</th>
+      <th>对策状态</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicRTable.data">
+      <td>风险</td>
+      <td>{{data.syndromeModel.name}}</td>
+      <td>{{data.syndromeModel.badGrade}}</td>
+      <ng-container *ngFor="let item of data.dataSourceMetrics">
+        <td>{{item.totalCount | number}}</td>
+        <td>{{item.defectRate | percent: '1.2' }}</td>
+        <td>{{item.lastThreeMonthAscentRate | percent: '1.2'}}</td>
+      </ng-container>
+      <td>{{data.pushStatus}}</td>
+      <td [title]="data.cntrMesrReasonDesc">
+        <div *ngIf="data.cntrMesrReasonDesc != null">
+          {{data.cntrMesrReasonDesc.length <= 3 ? data.cntrMesrReasonDesc : data.cntrMesrReasonDesc.substring(0, 3) + '...'}}
+        </div>
+      </td>
+      <td [title]="data.permanentCntr">
+        <div *ngIf="data.permanentCntr != null">
+          {{data.permanentCntr.length <= 3 ? data.permanentCntr : data.permanentCntr.substring(0, 3) + '...'}}
+        </div>
+      </td>
+      <td>{{data.permanentCntrTime}}</td>
+      <td>{{data.meanCostRepair | number}}</td>
+      <td>{{data.isExcessive == null ? '':(data.isExcessive ? '是' : '否')}}</td>
+      <td>{{data.permanentCntrStatus}}</td>
+      <td>{{data.riskScore | number }}</td>
+      <td>{{data.riskLevel}}</td>
+      <td>{{data.aiRiskLevel}}</td>
+      <td>{{data.usedForModel ? '是' : '否'}}</td>
+    </tr>
+  </tbody>
+</nz-table>
+
+<nz-table *ngIf="show('再发')" nzBordered [nzFrontPagination]="false" [nzShowPagination]="false" #basicRSTable [nzData]="againMetrics">
+  <thead>
+    <tr>
+      <th>预警类别</th>
+      <th>不良症状</th>
+      <th>发生原因</th>
+      <th>发生对策</th>
+      <th>对策日期</th>
+      <th>对策后再发件数</th>
+      <th>对策前不良率(%)</th>
+      <th>对策后再发不良率(%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicRSTable.data">
+      <td>再发</td>
+      <td>{{data.syndromeModel.name}}</td>
+      <td [title]="data.cntrMesrReasonDesc">
+        <div *ngIf="data.cntrMesrReasonDesc != null">
+          {{data.cntrMesrReasonDesc.length <= 3 ? data.cntrMesrReasonDesc : data.cntrMesrReasonDesc.substring(0, 3) + '...'}}
+        </div>
+      </td>
+      <td [title]="data.permanentCntr">
+        <div *ngIf="data.permanentCntr != null">
+          {{data.permanentCntr.length <= 3 ? data.permanentCntr : data.permanentCntr.substring(0, 3) + '...'}}
+        </div>
+      </td>
+      <td>{{data.permanentCntrTime}}</td>
+      <td>{{data.countAfterCntr}}</td>
+      <td>{{data.defectRateBeforeCntr | percent: '1.2'}}</td>
+      <td>{{data.countAfterCntr !== '-' ? '-' : (data.defectRateAfterCntr | percent: '1.2')}}</td>
+    </tr>
+  </tbody>
+</nz-table>

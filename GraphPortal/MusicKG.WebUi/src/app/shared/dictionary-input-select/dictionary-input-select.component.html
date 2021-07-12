@@ -1,0 +1,10 @@
+<nz-select [(ngModel)]="selectedValue" nzPlaceHolder="未知" [nzDisabled]="disabled" [nzDropdownMatchSelectWidth]="false" [nzNotFoundContent]="'请输入匹配的关键字'" nzShowSearch (ngModelChange)="valueChange()" [nzServerSearch]="true" (nzOnSearch)="onSearch($event)">
+  <ng-container *ngFor="let o of options">
+    <nz-option nzCustomContent *ngIf="!isLoading" [nzValue]="o" [nzLabel]="o">
+      <span nz-tooltip [nzTitle]="o">{{o}}</span>
+    </nz-option>
+  </ng-container>
+  <nz-option *ngIf="isLoading" nzDisabled nzCustomContent>
+    <i nz-icon type="loading" class="loading-icon"></i> 加载中...
+  </nz-option>
+</nz-select>

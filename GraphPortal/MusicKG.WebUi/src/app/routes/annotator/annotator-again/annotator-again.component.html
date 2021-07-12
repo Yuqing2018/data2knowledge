@@ -1,0 +1,95 @@
+<nz-card class="hd-page-header">
+  <div class="page-title">
+    <img src="./assets/img/again.png">
+    <span>AI重新标注</span>
+  </div>
+  
+  <div class="page-search">
+    <div class="filter-item">
+      <span>任务状态 : </span>
+      <nz-select style="width: 120px;" [(ngModel)]="selectedValue">
+        <nz-option nzValue="全部" nzLabel="全部"></nz-option>
+        <nz-option nzValue="准备中" nzLabel="准备中"></nz-option>
+        <nz-option nzValue="执行中" nzLabel="执行中"></nz-option>
+        <nz-option nzValue="执行成功" nzLabel="执行成功"></nz-option>
+        <nz-option nzValue="执行失败" nzLabel="执行失败"></nz-option>
+      </nz-select>
+    </div>
+    <div class="filter-btn">
+      <button nz-button nzType="primary" (click)="searchSure()">确定</button>
+      <button nz-button nzType="default" (click)="resett()" class="reset">重置</button>
+    </div>
+  </div>
+</nz-card>
+
+<nz-card class="page-content">
+  <div class="table-operate">
+    <div class="left sub">
+      AI重新标注列表
+    </div>
+    <div class="right">
+      <button nz-button nzType="primary" (click)="add()">
+        <i nz-icon nzType="plus" nzTheme="outline"></i>
+        新增AI标注任务</button>
+    </div>
+  </div>
+<nz-table #basicTable [nzShowTotal]="rangeTemplate" [nzData]="items" class="table"
+    (nzPageIndexChange)="pageIndexChange($event)" [nzLoading]="searchLoading" [nzTotal]="total"
+    [nzFrontPagination]="false" [(nzPageIndex)]="pageIndex">
+    <thead>
+      <tr>
+        <th width="100px">序号</th>
+        <th class="table-header">任务名称</th>
+        <th width="180px">任务状态</th>
+        <th>起始故障日期</th>
+        <th>结束故障日期</th>
+        <th>完成时间</th>
+        <th width="150px">操作</th>
+      </tr>
+    </thead>
+    <tbody class="bodybc">
+      <tr *ngFor="let data of basicTable.data; index as i">
+        <td>{{ (basicTable.nzPageIndex - 1) * 10 + i + 1 }}</td>
+        <td class="table-lis">{{data.name}}</td>
+        <td>{{data.status}}</td>
+        <td>{{data.from | date: 'yyy-MM-dd'}}</td>
+        <td>{{data.to | date: 'yyy-MM-dd'}}</td>
+        <td>{{data.succeedAt | date: 'yyy-MM-dd'}}</td>
+        <td>
+          <a (click)="edit(data)" nzSize="small" *ngIf="data.status == '准备中'" style="margin-right: 10px;">修改</a>
+          <a nz-popconfirm nzTitle="确认删除该条记录吗?" (nzOnConfirm)="onDelete(data)">删除</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <ng-template #rangeTemplate let-range="range" let-total>
+    {{ range[0] }}-{{ range[1] }} 共 {{ total }} 项
+  </ng-template>
+</nz-card>
+
+  <nz-modal [(nzVisible)]="isVisible" [nzTitle]="modalTitle" (nzOnOk)="modalTitle == '新增' ? handleAddOk() : handleUpdateOk()" (nzOnCancel)="handleCancel()">
+    <nz-form-item>
+      <nz-form-label nzRequired [nzSpan]="6">任务名称</nz-form-label>
+      <nz-form-control [nzSpan]="16">
+        <input nz-input [(ngModel)]="rwName" placeholder="请输入任务名称"/>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired [nzSpan]="6">起始故障日期</nz-form-label>
+      <nz-form-control [nzSpan]="16">
+        <nz-date-picker [(ngModel)]="startGZ" nzFormat="yyyy-MM-dd"></nz-date-picker>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired [nzSpan]="6">结束故障日期</nz-form-label>
+      <nz-form-control [nzSpan]="16">
+        <nz-date-picker [(ngModel)]="endGZ" nzFormat="yyyy-MM-dd" style="width: 100%;"></nz-date-picker>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired [nzSpan]="6">任务描述</nz-form-label>
+      <nz-form-control [nzSpan]="16">
+        <textarea [(ngModel)]="rwDescription" nz-input rows="3" placeholder="请输入任务描述"></textarea>
+      </nz-form-control>
+    </nz-form-item>
+  </nz-modal>

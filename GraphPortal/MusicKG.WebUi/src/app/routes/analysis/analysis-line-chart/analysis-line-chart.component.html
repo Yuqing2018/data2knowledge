@@ -1,0 +1,20 @@
+<div class="chart-box">
+  <nz-spin [nzSpinning]="isLoading">
+    <div class="title">不良率
+      <button *ngIf="showBack" (click)="onBack()" nz-button nzType="default"><i nz-icon nzType="rollback" nzTheme="outline"></i></button>
+      <nz-dropdown *ngIf="!showBack && hasSelect">
+        <a nz-dropdown> {{filterTime}} <i nz-icon type="down"></i> </a>
+        <ul nz-menu>
+          <li nz-menu-item>
+            <a (click)="filterChange('按经过时间')">按经过时间</a>
+          </li>
+          <li nz-menu-item>
+            <a (click)="filterChange('按对策时间')">按对策时间</a>
+          </li>
+        </ul>
+      </nz-dropdown>
+    </div>
+    <div echarts style="height: 260px;" (chartInit)="onChartInit($event)" (chartClick)="onChartClick($event)"
+      [options]="chartOption"></div>
+  </nz-spin>
+</div>

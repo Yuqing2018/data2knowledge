@@ -1,0 +1,91 @@
+<nz-header>
+  <div [routerLink]="['/annotator/analysis/home']" class="logo">
+    市场智能预警系统
+  </div>
+  <div class="header-nav">
+    <ul class="header-menu">
+      <li class="router-list">
+        <div class="nav-router">
+          <span class="router-link" [routerLink]="['/annotator/analysis/home']" routerLinkActive="active">
+            <img src="./assets/img/home.png">首页</span>
+        </div>
+        <nz-dropdown [nzOverlayClassName]="'nav-dropdown'" [nzPlacement]="'bottom'">
+          <div class="nav-router" nz-dropdown>
+            <span class="router-link"><img src="./assets/img/task.png">标注管理</span>
+          </div>
+          <ul nz-menu style="min-width: 110px">
+            <li class="router-item" [routerLink]="['/annotator/task']" routerLinkActive="active" nz-menu-item>
+              标注任务
+            </li>
+            <li *ngIf="userId == '5fb5d39af03c2600017e34d1'" class="router-item" [routerLink]="['/annotator/reason']" routerLinkActive="active" nz-menu-item>
+              不良症状
+            </li>
+            <li class="router-item" [routerLink]="['/annotator/config']" routerLinkActive="active" nz-menu-item>
+              任务设置
+            </li>
+            <li class="router-item" [routerLink]="['/annotator/again']" routerLinkActive="active" nz-menu-item>
+              AI重新标注
+            </li>
+            <!-- <li nzDisabled nz-menu-item>
+              AI重新标注
+            </li> -->
+          </ul>
+        </nz-dropdown>
+        <nz-dropdown [nzOverlayClassName]="'nav-dropdown'" [nzPlacement]="'bottom'">
+          <div class="nav-router" nz-dropdown>
+            <span class="router-link"><img src="./assets/img/syndrome.png">预警管理</span>
+          </div>
+          <ul nz-menu style="min-width: 110px">
+            <li class="router-item" [routerLink]="['/annotator/circular/task']" routerLinkActive="active" nz-menu-item>
+              预警任务
+            </li>
+            <li class="router-item" [routerLink]="['/annotator/circular/track']" routerLinkActive="active" nz-menu-item>
+              预警跟踪
+            </li>
+            <!-- <li nzDisabled nz-menu-item>
+              预警任务
+            </li>
+            <li nzDisabled nz-menu-item>
+              预警跟踪
+            </li> -->
+          </ul>
+        </nz-dropdown>
+        <nz-dropdown [nzOverlayClassName]="'nav-dropdown'" [nzPlacement]="'bottom'">
+          <div class="nav-router" nz-dropdown>
+            <span class="router-link"><img src="./assets/img/chart.png">查询统计</span>
+          </div>
+          <ul nz-menu style="min-width: 110px">
+            <li class="router-item" [routerLink]="['/annotator/analysis']" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" nz-menu-item>
+              数据查询
+            </li>
+            <li class="router-item" [routerLink]="['/annotator/analysis/info']" routerLinkActive="active" nz-menu-item>
+              统计分析
+            </li>
+            <!-- <li nzDisabled nz-menu-item>
+              数据查询
+            </li>
+            <li nzDisabled nz-menu-item>
+              统计分析
+            </li> -->
+          </ul>
+        </nz-dropdown>
+      </li>
+      <li class="user">
+        <nz-dropdown [nzPlacement]="'bottomRight'">
+          <span nz-dropdown class="user-name">
+            <img src="./assets/img/user.png">
+            <div class="name">{{ userName }}</div>
+          </span>
+          <ul nz-menu style="min-width: 150px">
+            <li nz-menu-item (click)="resetPassword()">
+              <i nz-icon type="setting" theme="outline"></i> 修改密码
+            </li>
+            <li nz-menu-item (click)="logout()">
+              <i nz-icon type="logout" theme="outline"></i> 退出
+            </li>
+          </ul>
+        </nz-dropdown>
+      </li>
+    </ul>
+  </div>
+</nz-header>

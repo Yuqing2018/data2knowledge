@@ -1,0 +1,105 @@
+.annotation-action {
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    .page {
+        flex: 0 0 100px;
+        padding: 25px 16px;
+        text-align: center;
+        cursor: pointer;
+        &.next {
+            border-left: 1px solid #e8e8e8;
+        }
+        &.previous {
+            border-right: 1px solid #e8e8e8;
+        }
+        &:hover {
+            color: #40a9ff;
+        }
+    }
+    .content {
+        flex: auto;
+        text-align: center;
+        position: relative;
+        .title-content {
+            padding-top: 10px;
+        }
+        .title {
+            font-size: 18px;
+        }
+        .title-page {
+            padding: 8px;
+            user-select: none;
+        }
+        .title-action {
+            cursor: pointer;
+            &:hover {
+                color: #40a9ff;
+            }
+        }
+        .content-action {
+            position: absolute;
+            right: 30px;
+            top: 20px;
+        }
+        .text-status {
+            display: inline-block;
+            width: 120px;
+            margin-right: 8px;
+        }
+        .page-num {
+            padding: 0px 20px;
+        }
+    }
+}
+
+.annotation-content {
+    padding: 30px;
+    font-size: 16px;
+    .row {
+        margin-bottom: 24px;
+    }
+    .an-label {
+        text-align: right;
+        padding-right: 10px;
+    }
+    ul.similarity {
+        list-style: none;
+        padding: 0px;
+        margin: 0px;
+        li {
+            margin-bottom: 18px;
+        }
+    }
+}
+
+.add-item {
+    nz-select {
+        width: 300px;
+    }
+    i {
+        font-size: 16px; 
+        cursor: pointer;
+        padding-left: 15px;
+    }
+}
+
+.del-action {
+    display: inline-block;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.disabled-action {
+    color: rgba(0, 0, 0, 0.45) !important;
+    cursor: not-allowed !important;
+}
+
+:host /deep/ .page-content .ant-card-body {
+    padding: 0px;
+}
+
+.conflict {
+    color: red !important;
+}

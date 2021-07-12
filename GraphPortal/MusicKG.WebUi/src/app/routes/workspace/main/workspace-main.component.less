@@ -1,0 +1,90 @@
+.title {
+    padding: 15px 80px;
+    background: #fff;
+    h1 {
+        display: inline-block;
+        margin-bottom: 0px;
+        font-weight: 300;
+        margin-right: 40px;
+        font-size: 24px;
+    }
+    button {
+        vertical-align: super;
+    }
+}
+
+.description-term {
+    vertical-align: top;
+}
+
+.content {
+    padding: 15px 65px;
+    .workspace-card {
+        margin: 15px;
+        padding: 24px;
+        background: #fff;
+        border: 1px solid #d7d7d7;
+        cursor: pointer;
+        box-shadow: 0 2px 0 0 #d7d7d7;
+        h3 {
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        .action {
+            font-size: 16px;
+            float: right;
+            display: none;  
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+        &:hover {
+            .action {
+                display: inline-block;
+            }
+        }
+        ul {
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+        }
+    }
+}
+
+.workspace-content {
+    min-height: 150px;
+}
+
+.no-data {
+    padding: 150px;
+    text-align: center;
+    color: rgb(190, 200, 200);
+    i {
+        font-size: 60px;
+        vertical-align: middle;
+    }
+    span {
+        vertical-align: middle;
+        padding-left: 15px;
+        font-size: 18px;
+    }
+}
+
+.text-overflow {
+    line-height: 22px;
+    min-height: 66px;
+    -webkit-line-clamp: 3;
+    /* autoprefixer: ignore next */
+    -webkit-box-orient: vertical;
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+}
+
+*::-ms-backdrop, .text-overflow {
+    line-height: 22px;
+    height: 66px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

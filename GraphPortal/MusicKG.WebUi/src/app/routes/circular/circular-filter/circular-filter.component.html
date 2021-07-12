@@ -1,0 +1,64 @@
+<div class="select-list">
+  <div class="select-item">
+    <span>所属任务: </span>
+    <nz-select [nzDropdownMatchSelectWidth]="false" nzAllowClear nzMode="multiple" nzPlaceHolder="全部" [nzLoading]="taskIdLoading" [(ngModel)]="taskIds">
+      <nz-option *ngFor="let option of taskIdList" [nzValue]="option.id" [nzLabel]="option.name"></nz-option>
+    </nz-select>
+  </div>
+  <div class="select-item">
+    <span>创建人: </span>
+    <nz-select [nzDropdownMatchSelectWidth]="false" nzAllowClear [(ngModel)]="createdBy" nzPlaceHolder="全部">
+      <nz-option *ngFor="let user of userList" [nzValue]="user" [nzLabel]="user"></nz-option>
+    </nz-select>
+  </div>
+  <div class="select-item">
+    <span>预警单位: </span>
+    <nz-select name="warningUnit" [nzDropdownMatchSelectWidth]="false" nzAllowClear [(ngModel)]="warningUnit" nzPlaceHolder="全部">
+      <nz-option nzValue="零件_不良症状" nzLabel="零件_不良症状"></nz-option>
+      <nz-option nzValue="未知零件_不良症状" nzLabel="未知零件_不良症状"></nz-option>
+      <nz-option nzValue="不良症状" nzLabel="不良症状"></nz-option>
+    </nz-select>
+  </div>
+  <div class="select-item">
+    <span>车款: </span>
+    <nz-select [nzDropdownMatchSelectWidth]="false" nzAllowClear nzMode="multiple" [nzLoading]="carModelLoading" nzPlaceHolder="全部" [(ngModel)]="carModels"
+      (ngModelChange)="carModelChange()">
+      <nz-option *ngFor="let option of carModelList" [nzValue]="option" [nzLabel]="option"></nz-option>
+    </nz-select>
+  </div>
+  <div class="select-item">
+    <span>车型: </span>
+    <nz-select [nzDropdownMatchSelectWidth]="false" nzAllowClear nzMode="multiple" nzPlaceHolder="全部" [nzLoading]="carTypeLoading" [(ngModel)]="carType">
+      <nz-option *ngFor="let option of carTypeList" [nzValue]="option" [nzLabel]="option"></nz-option>
+    </nz-select>
+  </div>
+  <div class="select-item">
+    <span>年款: </span>
+    <km-years-range name="yearModels" [(ngModel)]="yearModels" (ngModelChange)="modelYearsChange()"></km-years-range>
+  </div>
+  <div class="select-item">
+    <span>零件名: </span>
+    <nz-select [nzDropdownMatchSelectWidth]="false" nzAllowClear nzMode="multiple" nzPlaceHolder="全部" [nzLoading]="partNameLoading" [(ngModel)]="partNames"
+      (ngModelChange)="partNameChange()">
+      <nz-option *ngFor="let option of partNameList" [nzValue]="option" [nzLabel]="option"></nz-option>
+    </nz-select>
+  </div>
+  <div class="select-item">
+    <span>不良症状: </span>
+    <nz-select [nzDropdownMatchSelectWidth]="false" nzAllowClear nzMode="multiple" nzPlaceHolder="全部" [nzLoading]="syndromeLoading" [(ngModel)]="syndromes">
+      <nz-option *ngFor="let option of syndromeList" [nzValue]="option.id" [nzLabel]="option.name"></nz-option>
+    </nz-select>
+  </div>
+  <div class="select-item">
+    <span>重点关注: </span>
+    <nz-select name="warningUnit" [nzDropdownMatchSelectWidth]="false" nzAllowClear [(ngModel)]="focusType" nzPlaceHolder="全部">
+      <nz-option nzValue="已关注" nzLabel="已关注"></nz-option>
+      <nz-option nzValue="已退出" nzLabel="已退出"></nz-option>
+      <nz-option nzValue="未关注" nzLabel="未关注"></nz-option>
+    </nz-select>
+  </div>
+</div>
+<div class="search-bts">
+  <button nz-button nzType="primary" (click)="onSearch()" >查询</button>
+  <button nz-button nzType="default" (click)="onReset()" class="reset">重置</button>
+</div>

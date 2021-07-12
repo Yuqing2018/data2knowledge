@@ -1,0 +1,235 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/vis-network.min.css";
+
+* {
+    outline: none;
+}
+
+app-root,
+body,
+html {
+    height: 100%;
+    display: block;
+}
+
+.page-header {
+    background: #fff;
+    padding: 16px 24px 0;
+    border-bottom: 1px solid #e8e8e8;
+
+    .page-title {
+        font-size: 18px;
+        font-weight: 300;
+        color: rgba(0, 0, 0, .85);
+        display: flex;
+        margin-bottom: 16px;
+        justify-content: space-between;
+
+        .back {
+            font-size: 13px;
+            line-height: 24px;
+            color: rgba(0, 0, 0, 0.85);
+
+            &:hover {
+                color: #ff3a50;
+            }
+        }
+    }
+
+    .page-detail {
+        margin-bottom: 8px;
+
+        .detail-title {
+            font-size: 18px;
+            color: rgba(0, 0, 0, .85);
+            margin-bottom: 16px;
+        }
+    }
+
+    .extraContent {
+        text-align: right;
+        padding-left: 88px;
+
+        .text-secondary {
+            color: rgba(0, 0, 0, 0.45);
+        }
+
+        .heading {
+            color: rgba(0, 0, 0, 0.85);
+            font-size: 20px;
+        }
+    }
+
+    .ant-breadcrumb {
+        font-size: 16px;
+    }
+
+    .ant-tabs-bar {
+        border-bottom: none;
+        margin: 0px;
+
+        .ant-tabs-ink-bar {
+            height: 3px;
+        }
+    }
+}
+
+.page-content {
+    margin: 8px;
+}
+
+.table-operator {
+    margin-bottom: 16px;
+}
+
+.description-term {
+    line-height: 20px;
+    padding: 0 8px 8px 0;
+    color: rgba(0, 0, 0, 0.85);
+    white-space: nowrap;
+    display: table-cell;
+}
+
+.description-detail {
+    line-height: 20px;
+    width: 100%;
+    color: rgba(0, 0, 0, .65);
+    display: table-cell;
+    word-break: break-word;
+}
+
+.hd .page-content .ant-card-body {
+    padding: 18px !important;
+}
+
+.hd .hd-page-header .ant-card-body {
+    padding: 0px 18px 18px;
+}
+
+.hd {
+
+    .table-operate {
+        display: flex;
+        margin-bottom: 15px;
+        height: 32px;
+
+        .left {
+            flex: 0 0 300px;
+            font-size: 18px;
+            line-height: 32px;
+            color: #000000;
+
+            &.sub {
+                font-size: 16px;
+                color: rgba(0, 0, 0, .65);
+            }
+
+            img {
+                width: 30px;
+                height: 30px;
+                display: inline-block;
+                vertical-align: top;
+                margin-right: 5px;
+            }
+
+            span {
+                vertical-align: top;
+            }
+
+            .select-tips {
+                padding-left: 15px;
+                color: rgba(0, 0, 0, 0.54);
+                font-size: 12px;
+            }
+        }
+
+        .right {
+            flex: 1;
+            text-align: right;
+
+            button:not(:last-child) {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .hd-page-header {
+        margin: 8px;
+
+        .page-title {
+            font-size: 18px;
+            color: #000000;
+            line-height: 50px;
+
+            img {
+                display: inline-block;
+                width: 23px;
+                height: 25px;
+                margin-right: 8px;
+                vertical-align: text-bottom;
+            }
+
+            span:first-child {
+                vertical-align: middle;
+            }
+        }
+
+        .page-search {
+            display: flex;
+
+            .filter-item {
+                display: flex;
+                flex: 0 0 240px;
+
+                span {
+                    flex: 0 0 68px;
+                    line-height: 32px;
+                }
+
+                nz-select {
+                    flex: 0 0 150px;
+                }
+
+            }
+
+            .filter-btn {
+                flex: 1;
+
+                button:not(:last-child) {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+
+.noti {
+    display: flex;
+
+    img {
+        flex: 0 0 100px;
+        height: 100px;
+    }
+
+    .info {
+        flex: 1;
+        padding: 15px 20px 0px;
+
+        .count {
+            color: #000000;
+            padding-bottom: 10px;
+        }
+
+        .actions {
+            text-align: right;
+        }
+    }
+}
+
+.m-r-15 {
+    margin-right: 15px;
+}
+
+.ant-notification-notice-close {
+    display: none;
+}

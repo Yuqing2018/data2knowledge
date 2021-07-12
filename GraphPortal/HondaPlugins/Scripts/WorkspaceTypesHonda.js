@@ -1,0 +1,1 @@
+﻿db.WorkspaceTypes.update({ "_id": ObjectId("5faba9e42f2fb1c4d65e3cc3") }, { "_id": ObjectId("5faba9e42f2fb1c4d65e3cc3"), "Name": "VehicleFailureClassification", "WorkflowId": ObjectId("5faba9fe2f2fb1c4d65e3cc4"), "Status": 0 }, { upsert: true });

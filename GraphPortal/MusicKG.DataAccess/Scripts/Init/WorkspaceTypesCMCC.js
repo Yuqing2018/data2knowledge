@@ -1,0 +1,2 @@
+﻿db.WorkspaceTypes.update({ "_id": ObjectId("5c414c0a5a01cf00010f9661") }, { "_id": ObjectId("5c414c0a5a01cf00010f9661"), "Name": "NER", "WorkflowId": ObjectId("5c4a759820b5d45946662d48"), "Status": 0 }, { upsert: true });
+db.WorkspaceTypes.update({ "_id": ObjectId("5c414bd75a01cf00010f9660") }, { "_id": ObjectId("5c414bd75a01cf00010f9660"), "Name": "TextSimilarity", "WorkflowId": ObjectId("5c4a759820b5d45946662d48"), "Status": 0 }, { upsert: true });

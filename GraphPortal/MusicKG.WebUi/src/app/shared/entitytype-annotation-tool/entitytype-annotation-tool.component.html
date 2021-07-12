@@ -1,0 +1,106 @@
+<div *ngIf="currentNode">
+  <nz-layout>
+    <nz-content>
+      <div class="entity-title">
+        <span (click)="addItem()" class="entity-new">
+          <i nz-icon type="plus" theme="outline"></i>
+          添加
+        </span>
+        <button nz-button nzType="primary" (click)="createTplModal(tplTitle, tplContent, tplFooter)">上传字典</button>
+      </div>
+      <div class="entity-annotation">
+        <div class="entity-conatiner" *ngFor="let item of currentNode.Entries index as idx">
+          <km-entitytype [(ngModel)]="item" (deleteEntity)="deleteEntity($event)" [index]="idx" (alias)="alias($event)"
+            (entity)="editEntity($event)"></km-entitytype>
+        </div>
+      </div>
+    </nz-content>
+    <nz-sider>
+      <nz-tabset>
+        <nz-tab nzTitle="实体类型">
+            <ul nz-menu [nzMode]="'inline'">
+                <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menus }"></ng-container>
+                <ng-template #menuTpl let-menus>
+                  <ng-container *ngFor="let menu of menus">
+                    <li nz-menu-item [ngStyle]="{paddingLeft: menu.level * 24 + 'px'}"
+                      *ngIf="menu.children && menu.children.length === 0" [nzDisabled]="menu.disabled"
+                      [nzSelected]="menu.selected" (click)="getNode(menu.Id)">
+                      <span title class="menu-title">
+                        <span>{{ menu.EntityType }}</span>
+                      </span>
+                      <nz-badge class="menu-num" [nzCount]="menu.Entries.length"
+                        [nzStyle]="{ backgroundColor: '#e0e0e0', color: '#333' }" [nzShowZero]="true"></nz-badge>
+                    </li>
+                    <li nz-submenu [ngStyle]="{paddingLeft: menu.level * 24 + 'px'}"
+                      *ngIf="menu.children && menu.children.length !== 0" [nzOpen]="menu.open" [nzDisabled]="menu.disabled">
+                      <span title class="menu-title">
+                        <span>{{ menu.EntityType }}</span>
+                      </span>
+                      <nz-badge class="menu-num" [nzCount]="menu.Entries.length"
+                        [nzStyle]="{ backgroundColor: '#e0e0e0', color: '#333' }" [nzShowZero]="true"></nz-badge>
+                      <ul>
+                        <ng-container *ngTemplateOutlet="menuTpl;context: { $implicit: menu.children }"></ng-container>
+                      </ul>
+                    </li>
+                  </ng-container>
+                </ng-template>
+              </ul>
+        </nz-tab>
+      </nz-tabset>
+      <!-- <ul nz-menu [nzMode]="'inline'">
+        <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menus }"></ng-container>
+        <ng-template #menuTpl let-menus>
+          <ng-container *ngFor="let menu of menus">
+            <li nz-menu-item [ngStyle]="{paddingLeft: menu.level * 24 + 'px'}"
+              *ngIf="menu.children && menu.children.length === 0" [nzDisabled]="menu.disabled"
+              [nzSelected]="menu.selected" (click)="getNode(menu.Id)">
+              <span title class="menu-title">
+                <span>{{ menu.EntityType }}</span>
+              </span>
+              <nz-badge class="menu-num" [nzCount]="menu.Entries.length"
+                [nzStyle]="{ backgroundColor: '#e0e0e0', color: '#333' }" [nzShowZero]="true"></nz-badge>
+            </li>
+            <li nz-submenu [ngStyle]="{paddingLeft: menu.level * 24 + 'px'}"
+              *ngIf="menu.children && menu.children.length !== 0" [nzOpen]="menu.open" [nzDisabled]="menu.disabled">
+              <span title class="menu-title">
+                <span>{{ menu.EntityType }}</span>
+              </span>
+              <nz-badge class="menu-num" [nzCount]="menu.Entries.length"
+                [nzStyle]="{ backgroundColor: '#e0e0e0', color: '#333' }" [nzShowZero]="true"></nz-badge>
+              <ul>
+                <ng-container *ngTemplateOutlet="menuTpl;context: { $implicit: menu.children }"></ng-container>
+              </ul>
+            </li>
+          </ng-container>
+        </ng-template>
+      </ul> -->
+    </nz-sider>
+  </nz-layout>
+
+  <ng-template #tplTitle>
+    <span>字典上传</span>
+  </ng-template>
+
+  <ng-template #tplContent>
+    <nz-upload #upload nzType="drag" [nzBeforeUpload]="beforeUpload">
+      <p class="ant-upload-drag-icon">
+        <i nz-icon type="inbox"></i>
+      </p>
+      <p class="ant-upload-text">点击或拖拽文件到此区域上传</p>
+    </nz-upload>
+    <div *ngIf="fileList.length !== 0" class="file-list">
+      <li *ngFor="let file of fileList;let i = index">
+        <i nz-icon type="paper-clip" theme="outline" style="left:3px;"></i>
+        <span title="{{file.name}}">{{file.name}}</span>
+        <i nz-icon class="close" type="close" theme="outline" title="删除文件" style="font-size:11px;top:7px;z-index: 100;"
+          (click)="removeFile(i)"></i>
+      </li>
+    </div>
+  </ng-template>
+
+  <ng-template #tplFooter>
+    <button nz-button nzType="primary" (click)="handleUpload()" [nzLoading]="loading"
+      [disabled]="fileList.length === 0">上传</button>
+    <button nz-button nzType="primary" (click)="handleCancel()">取消</button>
+  </ng-template>
+</div>

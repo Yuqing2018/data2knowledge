@@ -1,0 +1,41 @@
+<div class="title">
+  <h1>标注空间管理</h1>
+  <button (click)="addWorkspace()" nz-button nzType="primary" nzGhost>
+    <i nz-icon type="plus-circle" theme="outline"></i>
+    新建标注空间
+  </button>
+</div>
+<nz-spin [nzSpinning]="!workspaceList">
+  <div class="workspace-content">
+    <div *ngIf="workspaceList && workspaceList.length > 0" class="content" nz-row>
+      <div nz-col [nzXl]="{ span: 8 }" [nzXXl]="{ span: 6 }" [nzLg]="{ span: 8 }" [nzXs]="{ span: 24 }" [nzMd]="{ span: 12 }"
+        *ngFor="let item of workspaceList">
+        <div class="workspace-card" [routerLink]="[item.id,'task']">
+          <h3>{{ item.name }}</h3>
+          <button class="action" (click)="removeWorkspace($event,item)"><i nz-icon type="delete" theme="outline"></i></button>
+          <button class="action" (click)="editWorkspace($event,item)" ><i nz-icon type="edit" theme="outline"></i></button>
+          <ul>
+            <li>
+              <div class="description-term">标注类型 :</div>
+              <div class="description-detail">{{ item?.type?.id | workspaceType }}</div>
+            </li>
+            <!-- <li>
+              <div class="description-term">文档语言 :</div>
+              <div class="description-detail">{{ item.language | workspaceLanguage }}</div>
+            </li> -->
+            <li>
+              <div class="description-term">简介 :</div>
+              <div class="description-detail">
+                <div class="text-overflow">{{ item.description }}</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="workspaceList && workspaceList.length == 0" class="no-data">
+      <i nz-icon type="inbox" theme="outline"></i>
+      <span>暂无数据</span>
+    </div>
+  </div>
+</nz-spin>

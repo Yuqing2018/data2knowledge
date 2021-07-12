@@ -1,0 +1,30 @@
+<form nz-form [formGroup]="frequencyForm">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6">重点关注</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <nz-radio-group formControlName="isFocused">
+        <label nz-radio [nzValue]="true">是</label>
+        <label nz-radio [nzValue]="false">否</label>
+      </nz-radio-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6">报警频率</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <nz-select formControlName="frequency" nzPlaceHolder="">
+        <nz-option nzValue="每日" nzLabel="每日"></nz-option>
+        <nz-option nzValue="每周" nzLabel="每周"></nz-option>
+        <nz-option nzValue="每月" nzLabel="每月"></nz-option>
+        <nz-option nzValue="每季" nzLabel="每季"></nz-option>
+        <nz-option nzValue="指定日期" nzLabel="指定日期"></nz-option>
+        <nz-option nzValue="不报警" nzLabel="不报警"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item *ngIf="frequency == '指定日期'">
+    <nz-form-label [nzSpan]="6">指定日期</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <nz-date-picker formControlName="specifiedDate"></nz-date-picker>
+    </nz-form-control>
+  </nz-form-item>
+</form>

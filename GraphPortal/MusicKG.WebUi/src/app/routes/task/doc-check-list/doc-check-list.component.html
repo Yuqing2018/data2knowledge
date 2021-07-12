@@ -1,0 +1,21 @@
+<nz-radio-group [(ngModel)]="type" [nzButtonStyle]="'solid'" (ngModelChange)="checkChange()">
+  <label nz-radio-button nzValue="tag">按标签选</label>
+  <label nz-radio-button nzValue="doc">按文件选</label>
+  <label nz-radio-button nzValue="status">按状态选</label>
+</nz-radio-group>
+<ul class="doc-ul" *ngIf="type == 'doc'">
+  <li *ngFor="let doc of docList"><label nz-checkbox [(ngModel)]="doc.checked" (ngModelChange)="checkChange()">{{
+      doc.name }}</label></li>
+  <li *ngIf="!docList || docList.length == 0">暂无数据</li>
+</ul>
+<ul class="tag-ul" *ngIf="type == 'tag'">
+  <li *ngFor="let tag of tagList"><label nz-checkbox [(ngModel)]="tag.checked" (ngModelChange)="checkChange()">{{
+      tag.text }} ({{ tag.num }}篇文章)</label></li>
+  <li *ngIf="!docList || docList.length == 0">暂无数据</li>
+</ul>
+<ng-container *ngIf="type == 'status'">
+  <nz-radio-group [(ngModel)]="status" (ngModelChange)="checkChange()">
+    <label nz-radio nzValue="notUse">未使用</label>
+    <label nz-radio nzValue="use">已使用</label>
+  </nz-radio-group>
+</ng-container>

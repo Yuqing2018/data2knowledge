@@ -1,0 +1,95 @@
+<div class="page-header">
+  <div class="page-title">
+    辅助资源
+  </div>
+</div>
+
+<nz-card class="page-content">
+  <!-- <nz-spin [nzSpinning]="!dataSet"> -->
+  <nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
+    <nz-tab [nzTitle]="'字典'" class="tab">
+      <div class="table-operator">
+        <button nz-button nzType="primary" (click)="createTplModal(tplTitle, tplContent, tplFooter)">
+          <span>上传字典</span>
+        </button>
+        <div nz-row [nzGutter]="32" class="data-list">
+          <nz-spin [nzSpinning]="loading">
+            <div nz-col [nzXl]="{ span: 8 }" [nzXXl]="{ span: 6 }" [nzLg]="{ span: 8 }" [nzXs]="{ span: 24 }"
+              [nzMd]="{ span: 12 }" class="gutter-row" *ngFor="let dict of dataSet">
+              <div class="grid-config" [routerLink]="[dict.id]" nz-row>
+                <div class="dict-info" nz-col nzSpan="19">
+                  <p>{{ dict.name }}</p>
+                  <p>共计：{{ dict.entriesCount }} 条</p>
+                </div>
+                <div class="operate" nz-col nzSpan="5" *ngIf="!isIE">
+                  <i nz-icon type="edit" theme="outline" nz-tooltip nzTitle="字典重命名" class="icon-edit" (click)="editDic(editTitle, tplContent, editFooter, dict.id, dict.name, $event)"></i>
+                  <i nz-icon type="delete" theme="outline" nz-tooltip nzTitle="删除字典" (click)="showDeleteConfirm(dict.id, $event)"></i>
+                </div>
+                <div class="operate" nz-col nzSpan="5" *ngIf="isIE">
+                  <button class="ie-icon" nz-tooltip nzTitle="字典重命名" (click)="editDic(editTitle, tplContent, editFooter,dict.id, dict.name, $event)"><i nz-icon type="edit"></i></button>
+                  <button class="ie-icon" nz-tooltip nzTitle="删除字典" (click)="showDeleteConfirm(dict.id, $event)"><i nz-icon type="delete"></i></button>
+                </div>
+              </div>
+            </div>
+          </nz-spin>
+        </div>
+      </div>
+      <nz-pagination style="float: right" [nzTotal]="dictTotal" (nzPageIndexChange)="pageIndexChange($event)"
+        nzHideOnSinglePage="true"></nz-pagination>
+    </nz-tab>
+  </nz-tabset>
+  <!-- </nz-spin> -->
+</nz-card>
+
+<ng-template #tplTitle>
+  <span>上传字典</span>
+</ng-template>
+
+<ng-template #tplContent>
+  <form nz-form [formGroup]="validateForm" autocomplete="off">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzRequired nzFor="dictName" *ngIf="!isUpload">字典名称</nz-form-label>
+      <nz-form-control *ngIf="!isUpload" [nzSpan]="14">
+        <km-input-name formControlName="dictName" [(ngModel)]="originName"></km-input-name>
+        <nz-form-explain *ngIf="hasError('dictName','required')">字典名称不能为空</nz-form-explain>
+        <nz-form-explain *ngIf="hasError('dictName','maxlength')">字典名称长度最多为 20 个字符</nz-form-explain>
+        <nz-form-explain *ngIf="hasError('dictName','pattern')">字典名称不可全部为空格</nz-form-explain>
+      </nz-form-control>
+      <nz-form-control *ngIf="isUpload">
+        <km-input-name formControlName="dictName" [(ngModel)]="originName"></km-input-name>
+        <nz-form-explain *ngIf="hasError('dictName','required')">字典名称不能为空</nz-form-explain>
+        <nz-form-explain *ngIf="hasError('dictName','maxlength')">字典名称长度最多为 20 个字符</nz-form-explain>
+        <nz-form-explain *ngIf="hasError('dictName','pattern')">字典名称不可全部为空格</nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  <div class="upload" *ngIf="isUpload">
+    <nz-upload #upload nzType="drag" [nzBeforeUpload]="beforeUpload" nzMultiple="true" nzLimit="5">
+      <p class="ant-upload-drag-icon">
+        <i nz-icon type="inbox"></i>
+      </p>
+      <p class="ant-upload-text">点击或拖拽文件到此区域上传</p>
+    </nz-upload>
+    <div *ngIf="fileList.length !== 0" class="file-list">
+      <li *ngFor="let file of fileList;let i = index">
+        <i nz-icon type="paper-clip" theme="outline" style="left:3px;"></i>
+        <span title="{{file.name}}">{{file.name}}</span>
+        <i nz-icon class="close" type="close" theme="outline" title="删除文件" style="font-size:11px;top:7px;z-index: 100;" (click)="removeFile(i)"></i>
+      </li>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #tplFooter>
+  <button nz-button nzType="primary" [nzLoading]="uploading" (click)="handleUpload()" [disabled]="uploadBtn">上传</button>
+  <button nz-button nzType="primary" (click)="handleCancel()">取消</button>
+</ng-template>
+
+<ng-template #editTitle>
+  <span>编辑字典</span>
+</ng-template>
+
+<ng-template #editFooter>
+  <button nz-button nzType="primary" (click)="rename('confirm')" [nzLoading]="renameLoading" [disabled]="!validateForm.valid">确认</button>
+  <button nz-button nzType="primary" (click)="rename('cancel')">取消</button>
+</ng-template>

@@ -1,0 +1,28 @@
+<form nz-form [formGroup]="validateForm">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzRequired nzFor="name">用户名称</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <input id="name" type="text" nz-input formControlName="name" autocomplete="off">
+      <nz-form-explain *ngIf="hasError('name','required')">用户名称不能为空</nz-form-explain>
+      <nz-form-explain *ngIf="hasError('name','maxlength')">用户名称不能超过20个字符</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzRequired nzFor="role">用户角色</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select id="role" formControlName="roles">
+        <nz-option *ngFor="let option of userRole" [nzLabel]="option.displayName" [nzValue]="option.value"></nz-option>
+      </nz-select>
+      <nz-form-explain *ngIf="hasError('roles','required')">用户角色不能为空</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzRequired nzFor="password">密码</nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <km-input-password formControlName="password"></km-input-password>
+      <nz-form-explain *ngIf="hasError('password','required')">初始密码不能为空</nz-form-explain>
+      <nz-form-explain *ngIf="hasError('password','minlength')">初始密码长度最少6个字符</nz-form-explain>
+      <nz-form-explain *ngIf="hasError('password','maxlength')">初始密码长度最多128个字符</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+</form>

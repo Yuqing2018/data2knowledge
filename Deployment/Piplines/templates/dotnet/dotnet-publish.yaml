@@ -1,0 +1,14 @@
+parameters:
+- name: projects
+  type: string
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: Dotnet publish
+  inputs:
+    command: publish
+    publishWebProjects: false
+    projects: ${{ parameters.projects }}
+    arguments: '-c Release'
+    zipAfterPublish: false
+    modifyOutputPath: false

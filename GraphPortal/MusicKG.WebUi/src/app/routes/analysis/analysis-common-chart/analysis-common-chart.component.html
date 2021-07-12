@@ -1,0 +1,23 @@
+<ng-container *ngIf="chartType == '片区'">
+  <div class="map-chart">
+    <div class="map-bg">
+      <img class="mark" src="../../../../assets/img/pianqu.png">
+      <span> {{chartType}} </span>
+    </div>
+    <div echarts style="height: 310px;" (chartClick)="onChartClick($event)" (chartInit)="onChartInit($event)"
+    [options]="chartOption"></div>
+  </div>
+</ng-container>
+<ng-container *ngIf="chartType !== '片区'">
+  <div class="chart-box">
+    <nz-spin [nzSpinning]="isLoading">
+      <div class="title" >
+        {{chartType}}
+        <button *ngIf="showBack" (click)="onBack()" nz-button nzType="default"><i nz-icon nzType="rollback"
+            nzTheme="outline"></i></button>
+      </div>
+      <div echarts style="height: 260px;" (chartClick)="onChartClick($event)" (chartInit)="onChartInit($event)"
+        [options]="chartOption"></div>
+    </nz-spin>
+  </div>
+</ng-container>

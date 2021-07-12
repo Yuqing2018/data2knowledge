@@ -1,0 +1,21 @@
+<nz-form-item *ngIf="dataSource !== 'MQI'">
+  <nz-form-label [nzSpan]="8" nzRequired>零件名</nz-form-label>
+  <nz-form-control [nzSpan]="12">
+    <km-dictionary-input-select [autoFocus]="false" [(ngModel)]="partName" [initData]="partName">
+    </km-dictionary-input-select>
+  </nz-form-control>
+</nz-form-item>
+<nz-form-item>
+  <nz-form-label [nzSpan]="8" nzRequired>不良症状</nz-form-label>
+  <nz-form-control [nzSpan]="12">
+    <km-dictionary-id-select [autoFocus]="false" [(ngModel)]="syndrome" [initData]="syndrome">
+    </km-dictionary-id-select>
+  </nz-form-control>
+</nz-form-item>
+<nz-form-item>
+  <nz-form-label [nzSpan]="8" nzRequired>作为训练数据</nz-form-label>
+  <nz-form-control [nzSpan]="12">
+    <nz-switch [(ngModel)]="isAddToTraining">
+    </nz-switch>
+  </nz-form-control>
+</nz-form-item>

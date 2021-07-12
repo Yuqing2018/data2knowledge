@@ -1,0 +1,85 @@
+<km-sub-header [labelType]="labelType"></km-sub-header>
+<nz-card class="page-content" style="transition: height 2s;">
+    <div class="table-operator">
+      <button nz-button nzPlacement="topLeft" nz-tooltip (click)="confimDeactivate('addEntity')"
+        nzType="primary"><i nz-icon type="plus-circle" theme="outline"></i>新建{{labelType}}类型</button>
+    </div>
+  <div class="annotation">
+    <div class="entity">
+        <div *ngIf="entityData.length===0">暂无数据</div>
+        <ul class="dataTree">
+          <li [ngClass]="{'active':activeIndex == i}" *ngFor="let item of entityData let i=index" (click)="confimDeactivate('selectEntity', item.id,i)" >
+            <span  [ngStyle]="{'background-color':item.color}"></span>
+            <span class="entity_name">{{item.name}}</span>
+            <i [ngStyle]="{'visibility':activeIndex == i ? 'inherit':'hidden'}"  nz-icon type="minus-circle-o" class="dynamic-delete-button" nz-popconfirm nzTitle="确认删除该条记录吗？" (nzOnConfirm)="deleteEntity(item,i)"></i>
+          </li>
+        </ul>
+    </div>
+    <div class="entityInfo">
+        <form nz-form [formGroup]="validateForm" *ngIf="activeEntity">
+            <nz-form-item>
+                <nz-form-label [nzSpan]="3" class="title">{{labelType}}类型</nz-form-label>
+                <nz-form-control [nzSpan]="20" trim class="entityName">{{activeEntity.name}}</nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="3" class="title">描述</nz-form-label>
+              <nz-form-control [nzSpan]="20">
+                <textarea rows="4" nz-input maxlength="128" formControlName="activeEntitydescription"></textarea>
+              </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                  <nz-form-label [nzSpan]="3" class="title">标注色</nz-form-label>
+                  <nz-form-control [nzSpan]="20">
+                      <input style="display:inline-block;vertical-align: middle;" nz-input [(colorPicker)]="activeEntity.color" [style.background]="activeEntity.color" id="color"> 
+                  </nz-form-control>
+              </nz-form-item>
+              <nz-form-item *ngIf="type!=='5c414c0a5a01cf00010f9661'">
+                  <nz-form-label [nzSpan]="3" class="title">属性</nz-form-label>
+                  <nz-form-control [nzSpan]="20">
+                      <i nz-icon type="plus-circle" (click)="addField($event)" theme="outline"></i>
+                  </nz-form-control>
+              </nz-form-item>
+              <nz-form-item *ngIf="type!=='5c414c0a5a01cf00010f9661'">
+                  <nz-form-control [nzSpan]="17" [nzOffset]="4">
+                      <div [formGroup]="propertityForm[i]"  *ngFor="let control of controlArray;let i = index">
+                        <nz-form-item nzGutter="10">
+                          <nz-form-control [nzSm]="24" [nzMd]="6">
+                              <input nz-input  formControlName="name" placeholder="属性值"   autocomplete="off">
+                              <nz-form-explain *ngIf="propertityForm[i].get('name').dirty && propertityForm[i].get('name').errors || propertityForm[i].get('type').dirty && propertityForm[i].get('type').errors">
+                                  <ng-container *ngIf="propertityForm[i].get('name').hasError('required')" >
+                                    请输入属性名
+                                  </ng-container>
+                                  <ng-container *ngIf="propertityForm[i].get('name').hasError('checkName')">
+                                    关系名称只能包含数字、字母、下划线
+                                  </ng-container>
+                                  <ng-container *ngIf="propertityForm[i].get('type').hasError('required')">
+                                    请选择 type
+                                  </ng-container>
+                                </nz-form-explain>
+                            </nz-form-control>
+                            <nz-form-control [nzSm]="24" [nzMd]="10">
+                              <input nz-input  formControlName="description" placeholder="属性描述"   autocomplete="off">
+                            </nz-form-control>
+                            <nz-form-control [nzSm]="24" [nzMd]="7">
+                              <nz-select style="width: 80%;margin-right:3%;" formControlName="type" [nzSize]="small" nzPlaceHolder="Please select">
+                                <nz-option *ngFor="let option of listOfOption" [nzLabel]="option.displayName" [nzValue]="option.value"></nz-option>
+                              </nz-select>
+                              <i nz-icon type="minus-circle-o" class="dynamic-delete-button" (click)="removeField(control,$event,i)"></i>
+                            </nz-form-control>
+                        </nz-form-item>
+                      </div>
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control [nzSpan]="24" style="text-align:center;">
+                        <button nz-button (click)="updateOntologyEntity()"   nzType="primary">保存</button>
+                        <button style="margin-left:20px;" nz-button    nzType="primary" (click)="reset()">取消</button>
+                    </nz-form-control>
+              </nz-form-item>
+        </form>
+
+    </div>
+    
+  </div>
+
+</nz-card>

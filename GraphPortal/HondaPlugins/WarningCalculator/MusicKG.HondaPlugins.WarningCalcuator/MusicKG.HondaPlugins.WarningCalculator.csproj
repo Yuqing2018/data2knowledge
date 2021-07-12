@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Tasks\**" />
+    <EmbeddedResource Remove="Tasks\**" />
+    <None Remove="Tasks\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Actions\ConstructDataAction.cs" />
+    <Compile Remove="Actions\PreserveDataAction.cs" />
+    <Compile Remove="Data\DataConstructionActionData.cs" />
+    <Compile Remove="Data\DataPreservationActionData.cs" />
+    <Compile Remove="Executors\DefaultDataConstructor.cs" />
+    <Compile Remove="Executors\DefaultDataPreserver.cs" />
+    <Compile Remove="Options\DataConstructionOptions.cs" />
+    <Compile Remove="Options\DataPreservationOptions.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Scheduler\MusicKG.Scheduler.Engine\MusicKG.Scheduler.Engine.csproj" />
+    <ProjectReference Include="..\..\MusicKG.HondaPlugins.DataAccess\MusicKG.HondaPlugins.DataAccess.csproj" />
+    <ProjectReference Include="..\..\MusicKG.HondaPlugins.Services\MusicKG.HondaPlugins.Services.csproj" />
+  </ItemGroup>
+
+</Project>

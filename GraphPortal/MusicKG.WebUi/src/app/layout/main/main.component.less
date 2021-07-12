@@ -1,0 +1,49 @@
+
+:host {
+    height: 100%;
+    display: block;
+}
+
+nz-layout {
+    height: 100%;
+}
+
+.ant-layout-sider {
+    background: #fff;
+}
+
+.back-workspace {
+    line-height: 45px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    .text {
+        padding-left: 10px;
+    }
+    &:hover {
+        color: #1890ff;
+    }
+}
+
+nz-sider {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+    border-right: 1px solid #e8e8e8;
+}
+
+:host /deep/ .ant-layout-sider-trigger {
+    color: #ccc;
+    font-size: 16px;
+    background: none;
+    height: 30px;
+    line-height: 30px;
+    border-right: 1px solid #e8e8e8; 
+}
+
+:host /deep/ .ant-layout-sider-trigger:hover {
+    background: #e6f7ff;
+    color: #1890ff;
+}
+

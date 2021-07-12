@@ -1,0 +1,48 @@
+<div class="page-header">
+  <div class="page-title">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        <a [routerLink]="['../../../../']">标注任务</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        <a [routerLink]="['../../../']">任务详情</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        标注
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <a class="back" [routerLink]="['../../../']">
+      <i nz-icon type="arrow-left" theme="outline"></i> 返回
+    </a>
+  </div>
+</div>
+
+<nz-card class="page-content">
+  <km-annotation-toolbar [disabled]="saveBtnDisabled" [pageIndex]="pageIndex" [hasItem]="false"
+    [pageTotal]="docList?.length" [title]="docName" (pageIndexChange)="onPageIndexChange($event)"
+    (save)="onSave($event)">
+  </km-annotation-toolbar>
+  <nz-spin [nzSpinning]="isLoading">
+    <div class="guideline-wrap">
+      <ng-container *ngIf="docContent?.Guideline">
+        <span class="label">标注说明 :</span>
+        <div class="guideline-text">
+          {{ docContent?.Guideline }}
+        </div>
+      </ng-container>
+    </div>
+    <div class="annotator-wrap"
+      *ngIf="taskInfo && taskInfo?.status !== 'Created' && annotatorList && annotatorList.length > 0">
+      <span class="label">标注版本 :</span>
+      <div class="annotator-list">
+        <ng-container *ngFor="let label of annotatorList">
+          <label nz-checkbox [(ngModel)]="label.checked" (ngModelChange)="labelChange(label)">{{label.label}}</label>
+        </ng-container>
+      </div>
+    </div>
+    <ng-container *ngFor="let item of docContent?.Items">
+      <km-tokenization-annotation-tool [showConflict]="showConflict" [(ngModel)]="item">
+      </km-tokenization-annotation-tool>
+    </ng-container>
+  </nz-spin>
+</nz-card>

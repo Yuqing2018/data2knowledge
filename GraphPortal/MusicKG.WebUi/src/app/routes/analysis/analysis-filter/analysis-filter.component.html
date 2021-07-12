@@ -1,0 +1,54 @@
+<div class="select-list">
+  <div class="select-item">
+    <span>渠道: </span>
+    <nz-select [nzDropdownMatchSelectWidth]="false" nzAllowClear [(ngModel)]="dataSource" nzPlaceHolder="全部" (ngModelChange)="dataSourceChange()">
+      <nz-option nzValue="MQI" nzLabel="MQI"></nz-option>
+      <nz-option nzValue="TECH_CONSULTING" nzLabel="技术咨询"></nz-option>
+      <nz-option nzValue="HOTLINE" nzLabel="800"></nz-option>
+      <nz-option nzValue="GOV" nzLabel="总局"></nz-option>
+      <nz-option nzValue="MEDIA_SUB" nzLabel="网络媒体"></nz-option>
+    </nz-select>
+  </div>
+  <div class="select-item">
+    <span>车款: </span>
+    <nz-select [nzDropdownMatchSelectWidth]="false" nzAllowClear nzMode="multiple" [nzLoading]="carModelLoading" nzPlaceHolder="全部" [(ngModel)]="carModel"
+      (ngModelChange)="carModelChange()">
+      <nz-option *ngFor="let option of carModelList" [nzValue]="option" [nzLabel]="option"></nz-option>
+    </nz-select>
+  </div>
+  <div class="select-item">
+    <span>车型: </span>
+    <nz-select [nzDropdownMatchSelectWidth]="false" nzAllowClear nzMode="multiple" nzPlaceHolder="全部" [nzLoading]="carTypeLoading" [(ngModel)]="carType"
+      (ngModelChange)="carTypeChange()">
+      <nz-option *ngFor="let option of carTypeList" [nzValue]="option" [nzLabel]="option"></nz-option>
+    </nz-select>
+  </div>
+  <div class="select-item">
+    <span>年款: </span>
+    <nz-select [nzDropdownMatchSelectWidth]="false" nzAllowClear nzMode="multiple" nzPlaceHolder="全部" [nzLoading]="modelYearsLoading"
+      [(ngModel)]="modelYears" (ngModelChange)="modelYearsChange()">
+      <nz-option *ngFor="let option of modelYearsList" [nzValue]="option" [nzLabel]="option"></nz-option>
+    </nz-select>
+  </div>
+  <div class="select-item">
+    <span>零件名: </span>
+    <nz-select [nzDropdownMatchSelectWidth]="false" nzAllowClear nzMode="multiple" nzPlaceHolder="全部" [nzLoading]="partNameLoading" [(ngModel)]="partName"
+      (ngModelChange)="partNameChange()">
+      <nz-option *ngFor="let option of partNameList" [nzValue]="option" [nzLabel]="option"></nz-option>
+    </nz-select>
+  </div>
+  <div class="select-item">
+    <span>不良症状: </span>
+    <nz-select [nzDropdownMatchSelectWidth]="false" nzAllowClear nzMode="multiple" nzPlaceHolder="全部" [nzLoading]="syndromeLoading" [(ngModel)]="syndrome">
+      <nz-option *ngFor="let option of syndromeList" [nzValue]="option.id" [nzLabel]="option.name"></nz-option>
+    </nz-select>
+  </div>
+  <div class="select-item">
+    <span class="long">故障日期: </span>
+    <nz-range-picker [(ngModel)]="dateRange"></nz-range-picker>
+  </div>
+</div>
+<div class="search-bts">
+  <button nz-button nzType="primary" (click)="onSearch()" >查询</button>
+  <button nz-button nzType="default" (click)="onReset()" class="reset">重置</button>
+</div>

@@ -1,0 +1,34 @@
+<div class="page-header">
+  <div class="page-title">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        <a [routerLink]="['../../../../']">标注任务</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        <a (click)="goTo()">任务详情</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        标注
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <a class="back" (click)="goTo()">
+      <i nz-icon type="arrow-left" theme="outline"></i> 返回
+    </a>
+  </div>
+</div>
+
+<nz-card class="page-content">
+  <km-annotation-toolbar [disabled]="saveBtnDisabled" [hasItem]="false" [pageIndex]="pageIndex"
+    [pageTotal]="docList?.length" [title]="docName" (pageIndexChange)="onPageIndexChange($event)"
+    (save)="onSave($event)"></km-annotation-toolbar>
+  <nz-spin [nzSpinning]="isLoading">
+    <div class="guideline">
+      <ng-container *ngIf="docContent?.Guideline">
+        标注说明：{{ docContent?.Guideline }}
+      </ng-container>
+    </div>
+    <ng-container *ngFor="let item of docContent?.Items">
+      <km-tokenization-annotation-tool [(ngModel)]="item"></km-tokenization-annotation-tool>
+    </ng-container>
+  </nz-spin>
+</nz-card>

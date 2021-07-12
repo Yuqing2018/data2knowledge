@@ -1,0 +1,55 @@
+<nz-card class="page-content">
+  <div class="table-operate">
+    <div class="left">
+      <img class="left-img" src="./assets/img/label.png">
+      <span>标注任务</span>
+      <span class="select-tips" *ngIf="setOfCheckedId && setOfCheckedId.size > 0">共选择 {{ setOfCheckedId.size }} 项 </span>
+    </div>
+    <div class="right">
+      <nz-input-group class="search-input" [nzSuffix]="suffixIconSearch">
+        <input type="text" nz-input [(ngModel)]="searchKey" (keyup)="onEnter($event)" placeholder="按任务名称查询" />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <i nz-icon class="search-action" (click)="searchData()" type="search"></i>
+      </ng-template>
+      <button nz-button nzType="primary" (click)="batchComplete()"><i nz-icon nzType="check-circle"
+          nzTheme="outline"></i>批量提交</button>
+      <button nz-button nzType="primary" (click)="openUpload()"><i nz-icon nzType="upload"
+          nzTheme="outline"></i>上传数据</button>
+      <button nz-button nzType="primary" (click)="reload()"><i nz-icon nzType="reload" nzTheme="outline"></i>刷新</button>
+    </div>
+  </div>
+  <nz-table #taskTable [nzShowTotal]="rangeTemplate" [nzLoading]="isLoading" [nzTotal]="total"
+    [nzPageIndex]="pageIndex" [nzFrontPagination]="false" [nzData]="taskDataSet"
+    (nzPageIndexChange)="searchData($event)" [nzShowQuickJumper]="true">
+    <thead>
+      <tr>
+        <th nzShowCheckbox [(nzChecked)]="checked" [nzIndeterminate]="indeterminate"
+          (nzCheckedChange)="onAllChecked($event)"></th>
+        <th>任务名称</th>
+        <!-- <th>标注类型</th>
+        <th>经理</th> -->
+        <th nzShowFilter [nzFilters]="filterStatus" (nzFilterChange)="filterStatusChange($event)">状态</th>
+        <th>最后期限</th>
+        <!-- <th>操作</th> -->  
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of taskTable?.data">
+        <td nzShowCheckbox [nzDisabled]="data.status == 'KnowledgeMerged' || data.status == 'ConflictResolved'" [nzChecked]="setOfCheckedId.has(data.id)" (nzCheckedChange)="onItemChecked(data.id, $event)">
+        </td>
+        <td><a (click)="goTo(data)">{{data.name}}</a></td>
+        <!-- <td>{{data.workspace.type.id | workspaceType }}</td>
+        <td>{{data.createdBy.name}}</td> -->
+        <td>{{data.status | taskStatus}}</td>
+        <td>{{data.expectedDueAt | date: 'yyyy-MM-dd' }}</td>
+        <!-- <td>
+          <a *ngIf="data.status == 'Created'" (click)="commit(data)">提交</a>  
+        </td> -->
+      </tr>
+    </tbody>
+  </nz-table>
+  <ng-template #rangeTemplate let-range="range" let-total>
+    {{ from }}-{{ to }} 共 {{ total }} 项
+  </ng-template>
+</nz-card>

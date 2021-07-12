@@ -1,0 +1,52 @@
+<ng-container>
+  <div class="chart-box">
+    <div class="chart">
+      <nz-spin [nzSpinning]="isLoading">
+      <div class="title">
+        {{chartType}}
+      </div>
+      <div class="chart-content">
+        <span>区间：</span>
+        <nz-range-picker style="width: 100%;" [nzFormat]="yyyy-MM-dd" ngModel (ngModelChange)="onChange($event)" id="beginDate"></nz-range-picker>
+        <div>
+          <nz-select style="width: 56px;" [(ngModel)]="selectTimeType" (ngModelChange)="selectTimeTypeChange()">
+            <nz-option nzValue="日" nzLabel="日"></nz-option>
+            <nz-option nzValue="周" nzLabel="周"></nz-option>
+            <nz-option nzValue="月" nzLabel="月"></nz-option>
+          </nz-select>
+        </div>
+      </div>
+      <div echarts style="height: 200px;margin-bottom: 10px;" (chartInit)="onChartInit($event)" [options]="chartOption"></div>
+    </nz-spin>
+    </div>
+    <div class="table-content2">
+        <nz-table #basicTable [nzData]="listOfData" [nzPageSize]="6" [nzLoading]="isTableLoading"
+        [(nzPageIndex)]="pageIndex" (nzPageIndexChange)="pageIndexChange($event)">
+          <thead>
+            <tr>
+              <th>Top</th>
+              <th>车款</th>
+              <th>零件名</th>
+              <th>不良症状</th>
+              <th>件数</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of basicTable.data;index as i">
+              <td>{{(basicTable.nzPageIndex - 1) * 6 + i + 1}}</td>
+              <td>{{ data.carModel }}</td>
+              <td [title]="data.partName">{{ data.partName.length <= 3 ? data.partName : data.partName.substring(0, 3) + '...' }}</td>
+              <td [title]="data.syndromeName">{{ data.syndromeName.length <= 3 ? data.syndromeName : data.syndromeName.substring(0, 3) + '...' }}</td>
+              <td>{{ data.count }}</td>
+              <td><a [routerLink]="['/annotator/analysis/info']" [queryParams]="{
+                carType: data.carModel,
+                yearModels: yearModels,
+                partName: data.partName
+              }" style="color: #fff;border-bottom: 1px solid #fff;" nzSize="small" target="_blank">详情</a></td>
+            </tr>
+          </tbody>
+        </nz-table>
+    </div>
+  </div>
+</ng-container>

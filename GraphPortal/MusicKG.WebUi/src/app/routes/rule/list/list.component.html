@@ -1,0 +1,40 @@
+<div class="page-header">
+  <div class="page-title">规则管理</div>
+</div>
+
+<nz-card class="page-content">
+  <div class="table-operator">
+    <nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
+      <nz-tab [nzTitle]="'字典'">
+        <button nz-button nzType="primary" (click)="addRule('dict')"><i nz-icon type="plus-circle" theme="outline"></i>新建字典</button>
+        <div nz-row [nzGutter]="32" class="data-list">
+          <div nz-col class="gutter-row" [nzSpan]="6" *ngFor="let dict of dictData">
+            <div class="grid-config">
+              <span>{{ dict.name }}</span>
+              <div class="operate-icon">
+                <i nz-icon type="edit" theme="outline"></i>
+                <i nz-icon type="delete" theme="outline"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nz-tab>
+      <nz-tab [nzTitle]="'正则表达式'">
+        <button nz-button nzType="primary" (click)="addRule('reg')"><i nz-icon type="plus-circle" theme="outline"></i>新建正则表达式</button>
+        <div class="data-list">
+          <div nz-row [nzGutter]="32" class="data-list">
+            <div nz-col class="gutter-row" [nzSpan]="6" *ngFor="let dict of dictData">
+              <div class="grid-config">
+                <span>{{ dict.name }}</span>
+                <div class="operate-icon">
+                  <i nz-icon type="edit" theme="outline"></i>
+                  <i nz-icon type="delete" theme="outline"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nz-tab>
+    </nz-tabset>
+  </div>
+</nz-card>

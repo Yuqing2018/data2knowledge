@@ -1,0 +1,11 @@
+{
+    "/api": {
+        "target": "https://labeltool.eastasia.cloudapp.azure.com:10443/api/",
+        "secure": false,
+        "pathRewrite": {
+            "^/api": ""
+        },
+        "logLevel": "debug",
+        "changeOrigin": true
+    }
+}

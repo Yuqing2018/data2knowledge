@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AnnotatorIDlist" xml:space="preserve">
+    <value>标注员Id列表</value>
+  </data>
+  <data name="DictionaryName" xml:space="preserve">
+    <value>字典名</value>
+  </data>
+  <data name="DocumentIDlist" xml:space="preserve">
+    <value>文档Id列表</value>
+  </data>
+  <data name="ExpectedDueAt" xml:space="preserve">
+    <value>预期完成时间</value>
+  </data>
+  <data name="Isannotationresultautomaticallyapproved" xml:space="preserve">
+    <value>标注完成是否自动接受</value>
+  </data>
+  <data name="Isknowledgeautomaticallymerged" xml:space="preserve">
+    <value>任务完成是否自动融合</value>
+  </data>
+  <data name="OntologyEntityId" xml:space="preserve">
+    <value>实体类型Id</value>
+  </data>
+  <data name="Overlap" xml:space="preserve">
+    <value>重叠率</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="RegularExpressions" xml:space="preserve">
+    <value>正则内容</value>
+  </data>
+  <data name="RuleName" xml:space="preserve">
+    <value>正则名称</value>
+  </data>
+  <data name="Taskdocumentresult" xml:space="preserve">
+    <value>任务文档结果</value>
+  </data>
+  <data name="Taskdocumentresulttype" xml:space="preserve">
+    <value>任务文档结果类型</value>
+  </data>
+  <data name="Taskdocumentstatus" xml:space="preserve">
+    <value>任务文档状态</value>
+  </data>
+  <data name="TaskName" xml:space="preserve">
+    <value>任务名称</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="UserRoles" xml:space="preserve">
+    <value>用户角色</value>
+  </data>
+  <data name="UserStatus" xml:space="preserve">
+    <value>用户状态</value>
+  </data>
+  <data name="Vocabularies" xml:space="preserve">
+    <value>词汇</value>
+  </data>
+  <data name="IsAutoMerging" xml:space="preserve">
+    <value>是否自动合并标注结果</value>
+  </data>
+  <data name="WorkspaceDescription" xml:space="preserve">
+    <value>标注空间描述</value>
+  </data>
+  <data name="WorkspaceName" xml:space="preserve">
+    <value>标注空间名</value>
+  </data>
+  <data name="WorkspaceTypeId" xml:space="preserve">
+    <value>标注空间类型Id</value>
+  </data>
+  <data name="FirstEntityId" xml:space="preserve">
+    <value>首个实体类型Id</value>
+  </data>
+  <data name="OntologyEntityDescription" xml:space="preserve">
+    <value>实体类型描述</value>
+  </data>
+  <data name="OntologyEntityMarkColor" xml:space="preserve">
+    <value>实体类型颜色</value>
+  </data>
+  <data name="OntologyEntityName" xml:space="preserve">
+    <value>实体类型名称</value>
+  </data>
+  <data name="OntologyPropertyDescription" xml:space="preserve">
+    <value>属性描述</value>
+  </data>
+  <data name="OntologyPropertyName" xml:space="preserve">
+    <value>属性名称</value>
+  </data>
+  <data name="OntologyPropertyType" xml:space="preserve">
+    <value>属性类型</value>
+  </data>
+  <data name="OntologyRelationDescription" xml:space="preserve">
+    <value>实体关系描述</value>
+  </data>
+  <data name="OntologyRelationName" xml:space="preserve">
+    <value>实体关系名称</value>
+  </data>
+  <data name="SecondEntityId" xml:space="preserve">
+    <value>第二个实体类型Id</value>
+  </data>
+  <data name="DictionaryIDlist" xml:space="preserve">
+    <value>字典Id列表</value>
+  </data>
+  <data name="TaskType" xml:space="preserve">
+    <value>任务类型</value>
+  </data>
+  <data name="ReadOnlyUserIds" xml:space="preserve">
+    <value>只读用户Id列表</value>
+  </data>
+  <data name="TagColor" xml:space="preserve">
+    <value>标签颜色</value>
+  </data>
+  <data name="TagValue" xml:space="preserve">
+    <value>标签</value>
+  </data>
+  <data name="TagDescription" xml:space="preserve">
+    <value>标签描述</value>
+  </data>
+  <data name="InspectorIds" xml:space="preserve">
+    <value>质检员Id集合</value>
+  </data>
+  <data name="AccptorIds" xml:space="preserve">
+    <value>验收员Id集合</value>
+  </data>
+  <data name="HondaSyndromeName" xml:space="preserve">
+    <value>不良症状名称</value>
+  </data>
+</root>

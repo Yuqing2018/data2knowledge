@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Actions\ConstructDataAction.cs" />
+    <Compile Remove="Actions\PreserveDataAction.cs" />
+    <Compile Remove="Data\DataConstructionActionData.cs" />
+    <Compile Remove="Data\DataPreservationActionData.cs" />
+    <Compile Remove="Executors\Abstractions\DataConstructor.cs" />
+    <Compile Remove="Executors\DefaultDataConstructor.cs" />
+    <Compile Remove="Executors\DefaultDataPreserver.cs" />
+    <Compile Remove="Options\DataConstructionOptions.cs" />
+    <Compile Remove="Options\DataPreservationOptions.cs" />
+    <Compile Remove="Tasks\DataPreserverSetttings.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Scheduler\MusicKG.Scheduler.Engine\MusicKG.Scheduler.Engine.csproj" />
+    <ProjectReference Include="..\..\MusicKG.WebApi.ClientWrapper\MusicKG.WebApi.ClientWrapper.csproj" />
+  </ItemGroup>
+
+</Project>

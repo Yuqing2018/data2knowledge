@@ -1,0 +1,45 @@
+button{
+    margin: 0 5%;
+}
+.file-list{
+    li{
+        // width: 100%;
+        position: relative;
+        margin: 5px auto;
+        &:hover{
+            background: #e6f7ff;
+            .close{
+                display: block;
+            }
+        }
+        i{
+            display: inline-block;
+            font-style: normal;
+            vertical-align: -0.125em;
+            text-align: center;
+            text-transform: none;
+            line-height: 0;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.45);
+            position: absolute;
+            top: 5px;
+            &.close{
+                right:5px;
+                font-size: 11px;
+                display: none;
+            }
+        }
+        span{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding-left: 22px;
+            padding-right: 22px;
+            width: 100%;
+            display: inline-block;
+        }
+        
+    }
+}

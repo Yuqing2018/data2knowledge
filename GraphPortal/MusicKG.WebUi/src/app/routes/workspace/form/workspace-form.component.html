@@ -1,0 +1,35 @@
+<form *ngIf="workspaceForm" nz-form [formGroup]="workspaceForm">
+  <nz-form-item>
+    <nz-form-label nzRequired nzSpan="5">名称</nz-form-label>
+    <nz-form-control nzSpan="17">
+      <input nz-input trim formControlName="name">
+      <nz-form-explain *ngIf="hasError('name','required')">名称不能为空</nz-form-explain>
+      <nz-form-explain *ngIf="hasError('name','maxlength')">名称不能超过20个字符</nz-form-explain> 
+    </nz-form-control>   
+  </nz-form-item>
+  <!-- <nz-form-item>
+    <nz-form-label nzRequired nzSpan="5">文档语言</nz-form-label>
+    <nz-form-control nzSpan="17">
+      <nz-select nzShowSearch formControlName="language">
+        <nz-option *ngFor="let option of languageList" [nzLabel]="option.displayName" [nzValue]="option.value"></nz-option> 
+      </nz-select>
+      <nz-form-explain *ngIf="hasError('language','required')">文档语言不能为空</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item> -->
+  <nz-form-item>
+    <nz-form-label nzRequired nzSpan="5">标注类型</nz-form-label>
+    <nz-form-control nzSpan="17">
+      <nz-select formControlName="type">
+        <nz-option *ngFor="let option of typeList" [nzLabel]="option.displayName" [nzValue]="option.value"></nz-option>
+      </nz-select>
+      <nz-form-explain *ngIf="hasError('type','required')">标注类型不能为空</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label nzSpan="5">简介</nz-form-label>
+    <nz-form-control nzSpan="17">
+      <textarea formControlName="description" nz-input rows="4" placeholder=""></textarea>
+      <nz-form-explain *ngIf="hasError('description','maxlength')">简介不能超过128个字符</nz-form-explain> 
+    </nz-form-control>
+  </nz-form-item>
+</form>

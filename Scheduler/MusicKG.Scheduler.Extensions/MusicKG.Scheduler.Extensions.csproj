@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MusicKG.Scheduler.DataAccess\MusicKG.Scheduler.DataAccess.csproj" />
+    <ProjectReference Include="..\MusicKG.Scheduler.Engine\MusicKG.Scheduler.Engine.csproj" />
+    <ProjectReference Include="..\MusicKG.Scheduler.Executor\MusicKG.Scheduler.Executor.csproj" />
+    <ProjectReference Include="..\MusicKG.Scheduler.Job\MusicKG.Scheduler.Job.csproj" />
+    <ProjectReference Include="..\MusicKG.Scheduler.Service\MusicKG.Scheduler.Service.csproj" />
+  </ItemGroup>
+
+</Project>

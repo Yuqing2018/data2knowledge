@@ -1,0 +1,64 @@
+<nz-card class="hd-page-header">
+  <div class="page-title">
+    <img src="./assets/img/chart-active.png">
+    <span>统计分析</span>
+    <button nz-button class="page-title-action" nzType="default" (click)="onExport()"><i nz-icon nzType="download" nzTheme="outline"></i> Top表导出</button>
+  </div>
+</nz-card>
+
+<!-- <nz-card class="table-card">
+  <km-analysis-table></km-analysis-table>
+</nz-card> -->
+
+<nz-card class="chart-card">
+  <nz-spin [nzSpinning]="isLoading">
+    <km-analysis-select (selectChange)="selectChange($event)"></km-analysis-select>
+    <div class="chart-list" nz-row [nzGutter]="{ xs: 8, sm: 8, md: 16, lg: 16, xl: 16, xxl: 16 }">
+      <div class="chart-col" nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="8" nzXl="8">
+        <div class="chart-box">
+          <div class="title">
+            {{ selectType == 'partName' ? '不良症状分布' : '零件分布' }}<span *ngIf="selectName" class="select-name">{{ ': ' + selectName }}</span>
+            <button *ngIf="showBack" (click)="onBack()" nz-button nzType="default"><i nz-icon nzType="rollback" nzTheme="outline"></i></button>
+          </div>
+          <div class="chart-tips">
+            <span>点击饼图查看不同{{ selectType == 'partName' ? '不良症状' : '零件' }}的相关数据</span>
+            <nz-tag *ngIf="riskLevel && (selectName || selectType == 'syndrome') " [nzColor]="'magenta'" [class.high]="riskLevel == '重点关注' || riskLevel == '高风险' || riskLevel == '潜在高风险'">{{ riskLevel }}</nz-tag>
+          </div>
+          <div echarts style="height: 260px;" [options]="chartOption" (chartClick)="onChartClick($event)" (chartInit)="onChartInit($event)"></div>
+        </div>
+      </div>
+      <div class="chart-col" nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="8" nzXl="8">
+        <km-analysis-common-chart  type="片区" [data]="statistic?.regionDistribution" [searchParams]="searchParams">
+        </km-analysis-common-chart>
+      </div>
+      <div class="chart-col" nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="8" nzXl="8">
+        <km-analysis-common-chart [data]="statistic?.productDistribution" [type]="'生产'" [searchParams]="searchParams">
+        </km-analysis-common-chart>
+      </div>
+      <div class="chart-col" nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="8" nzXl="8">
+        <km-analysis-common-chart [data]="statistic?.faultDistribution" [type]="'故障'" [searchParams]="searchParams">
+        </km-analysis-common-chart>
+      </div>
+      <div class="chart-col" nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="8" nzXl="8">
+        <km-analysis-common-chart [data]="statistic?.faultSpanDistribution" [type]="'经过'" [searchParams]="searchParams">
+        </km-analysis-common-chart>
+      </div>
+      <div class="chart-col" nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="8" nzXl="8">
+        <km-analysis-line-chart [hasSelect]="true" [data]="statistic?.defectRateDistribution" [defectRateByCntrDistribution]="statistic?.defectRateByCntrDistribution" [searchParams]="searchParams">
+        </km-analysis-line-chart>
+      </div>
+      <div class="chart-col" nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="8" nzXl="8">
+        <km-analysis-common-chart type="里程分布" [data]="statistic?.mileAgeDistribution" [searchParams]="searchParams">
+        </km-analysis-common-chart>
+      </div>
+      <div class="chart-col" nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="8" nzXl="8">
+        <km-analysis-common-chart type="特约店" [data]="statistic?.dealerDistribution" [searchParams]="searchParams">
+        </km-analysis-common-chart>
+      </div>
+      <div class="chart-col" nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="8" nzXl="8">
+        <km-analysis-common-chart type="各渠道信息" [data]="statistic?.dataSourceDistribution" [searchParams]="searchParams">
+        </km-analysis-common-chart>
+      </div>
+    </div>
+  </nz-spin>
+</nz-card>

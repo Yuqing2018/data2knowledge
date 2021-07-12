@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AuotTaskCreationRulesUpdateFailedMessage" xml:space="preserve">
+    <value>更新自动创建任务规则失败。</value>
+  </data>
+  <data name="AuthUserFailedMessage" xml:space="preserve">
+    <value>用户认证失败。</value>
+  </data>
+  <data name="AutoTaskCreationRuleNotExistsMessage" xml:space="preserve">
+    <value>自动创建任务规则不存在。</value>
+  </data>
+  <data name="DefaultRuleMustNotContainAnyTag" xml:space="preserve">
+    <value>默认任务创建规则不能包含任何文档标签。</value>
+  </data>
+  <data name="DeserializeJsonFileFailedMessage" xml:space="preserve">
+    <value>解析Json文件出错。</value>
+  </data>
+  <data name="DictionaryCreateFailedMessage" xml:space="preserve">
+    <value>创建字典失败。</value>
+  </data>
+  <data name="DictionaryDeleteFailedMessage" xml:space="preserve">
+    <value>删除字典失败。</value>
+  </data>
+  <data name="DictionaryEntityEmptyMessage" xml:space="preserve">
+    <value>实体类型不能为空。</value>
+  </data>
+  <data name="DictionaryEntriesEmptyMessage" xml:space="preserve">
+    <value>字典词条不能为空。</value>
+  </data>
+  <data name="DictionaryNameEmtpyMessage" xml:space="preserve">
+    <value>字典名称不能为空。</value>
+  </data>
+  <data name="DictionaryNameExistMessage" xml:space="preserve">
+    <value>已存在同名的字典。</value>
+  </data>
+  <data name="DictionaryNotExistMessage" xml:space="preserve">
+    <value>未找到字典。</value>
+  </data>
+  <data name="DictionaryUpdateFailedMessage" xml:space="preserve">
+    <value>更新字典失败。</value>
+  </data>
+  <data name="DifferentRulesCannotHaveSameTagMessage" xml:space="preserve">
+    <value>相同的车型不能出现在不同的任务分配规则中。</value>
+  </data>
+  <data name="DocumentItemCountWrongMessage" xml:space="preserve">
+    <value>文档项目数的个数必须等于文档的个数。</value>
+  </data>
+  <data name="DocumentNameEmptyMessage" xml:space="preserve">
+    <value>文档名称不能为空。</value>
+  </data>
+  <data name="DocumentNotExistMessage" xml:space="preserve">
+    <value>未找到文档。</value>
+  </data>
+  <data name="DocumentUploadFailedDetailMessage" xml:space="preserve">
+    <value>文档名称：{0}，原因：{1}。</value>
+  </data>
+  <data name="DocumentUploadFailedMessage" xml:space="preserve">
+    <value>上传文档时发生错误，文档总数：{0}，失败文档数：{1}。详细信息：</value>
+  </data>
+  <data name="FileContentNotExistMessage" xml:space="preserve">
+    <value>未找到文件内容。</value>
+  </data>
+  <data name="FileContentWrongMessage" xml:space="preserve">
+    <value>文件内容存在错误。</value>
+  </data>
+  <data name="FileFormatWrongMessage" xml:space="preserve">
+    <value>不支持的文件格式。</value>
+  </data>
+  <data name="FromDateGreaterThanToDateMessage" xml:space="preserve">
+    <value>开始时间不能大于或等于结束时间。</value>
+  </data>
+  <data name="GetFileContentFailedMessage" xml:space="preserve">
+    <value>获取文件内容失败。</value>
+  </data>
+  <data name="HondaSyndromeCreateFailedMessage" xml:space="preserve">
+    <value>创建不良症状失败。</value>
+  </data>
+  <data name="HondaSyndromeNameEmtpyMessage" xml:space="preserve">
+    <value>不良症状名称不能为空。</value>
+  </data>
+  <data name="HondaSyndromeNotExistMessage" xml:space="preserve">
+    <value>未找到该不良症状。</value>
+  </data>
+  <data name="HondaSyndromeUpdateFailedMessage" xml:space="preserve">
+    <value>更新不良症状失败</value>
+  </data>
+  <data name="InvalidPreannotationProcessor" xml:space="preserve">
+    <value>预标注处理类{0}必须实现IProcessorProvider。</value>
+  </data>
+  <data name="MissingCategoriesMessage" xml:space="preserve">
+    <value>未找到段落分类信息。</value>
+  </data>
+  <data name="MustHaveDefaultRuleForTaskCreation" xml:space="preserve">
+    <value>任务设置必须包含默认规则。</value>
+  </data>
+  <data name="NonDefaultRulesMustHaveTags" xml:space="preserve">
+    <value>非默认创建任务规则必须包含文档标签。</value>
+  </data>
+  <data name="NoTagValueCanBeUpdatedMessage" xml:space="preserve">
+    <value>未找到要更新的标签。</value>
+  </data>
+  <data name="NoTaskCanBeApprovedMessage" xml:space="preserve">
+    <value>未找到需要批准的任务。</value>
+  </data>
+  <data name="NoTaskCanBeRejectMessage" xml:space="preserve">
+    <value>未找到可以拒绝的任务。</value>
+  </data>
+  <data name="OnlyConflictResolvedStatusCanbeMerged" xml:space="preserve">
+    <value>只有已审核的任务可以入库。</value>
+  </data>
+  <data name="OntologyEntityAndRelationGuidlineMessage" xml:space="preserve">
+    <value>实体及关系标注</value>
+  </data>
+  <data name="OntologyEntityCreateFailedMessage" xml:space="preserve">
+    <value>创建实体类型失败。</value>
+  </data>
+  <data name="OntologyEntityDuplicatePropertyNameMessage" xml:space="preserve">
+    <value>实体类型中存在同名的属性。</value>
+  </data>
+  <data name="OntologyEntityNameEmptyMessage" xml:space="preserve">
+    <value>实体类型名称不能为空。</value>
+  </data>
+  <data name="OntologyEntityNameExistMessage" xml:space="preserve">
+    <value>已存在同名的实体类型。</value>
+  </data>
+  <data name="OntologyEntityNotExistMessage" xml:space="preserve">
+    <value>未找到实体类型。</value>
+  </data>
+  <data name="OntologyEntityPropertyNameWrongMessage" xml:space="preserve">
+    <value>实体类型属性名称包含非法字符。</value>
+  </data>
+  <data name="OntologyEntityUpdateFailedMessage" xml:space="preserve">
+    <value>更新实体类型失败。</value>
+  </data>
+  <data name="OntologyRelationCreateFailedMessage" xml:space="preserve">
+    <value>创建实体关系失败。</value>
+  </data>
+  <data name="OntologyRelationDuplicatePropertyNameMessage" xml:space="preserve">
+    <value>实体关系中存在同名的属性。</value>
+  </data>
+  <data name="OntologyRelationFirstEntityIdWrongMessage" xml:space="preserve">
+    <value>实体关系中的第一个实体类型Id格式错误。</value>
+  </data>
+  <data name="OntologyRelationFirstEntityNotExistMessage" xml:space="preserve">
+    <value>未找到实体关系中的第一个实体类型。</value>
+  </data>
+  <data name="OntologyRelationNameEmptyMessage" xml:space="preserve">
+    <value>实体关系名称不能为空。</value>
+  </data>
+  <data name="OntologyRelationNameExistMessage" xml:space="preserve">
+    <value>已存在同名的实体关系。</value>
+  </data>
+  <data name="OntologyRelationNameWrongMessage" xml:space="preserve">
+    <value>实体关系名称中包含非法字符。</value>
+  </data>
+  <data name="OntologyRelationNotExistMessage" xml:space="preserve">
+    <value>未找到实体关系。</value>
+  </data>
+  <data name="OntologyRelationPropertyNameWrongMessage" xml:space="preserve">
+    <value>实体关系属性名称存在非法字符。</value>
+  </data>
+  <data name="OntologyRelationSecondEntityIdWrongMessage" xml:space="preserve">
+    <value>实体关系中的第二个实体类型Id格式错误。</value>
+  </data>
+  <data name="OntologyRelationSecondEntityNotExistMessage" xml:space="preserve">
+    <value>未找到实体关系中的第二个实体类型。</value>
+  </data>
+  <data name="OntologyRelationUpdateFailedMessage" xml:space="preserve">
+    <value>更新实体关系失败。</value>
+  </data>
+  <data name="OntologyUploadDuplicateEntityNameMessage" xml:space="preserve">
+    <value>文件中存在同名的实体类型。</value>
+  </data>
+  <data name="OntologyUploadDuplicateRelationNameMessage" xml:space="preserve">
+    <value>文件中存在同名的实体关系。</value>
+  </data>
+  <data name="OntologyWorkspaceIdEmptyMessage" xml:space="preserve">
+    <value>标注空间Id不能为空。</value>
+  </data>
+  <data name="OntologyWorkspaceIdWrongMessage" xml:space="preserve">
+    <value>标注空间Id格式错误。</value>
+  </data>
+  <data name="ParseTokenFailedMessage" xml:space="preserve">
+    <value>解析令牌失败。</value>
+  </data>
+  <data name="PreannotationAssemblyNotFound" xml:space="preserve">
+    <value>未找到预标注处理程序集{0}。</value>
+  </data>
+  <data name="PreannotationClassNotFound" xml:space="preserve">
+    <value>未找到预标注处理类{0}。</value>
+  </data>
+  <data name="RuleEntityIdEmptyMessage" xml:space="preserve">
+    <value>实体类型不能为空。</value>
+  </data>
+  <data name="RuleNameEmptyMessage" xml:space="preserve">
+    <value>规则名称不能为空。</value>
+  </data>
+  <data name="RuleNameExistMessage" xml:space="preserve">
+    <value>已存在同名的规则。</value>
+  </data>
+  <data name="RuleNotExistMessage" xml:space="preserve">
+    <value>未找到规则。</value>
+  </data>
+  <data name="RuleRegexsEmptyMessage" xml:space="preserve">
+    <value>正则表达式不能为空。</value>
+  </data>
+  <data name="SystemDownMessage" xml:space="preserve">
+    <value>系统处于不活跃状态。</value>
+  </data>
+  <data name="TagValueNotExistMessage" xml:space="preserve">
+    <value>未找到对应的标签。</value>
+  </data>
+  <data name="TaskAnnotatorOrDocumentNotExistMessage" xml:space="preserve">
+    <value>未找到标注人或标注文档。</value>
+  </data>
+  <data name="TaskCreateFailedMessage" xml:space="preserve">
+    <value>创建任务失败。</value>
+  </data>
+  <data name="TaskExpectedDueAtWrongMessage" xml:space="preserve">
+    <value>任务预期完成时间必须大于当前时间。</value>
+  </data>
+  <data name="TaskNameEmptyMessage" xml:space="preserve">
+    <value>任务名称不能为空。</value>
+  </data>
+  <data name="TaskNameExistMessage" xml:space="preserve">
+    <value>已存在同名的任务。</value>
+  </data>
+  <data name="TaskNotExistMessage" xml:space="preserve">
+    <value>未找到任务。</value>
+  </data>
+  <data name="TaskOverlapWrongMessage" xml:space="preserve">
+    <value>任务重叠率超出范围。</value>
+  </data>
+  <data name="TaskStatusUnknownMessage" xml:space="preserve">
+    <value>任务状态错误。</value>
+  </data>
+  <data name="TaskUpdateFailedMessage" xml:space="preserve">
+    <value>更新任务失败。</value>
+  </data>
+  <data name="TextClassifyGuidlineMessage" xml:space="preserve">
+    <value>请选择相应文本所属的分类。第一项为整篇文档内容，其他为本文档各段落内容。</value>
+  </data>
+  <data name="TextSimilarityGuidlineMessage" xml:space="preserve">
+    <value>对于给定的用户问(源文本)和标准问(目标文本)，标出它们是否相似</value>
+  </data>
+  <data name="TokenizationProcessFailed" xml:space="preserve">
+    <value>分词预处理失败，详情：{0}。</value>
+  </data>
+  <data name="UserCreateFailedMessage" xml:space="preserve">
+    <value>创建用户失败。</value>
+  </data>
+  <data name="UserDisabledMessage" xml:space="preserve">
+    <value>用户已经禁用。</value>
+  </data>
+  <data name="UserIdWrongMessage" xml:space="preserve">
+    <value>用户Id不正确。</value>
+  </data>
+  <data name="UserLoginCountOverflowMessage" xml:space="preserve">
+    <value>该用户同时登录次数过多。</value>
+  </data>
+  <data name="UserNameEmptyMessage" xml:space="preserve">
+    <value>用户名不能为空。</value>
+  </data>
+  <data name="UserNameExistMessage" xml:space="preserve">
+    <value>已存在同名的用户。</value>
+  </data>
+  <data name="UserNamePasswordWrongMessage" xml:space="preserve">
+    <value>用户名或密码不正确。</value>
+  </data>
+  <data name="UserNotExistMessage" xml:space="preserve">
+    <value>未找到用户。</value>
+  </data>
+  <data name="UserPasswordEmptyMessage" xml:space="preserve">
+    <value>密码不能为空。</value>
+  </data>
+  <data name="UserUnauthorizedMessage" xml:space="preserve">
+    <value>令牌不正确或没有访问权限。</value>
+  </data>
+  <data name="ValueAlreadyExistsMessage" xml:space="preserve">
+    <value>标签已经存在。</value>
+  </data>
+  <data name="WorkflowStepGetFailedMessage" xml:space="preserve">
+    <value>获取工作流步骤失败。</value>
+  </data>
+  <data name="WorkspaceCreateFailedMessage" xml:space="preserve">
+    <value>创建标注空间失败。</value>
+  </data>
+  <data name="WorkspaceDeleteFailedMessage" xml:space="preserve">
+    <value>删除标注空间失败。</value>
+  </data>
+  <data name="WorkspaceNameEmptyMessage" xml:space="preserve">
+    <value>标注空间名称不能为空。</value>
+  </data>
+  <data name="WorkspaceNameExistMessage" xml:space="preserve">
+    <value>已存在同名的标注空间。</value>
+  </data>
+  <data name="WorkspaceNotExistMessage" xml:space="preserve">
+    <value>未找到标注空间。</value>
+  </data>
+  <data name="WorkspaceTypeNameEmptyMessage" xml:space="preserve">
+    <value>标注空间类型名称不能为空。</value>
+  </data>
+  <data name="WorkspaceTypeNameExistMessage" xml:space="preserve">
+    <value>已存在同名的标注空间类型。</value>
+  </data>
+  <data name="WorkspaceTypeNotExistMessage" xml:space="preserve">
+    <value>未找到标注空间类型。</value>
+  </data>
+  <data name="WorkspaceUpdateFailedMessage" xml:space="preserve">
+    <value>更新标注空间失败。</value>
+  </data>
+</root>
