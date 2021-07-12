@@ -1,0 +1,28 @@
+<html>
+<body>
+<div>
+    <p>You can try three main api through 3 steps:</p>
+        <p>step 1: preprocess paragraph <br />
+               method:POST     url: /KnowledgeExtraction/preprocess <br />
+               data:A paragraph in Text format,such as:"2018-09-01周杰伦在鸟巢开演唱会。王菲献唱传奇。" <br />
+               return: Tokenization of splited sentences of the paragraph.</p>
+        <p>step 2: preannotate preprocessed file <br />
+               method:POST     url: /KnowledgeExtraction/predict <br />
+               data:Json string like response from step 1 <br />
+            return: 3 kinds(model,regular expression,dictionary) annotation results  in one file</p>
+        <p>step 3: merge preannotated results <br />
+               method:POST     url: /KnowledgeExtraction/merge <br />
+               data:Json string like response from step 2 <br />
+               return: merged annotation results </p>
+    <p>Besides,you can annotate sentence in text format: <br />
+        post  /KnowledgeExtraction/predict/sentence   data:"2018-09-01周杰伦在鸟巢开演唱会。王菲献唱传奇。" in Text format</p>
+    <p>Also, you can try 3 kinds of pre annotation methods respectively <br />
+        data: Json string like response from step 1 <br />
+        method:POST <br />
+        1. model annotate.  url:/KnowledgeExtraction/predict/model <br />
+        2. dictionary annotate.  url:/KnowledgeExtraction/predict/dict <br />
+        3. regular expression annotate. url:/KnowledgeExtraction/predict/regex <br />
+    </p>
+</div>
+</body>
+</html>

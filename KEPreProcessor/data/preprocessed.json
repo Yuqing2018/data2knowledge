@@ -1,0 +1,114 @@
+{
+    "Text": "2018-09-01周杰伦在鸟巢开演唱会。王菲献唱传奇。",
+    "SentenceList": {
+        "TotalCount": 2,
+        "Sentences": [
+            {
+                "Id": "a148049cd93e7323a015d325d927031f",
+                "Text": "2018-09-01周杰伦在鸟巢开演唱会。",
+                "Start": 0,
+                "End": 21,
+                "Tokens": [
+                    {
+                        "Id": "2159090f0f4890aea0a7c494ef8e5a8a",
+                        "Text": "2018",
+                        "Start": 0,
+                        "End": 4
+                    },
+                    {
+                        "Id": "6731a1fb40df2379df8a5c591eda1a2b",
+                        "Text": "-",
+                        "Start": 4,
+                        "End": 5
+                    },
+                    {
+                        "Id": "d3ade4f21b6be7651d0ca98135c6fe82",
+                        "Text": "09",
+                        "Start": 5,
+                        "End": 7
+                    },
+                    {
+                        "Id": "c08c1bb89c707942c1b1d40ba992e371",
+                        "Text": "-",
+                        "Start": 7,
+                        "End": 8
+                    },
+                    {
+                        "Id": "e7ccc098210aa9220cda4eeca934fa21",
+                        "Text": "01",
+                        "Start": 8,
+                        "End": 10
+                    },
+                    {
+                        "Id": "6f6c97c9d958e639c432aa1ca1d70b44",
+                        "Text": "周杰伦",
+                        "Start": 10,
+                        "End": 13
+                    },
+                    {
+                        "Id": "cac866f3162c815fb52d52c1bb3f1905",
+                        "Text": "在",
+                        "Start": 13,
+                        "End": 14
+                    },
+                    {
+                        "Id": "a52f6334441bb1ca41530b37011f5dfb",
+                        "Text": "鸟巢",
+                        "Start": 14,
+                        "End": 16
+                    },
+                    {
+                        "Id": "109c787056fe22bc54bb44a40505eb90",
+                        "Text": "开",
+                        "Start": 16,
+                        "End": 17
+                    },
+                    {
+                        "Id": "7b006b095957be3de1f33d85813a0c4d",
+                        "Text": "演唱会",
+                        "Start": 17,
+                        "End": 20
+                    },
+                    {
+                        "Id": "9130fb693ec573332a8f24cbe95cf26c",
+                        "Text": "。",
+                        "Start": 20,
+                        "End": 21
+                    }
+                ]
+            },
+            {
+                "Id": "32f1b11ea5fb10da826efd318a665174",
+                "Text": "王菲献唱传奇。",
+                "Start": 21,
+                "End": 28,
+                "Tokens": [
+                    {
+                        "Id": "f6cf311d73ea5f4f16b25a88a2c6bedb",
+                        "Text": "王菲",
+                        "Start": 0,
+                        "End": 2
+                    },
+                    {
+                        "Id": "d6f6ce94769f561fe89aca42863f933f",
+                        "Text": "献唱",
+                        "Start": 2,
+                        "End": 4
+                    },
+                    {
+                        "Id": "c0d9f81c8498ad7f9d44444587124f48",
+                        "Text": "传奇",
+                        "Start": 4,
+                        "End": 6
+                    },
+                    {
+                        "Id": "8e95f880173fa5bca98c16b61d878868",
+                        "Text": "。",
+                        "Start": 6,
+                        "End": 7
+                    }
+                ]
+            }
+        ]
+    }
+}
