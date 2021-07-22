@@ -24,7 +24,7 @@ export class ReasonAuthGuard implements CanActivate {
       return true;
     }
 
-    this.router.navigate(['/annotator/analysis/home']);
+    this.router.navigate(['/annotator/task']);
     return false;
   }
 }

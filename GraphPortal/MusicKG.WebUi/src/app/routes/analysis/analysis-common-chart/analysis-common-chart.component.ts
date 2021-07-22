@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { DateHelperByDateFns } from 'ng-zorro-antd';
 import { data } from '../../task/annotation/data';
 
-const colorList = ['#5B8FF9', '#61DDAA', '#65789B', '#F6BD16', '#7262FD', '#78D3F8'].concat(randomColor({
+const colorList = ['#5B8FF9 ', '#61DDAA', '#65789B', '#F6BD16', '#7262FD', '#78D3F8'].concat(randomColor({
   count: 100
 }));
 // const colorList = ['#ffa631', '#afdd22', '#ff7500', '#00bc12', '#808080', '#88ada6','#725e82','#44cef6','#4b5cc4','#801dae','#b36d61',

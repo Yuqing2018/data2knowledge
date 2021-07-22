@@ -137,10 +137,6 @@
     <value>无需对策</value>
     <comment>风险特征-对策状态-无需对策</comment>
   </data>
-  <data name="无需对策" xml:space="preserve">
-    <value>无需对策</value>
-    <comment>风险特征-对策状态-无需对策</comment>
-  </data>
   <data name="未明确" xml:space="preserve">
     <value>未明确</value>
     <comment>风险特征-对策状态-未明确</comment>

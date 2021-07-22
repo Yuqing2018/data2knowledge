@@ -34,8 +34,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\MusicKG.WebApi.ClientWrapper\MusicKG.WebApi.ClientWrapper.csproj" />
+    <ProjectReference Include="..\ModelTrainer\MusicKG.HondaPlugins.ClassificationModelTrainer\MusicKG.HondaPlugins.ModelTrainer.csproj" />
     <ProjectReference Include="..\MusicKG.HondaPlugins.DataAccess\MusicKG.HondaPlugins.DataAccess.csproj" />
-    <ProjectReference Include="..\Tools\MusicKG.HondaPlugins.OperationTool\MusicKG.HondaPlugins.OperationTool.csproj" />
   </ItemGroup>
 
   <ItemGroup>

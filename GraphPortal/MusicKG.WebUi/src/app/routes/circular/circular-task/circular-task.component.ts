@@ -35,8 +35,6 @@ export class CircularTaskComponent implements OnInit {
 
   carModelList = [];
 
-  searchFrom: number = 0;
-
   constructor(
     private modal: NzModalService,
     private api: CicrularService,
@@ -48,7 +46,7 @@ export class CircularTaskComponent implements OnInit {
     const user = JSON.parse(localStorage.getItem('user'));
     this.createdBy = user.name;
     this.getCarModelList();
-    this.searchValue();
+    this.onSearch();
     this.userService.getAnnotatorList().subscribe(res => {
       this.userList = res.items.map(d => d.name);
     })
@@ -61,53 +59,43 @@ export class CircularTaskComponent implements OnInit {
     });
   }
 
-  searchValue() {
+  onSearch() {
     this.searchLoading = true;
-    this.api.getTask(this.type, this.status, this.searchFrom, this.createdBy, this.warningUnit,this.carModels).subscribe((res: any) => {
+    this.api.getTask(this.type, this.status, (this.pageIndex - 1) * 10, this.createdBy, this.warningUnit,this.carModels).subscribe((res: any) => {
       this.dataSet = res.items;
       this.total = res.totalCount;
       this.searchLoading = false;
     });
   }
 
-  onSearch() {
-    this.pageIndex = 1
-    this.searchFrom = 0
-    this.searchValue()
-  }
-
   onReset() {
     const user = JSON.parse(localStorage.getItem('user'));
     this.createdBy = user.name;
     this.pageIndex = 1;
-    this.searchFrom = 0;
     this.status = '';
     this.type = '';
     this.warningUnit = '';
     this.carModels = null;
-    this.searchValue();
+    this.onSearch();
   }
 
   pageIndexChange(index: any) {
-    this.searchFrom = (index - 1) * 10;
-    this.searchValue();
+    this.pageIndex = index;
+    this.onSearch();
   }
 
   onDelete(data: any) {
     this.api.delTask(data.id).subscribe(res => {
       this.message.info('删除成功');
-      if(this.total % 10 == 1){
-        this.pageIndex = this.pageIndex-1
-        this.searchFrom = (this.pageIndex-1)*10
-      }
-      this.searchValue();
+      this.pageIndex = 1;
+      this.onSearch();
     });
   }
 
   onStop(data: any) {
     this.api.stopTask(data.id).subscribe(res => {
       this.message.info('操作成功');
-      this.searchValue();
+      this.onSearch();
     });
   }
 
@@ -139,7 +127,7 @@ export class CircularTaskComponent implements OnInit {
         }
         const data = this.getData(componentInstance);
         return this.api.updateTask(item.id, data).toPromise().then(res => {
-          this.searchValue();
+          this.onSearch();
         }).catch(err => {
           this.message.error(err.msg);
           return false;

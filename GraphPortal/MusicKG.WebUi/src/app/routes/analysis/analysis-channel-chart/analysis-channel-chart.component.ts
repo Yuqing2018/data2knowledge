@@ -4,9 +4,7 @@ import * as echarts from 'echarts';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd';
 import { fakeAsync } from '@angular/core/testing';
-import { getYear, subYears } from 'date-fns';
 
-const INIT_YEARS = Array.from({ length: 5}).map((v,i) => getYear(subYears(new Date(), 4 - i)) + '');
 @Component({
   selector: 'km-analysis-channel-chart',
   templateUrl: './analysis-channel-chart.component.html',
@@ -22,8 +20,6 @@ export class AnalysisChannelChartComponent implements OnInit {
   chartType: string;
 
   chartInstance: any;
-
-  yearModels:any = INIT_YEARS;
 
   start:string;
 
@@ -150,7 +146,7 @@ export class AnalysisChannelChartComponent implements OnInit {
     if (this.chartType) {
       this.isLoading = true;
       this.searchTimes.dataSource = this.chartType == '总局' ? 'GOV':this.chartType == 'MQI' ? 'MQI':this.chartType
-      == '技术咨询' ? 'TECH_CONSULTING':this.chartType == '800' ? 'HOTLINE':'MEDIA_MAIN';
+      == '技术咨询' ? 'TECH_CONSULTING':this.chartType == '800' ? 'HOTLINE':' MEDIA_MAIN';
       const d1 = new Date();
       const d2 = new Date(d1);
       if(this.searchTimes.startTime == null && this.searchTimes.endTime == null && this.selectTimeType == '日'){
@@ -230,12 +226,12 @@ export class AnalysisChannelChartComponent implements OnInit {
     this.chartInstance = e;
   }
 
-  // goto(data){
-  //   this.router.navigate(['/annotator/analysis/info'], {
-  //     queryParams: {
-  //       carType: data.carModel,
-  //       partName: data.partName
-  //     }
-  //   })
-  // }
+  goto(data){
+    this.router.navigate(['/annotator/analysis/info'], {
+      queryParams: {
+        carType: data.carModel,
+        partName: data.partName
+      }
+    })
+  }
 }

@@ -215,7 +215,19 @@ namespace MusicKG.HondaPlugins.Services.Repositories.Implementations
             logger.LogInformation($"insert {records.Count} records into {nameof(WarningRecordDataModel)} collection");
 
             #region 保存和更新预警任务跟踪列表
-            var all_records = await GetTaskWarningRecords(taskId);
+            var all_records = await context.WarningRecord.AsQueryable().Where(x => x.TaskId == taskId).Select(x => new WarningRecordDataModel 
+            { 
+                Id = x.Id, 
+                TaskId = x.TaskId, 
+                PartName = x.PartName, 
+                Syndrome = x.Syndrome, 
+                PartNo = x.PartNo, 
+                WarningTime = x.WarningTime,
+                IsAgainWarning = x.IsAgainWarning,
+                IsMultipleWarning = x.IsMultipleWarning,
+                IsRiskWarning = x.IsRiskWarning,
+                ConfirmRecord = x.ConfirmRecord
+            }).ToListAsync();
 
             var allDetails = await context.WarningTaskDetail.AsQueryable().Where(x => x.TaskId == taskId).ToListAsync();
 
@@ -254,9 +266,9 @@ namespace MusicKG.HondaPlugins.Services.Repositories.Implementations
 
                     details.Add(detailModel);
 
-                    var occuredRecords = x.Where(y => (y.MatchedFrequency || tmpMatchedIds.Contains(y.Id)) && (y.IsMultipleWarning || y.IsRiskWarning || y.IsAgainWarning)).ToList();
+                    var occuredRecords = x.Where(x => tmpMatchedIds.Contains(x.Id) && (x.IsMultipleWarning || x.IsRiskWarning || x.IsAgainWarning)).ToList();
 
-                    var pendingCount = occuredRecords.Where(y => y.ConfirmRecord == null).Count();
+                    var pendingCount = occuredRecords.Where(x => x.ConfirmRecord == null).Count();
                     var totalCount = occuredRecords.Count;
 
                     pendingCountUpdateValues.Add(new WarningTaskDetailDataModel
@@ -324,9 +336,7 @@ namespace MusicKG.HondaPlugins.Services.Repositories.Implementations
             //获取符合条件的的预警任务
             var tasks = await warningTaskService.GetWarningTasksAsync(warningUnit, null, null, search.CarModel, search.CarType, search.YearModels, 0, null);
 
-            var taskIds = tasks?.Item2?
-                .Where(task => task.WarningIndex.Any(x => x.WarningType == WarningType.风险预警))?
-                .Select(task => task.Id)?.ToList();
+            var taskIds = tasks?.Item2?.Select(task => task.Id)?.ToList();
 
             var records_querable = GetAllCaculatedRecordsAsync(search.PartName, search.Syndrome);
 

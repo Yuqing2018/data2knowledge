@@ -51,23 +51,23 @@ export class AnalysisKeyriskTableComponent implements OnInit {
     })
   }
 
-  // goto(data){
-  //   if(data.partName == ''){
-  //     this.warningUnit = '不良症状'
-  //   }
-  //   const selectType = this.warningUnit == '零件_不良症状' ? 'partName' : 'syndrome';
-  //   this.router.navigate(['/annotator/analysis/info'], {
-  //     queryParams: {
-  //       carType: data.carModels,
-  //       carModel:'',
-  //       yearModels: data.yearModels,
-  //       partName: data.partName,
-  //       syndrome: data.syndrome,
-  //       selectType,
-  //       warningUnit:this.warningUnit
-  //     }
-  //   })
-  // }
+  goto(data){
+    if(data.partName == ''){
+      this.warningUnit = '不良症状'
+    }
+    const selectType = this.warningUnit == '零件_不良症状' ? 'partName' : 'syndrome';
+    this.router.navigate(['/annotator/analysis/info'], {
+      queryParams: {
+        carType: data.carModels,
+        carModel:'',
+        yearModels: data.yearModels,
+        partName: data.partName,
+        syndrome: data.syndrome,
+        selectType,
+        warningUnit:this.warningUnit
+      }
+    })
+  }
 
   sort(sort: { key: string; value: string }): void {
     this.sortName = sort.key;

@@ -3,7 +3,6 @@ using MusicKG.HondaPlugins.DataAccess.DataModels.Warnings;
 using MusicKG.HondaPlugins.DataAccess.DataModels.Labeling;
 using MusicKG.DataManager.Models;
 using MongoDB.Driver;
-using MusicKG.DataAccess.Models;
 
 namespace MusicKG.HondaPlugins.DataAccess
 {
@@ -38,12 +37,6 @@ namespace MusicKG.HondaPlugins.DataAccess
         public IMongoCollection<ModelTrainingData> TrainingData { get; }
 
         public IMongoCollection<ModelTrainingHistory> TrainingHistory { get; }
-
-        #endregion
-
-        #region Users
-
-        public IMongoCollection<UserDataModel> Users { get; }
 
         #endregion
     }

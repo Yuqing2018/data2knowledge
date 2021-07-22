@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   goHomePage(res: any) {
     if (res.roles[0] == 'Annotator') {
-      this.router.navigateByUrl('/annotator/analysis/home')
+      this.router.navigateByUrl('/annotator/task')
     } else {
       this.router.navigate([ROLE_MAIN_URL[res.roles[0]]])
     }

@@ -52,7 +52,7 @@ namespace MusicKG.HondaPlugins.DataManager.Executors
             if (dataModels == null || dataCount <= 0)
                 return;
 
-            var parts = dbContext.Parts.AsQueryable().Select(p => new { No = p.No, Name = p.Names.First() }).ToList();
+            var parts = dbContext.Parts.AsQueryable().Select(p => new { No = p.No, Name = p.Names.FirstOrDefault() }).ToList();
 
             foreach (var dataModel in dataModels)
             {

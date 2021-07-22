@@ -152,7 +152,7 @@ namespace MusicKG.HondaPlugins.Services.Repositories.Implementations
                             {"Results",
                                 new BsonDocument
                                 {
-                                    { "$slice",new BsonArray{"$items", 30} }
+                                    { "$slice",new BsonArray{"$items", 10} }
                                 }
                             }
                         }
@@ -281,7 +281,7 @@ namespace MusicKG.HondaPlugins.Services.Repositories.Implementations
                     PartName = detail.PartName,
                     RiskLevel = record?.RiskMetrics?.RiskLevel,
                     AIRiskLevel = record?.RiskMetrics?.AIRiskLevel,
-                    CntrStatus = record?.ConfirmRecord?.PermanentCntrStatus ?? record?.RiskMetrics?.PermanentCntrStatus
+                    CntrStatus = record?.RiskMetrics?.PermanentCntrStatus
                 });
             }
 

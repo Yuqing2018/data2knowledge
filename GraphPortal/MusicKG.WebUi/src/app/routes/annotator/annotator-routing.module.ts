@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'task/:task/doc/:doc/textparaphrase', component: AnnotatorTextparaphraseComponent, canDeactivate: [CanDeactivateGuard] },
   { path: 'task/:task/doc/:doc/graph', component: AnnotatorGraphComponent, canDeactivate: [CanDeactivateGuard] },
   { path: 'task/:task/doc/:doc/classification', component: AnnotatorClassificationComponent, canDeactivate: [CanDeactivateGuard] },
-  { path: '', redirectTo: '/annotator/analysis/home' },
+  { path: '', redirectTo: '/annotator/task' },
 ];
 
 @NgModule({

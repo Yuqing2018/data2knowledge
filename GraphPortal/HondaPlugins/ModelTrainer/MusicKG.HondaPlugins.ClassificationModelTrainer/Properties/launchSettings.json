@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "MusicKG.HondaPlugins.ModelTrainer": {
+      "commandName": "Project",
+      "commandLineArgs": "ls",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

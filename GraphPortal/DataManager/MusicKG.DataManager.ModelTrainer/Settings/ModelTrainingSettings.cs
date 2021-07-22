@@ -23,5 +23,7 @@
         public int TrainingTimeoutInHours { get; set; }
 
         public string ModelServingLocation { get; set; }
+
+        public string ModelBackupLocation { get; set; }
     }
 }

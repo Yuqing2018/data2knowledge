@@ -38,7 +38,7 @@ namespace MusicKG.HondaPlugins.Services.Repositories.Implementations
 
             var querable = rawDbContext.RawVehicleData.AsQueryable();
 
-            if (carModel != null && carModel.Count > 0 && carModel.All(x => !string.IsNullOrWhiteSpace(x)))
+            if (carModel != null && carModel.Count > 0)
                 querable = querable.Where(v => carModel.Contains(v.CarModel));
 
             querable = querable.Where(v => !ignoredCarModels.Contains(v.CarModel) && !ignoredCarTypes.Contains(v.CarType));
@@ -55,10 +55,10 @@ namespace MusicKG.HondaPlugins.Services.Repositories.Implementations
 
             var querable = rawDbContext.RawVehicleData.AsQueryable();
 
-            if (carModel != null && carModel.Count > 0 && carModel.All(x => !string.IsNullOrWhiteSpace(x)))
+            if (carModel != null && carModel.Count > 0)
                 querable = querable.Where(v => carModel.Contains(v.CarModel));
 
-            if (carType != null && carType.Count > 0 && carType.All(x => !string.IsNullOrWhiteSpace(x)))
+            if (carType != null && carType.Count > 0)
                 querable = querable.Where(v => carType.Contains(v.CarType));
 
             querable = querable.Where(v => !ignoredCarModels.Contains(v.CarModel) && !ignoredCarTypes.Contains(v.CarType));

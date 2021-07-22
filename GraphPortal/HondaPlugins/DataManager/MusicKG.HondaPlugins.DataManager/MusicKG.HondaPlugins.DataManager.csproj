@@ -13,8 +13,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\DataManager\MusicKG.DataManager.Handler\MusicKG.DataManager.Handler.csproj" />
     <ProjectReference Include="..\..\..\DataManager\MusicKG.DataManager.Translator\MusicKG.DataManager.Translator.csproj" />
+    <ProjectReference Include="..\..\ModelTrainer\MusicKG.HondaPlugins.ClassificationModelTrainer\MusicKG.HondaPlugins.ModelTrainer.csproj" />
     <ProjectReference Include="..\..\MusicKG.HondaPlugins.DataAccess\MusicKG.HondaPlugins.DataAccess.csproj" />
-    <ProjectReference Include="..\..\Tools\MusicKG.HondaPlugins.OperationTool\MusicKG.HondaPlugins.OperationTool.csproj" />
     <ProjectReference Include="..\MusicKG.HondaPlugins.PredictWrapper\MusicKG.HondaPlugins.PredictWrapper.csproj" />
   </ItemGroup>
 

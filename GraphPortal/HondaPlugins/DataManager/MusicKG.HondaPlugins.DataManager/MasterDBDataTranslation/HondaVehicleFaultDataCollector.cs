@@ -56,7 +56,7 @@ namespace MusicKG.HondaPlugins.DataManager.Executors
         {
             var builder = Builders<VehicleFaultDataModel>.Filter;
 
-            return builder.And(builder.Gte(d => d.FaultDate, start), builder.Lt(d => d.FaultDate, end));
+            return builder.And(builder.Gte(d => d.Timestamp, start), builder.Lt(d => d.Timestamp, end));
         }
     }
 }

@@ -5,7 +5,7 @@ using MusicKG.HondaPlugins.DataAccess.Settings;
 using MusicKG.HondaPlugins.Services.Helpers;
 using MusicKG.HondaPlugins.Services.Resources;
 using MusicKG.HondaPlugins.Services.Models;
-using MusicKG.HondaPlugins.OperationTool.Extensions;
+using MusicKG.HondaPlugins.ModelTrainer.Extensions;
 using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -79,7 +79,7 @@ namespace MusicKG.HondaPlugins.Services.Repositories.Implementations
                 if (syndromeData == null)
                     ErrorHelper.ThrowException(MusicKGHondaPluginsMessage.SyndromeNotExists, HttpStatusCode.BadRequest);
 
-                var update = Builders<VehicleFaultDataModel>.Update.Set(v => v.PartName, partName).Set(v => v.Syndrome, syndrome).Set(v => v.Timestamp, DateTime.UtcNow);
+                var update = Builders<VehicleFaultDataModel>.Update.Set(v => v.PartName, partName).Set(v => v.Syndrome, syndrome);
 
                 var result = await context.VehicleFault.UpdateOneAsync(v => v.RawId == rawId, update);
 

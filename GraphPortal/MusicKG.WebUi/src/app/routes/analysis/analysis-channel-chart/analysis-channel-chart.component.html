@@ -39,11 +39,7 @@
               <td [title]="data.partName">{{ data.partName.length <= 3 ? data.partName : data.partName.substring(0, 3) + '...' }}</td>
               <td [title]="data.syndromeName">{{ data.syndromeName.length <= 3 ? data.syndromeName : data.syndromeName.substring(0, 3) + '...' }}</td>
               <td>{{ data.count }}</td>
-              <td><a [routerLink]="['/annotator/analysis/info']" [queryParams]="{
-                carType: data.carModel,
-                yearModels: yearModels,
-                partName: data.partName
-              }" style="color: #fff;border-bottom: 1px solid #fff;" nzSize="small" target="_blank">详情</a></td>
+              <td><a style="color: #fff;border-bottom: 1px solid #fff;" (click)="goto(data)" nzSize="small">详情</a></td>
             </tr>
           </tbody>
         </nz-table>

@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Scripts\chinese_L-12_H-768_A-12\**" />
+    <Compile Remove="Scripts\training_data\**" />
+    <Content Remove="Scripts\chinese_L-12_H-768_A-12\**" />
+    <Content Remove="Scripts\training_data\**" />
+    <EmbeddedResource Remove="Scripts\chinese_L-12_H-768_A-12\**" />
+    <EmbeddedResource Remove="Scripts\training_data\**" />
+    <None Remove="Scripts\chinese_L-12_H-768_A-12\**" />
+    <None Remove="Scripts\training_data\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Scripts\all_test" />
+    <None Remove="Scripts\all_val" />
+    <None Remove="Scripts\honda_prediction.py" />
+    <None Remove="Scripts\readthis%28important%29.txt" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Serilog.AspNetCore" Version="4.0.0" />
+    <PackageReference Include="Serilog.Enrichers.Environment" Version="2.1.3" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Scheduler\MusicKG.Scheduler.Extensions\MusicKG.Scheduler.Extensions.csproj" />
+    <ProjectReference Include="..\..\..\DataManager\MusicKG.DataManager.ModelTrainer\MusicKG.DataManager.ModelTrainer.csproj" />
+    <ProjectReference Include="..\MusicKG.HondaPlugins.ClassificationModelTrainer\MusicKG.HondaPlugins.ModelTrainer.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="Scripts\requirements.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Scripts\training-script.py">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

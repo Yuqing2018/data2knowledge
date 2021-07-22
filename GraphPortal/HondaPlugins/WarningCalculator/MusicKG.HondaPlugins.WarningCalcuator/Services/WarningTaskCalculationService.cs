@@ -141,7 +141,7 @@ namespace MusicKG.HondaPlugins.WarningCalculator.Services
                     {
                         dict.Value.ForEach(obj =>
                         {
-                            currentSourceTopOrder.Add(obj, itemOders.IndexOf(dict.Key) + 1);
+                            currentSourceTopOrder.Add(obj, itemOders.IndexOf(dict.Key));
                         });
                     }
 

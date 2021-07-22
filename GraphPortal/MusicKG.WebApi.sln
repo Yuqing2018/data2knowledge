@@ -132,7 +132,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.DataManager.ModelTr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ModelTrainer", "ModelTrainer", "{C29BA196-122F-4A89-85A7-09B9A39EA3E3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.HondaPlugins.OperationTool", "HondaPlugins\Tools\MusicKG.HondaPlugins.OperationTool\MusicKG.HondaPlugins.OperationTool.csproj", "{A7026E18-79AB-4B1A-AB1A-7E7507248587}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicKG.HondaPlugins.ModelTrainer", "HondaPlugins\ModelTrainer\MusicKG.HondaPlugins.ClassificationModelTrainer\MusicKG.HondaPlugins.ModelTrainer.csproj", "{A7026E18-79AB-4B1A-AB1A-7E7507248587}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

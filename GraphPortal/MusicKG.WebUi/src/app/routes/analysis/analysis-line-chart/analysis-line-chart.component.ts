@@ -4,7 +4,7 @@ import { finalize } from 'rxjs/operators';
 import * as randomColor from 'randomcolor';
 import { format } from 'date-fns';
 
-const colorList = ['#1557FF', '#5B8FF9', '#18C492', '#F1B754'].concat(randomColor({
+const colorList = ['#1557FF', '#61DDAA', '#18C492', '#000000'].concat(randomColor({
   count: 100
 }));
 
@@ -145,7 +145,7 @@ export class AnalysisLineChartComponent implements OnInit {
       axisLine: {
         show: false
       },
-      minInterval: 0.0001,
+      minInterval: 0.005,
       axisTick: {
         show: false
       },
@@ -154,7 +154,7 @@ export class AnalysisLineChartComponent implements OnInit {
           color: "rgba(255,255,255,.6)",
           fontSize: 12
         },
-        formatter: (value) => (value * 100).toFixed(2) + '%'
+        formatter: (v) => v * 100 + '%'
       },
       splitLine: {
         lineStyle: {
@@ -213,7 +213,6 @@ export class AnalysisLineChartComponent implements OnInit {
             }
           },
           grid: {
-            left: 50,
             top: 35
           },
           tooltip: {
@@ -246,7 +245,6 @@ export class AnalysisLineChartComponent implements OnInit {
             axisLine: {
               show: false
             },
-            minInterval: 0.0001,
             axisTick: {
               show: false
             },
@@ -255,7 +253,7 @@ export class AnalysisLineChartComponent implements OnInit {
                 color: "rgba(255,255,255,.6)",
                 fontSize: 12
               },
-              formatter: (value) => (value * 100).toFixed(2) + '%'
+              formatter: (v) => v * 100 + '%'
             },
             splitLine: {
               lineStyle: {

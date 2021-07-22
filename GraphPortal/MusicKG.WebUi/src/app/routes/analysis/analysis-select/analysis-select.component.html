@@ -148,7 +148,8 @@
         <td>{{data.lastModifiedAt | date: 'yyy-MM-dd'}}</td>
         <td>
           <div *ngIf="data.dataFrom != '系统匹配' && (data.qicNo != null && data.qisNo != null) ||
-          (data.cntrMesrType != null && data.cntrMesrReasonDesc !=null && data.permanentCntr != null)">
+          (data.cntrMesrType != null && data.cntrMesrReasonDesc !=null && data.permanentCntr != null &&
+          data.permanentCntrTime != null)">
             <a (click)="onManualAdd(data)" nzSize="small" style="margin-right: 5px;">修改</a>
             <a nz-popconfirm nzTitle="确认删除吗" (nzOnConfirm)="onDelete(data)">删除</a>
           </div>

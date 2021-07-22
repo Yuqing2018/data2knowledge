@@ -2,8 +2,6 @@
 using MusicKG.HondaPlugins.DataAccess.DataModels.Labeling;
 using MusicKG.HondaPlugins.DataAccess.DataModels.Business;
 using MusicKG.HondaPlugins.DataAccess.DataModels.Warnings;
-using MusicKG.DataAccess.Models;
-using MusicKG.DataAccess.Constants;
 using MusicKG.DataManager.Models;
 using MongoDB.Driver;
 using System;
@@ -50,8 +48,6 @@ namespace MusicKG.HondaPlugins.DataAccess
 
         public IMongoCollection<ModelTrainingHistory> TrainingHistory { get; private set; }
 
-        public IMongoCollection<UserDataModel> Users { get; private set; }
-
         private void GetCollections()
         {
             VehicleFault = Database.GetCollection<VehicleFaultDataModel>($"Honda_{nameof(VehicleFault)}");
@@ -67,8 +63,6 @@ namespace MusicKG.HondaPlugins.DataAccess
 
             TrainingData = Database.GetCollection<ModelTrainingData>($"Honda_{nameof(TrainingData)}");
             TrainingHistory = Database.GetCollection<ModelTrainingHistory>($"Honda_{nameof(TrainingHistory)}");
-
-            Users = Database.GetCollection<UserDataModel>(CollectionNames.User);
         }
 
         private void EnsureIndexes()
