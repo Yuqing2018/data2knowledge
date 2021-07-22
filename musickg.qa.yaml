@@ -1,0 +1,399 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: musickg-qa
+  labels:
+    name: musickg-qa
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: mongodb
+  namespace: musickg-qa
+spec:
+  ports:
+  - protocol: TCP
+    port: 27017
+    targetPort: 27017
+
+---
+
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: mongodb
+  namespace: musickg-qa
+subsets:
+  - addresses:
+      - ip: 10.1.4.6
+    ports:
+      - port: 27017
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: ceph
+  namespace: musickg-qa
+spec:
+  type: ExternalName
+  externalName: d2kdemo.eastasia.cloudapp.azure.com
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: elasticsearch
+  namespace: musickg-qa
+spec:
+  ports:
+  - protocol: TCP
+    port: 9200
+    targetPort: 9200
+
+---
+
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: elasticsearch
+  namespace: musickg-qa
+subsets:
+  - addresses:
+      - ip: 10.1.4.6
+    ports:
+      - port: 9200
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapi
+  namespace: musickg-qa
+spec:
+  selector:
+    matchLabels:
+      app: webapi
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: webapi
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - labeltool
+                - cmcclabel-qa
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - cmcclabel-qa
+      containers:
+      - name: webapi
+        image: labeltool.eastasia.cloudapp.azure.com:5443/musickg.webapi:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: ASPNETCORE_URLS
+          value: "http://*:5000"
+        readinessProbe:
+          httpGet:
+            path: /index.html
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /index.html
+            port: 5000
+          initialDelaySeconds: 15
+          periodSeconds: 30
+      imagePullSecrets:
+      - name: labeltool
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: webapi
+  namespace: musickg-qa
+spec:
+  selector:
+    app: webapi
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 5000
+    nodePort: 30100
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webui
+  namespace: musickg-qa
+spec:
+  selector:
+    matchLabels:
+      app: webui
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: webui
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - labeltool
+                - cmcclabel-qa
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - cmcclabel-qa
+      containers:
+      - name: webui
+        image: labeltool.eastasia.cloudapp.azure.com:5443/musickg.webui:latest
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 15
+          periodSeconds: 30
+      imagePullSecrets:
+      - name: labeltool
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: webui
+  namespace: musickg-qa
+spec:
+  selector:
+    app: webui
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 80
+    nodePort: 30101
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kepreprocessor
+  namespace: musickg-qa
+spec:
+  selector:
+    matchLabels:
+      app: kepreprocessor
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kepreprocessor
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - labeltool
+                - cmcclabel-qa
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - cmcclabel-qa
+      containers:
+      - name: kepreprocessor
+        image: labeltool.eastasia.cloudapp.azure.com:5443/musickg.kepreprocessor:latest
+        ports:
+        - containerPort: 5002
+      imagePullSecrets:
+      - name: labeltool
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: kepreprocessor
+  namespace: musickg-qa
+spec:
+  selector:
+    app: kepreprocessor
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 5002
+    nodePort: 30102
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: graphdataingestion
+  namespace: musickg-qa
+spec:
+  selector:
+    matchLabels:
+      app: graphdataingestion
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: graphdataingestion
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - labeltool
+                - cmcclabel-qa
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - cmcclabel-qa
+      containers:
+      - name: graphdataingestion
+        image: labeltool.eastasia.cloudapp.azure.com:5443/musickg.graphdataingestion:latest
+        ports:
+        - containerPort: 8800
+        env:
+        - name: TZ
+          value: "UTC"
+        - name: MUSICKG_ENVIRONMENT
+          value: "prod"
+      imagePullSecrets:
+      - name: labeltool
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: graphdataingestion
+  namespace: musickg-qa
+spec:
+  selector:
+    app: graphdataingestion
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 8800
+    nodePort: 30103
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workflow
+  namespace: musickg-qa
+spec:
+  selector:
+    matchLabels:
+      app: workflow
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: workflow
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - labeltool
+                - cmcclabel-qa
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - cmcclabel-qa
+      containers:
+      - name: workflow
+        image: labeltool.eastasia.cloudapp.azure.com:5443/musickg.workflow:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: ASPNETCORE_URLS
+          value: "http://*:5000"
+      imagePullSecrets:
+      - name: labeltool
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: workflow
+  namespace: musickg-qa
+spec:
+  selector:
+    app: workflow
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 5000
+    nodePort: 30104
